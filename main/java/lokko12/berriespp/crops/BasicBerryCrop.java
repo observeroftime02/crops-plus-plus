@@ -1,24 +1,30 @@
+package lokko12.berriespp.crops;
 
-import net.minecraft.src.ic2.api.CropCard;
-import net.minecraft.src.ic2.api.TECrop;
-import net.minecraft.src.*;
-import net.minecraft.src.forge.*;
-
+import ic2.api.crops.ICropTile;
+import ic2.api.item.IC2Items;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import ic2.api.crops.CropCard;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.IIcon;
 import java.util.Random;
 
-public abstract class BasicBerryCrop extends CropCard {
+public abstract class BasicBerryCrop extends ic2.api.crops.CropCard {
     public ItemStack seed;
     public int spriteIndex;
     public Random random;
 
     public BasicBerryCrop(int id, ItemStack seed, int spriteIndex) {
-        CropCard.registerBaseSeed(seed, id, 1, 10, 10, 10);
+        /*CropCard.registerBaseSeed(seed, id, 1, 10, 10, 10);
+    	deprecated, IDs aren't used anymore.
+    	*/
 
         this.seed = seed;
         this.spriteIndex = spriteIndex;
         this.random = new Random();
 
-        CropCard.registerCrop(this, id);
+        //CropCard.registerCrop(this, id);
     }
 
     @Override
@@ -38,28 +44,37 @@ public abstract class BasicBerryCrop extends CropCard {
         }
     }
 
-    @Override
+    /*@Override
     public int getSpriteIndex(TECrop crop) {
         return crop.size - 1 + spriteIndex;
     }
-
+    
+    
+    
     @Override
     public String getTextureFile() {
         return "/berries_crops.png";
     }
-
+ 
+ 	deprecated
+     */
+    
     @Override
-    public boolean canGrow(TECrop crop) {
-        // Grows in three stages:
-        // 1 - initially planted at seed stage
-        // 2 - partially grown but unripe
-        // 3 - fully grown ripe and harvestable 
-        return crop.size < 3;
+    public boolean canGrow(ICropTile crop) {
+        if (crop.getSize() < 2) {
+            return true;
+        }
+        return false;
     }
 
     @Override
-    public boolean canBeHarvested(TECrop crop) {
-        return crop.size == 3;
+    public int getOptimalHavestSize(ICropTile crop) {
+        return 5;
+    }
+
+    @Override
+    public boolean canBeHarvested(ICropTile crop) {
+        return crop.getSize() == 5;
     }
 
     @Override
