@@ -39,9 +39,9 @@ public class Berriespp {
 
 		cropTestL = new CropLoader();
 		config c = new config(preinit, "berriespp.cfg");
-		cropTestL.load(c.tconfig, "CropTest");
+		cropTestL.load(c.tConfig, "CropTest");
 		// NameOfCropL.load(c.tConfig, "NameOfCrop");
-		c.tconfig.save();
+		c.tConfig.save();
 	}
 
 	@EventHandler

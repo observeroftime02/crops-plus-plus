@@ -1,12 +1,17 @@
-
-import net.minecraft.src.*;
-import net.minecraft.src.forge.*;
+package lokko12.berriespp.crops;
+import ic2.api.crops.ICropTile;
+import ic2.api.item.IC2Items;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import ic2.api.crops.CropCard;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.IIcon;
 
 public class StrawberryCrop extends BasicBerryCrop {
-    final static public int spriteIndex = 16 * 3;
 
     public StrawberryCrop(int id, ItemStack item) {
-        super(id, item, spriteIndex);
+        super();
     }
 
     public String name() {

@@ -11,22 +11,21 @@ import net.minecraft.util.IIcon;
 import java.util.Random;
 
 public abstract class BasicBerryCrop extends ic2.api.crops.CropCard {
-    public ItemStack seed;
-    public int spriteIndex;
-    public Random random;
+    //public ItemStack seed;
+    //public int spriteIndex;
+    //public Random random;
 
-    public BasicBerryCrop(int id, ItemStack seed, int spriteIndex) {
-        /*CropCard.registerBaseSeed(seed, id, 1, 10, 10, 10);
-    	deprecated, IDs aren't used anymore.
-    	*/
-
+	public BasicBerryCrop ()
+	{}
+	/*public BasicBerryCrop(int id, ItemStack seed, int spriteIndex) {
+        CropCard.registerBaseSeed(seed, id, 1, 10, 10, 10);
         this.seed = seed;
         this.spriteIndex = spriteIndex;
         this.random = new Random();
-
-        //CropCard.registerCrop(this, id);
-    }
-
+        
+        deprecated, IDs aren't used anymore.
+    } */ 
+    
     @Override
     public int tier() {
         return 2;
@@ -61,7 +60,7 @@ public abstract class BasicBerryCrop extends ic2.api.crops.CropCard {
     
     @Override
     public boolean canGrow(ICropTile crop) {
-        if (crop.getSize() < 2) {
+        if (crop.getSize() < 3) {
             return true;
         }
         return false;
@@ -69,24 +68,25 @@ public abstract class BasicBerryCrop extends ic2.api.crops.CropCard {
 
     @Override
     public int getOptimalHavestSize(ICropTile crop) {
-        return 5;
+        return 3;
     }
 
+    
     @Override
     public boolean canBeHarvested(ICropTile crop) {
-        return crop.getSize() == 5;
+        return crop.getSize() == 3;
     }
 
     @Override
-    public int weightInfluences(TECrop crop, float humidity, float nutrients, float air) {
+    public int weightInfluences(ICropTile crop, float humidity, float nutrients, float air) {
         // Requires more humidity than nutrients or air, but not much more
-        return (int)(humidity*1.2 + nutrients*0.9 + air*0.9);
+        return (int)((double)humidity*1.2 + (double)nutrients*0.9 + (double)air*0.9);
     }
 
     @Override
-    public int growthDuration(TECrop crop) {
+    public int growthDuration(ICropTile crop) {
         // Same growth stages as melons and pumpkins
-        if (crop.size == 2) {
+        if (crop.getSize() == 2) {
             // Ripens quickly
             return 200;
         } else {
@@ -95,23 +95,31 @@ public abstract class BasicBerryCrop extends ic2.api.crops.CropCard {
         }
     }
 
-    @Override
-    public ItemStack getGain(TECrop crop) {
-        // Harvest up to 10 berries when ripe; has 16 in picture but 6 remain unripe, and some spoil
-        ItemStack drop = new ItemStack(seed.itemID, 5 + random.nextInt(5), seed.getItemDamage()); 
+    /*@Override
+     * 
+     * TODO drop
+    public ItemStack getGain(ICropTile crop) {
+         Harvest up to 10 berries when ripe; has 16 in picture but 6 remain unripe, and some spoil
+         ItemStack drop = new ItemStack(seed.itemID, 5 + random.nextInt(5), seed.getItemDamage()); 
 
         return drop;
-    }
+    }*/
 
     @Override
-    public byte getSizeAfterHarvest(TECrop crop) {
+    public byte getSizeAfterHarvest(ICropTile crop) {
         // return to partially grown state when harvested
         return 2;
     }
+    
+	@Override
+	public int maxSize() {
+		return 3;
+	}
 
-    @Override
-    public boolean onEntityCollision(TECrop crop, Entity entity) {
-        // you can walk through berries! they don't mind
-        return false;
-    }
+	@Override
+	public ItemStack getGain(ICropTile crop) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

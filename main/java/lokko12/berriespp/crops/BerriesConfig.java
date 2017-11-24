@@ -1,13 +1,14 @@
-
+package lokko12.berriespp.crops;
+import net.minecraft.item.ItemStack;
 import net.minecraft.src.*;
-import net.minecraft.src.forge.*;
-import net.minecraft.src.ic2.api.CropCard;
+import net.minecraftforge.common.config.Configuration;
+
 import java.io.*;
 
 public class BerriesConfig {
-    public final Configuration config;
+    public Configuration config;
 
-    public final int cropid_vine;
+    /*public final int cropid_vine;
     public final int cropid_blackberry;
     public final int cropid_raspberry;
     public final int cropid_strawberry;
@@ -18,9 +19,9 @@ public class BerriesConfig {
     public final ItemStack item_raspberry;
     public final ItemStack item_strawberry;
     public final ItemStack item_blueberry;
-    public final ItemStack item_huckleberry;
+    public final ItemStack item_huckleberry; */
 
-    public BerriesConfig(Configuration config) {
+    public void BerriesConfig(Configuration config) {
         this.config = config;
 
         try {
@@ -28,7 +29,12 @@ public class BerriesConfig {
         } catch (RuntimeException e) {
             e.printStackTrace();
         }
-
+        /*
+         * 
+         * 
+         * todo
+         * 
+         * 
         cropid_vine = getInt("cropid.vine", 60);
         cropid_blackberry = getInt("cropid.blackberry", 61);
         cropid_raspberry = getInt("cropid.raspberry", 62);
@@ -41,13 +47,19 @@ public class BerriesConfig {
         item_strawberry = getItem("item.strawberry", 0, 0);  // not in Trees++  TODO: new custom item
         item_blueberry = getItem("item.blueberry", 20000, 7);
         item_huckleberry = getItem("item.huckleberry", 20000, 6);
-
-        config.save();
+*/
+        config.save(); 
     }
-
+/*
+ * 
+ * 
+ * todo
+ * 
+ * 
     public int getInt(String key, int defaultValue) {
         return Integer.parseInt(config.getOrCreateIntProperty(key, Configuration.CATEGORY_GENERAL, defaultValue).value);
     }
+
 
     public ItemStack getItem(String key, int defaultID, int defaultDamage) {
         int id = this.getInt(key, defaultID);
@@ -68,5 +80,6 @@ public class BerriesConfig {
         if (cropid_blueberry != 0 && item_blueberry != null) new BlueberryCrop(cropid_blueberry, item_blueberry);
         if (cropid_huckleberry != 0 && item_huckleberry != null) new HuckleberryCrop(cropid_huckleberry, item_huckleberry);
     }
+    */
 }
 

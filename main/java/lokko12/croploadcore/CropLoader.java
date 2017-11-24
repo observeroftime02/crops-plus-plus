@@ -2,6 +2,7 @@ package lokko12.croploadcore;
 
 import ic2.api.crops.CropCard;
 import ic2.api.crops.Crops;
+import lokko12.berriespp.crops.BasicBerryCrop;
 import net.minecraftforge.common.config.Configuration;
 
 public class CropLoader {
