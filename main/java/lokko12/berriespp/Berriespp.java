@@ -38,7 +38,6 @@ public class Berriespp {
 	public void preInit(FMLPreInitializationEvent preinit) {
 
 		cropTestL = new CropLoader();
-		cropAgentiaL = new CropLoader();
 		config c = new config(preinit, "berriespp.cfg");
 		cropTestL.load(c.tconfig, "CropTest");
 		// NameOfCropL.load(c.tConfig, "NameOfCrop");
