@@ -6,6 +6,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ic2.api.crops.CropCard;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import java.util.Random;
@@ -104,6 +105,7 @@ public abstract class BasicBerryCrop extends ic2.api.crops.CropCard {
 
         return drop;
     }*/
+    
 
     @Override
     public byte getSizeAfterHarvest(ICropTile crop) {
@@ -118,8 +120,7 @@ public abstract class BasicBerryCrop extends ic2.api.crops.CropCard {
 
 	@Override
 	public ItemStack getGain(ICropTile crop) {
-		// TODO Auto-generated method stub
-		return null;
+		return new ItemStack(Items.wheat, 1);
 	}
 
 }

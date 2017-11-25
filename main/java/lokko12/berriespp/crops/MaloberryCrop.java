@@ -8,14 +8,14 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;;
 
-public class MeloberryCrop extends BasicBerryCrop {
+public class MaloberryCrop extends BasicBerryCrop {
 
-    public MeloberryCrop(int id, ItemStack item) {
+    public MaloberryCrop(int id, ItemStack item) {
         super();
     }
 
     public String name() {
-        return "Meloberry";
+        return "Maloberry";
     }
 
     public String[] attributes() {

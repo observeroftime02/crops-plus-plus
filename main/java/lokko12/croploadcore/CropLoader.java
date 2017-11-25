@@ -13,8 +13,8 @@ public class CropLoader {
 		
 	}
 	
-	public CropLoader(BasicBerryCrop cropObj) {
-		cropObj = cropCard;
+	public CropLoader(CropCard cropObj) {
+		this.cropObj = cropObj;
 	}
 
 	public void load(Configuration fConfig, String key){

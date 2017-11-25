@@ -1,4 +1,4 @@
-
+/*
 import net.minecraft.src.ic2.api.CropCard;
 import net.minecraft.src.ic2.api.TECrop;
 import net.minecraft.src.*;
@@ -138,5 +138,6 @@ public class VineCrop extends CropCard {
 
         crop.pick(true);
     }
-    */
+    
 }
+*/
