@@ -10,6 +10,14 @@ import net.minecraft.util.IIcon;;
 
 public class MaloberryCrop extends BasicBerryCrop {
 
+    /*
+    public String CropSeed(){
+        return "Natura.Maloberry";
+    }
+    
+    Base Seed + Natura API
+    */
+
     public MaloberryCrop(int id, ItemStack item) {
         super();
     }
