@@ -53,6 +53,7 @@ public class Berriespp {
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent postinit) {
 		cropMaloberryL.register();
+		//cropMaloberryL.registerBaseSeed(cropMaloberryL.CropSeed()); <- Try on Base Seed
 		// NameOfCropL.register();
 	}
 
