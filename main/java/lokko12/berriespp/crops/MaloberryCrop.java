@@ -7,12 +7,13 @@ import ic2.api.crops.CropCard;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;;
+//import mods.natura.items;
 
 public class MaloberryCrop extends BasicBerryCrop {
 
     /*
     public String CropSeed(){
-        return "Natura.Maloberry";
+        return "item.berry.geo";
     }
     
     Base Seed + Natura API
