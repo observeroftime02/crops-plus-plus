@@ -4,7 +4,7 @@ import ic2.api.crops.CropCard;
 import ic2.api.crops.ICropTile;
 import net.minecraft.init.Blocks;
 
-public abstract class BasicNetherBerryCrop extends BasicBerryCrop {
+public abstract class BasicNetherBerryCrop extends ic2.api.crops.CropCard {
 
 
 	public BasicNetherBerryCrop ()
@@ -13,14 +13,14 @@ public abstract class BasicNetherBerryCrop extends BasicBerryCrop {
     
     @Override
     public int tier() {
-        return 2;
+        return 4;
     }
 
     @Override
     public int stat(int n) {
         switch(n) {
         case 0: return 1;   // a bit chemical
-        case 1: return 2;   // kinda edible
+        case 1: return 3;   // kinda edible
         case 2: return 4;   // strong defensive properties
         case 3: return 4;   // quite colorful
         case 4: return 0;   // not particularly weed-like
@@ -30,10 +30,17 @@ public abstract class BasicNetherBerryCrop extends BasicBerryCrop {
 
     @Override
     public boolean canGrow(ICropTile crop) {
-    	if (crop.isBlockBelow(Blocks.soul_sand)) {
-        if (crop.getSize() < 3) {
+    	if (crop.getSize() < 3) 
+    	{
             return true;
-        }}
+        }
+    	/*else if ((crop.getSize() < 3) && (crop.isBlockBelow(Blocks.soul_sand))) 
+    	{
+            return true;
+        }
+        
+        Maybe add this in a future Version...
+        */
         return false;
     }
 
@@ -51,7 +58,7 @@ public abstract class BasicNetherBerryCrop extends BasicBerryCrop {
     @Override
     public int weightInfluences(ICropTile crop, float humidity, float nutrients, float air) {
         // Requires no humidity but nutrients.
-        return (int)((double)humidity*0.1 + (double)nutrients*1.5 + (double)air*0.9);
+        return (int)((double)humidity*0.5 + (double)nutrients*1.5 + (double)air*1);
     }
 
     @Override
@@ -71,7 +78,6 @@ public abstract class BasicNetherBerryCrop extends BasicBerryCrop {
         return "bartimaeusnek";
     }
     
-
 
     @Override
     public byte getSizeAfterHarvest(ICropTile crop) {
