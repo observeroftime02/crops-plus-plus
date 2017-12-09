@@ -1,16 +1,23 @@
 package lokko12.berriespp;
 
 import lokko12.Proxies.*;
-
-import lokko12.berriespp.crops.BlackberryCrop;
-import lokko12.berriespp.crops.BlightberryCrop;
-import lokko12.berriespp.crops.BlueberryCrop;
-import lokko12.berriespp.crops.DuskberryCrop;
-import lokko12.berriespp.crops.MaloberryCrop;
-import lokko12.berriespp.crops.RaspberryCrop;
-import lokko12.berriespp.crops.SkyberryCrop;
-import lokko12.berriespp.crops.StingberryCrop;
-
+//TC Berries
+import lokko12.berriespp.crops.TC.AluminiumOreBerryCrop;
+import lokko12.berriespp.crops.TC.CopperOreBerryCrop;
+import lokko12.berriespp.crops.TC.EssenceOreBerryCrop;
+import lokko12.berriespp.crops.TC.GoldOreBerryCrop;
+import lokko12.berriespp.crops.TC.IronOreBerryCrop;
+import lokko12.berriespp.crops.TC.TinOreBerryCrop;
+//Natura Berries
+import lokko12.berriespp.crops.natura.BlackberryCrop;
+import lokko12.berriespp.crops.natura.BlightberryCrop;
+import lokko12.berriespp.crops.natura.BlueberryCrop;
+import lokko12.berriespp.crops.natura.DuskberryCrop;
+import lokko12.berriespp.crops.natura.MaloberryCrop;
+import lokko12.berriespp.crops.natura.RaspberryCrop;
+import lokko12.berriespp.crops.natura.SkyberryCrop;
+import lokko12.berriespp.crops.natura.StingberryCrop;
+//cfg
 import lokko12.croploadcore.CropLoader;
 import lokko12.croploadcore.config;
 
@@ -27,16 +34,17 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 import net.minecraftforge.common.*;
 import net.minecraftforge.common.config.Configuration;
+import tconstruct.world.TinkerWorld;
 import net.minecraft.item.ItemStack;
 
 @Mod(
-	modid = "berriespp", name = "Berrys++", version = "F-0.01N",
-	dependencies = "required-after:IC2@[2.2.828-experimental]"
+	modid = "berriespp", name = "Berries++", version = "F-0.0.3T+N",
+	dependencies = "required-after:IC2; after:Mantle; after:Natura; after:TConstruct"
 	)
 
 public class Berriespp {
 
-	@Instance(value = "Berrys++")
+	@Instance(value = "Berries++")
 	public static Berriespp instance;
 	
 	//Loader
@@ -52,6 +60,14 @@ public class Berriespp {
 	public CropLoader cropSkyberryL;
 	public CropLoader cropStingberryL;
 	public CropLoader cropDuskberryL;
+	
+	//TC 
+	public CropLoader cropIronOreBerryL;
+	public CropLoader cropGoldOreBerryL;
+	public CropLoader cropCopperOreBerryL;
+	public CropLoader cropTinOreBerryL;
+	public CropLoader cropAluminiumOreBerryL;
+	public CropLoader cropEssenceOreBerryL;
 	
 	// public CropLoader NameOfCropL;
 
@@ -73,6 +89,15 @@ public class Berriespp {
 		cropStingberryL = new CropLoader(new StingberryCrop(7,null));
 		cropDuskberryL = new CropLoader(new DuskberryCrop(8,null));
 		
+		//TC
+		
+		cropIronOreBerryL = new CropLoader(new IronOreBerryCrop());
+		cropGoldOreBerryL = new CropLoader(new GoldOreBerryCrop());
+		cropCopperOreBerryL = new CropLoader(new CopperOreBerryCrop());
+		cropTinOreBerryL = new CropLoader(new TinOreBerryCrop());
+		cropAluminiumOreBerryL = new CropLoader(new AluminiumOreBerryCrop());
+		cropEssenceOreBerryL = new CropLoader(new EssenceOreBerryCrop());
+		
 		config c = new config(preinit, "berriespp.cfg");
 		
 		//OW Berrys Natura
@@ -87,6 +112,15 @@ public class Berriespp {
 		cropStingberryL.load(c.tConfig, "StingberryCrop");
 		cropDuskberryL.load(c.tConfig, "DuskberryCrop");
 		
+		//TC
+		cropIronOreBerryL.load(c.tConfig, "IronOreBerryCrop");
+		cropGoldOreBerryL.load(c.tConfig, "GoldOreBerryCrop");
+		cropCopperOreBerryL.load(c.tConfig, "CopperOreBerryCrop");
+		cropTinOreBerryL.load(c.tConfig, "TinOreBerryCrop");
+		cropAluminiumOreBerryL.load(c.tConfig, "AluminiumOreBerryCrop");
+		cropEssenceOreBerryL.load(c.tConfig, "EssenceOreBerryCrop");
+
+
 		//NameOfCropL.load(c.tConfig, "NameOfCrop");
 		
 		c.tConfig.save();
@@ -122,9 +156,29 @@ public class Berriespp {
 		cropSkyberryL.register();
 		cropStingberryL.register();
 		
+		//TC integration try
+		
+		cropIronOreBerryL.registerBaseSeed(new ItemStack(TinkerWorld.oreBerries, 1, 0));
+		cropIronOreBerryL.register();
+		cropGoldOreBerryL.registerBaseSeed(new ItemStack(TinkerWorld.oreBerries, 1, 1));
+		cropGoldOreBerryL.register();
+		cropCopperOreBerryL.registerBaseSeed(new ItemStack(TinkerWorld.oreBerries, 1, 2));
+		cropCopperOreBerryL.register();
+		cropTinOreBerryL.registerBaseSeed(new ItemStack(TinkerWorld.oreBerries, 1, 3));
+		cropTinOreBerryL.register();
+		cropAluminiumOreBerryL.registerBaseSeed(new ItemStack(TinkerWorld.oreBerries, 1, 4));
+		cropAluminiumOreBerryL.register();
+		cropEssenceOreBerryL.registerBaseSeed(new ItemStack(TinkerWorld.oreBerries, 1, 5));
+		cropEssenceOreBerryL.register();
 	
 		// NameOfCropL.registerBaseSeed(new ItemStack(PlaceOfItem, AmmountOfItem, DMG));
 		// NameOfCropL.register();
 	}
 
+	/*
+	 * TODO:
+	 * 1. TC Integration
+	 * 2. Make Natura/TC Berries as item when Natura/TC is not Present
+	 * 3. Oredict
+	 */
 }

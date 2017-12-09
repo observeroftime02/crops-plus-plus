@@ -1,4 +1,4 @@
-package lokko12.berriespp.crops;
+package lokko12.berriespp.crops.natura;
 
 import ic2.api.crops.CropCard;
 import ic2.api.crops.ICropTile;
@@ -66,10 +66,10 @@ public abstract class BasicNetherBerryCrop extends ic2.api.crops.CropCard {
         // Same growth stages as melons and pumpkins
         if (crop.getSize() == 2) {
             // Ripens not so quickly
-            return 400;
+        	return 300;
         } else {
             // Takes a while to grow from seed
-            return 700;
+        	return 700;
         }
     }
     

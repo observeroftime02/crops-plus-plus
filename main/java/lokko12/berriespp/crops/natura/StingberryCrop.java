@@ -1,4 +1,4 @@
-package lokko12.berriespp.crops;
+package lokko12.berriespp.crops.natura;
 
 import ic2.api.crops.ICropTile;
 import ic2.api.item.IC2Items;
@@ -6,20 +6,20 @@ import mods.natura.common.NContent;
 import ic2.api.crops.CropCard;
 import net.minecraft.item.ItemStack;
 
-public class BlightberryCrop extends BasicNetherBerryCrop {
+public class StingberryCrop extends BasicNetherBerryCrop {
 
     
     public static String CropSeed()
     {
-        return "cropBlightberry";
+        return "cropStingberry";
     }
 
-    public BlightberryCrop(int id, ItemStack item) {
+    public StingberryCrop(int id, ItemStack item) {
         super();
     }
     
     public String name() {
-        return "Blightberry";
+        return "Stingberry";
     }
 
     public String[] attributes() {
@@ -28,7 +28,7 @@ public class BlightberryCrop extends BasicNetherBerryCrop {
     
     @Override
 	public ItemStack getGain(ICropTile crop) {
-		return new ItemStack(NContent.netherBerryItem,2,0);
+		return new ItemStack(NContent.netherBerryItem,2,3);
 	}
 
 }
