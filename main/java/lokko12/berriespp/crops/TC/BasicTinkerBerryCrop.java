@@ -41,25 +41,7 @@ public abstract class BasicTinkerBerryCrop extends ic2.api.crops.CropCard {
 
     @Override
     public boolean canGrow(ICropTile crop) {
-    	if (crop.getSize() < 1)
-			{
-				return true;
-			}
-    		else if (crop.getSize() < 3)
-    			{
-    			if (crop.getLightLevel() <= 3) 
-    				{
-    					return true;
-    				}
-    			else
-    				{
-						return false;
-    				}
-    			}
-    	else 
-    		{
-    			return false;
-    		}
+    	return crop.getSize() < 1 || (crop.getLightLevel() <= 3 && crop.getSize() < 3); //Codepiece by DaeFennek <3
     	}
     	
 
@@ -102,6 +84,11 @@ public abstract class BasicTinkerBerryCrop extends ic2.api.crops.CropCard {
 		return 3;
 	}
 	
+    @Override
+    public byte getSizeAfterHarvest(ICropTile crop) {
+        // return to partially grown state when harvested
+        return 2;
+    }
 	
 	/*public void tick(ICropTile crop) 
 	{
