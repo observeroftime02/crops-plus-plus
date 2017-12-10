@@ -22,7 +22,7 @@ import lokko12.croploadcore.CropLoader;
 import lokko12.croploadcore.config;
 
 import mods.natura.common.NContent;
-
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -38,7 +38,7 @@ import tconstruct.world.TinkerWorld;
 import net.minecraft.item.ItemStack;
 
 @Mod(
-	modid = "berriespp", name = "Berries++", version = "F-0.0.3T+N",
+	modid = "berriespp", name = "Berries++", version = "F-0.0.4",
 	dependencies = "required-after:IC2; after:Mantle; after:Natura; after:TConstruct"
 	)
 
@@ -46,6 +46,11 @@ public class Berriespp {
 
 	@Instance(value = "Berries++")
 	public static Berriespp instance;
+	
+	//Checks which mods are aviable
+	public static boolean IC2Installed = false;
+	public static boolean NaturaInstalled = false;
+	public static boolean TConstructInstalled = false;
 	
 	//Loader
 	
@@ -134,6 +139,24 @@ public class Berriespp {
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent postinit) {
 		
+		//CheckforMods
+		IC2Installed = Loader.isModLoaded("IC2");
+		NaturaInstalled = Loader.isModLoaded("Natura");
+		TConstructInstalled = Loader.isModLoaded("TConstruct");
+		
+		if (IC2Installed == false) 
+		{
+			System.out.println("IC2 NOT INSTALLED! WTF? YOU NEED IT FOR CROPS! POWAOFCAPLSLOCK!");
+			
+		}
+		else 
+		{
+			System.out.println("IC2 found! Berries++ will now load!");
+		}
+		
+		//Natura integration
+		if (NaturaInstalled == true) {
+		System.out.println("Natura found! Berries++ will use their items!");
 		//OW Berrys Natura
 		cropMaloberryL.registerBaseSeed(new ItemStack(NContent.berryItem, 1, 3));
 		cropBlackberryL.registerBaseSeed(new ItemStack(NContent.berryItem, 1, 2));
@@ -155,22 +178,27 @@ public class Berriespp {
 		cropDuskberryL.register();
 		cropSkyberryL.register();
 		cropStingberryL.register();
+		}
 		
-		//TC integration try
-		
+		//TC integration
+		if (TConstructInstalled == true) 
+		{
+		System.out.println("Tinker's Construct found! Berries++ will use their items!");
 		cropIronOreBerryL.registerBaseSeed(new ItemStack(TinkerWorld.oreBerries, 1, 0));
-		cropIronOreBerryL.register();
 		cropGoldOreBerryL.registerBaseSeed(new ItemStack(TinkerWorld.oreBerries, 1, 1));
-		cropGoldOreBerryL.register();
 		cropCopperOreBerryL.registerBaseSeed(new ItemStack(TinkerWorld.oreBerries, 1, 2));
-		cropCopperOreBerryL.register();
 		cropTinOreBerryL.registerBaseSeed(new ItemStack(TinkerWorld.oreBerries, 1, 3));
-		cropTinOreBerryL.register();
 		cropAluminiumOreBerryL.registerBaseSeed(new ItemStack(TinkerWorld.oreBerries, 1, 4));
-		cropAluminiumOreBerryL.register();
 		cropEssenceOreBerryL.registerBaseSeed(new ItemStack(TinkerWorld.oreBerries, 1, 5));
+		
+		cropIronOreBerryL.register();
+		cropGoldOreBerryL.register();
+		cropCopperOreBerryL.register();
+		cropTinOreBerryL.register();
+		cropAluminiumOreBerryL.register();
 		cropEssenceOreBerryL.register();
-	
+		}
+
 		// NameOfCropL.registerBaseSeed(new ItemStack(PlaceOfItem, AmmountOfItem, DMG));
 		// NameOfCropL.register();
 	}
