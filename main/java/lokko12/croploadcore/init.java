@@ -11,13 +11,12 @@ import ic2.api.crops.Crops;
 import ic2.api.crops.ICropTile;
 //BoP
 import lokko12.berriespp.crops.BoP.BoPBerryCrop;
-//TC Berries
-import lokko12.berriespp.crops.TC.AluminiumOreBerryCrop;
-import lokko12.berriespp.crops.TC.CopperOreBerryCrop;
-import lokko12.berriespp.crops.TC.EssenceOreBerryCrop;
-import lokko12.berriespp.crops.TC.GoldOreBerryCrop;
-import lokko12.berriespp.crops.TC.IronOreBerryCrop;
-import lokko12.berriespp.crops.TC.TinOreBerryCrop;
+import lokko12.berriespp.crops.TConstruct.AluminiumOreBerryCrop;
+import lokko12.berriespp.crops.TConstruct.CopperOreBerryCrop;
+import lokko12.berriespp.crops.TConstruct.EssenceOreBerryCrop;
+import lokko12.berriespp.crops.TConstruct.GoldOreBerryCrop;
+import lokko12.berriespp.crops.TConstruct.IronOreBerryCrop;
+import lokko12.berriespp.crops.TConstruct.TinOreBerryCrop;
 import lokko12.berriespp.crops.bpp.BasicBerryCrop;
 //Natura Berries
 import lokko12.berriespp.crops.natura.BlackberryCrop;
@@ -42,8 +41,8 @@ public class init {
 	private static boolean TConstructInstalled = false;
 	private static boolean BoPInstalled = false;
 	private static boolean bHasCropObj[] = new boolean[anz];
-	private CropCard cropObj;
-	
+	public CropCard cropObj;
+	private ItemStack gain;
 	public init() {
 		
 	}
@@ -51,10 +50,15 @@ public class init {
 	public init(CropCard cropObj) {
 		this.cropObj = cropObj;
 	}
+	/*public init(CropCard cropObj,ItemStack gain) {
+		
+		this.cropObj = cropObj;
+		this.gain = gain;
+	}*/
 
 	private static List<CropCard> cropObjs() {
-		
 		List<CropCard> p = new ArrayList<CropCard>();
+
 		p.add(new init(new MaloberryCrop()).cropObj);
 		p.add(new init(new BlackberryCrop()).cropObj);
 		p.add(new init(new BlueberryCrop()).cropObj);
@@ -74,75 +78,69 @@ public class init {
 	}
 	
 	private static ItemStack[] setBaseSeed() {
+		
 		IC2Installed = Loader.isModLoaded("IC2");
 		NaturaInstalled = Loader.isModLoaded("Natura");
 		TConstructInstalled = Loader.isModLoaded("TConstruct");
 		BoPInstalled=Loader.isModLoaded("BiomesOPlenty");
-		if (IC2Installed == false) 
+		if (IC2Installed == false)
 		{
-			System.out.println("IC2 NOT INSTALLED! WTF? YOU NEED IT FOR CROPS! POWAOFCAPLSLOCK!");
-			
-		}
+			return null;
+			}
 		else 
 		{
-			System.out.println("IC2 found! Berries++ will now load!");
-		}
-		List<ItemStack> p = new ArrayList<ItemStack>();
-		if (NaturaInstalled == true) {
-			System.out.println("Natura found! Berries++ will use their items!");
-			p.add(new ItemStack(NContent.berryItem, 1, 3));
-			p.add(new ItemStack(NContent.berryItem, 1, 2));
-			p.add(new ItemStack(NContent.berryItem, 1, 1));
-			p.add(new ItemStack(NContent.berryItem, 1, 0));
-			p.add(new ItemStack(NContent.netherBerryItem, 1, 0));
-			p.add(new ItemStack(NContent.netherBerryItem, 1, 1));
-			p.add(new ItemStack(NContent.netherBerryItem, 1, 2));
-			p.add(new ItemStack(NContent.netherBerryItem, 1, 3));
-		}
-		else
-		{
-			System.out.println("Natura NOT found! Berries++ will use  NOT their items!");
-			p.add(new ItemStack(Items.wheat, 1));
-			p.add(new ItemStack(Items.wheat, 1));
-			p.add(new ItemStack(Items.wheat, 1));
-			p.add(new ItemStack(Items.wheat, 1));
-			p.add(new ItemStack(Items.wheat, 1));
-			p.add(new ItemStack(Items.wheat, 1));
-			p.add(new ItemStack(Items.wheat, 1));
-			p.add(new ItemStack(Items.wheat, 1));
-		}
-		if (TConstructInstalled == true) 
-		{
-		System.out.println("Tinker's Construct found! Berries++ will use their items!");
-			p.add(new ItemStack(TinkerWorld.oreBerries, 1, 0));
-			p.add(new ItemStack(TinkerWorld.oreBerries, 1, 1));
-			p.add(new ItemStack(TinkerWorld.oreBerries, 1, 2));
-			p.add(new ItemStack(TinkerWorld.oreBerries, 1, 3));
-			p.add(new ItemStack(TinkerWorld.oreBerries, 1, 4));
-			p.add(new ItemStack(TinkerWorld.oreBerries, 1, 5));
-		}
-		else {
-			System.out.println("Tinker's Construct NOT found! Berries++ will NOT use their items!");
-			p.add(new ItemStack(Items.wheat, 1));
-			p.add(new ItemStack(Items.wheat, 1));
-			p.add(new ItemStack(Items.wheat, 1));
-			p.add(new ItemStack(Items.wheat, 1));
-			p.add(new ItemStack(Items.wheat, 1));
-			p.add(new ItemStack(Items.wheat, 1));
-		}
+			List<ItemStack> p = new ArrayList<ItemStack>();
+			if (NaturaInstalled == true) {
+				p.add(new ItemStack(NContent.berryItem, 1, 3));
+				p.add(new ItemStack(NContent.berryItem, 1, 2));
+				p.add(new ItemStack(NContent.berryItem, 1, 1));
+				p.add(new ItemStack(NContent.berryItem, 1, 0));
+				p.add(new ItemStack(NContent.netherBerryItem, 1, 0));
+				p.add(new ItemStack(NContent.netherBerryItem, 1, 1));
+				p.add(new ItemStack(NContent.netherBerryItem, 1, 2));
+				p.add(new ItemStack(NContent.netherBerryItem, 1, 3));
+			}
+			else
+			{
+				p.add(new ItemStack(Items.wheat, 1));
+				p.add(new ItemStack(Items.wheat, 1));
+				p.add(new ItemStack(Items.wheat, 1));
+				p.add(new ItemStack(Items.wheat, 1));
+				p.add(new ItemStack(Items.wheat, 1));
+				p.add(new ItemStack(Items.wheat, 1));
+				p.add(new ItemStack(Items.wheat, 1));
+				p.add(new ItemStack(Items.wheat, 1));
+			}
+			if (TConstructInstalled == true) 
+			{
+				p.add(new ItemStack(TinkerWorld.oreBerries, 1, 0));
+				p.add(new ItemStack(TinkerWorld.oreBerries, 1, 1));
+				p.add(new ItemStack(TinkerWorld.oreBerries, 1, 2));
+				p.add(new ItemStack(TinkerWorld.oreBerries, 1, 3));
+				p.add(new ItemStack(TinkerWorld.oreBerries, 1, 4));
+				p.add(new ItemStack(TinkerWorld.oreBerries, 1, 5));
+			}
+			else {
+				p.add(new ItemStack(Items.wheat, 1));
+				p.add(new ItemStack(Items.wheat, 1));
+				p.add(new ItemStack(Items.wheat, 1));
+				p.add(new ItemStack(Items.wheat, 1));
+				p.add(new ItemStack(Items.wheat, 1));
+				p.add(new ItemStack(Items.wheat, 1));
+			}
 		
-		if(BoPInstalled==true) {
-		System.out.println("Biomes O' Plenty found! Berries++ will use their items!");
-		p.add(new ItemStack(biomesoplenty.api.content.BOPCItems.food,1,0));
+			if(BoPInstalled==true) {
+				p.add(new ItemStack(biomesoplenty.api.content.BOPCItems.food,1,0));
+			}
+			else
+			{
+				p.add(new ItemStack(Items.wheat, 1));
+			}
+			
+			ItemStack[] f = new ItemStack[anz];
+			p.toArray(f);
+			return f;
 		}
-		else
-		{
-			System.out.println("Biomes O' Plenty NOT found! Berries++ will NOT use their items!");
-			p.add(new ItemStack(Items.wheat, 1));
-		}
-		ItemStack[] f = new ItemStack[anz];
-		p.toArray(f);
-		return f;
 	}
 	
 	private static String[] setnames() {
@@ -160,7 +158,7 @@ public class init {
 		config c = new config(preinit, "berriespp.cfg");
 		
 		for(int i=0; i < anz; i++) {
-		bHasCropObj[i] = c.tConfig.get("crops", setnames()[i], true).getBoolean(false);
+			bHasCropObj[i] = c.tConfig.get("crops", setnames()[i], true).getBoolean(false);
 		}
 		c.save();
 	}
@@ -172,6 +170,25 @@ public class init {
 		for(int i=0; i < anz; i++) {
 				Crops.instance.registerBaseSeed(setBaseSeed()[i],g[i], 1, 3, 3, 3);
 		}
+		if (IC2Installed == true)
+			System.out.println("IC2 found! Berries++ will now load!");
+		else 
+			System.out.println("IC2 NOT INSTALLED! WTF? YOU NEED IT FOR CROPS! POWAOFCAPLSLOCK!");
+		if (NaturaInstalled == true) 
+			System.out.println("Natura found! Berries++ will use their items!");
+		else
+			System.out.println("Natura NOT found! Berries++ will use  NOT their items!");
+		
+		if (TConstructInstalled == true)
+			System.out.println("Tinker's Construct found! Berries++ will use their items!");
+		else
+			System.out.println("Tinker's Construct NOT found! Berries++ will NOT use their items!");
+		
+		if(BoPInstalled==true)
+			System.out.println("Biomes O' Plenty found! Berries++ will use their items!");
+		else
+			System.out.println("Biomes O' Plenty NOT found! Berries++ will NOT use their items!");
+		
 	}
 	
 	
@@ -181,7 +198,7 @@ public class init {
 			cropObjs().toArray(g);
 		if (bHasCropObj[i]) {
         	Crops.instance.registerCrop(g[i]);
-		}
+			}
         }
 	}
 }

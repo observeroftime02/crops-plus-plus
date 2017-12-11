@@ -1,7 +1,8 @@
-package lokko12.berriespp.crops.TC;
+package lokko12.berriespp.crops.TConstruct;
 
 import ic2.api.crops.CropCard;
 import ic2.api.crops.ICropTile;
+import lokko12.berriespp.Berriespp;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import tconstruct.world.TinkerWorld;
@@ -30,8 +31,10 @@ public class IronOreBerryCrop extends BasicTinkerBerryCrop {
 	    
 	    @Override
 	    public int growthDuration(ICropTile crop) {
-	        // Same growth stages as melons and pumpkins
-	        if (crop.getSize() == 2) {
+	    	if (Berriespp.devbuild == true)
+	    		return 1;
+	    	// Same growth stages as melons and pumpkins
+	    	else if (crop.getSize() == 2) {
 	            // Ripens "quickly"
 	            return 3000;
 	        } else {

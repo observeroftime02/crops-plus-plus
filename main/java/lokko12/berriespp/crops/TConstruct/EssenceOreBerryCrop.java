@@ -1,4 +1,4 @@
-package lokko12.berriespp.crops.TC;
+package lokko12.berriespp.crops.TConstruct;
 import ic2.api.crops.CropCard;
 import ic2.api.crops.ICropTile;
 import lokko12.berriespp.Berriespp;
@@ -36,6 +36,8 @@ public class EssenceOreBerryCrop extends BasicTinkerBerryCrop {
 		    
 		    @Override
 		    public int growthDuration(ICropTile crop) {
+		    	if (Berriespp.devbuild == true)
+		    		return 1;
 		        // Same growth stages as melons and pumpkins
 		        if (crop.getSize() == 2) {
 		            // Ripens "quickly"

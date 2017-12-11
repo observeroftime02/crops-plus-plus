@@ -1,9 +1,10 @@
-package lokko12.berriespp.crops.TC;
+package lokko12.berriespp.crops.TConstruct;
 
 import java.util.List;
 
 import ic2.api.crops.CropCard;
 import ic2.api.crops.ICropTile;
+import lokko12.berriespp.Berriespp;
 import lokko12.berriespp.crops.bpp.BasicBerryCrop;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
@@ -43,6 +44,9 @@ public abstract class BasicTinkerBerryCrop extends BasicBerryCrop {
 
     @Override
     public boolean canGrow(ICropTile crop) {
+    	if (Berriespp.devbuild == true)
+    		return crop.getSize() < 4;
+    	else
     	return crop.getSize() < 1 || (crop.getLightLevel() <= 3 && crop.getSize() < 4); //Codepiece by DaeFennek <3
     	}
     	

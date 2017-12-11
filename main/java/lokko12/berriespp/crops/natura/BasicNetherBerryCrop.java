@@ -2,6 +2,7 @@ package lokko12.berriespp.crops.natura;
 
 import ic2.api.crops.CropCard;
 import ic2.api.crops.ICropTile;
+import lokko12.berriespp.Berriespp;
 import lokko12.berriespp.crops.bpp.BasicBerryCrop;
 import net.minecraft.init.Blocks;
 
@@ -67,7 +68,9 @@ public abstract class BasicNetherBerryCrop extends BasicBerryCrop {
     @Override
     public int growthDuration(ICropTile crop) {
         // Same growth stages as melons and pumpkins
-        if (crop.getSize() == 2) {
+    	if (Berriespp.devbuild == true)
+    		return 1;
+    	else if (crop.getSize() == 2) {
             // Ripens not so quickly
         	return 300;
         } else {
