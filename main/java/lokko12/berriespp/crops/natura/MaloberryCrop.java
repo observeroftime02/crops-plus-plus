@@ -8,13 +8,7 @@ import net.minecraft.item.ItemStack;
 
 public class MaloberryCrop extends BasicBerryCrop {
 
-    
-    public static String CropSeed()
-    {
-        return "cropMaloberry";
-    }
-
-    public MaloberryCrop(int id, ItemStack item) {
+    public MaloberryCrop() {
         super();
     }
 

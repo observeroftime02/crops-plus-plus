@@ -1,6 +1,7 @@
 package lokko12.berriespp;
 
 import lokko12.Proxies.*;
+import lokko12.berriespp.crops.BoP.BoPBerryCrop;
 //TC Berries
 import lokko12.berriespp.crops.TC.AluminiumOreBerryCrop;
 import lokko12.berriespp.crops.TC.CopperOreBerryCrop;
@@ -39,7 +40,7 @@ import net.minecraft.item.ItemStack;
 
 @Mod(
 	modid = "berriespp", name = "Berries++", version = "F-0.0.4",
-	dependencies = "required-after:IC2; after:Mantle; after:Natura; after:TConstruct"
+	dependencies = "required-after:IC2; after:Mantle; after:Natura; after:TConstruct; after:BiomesOPlenty"
 	)
 
 public class Berriespp {
@@ -51,6 +52,7 @@ public class Berriespp {
 	public static boolean IC2Installed = false;
 	public static boolean NaturaInstalled = false;
 	public static boolean TConstructInstalled = false;
+	public static boolean BoPInstalled = false;
 	
 	//Loader
 	
@@ -74,6 +76,9 @@ public class Berriespp {
 	public CropLoader cropAluminiumOreBerryL;
 	public CropLoader cropEssenceOreBerryL;
 	
+	//BoP
+	public CropLoader BoPBerryL;
+	
 	// public CropLoader NameOfCropL;
 
 	@SidedProxy(clientSide = "lokko12.Proxies.ClientProxy", serverSide = "lokko12.Proxies.Proxy")
@@ -83,16 +88,16 @@ public class Berriespp {
 	public void preInit(FMLPreInitializationEvent preinit) {
 
 		//OW Berrys Natura
-		cropMaloberryL = new CropLoader(new MaloberryCrop(4, null));
-		cropBlueberryL = new CropLoader(new BlueberryCrop(3,null));
-		cropBlackberryL = new CropLoader(new BlackberryCrop(2,null));
-		cropRaspberryL = new CropLoader(new RaspberryCrop(1,null));
+		cropMaloberryL = new CropLoader(new MaloberryCrop());
+		cropBlueberryL = new CropLoader(new BlueberryCrop());
+		cropBlackberryL = new CropLoader(new BlackberryCrop());
+		cropRaspberryL = new CropLoader(new RaspberryCrop());
 		
 		//Nether Berrys Natura
-		cropBlightberryL = new CropLoader(new BlightberryCrop(5,null));
-		cropSkyberryL = new CropLoader(new SkyberryCrop(6,null));
-		cropStingberryL = new CropLoader(new StingberryCrop(7,null));
-		cropDuskberryL = new CropLoader(new DuskberryCrop(8,null));
+		cropBlightberryL = new CropLoader(new BlightberryCrop());
+		cropSkyberryL = new CropLoader(new SkyberryCrop());
+		cropStingberryL = new CropLoader(new StingberryCrop());
+		cropDuskberryL = new CropLoader(new DuskberryCrop());
 		
 		//TC
 		
@@ -102,6 +107,9 @@ public class Berriespp {
 		cropTinOreBerryL = new CropLoader(new TinOreBerryCrop());
 		cropAluminiumOreBerryL = new CropLoader(new AluminiumOreBerryCrop());
 		cropEssenceOreBerryL = new CropLoader(new EssenceOreBerryCrop());
+		
+		//BoP
+		BoPBerryL = new CropLoader(new BoPBerryCrop());
 		
 		config c = new config(preinit, "berriespp.cfg");
 		
@@ -125,6 +133,8 @@ public class Berriespp {
 		cropAluminiumOreBerryL.load(c.tConfig, "AluminiumOreBerryCrop");
 		cropEssenceOreBerryL.load(c.tConfig, "EssenceOreBerryCrop");
 
+		//BoP
+		BoPBerryL.load(c.tConfig, "BoPBerry");
 
 		//NameOfCropL.load(c.tConfig, "NameOfCrop");
 		
@@ -143,6 +153,7 @@ public class Berriespp {
 		IC2Installed = Loader.isModLoaded("IC2");
 		NaturaInstalled = Loader.isModLoaded("Natura");
 		TConstructInstalled = Loader.isModLoaded("TConstruct");
+		BoPInstalled=Loader.isModLoaded("BiomesOPlenty");
 		
 		if (IC2Installed == false) 
 		{
@@ -173,7 +184,6 @@ public class Berriespp {
 		cropDuskberryL.registerBaseSeed(new ItemStack(NContent.netherBerryItem, 1 ,1));
 		cropSkyberryL.registerBaseSeed(new ItemStack(NContent.netherBerryItem, 1, 2));
 		cropStingberryL.registerBaseSeed(new ItemStack(NContent.netherBerryItem, 1, 3));
-		
 		cropBlightberryL.register();
 		cropDuskberryL.register();
 		cropSkyberryL.register();
@@ -190,13 +200,21 @@ public class Berriespp {
 		cropTinOreBerryL.registerBaseSeed(new ItemStack(TinkerWorld.oreBerries, 1, 3));
 		cropAluminiumOreBerryL.registerBaseSeed(new ItemStack(TinkerWorld.oreBerries, 1, 4));
 		cropEssenceOreBerryL.registerBaseSeed(new ItemStack(TinkerWorld.oreBerries, 1, 5));
-		
 		cropIronOreBerryL.register();
 		cropGoldOreBerryL.register();
 		cropCopperOreBerryL.register();
 		cropTinOreBerryL.register();
 		cropAluminiumOreBerryL.register();
 		cropEssenceOreBerryL.register();
+		}
+
+		
+		//BoP integration
+		if(BoPInstalled==true)
+		{
+			System.out.println("Biomes O' Plenty! found! Berries++ will use their items!");
+			BoPBerryL.registerBaseSeed(new ItemStack(biomesoplenty.common.init.ModItems.berries,1,0));
+			BoPBerryL.register();
 		}
 
 		// NameOfCropL.registerBaseSeed(new ItemStack(PlaceOfItem, AmmountOfItem, DMG));

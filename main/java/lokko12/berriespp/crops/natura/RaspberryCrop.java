@@ -8,8 +8,8 @@ import net.minecraft.item.ItemStack;
 
 public class RaspberryCrop extends BasicBerryCrop {
 
-    public RaspberryCrop(int id, ItemStack item) {
-        super();
+    public RaspberryCrop() {
+    	super();
     }
 
     public String name() {

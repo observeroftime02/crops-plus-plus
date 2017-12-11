@@ -1,17 +1,18 @@
-package lokko12.berriespp.crops;
+package lokko12.berriespp.crops.BoP;
 
-import ic2.api.crops.CropCard;
 import ic2.api.crops.ICropTile;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
-public abstract class BasicBerryCrop extends ic2.api.crops.CropCard {
+public class BoPBerryCrop extends ic2.api.crops.CropCard {
 
 
-	public BasicBerryCrop ()
-	{super();
-	}
+	public BoPBerryCrop ()
+	{}
 
+    public String name() {
+        return "Berry";
+    }
     
     @Override
     public int tier() {
@@ -80,7 +81,12 @@ public abstract class BasicBerryCrop extends ic2.api.crops.CropCard {
 
 	@Override
 	public ItemStack getGain(ICropTile crop) {
-		return new ItemStack(Items.wheat, 1);
+		return new ItemStack(biomesoplenty.common.init.ModItems.berries,1,0);
+	}
+
+	@Override
+	public String[] attributes() {
+		return new String[] {"Berry", "Food", "Tendrilly", "Red"};
 	}
 
 }

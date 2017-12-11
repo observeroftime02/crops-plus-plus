@@ -17,9 +17,10 @@ public abstract class BasicTinkerBerryCrop extends ic2.api.crops.CropCard {
 	//private ChunkCoordinates c;
 	//private ChunkCoordinates e;
 
-
 	public BasicTinkerBerryCrop ()
-	{}
+	{
+		super();
+	}
 
     
     @Override
@@ -41,13 +42,13 @@ public abstract class BasicTinkerBerryCrop extends ic2.api.crops.CropCard {
 
     @Override
     public boolean canGrow(ICropTile crop) {
-    	return crop.getSize() < 1 || (crop.getLightLevel() <= 3 && crop.getSize() < 3); //Codepiece by DaeFennek <3
+    	return crop.getSize() < 1 || (crop.getLightLevel() <= 3 && crop.getSize() < 4); //Codepiece by DaeFennek <3
     	}
     	
 
     @Override
     public int getOptimalHavestSize(ICropTile crop) {
-        return 3;
+        return 4;
     }
 
     
@@ -61,18 +62,6 @@ public abstract class BasicTinkerBerryCrop extends ic2.api.crops.CropCard {
         // Requires no humidity but nutrients.
         return (int)((double)humidity*0.5 + (double)nutrients*1.5 + (double)air*1);
     }
-
-    @Override
-    public int growthDuration(ICropTile crop) {
-        // Same growth stages as melons and pumpkins
-        if (crop.getSize() == 2) {
-            // Ripens "quickly"
-            return 3000;
-        } else {
-            // Takes a while to grow from seed
-            return 500;
-        }
-    }
     
     @Override
     public String discoveredBy() {
@@ -81,7 +70,7 @@ public abstract class BasicTinkerBerryCrop extends ic2.api.crops.CropCard {
     
 	@Override
 	public int maxSize() {
-		return 3;
+		return 4;
 	}
 	
     @Override

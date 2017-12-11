@@ -9,7 +9,9 @@ public class EssenceOreBerryCrop extends BasicTinkerBerryCrop {
 			
 		
 			public EssenceOreBerryCrop ()
-			{}
+			{
+				super();
+			}
 
 			@Override
 			public String name() {
@@ -30,15 +32,25 @@ public class EssenceOreBerryCrop extends BasicTinkerBerryCrop {
 		    }
 		    
 		    @Override
+		    public int growthDuration(ICropTile crop) {
+		        // Same growth stages as melons and pumpkins
+		        if (crop.getSize() == 2) {
+		            // Ripens "quickly"
+		            return 3000;
+		        } else {
+		        	if (crop.getSize() == 3 && crop.isBlockBelow("itemSkull") == true)
+		        	{ return 1500;
+		        			}        	
+		        else 
+		        	{
+		            // Takes a while to grow from seed
+		            return 500;
+		        }
+		        }
+		    }
+		    @Override
 		    public boolean canGrow(ICropTile crop) {
-		    	if (crop.getSize() < 3)
-				{
-					return true;
-				}
-		    			else 
-		    					{
-		    						return false;
-		    					}
+		    	return crop.getSize() < 4;
 		    	}
 		    
 			@Override

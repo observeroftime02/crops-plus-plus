@@ -9,7 +9,9 @@ public class GoldOreBerryCrop extends BasicTinkerBerryCrop {
 			
 		
 			public GoldOreBerryCrop ()
-			{}
+			{
+				super();
+			}
 
 			@Override
 			public String name() {
@@ -27,6 +29,24 @@ public class GoldOreBerryCrop extends BasicTinkerBerryCrop {
 		    		return new ItemStack(TinkerWorld.oreBerries, 6, 1);
 		        }
 		    	else return new ItemStack(TinkerWorld.oreBerries, 2, 1);
+		    }
+		    
+		    @Override
+		    public int growthDuration(ICropTile crop) {
+		        // Same growth stages as melons and pumpkins
+		        if (crop.getSize() == 2) {
+		            // Ripens "quickly"
+		            return 3000;
+		        } else {
+		        	if (crop.getSize() == 3 && crop.isBlockBelow("blockGold") == true)
+		        	{ return 1500;
+		        			}        	
+		        else 
+		        	{
+		            // Takes a while to grow from seed
+		            return 500;
+		        }
+		        }
 		    }
 		    
 			@Override

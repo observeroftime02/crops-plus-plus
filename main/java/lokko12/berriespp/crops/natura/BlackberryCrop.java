@@ -8,7 +8,7 @@ import net.minecraft.item.ItemStack;
 
 public class BlackberryCrop extends BasicBerryCrop {
 
-    public BlackberryCrop(int id, ItemStack item) {
+    public BlackberryCrop() {
         super();
     }
 

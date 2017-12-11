@@ -8,7 +8,9 @@ public abstract class BasicNetherBerryCrop extends ic2.api.crops.CropCard {
 
 
 	public BasicNetherBerryCrop ()
-	{}
+	{
+		super();
+	}
 
     
     @Override

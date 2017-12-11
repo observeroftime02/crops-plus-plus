@@ -8,13 +8,7 @@ import net.minecraft.item.ItemStack;
 
 public class DuskberryCrop extends BasicNetherBerryCrop {
 
-    
-    public static String CropSeed()
-    {
-        return "cropDuskberry";
-    }
-
-    public DuskberryCrop(int id, ItemStack item) {
+    public DuskberryCrop() {
         super();
     }
     

@@ -9,7 +9,9 @@ public class AluminiumOreBerryCrop extends BasicTinkerBerryCrop {
 			
 		
 			public AluminiumOreBerryCrop ()
-			{}
+			{
+				super();
+			}
 
 			@Override
 			public String name() {
@@ -29,6 +31,23 @@ public class AluminiumOreBerryCrop extends BasicTinkerBerryCrop {
 		    	else return new ItemStack(TinkerWorld.oreBerries, 2, 4);
 		    }
 		    
+		    @Override
+		    public int growthDuration(ICropTile crop) {
+		        // Same growth stages as melons and pumpkins
+		        if (crop.getSize() == 2) {
+		            // Ripens "quickly"
+		            return 3000;
+		        } else {
+		        	if (crop.getSize() == 3 && crop.isBlockBelow("blockAluminium") == true)
+		        	{ return 1500;
+		        			}        	
+		        else 
+		        	{
+		            // Takes a while to grow from seed
+		            return 500;
+		        }
+		        }
+		    }
 			@Override
 			public String[] attributes() {
 		        return new String[] {"Berry", "Aluminium", "Tendrilly", "Metal", "Aluminum"};

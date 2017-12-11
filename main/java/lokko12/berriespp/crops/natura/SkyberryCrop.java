@@ -8,14 +8,8 @@ import net.minecraft.item.ItemStack;
 
 public class SkyberryCrop extends BasicNetherBerryCrop {
 
-    
-    public static String CropSeed()
-    {
-        return "cropSkyberry";
-    }
-
-    public SkyberryCrop(int id, ItemStack item) {
-        super();
+    public SkyberryCrop() {
+    	super();
     }
     
     public String name() {

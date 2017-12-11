@@ -9,7 +9,9 @@ public class CopperOreBerryCrop extends BasicTinkerBerryCrop {
 			
 		
 			public CopperOreBerryCrop ()
-			{}
+			{
+				super();
+			}
 
 			@Override
 			public String name() {
@@ -27,6 +29,23 @@ public class CopperOreBerryCrop extends BasicTinkerBerryCrop {
 		    		return new ItemStack(TinkerWorld.oreBerries, 6, 2);
 		        }
 		    	else return new ItemStack(TinkerWorld.oreBerries, 2, 2);
+		    }
+		    @Override
+		    public int growthDuration(ICropTile crop) {
+		        // Same growth stages as melons and pumpkins
+		        if (crop.getSize() == 2) {
+		            // Ripens "quickly"
+		            return 3000;
+		        } else {
+		        	if (crop.getSize() == 3 && crop.isBlockBelow("blockCopper") == true)
+		        	{ return 1500;
+		        			}        	
+		        else 
+		        	{
+		            // Takes a while to grow from seed
+		            return 500;
+		        }
+		        }
 		    }
 		    
 			@Override
