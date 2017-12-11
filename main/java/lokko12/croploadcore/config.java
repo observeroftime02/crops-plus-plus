@@ -16,4 +16,5 @@ public class config
 	public void save () {
 		tConfig.save();
 	}
+
 }

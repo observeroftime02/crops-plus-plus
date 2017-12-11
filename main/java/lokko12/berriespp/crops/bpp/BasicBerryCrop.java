@@ -1,4 +1,4 @@
-package lokko12.berriespp.crops;
+package lokko12.berriespp.crops.bpp;
 
 import ic2.api.crops.CropCard;
 import ic2.api.crops.ICropTile;
@@ -9,10 +9,16 @@ public abstract class BasicBerryCrop extends ic2.api.crops.CropCard {
 
 
 	public BasicBerryCrop ()
-	{super();
+	{
+		super();
 	}
-
-    
+	
+	
+	public boolean IsBaseSeedGain()
+	{
+		return true;
+	}
+	
     @Override
     public int tier() {
         return 2;
@@ -32,10 +38,7 @@ public abstract class BasicBerryCrop extends ic2.api.crops.CropCard {
 
     @Override
     public boolean canGrow(ICropTile crop) {
-        if (crop.getSize() < 3) {
-            return true;
-        }
-        return false;
+    	return crop.getSize() < 3;
     }
 
     @Override

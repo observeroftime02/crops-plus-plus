@@ -1,6 +1,7 @@
 package lokko12.berriespp.crops.TC;
 import ic2.api.crops.CropCard;
 import ic2.api.crops.ICropTile;
+import lokko12.berriespp.Berriespp;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import tconstruct.world.TinkerWorld;
@@ -24,11 +25,13 @@ public class EssenceOreBerryCrop extends BasicTinkerBerryCrop {
 		    }
 		    @Override
 		    public ItemStack getGain(ICropTile crop) {
+
 		    	if (crop.isBlockBelow("itemSkull") == true)
 		    	{
 		    		return new ItemStack(TinkerWorld.oreBerries, 6, 5);
 		        }
 		    	else return new ItemStack(TinkerWorld.oreBerries, 2, 5);
+		    	
 		    }
 		    
 		    @Override

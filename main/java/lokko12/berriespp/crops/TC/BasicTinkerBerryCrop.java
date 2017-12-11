@@ -4,6 +4,7 @@ import java.util.List;
 
 import ic2.api.crops.CropCard;
 import ic2.api.crops.ICropTile;
+import lokko12.berriespp.crops.bpp.BasicBerryCrop;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,7 +13,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.DamageSource;
 
-public abstract class BasicTinkerBerryCrop extends ic2.api.crops.CropCard {
+public abstract class BasicTinkerBerryCrop extends BasicBerryCrop {
 	
 	//private ChunkCoordinates c;
 	//private ChunkCoordinates e;
@@ -54,7 +55,7 @@ public abstract class BasicTinkerBerryCrop extends ic2.api.crops.CropCard {
     
     @Override
     public boolean canBeHarvested(ICropTile crop) {
-        return crop.getSize() == 3;
+        return crop.getSize() >= 3;
     }
 
     @Override

@@ -1,7 +1,7 @@
 package lokko12.berriespp.crops.natura;
 
 import ic2.api.crops.ICropTile;
-import lokko12.berriespp.crops.BasicBerryCrop;
+import lokko12.berriespp.crops.bpp.BasicBerryCrop;
 import ic2.api.crops.CropCard;
 import mods.natura.common.NContent;
 import net.minecraft.item.ItemStack;
@@ -17,7 +17,7 @@ public class RaspberryCrop extends BasicBerryCrop {
     }
 
     public String[] attributes() {
-        return new String[] {"Berry", "Food", "Tendrilly", "Red"}; // Red like CropRedWheat, CropNetherWart
+        return new String[] {"Berry", "Edible", "Tendrilly", "Red"}; // Red like CropRedWheat, CropNetherWart
     }
 
 

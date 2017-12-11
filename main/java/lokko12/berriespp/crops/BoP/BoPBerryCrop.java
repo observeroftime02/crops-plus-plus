@@ -1,22 +1,24 @@
 package lokko12.berriespp.crops.BoP;
 
 import ic2.api.crops.ICropTile;
+import lokko12.berriespp.crops.bpp.BasicBerryCrop;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
-public class BoPBerryCrop extends ic2.api.crops.CropCard {
+public class BoPBerryCrop extends BasicBerryCrop {
 
 
 	public BoPBerryCrop ()
 	{}
-
+	
+	@Override
     public String name() {
         return "Berry";
     }
     
     @Override
     public int tier() {
-        return 2;
+        return 5;
     }
 
     @Override
@@ -33,10 +35,7 @@ public class BoPBerryCrop extends ic2.api.crops.CropCard {
 
     @Override
     public boolean canGrow(ICropTile crop) {
-        if (crop.getSize() < 3) {
-            return true;
-        }
-        return false;
+        return crop.getSize() < 3;
     }
 
     @Override
@@ -81,12 +80,17 @@ public class BoPBerryCrop extends ic2.api.crops.CropCard {
 
 	@Override
 	public ItemStack getGain(ICropTile crop) {
-		return new ItemStack(biomesoplenty.common.init.ModItems.berries,1,0);
+		return new ItemStack(biomesoplenty.api.content.BOPCItems.food,9,0);
 	}
 
 	@Override
 	public String[] attributes() {
-		return new String[] {"Berry", "Food", "Tendrilly", "Red"};
+		return new String[] {"Berry", "Edible", "Red", "Ingredient"};
 	}
+	
+    @Override
+    public String discoveredBy() {
+        return "bartimaeusnek";
+    }
 
 }
