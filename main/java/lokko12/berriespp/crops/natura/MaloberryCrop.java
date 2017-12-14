@@ -19,10 +19,6 @@ public class MaloberryCrop extends BasicBerryCrop {
     public String[] attributes() {
         return new String[] {"Berry", "Edible", "Tendrilly", "Yellow", "Orange"}; // orange like CropCarrots
     }
-
-    public String discoveredBy() {
-        return "bartimaeusnek";
-    }
     
     @Override
 	public ItemStack getGain(ICropTile crop) {

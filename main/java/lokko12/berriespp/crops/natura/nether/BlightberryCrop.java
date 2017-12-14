@@ -1,4 +1,4 @@
-package lokko12.berriespp.crops.natura;
+package lokko12.berriespp.crops.natura.nether;
 
 import ic2.api.crops.ICropTile;
 import ic2.api.item.IC2Items;

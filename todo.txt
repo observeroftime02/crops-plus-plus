@@ -1,0 +1,22 @@
+The missing resources for domain ic2 are:
+textures/blocks/crop/blockCrop.Grass.1.png
+textures/blocks/crop/blockCrop.Grass.2.png
+textures/blocks/crop/blockCrop.Grass.3.png
+
+textures/blocks/crop/blockCrop.GoldOreBerry.3.png
+textures/blocks/crop/blockCrop.GoldOreBerry.4.png
+textures/blocks/crop/blockCrop.TinOreBerry.2.png
+textures/blocks/crop/blockCrop.TinOreBerry.3.png
+textures/blocks/crop/blockCrop.TinOreBerry.4.png
+
+textures/blocks/crop/blockCrop.BlueGlowshroom.1.png
+textures/blocks/crop/blockCrop.GreenGlowshroom.1.png
+textures/blocks/crop/blockCrop.PurpleGlowshroom.1.png
+textures/blocks/crop/blockCrop.BlueGlowshroom.2.png
+textures/blocks/crop/blockCrop.GreenGlowshroom.2.png´
+textures/blocks/crop/blockCrop.PurpleGlowshroom.2.png
+
+textures/blocks/crop/blockCrop.Glowshroom.1.png
+textures/blocks/crop/blockCrop.Glowshroom.2.png
+
++add barley,cotton, register more grass

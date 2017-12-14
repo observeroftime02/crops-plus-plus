@@ -1,9 +1,10 @@
-package lokko12.berriespp.crops.natura;
+package lokko12.berriespp.crops.natura.nether;
 
 import ic2.api.crops.CropCard;
 import ic2.api.crops.ICropTile;
 import lokko12.berriespp.Berriespp;
 import lokko12.berriespp.crops.bpp.BasicBerryCrop;
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 
 public abstract class BasicNetherBerryCrop extends BasicBerryCrop {
@@ -33,31 +34,13 @@ public abstract class BasicNetherBerryCrop extends BasicBerryCrop {
     }
 
     @Override
-    public boolean canGrow(ICropTile crop) {
-    	if (crop.getSize() < 3) 
-    	{
-            return true;
-        }
-    	/*else if ((crop.getSize() < 3) && (crop.isBlockBelow(Blocks.soul_sand))) 
-    	{
-            return true;
-        }
-        
-        Maybe add this in a future Version...
-        */
-        return false;
+	public boolean canGrow(ICropTile crop) {
+	    	if (crop.getSize() < 1) 
+	            return true;
+	    	else 
+	            return crop.getSize() < 3;
     }
 
-    @Override
-    public int getOptimalHavestSize(ICropTile crop) {
-        return 3;
-    }
-
-    
-    @Override
-    public boolean canBeHarvested(ICropTile crop) {
-        return crop.getSize() == 3;
-    }
 
     @Override
     public int weightInfluences(ICropTile crop, float humidity, float nutrients, float air) {
@@ -78,22 +61,5 @@ public abstract class BasicNetherBerryCrop extends BasicBerryCrop {
         	return 700;
         }
     }
-    
-    @Override
-    public String discoveredBy() {
-        return "bartimaeusnek";
-    }
-    
-
-    @Override
-    public byte getSizeAfterHarvest(ICropTile crop) {
-        // return to partially grown state when harvested
-        return 2;
-    }
-    
-	@Override
-	public int maxSize() {
-		return 3;
-	}
 
 }

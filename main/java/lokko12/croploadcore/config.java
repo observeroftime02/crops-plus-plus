@@ -1,8 +1,11 @@
 package lokko12.croploadcore;
 
 import java.io.File;
+
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.common.config.Configuration;
+import lokko12.croploadcore.CropLoader;
 
 public class config 
 {
@@ -12,9 +15,8 @@ public class config
 		tConfig = new Configuration(tFile);
 		tConfig.load();
 	}
-	
 	public void save () {
 		tConfig.save();
 	}
-
+	
 }

@@ -2,7 +2,7 @@ package lokko12.berriespp;
 
 import lokko12.Proxies.*;
 import lokko12.croploadcore.CropLoader;
-
+import lokko12.croploadcore.config;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
@@ -20,12 +20,12 @@ import scala.actors.threadpool.Arrays;
 
 @Mod(
 	modid = "berriespp", name = "Berries++", version = "F-0.0.6",
-	dependencies = "required-after:IC2; after:Mantle; after:Natura; after:TConstruct; after:BiomesOPlenty"
+	dependencies = "required-after:IC2; after:Mantle; after:Natura; after:TConstruct; after:BiomesOPlenty; after:Thaumcraft;"
 	)
 
 public class Berriespp {
 
-	public static boolean devbuild = false;
+	public static boolean devbuild = true;
 	
 	@Instance(value = "Berries++")
 	public static Berriespp instance;
@@ -46,7 +46,6 @@ public class Berriespp {
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent postinit) {
-		
 		CropLoader.registerBaseSeed(); //mb add itemlist for crops that gain != base seed
 		CropLoader.register();
 

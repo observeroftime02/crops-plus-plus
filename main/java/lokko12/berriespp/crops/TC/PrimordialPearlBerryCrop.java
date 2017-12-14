@@ -36,34 +36,31 @@ public class PrimordialPearlBerryCrop extends BasicBerryCrop {
 
     @Override
     public boolean canGrow(ICropTile crop) {
-        return crop.getSize() < 2;
+        return crop.getSize() < 4;
     }
 
     @Override
     public int getOptimalHavestSize(ICropTile crop) {
-        return 2;
+        return 4;
     }
 
-    
     @Override
     public boolean canBeHarvested(ICropTile crop) {
-        return crop.getSize() == 2;
+        return crop.getSize() == 4;
     }
 
     @Override
     public int weightInfluences(ICropTile crop, float humidity, float nutrients, float air) {
-        // Requires more humidity than nutrients or air, but not much more
-        return (int)((double)humidity + (double)nutrients + (double)air);
+        // Requires Tons of everything
+        return (int)((double)humidity*2 + (double)nutrients*2 + (double)air*2);
     }
 
     @Override
     public int growthDuration(ICropTile crop) {
     	if (Berriespp.devbuild == true)
     		return 1;
-    	else if (crop.getSize() == 2) {
-            return 250000;
-        } else {
-            return 250000;
+        else {
+            return 125000;
         }
     }
 
@@ -74,13 +71,13 @@ public class PrimordialPearlBerryCrop extends BasicBerryCrop {
     
 	@Override
 	public int maxSize() {
-		return 2;
+		return 4;
 	}
 
-	/*@Override
+	@Override
 	public ItemStack getGain(ICropTile crop) {
-		return thaumcraft.api.ItemApi.getItem("item.ItemEldritchObject", 3);
-	}*/
+		return thaumcraft.api.ItemApi.getItem("itemEldritchObject", 3);
+	}
 
 	@Override
 	public String[] attributes() {

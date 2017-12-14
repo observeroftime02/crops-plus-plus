@@ -15,11 +15,6 @@ public abstract class BasicBerryCrop extends ic2.api.crops.CropCard {
 	}
 	
 	
-	public boolean IsBaseSeedGain()
-	{
-		return true;
-	}
-	
     @Override
     public int tier() {
         return 2;
@@ -88,5 +83,10 @@ public abstract class BasicBerryCrop extends ic2.api.crops.CropCard {
 	public ItemStack getGain(ICropTile crop) {
 		return new ItemStack(Items.wheat, 1);
 	}
+	
+	@Override
+    public String discoveredBy() {
+        return "bartimaeusnek";
+    }
 
 }
