@@ -1,9 +1,8 @@
-package lokko12.berriespp.crops.natura.nether;
+package lokko12.berriespp.crops.abstracts;
 
 import ic2.api.crops.CropCard;
 import ic2.api.crops.ICropTile;
-import lokko12.berriespp.Berriespp;
-import lokko12.berriespp.crops.bpp.BasicBerryCrop;
+import lokko12.berriespp.ConfigValures;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 
@@ -41,7 +40,6 @@ public abstract class BasicNetherBerryCrop extends BasicBerryCrop {
 	            return crop.getSize() < 3;
     }
 
-
     @Override
     public int weightInfluences(ICropTile crop, float humidity, float nutrients, float air) {
         // Requires no humidity but nutrients.
@@ -51,7 +49,7 @@ public abstract class BasicNetherBerryCrop extends BasicBerryCrop {
     @Override
     public int growthDuration(ICropTile crop) {
         // Same growth stages as melons and pumpkins
-    	if (Berriespp.devbuild == true)
+    	if (ConfigValures.Debug == true)
     		return 1;
     	else if (crop.getSize() == 2) {
             // Ripens not so quickly

@@ -1,9 +1,8 @@
-package lokko12.berriespp.crops.TC;
+package lokko12.berriespp.crops.abstracts;
 
 import ic2.api.crops.CropCard;
 import ic2.api.crops.ICropTile;
-import lokko12.berriespp.Berriespp;
-import lokko12.berriespp.crops.bpp.BasicBerryCrop;
+import lokko12.berriespp.ConfigValures;
 import lokko12.croploadcore.BlockGetterTC;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -64,7 +63,7 @@ public abstract class BasicManaBeanCrop extends BasicBerryCrop {
 	    @Override
 	    public int growthDuration(ICropTile crop) {
 	        // Same growth stages as melons and pumpkins
-	    	if (Berriespp.devbuild == true)
+	    	if (ConfigValures.Debug == true)
 	    		return 1;
 	    	else if (crop.getSize() == 2) {
 	            // Ripens not so quickly

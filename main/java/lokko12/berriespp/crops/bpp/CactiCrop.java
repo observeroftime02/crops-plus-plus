@@ -3,15 +3,17 @@ package lokko12.berriespp.crops.bpp;
 import biomesoplenty.api.content.BOPCBlocks;
 import ic2.api.crops.Crops;
 import ic2.api.crops.ICropTile;
-import lokko12.croploadcore.CropLoader;
+import lokko12.berriespp.CropLoader;
+import lokko12.berriespp.crops.abstracts.BasicDecorationCrop;
+import lokko12.croploadcore.ModsLoaded;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class CactiCrop extends BasicDecorationCrop {
 	
 	public CactiCrop() {
-		if (CropLoader.BoPInstalled == true)
-		Crops.instance.registerBaseSeed(new ItemStack(BOPCBlocks.plants,1,12),lokko12.croploadcore.CropLoader.CropunpackerCC(new CropLoader(this)),1,1,1,1);
+		if (ModsLoaded.BoP == true)
+		Crops.instance.registerBaseSeed(new ItemStack(BOPCBlocks.plants,1,12),lokko12.berriespp.CropLoader.CropunpackerCC(new CropLoader(this)),1,1,1,1);
 	}
 
     @Override
@@ -23,7 +25,7 @@ public class CactiCrop extends BasicDecorationCrop {
 	public String name() {
 		return "Cactus";
 	}
-
+	
 	@Override
 	public String[] attributes() {
 		return new String[] {"Green","Cactus"};
@@ -31,7 +33,7 @@ public class CactiCrop extends BasicDecorationCrop {
 	
 	@Override
 	public ItemStack getGain(ICropTile crop) {
-		if (CropLoader.BoPInstalled == true && crop.getSize()==2)
+		if (ModsLoaded.BoP == true && crop.getSize()==2)
 		return new ItemStack(BOPCBlocks.plants,1,12);
 		else 
 		return new ItemStack(Item.getItemById(81),1,0);

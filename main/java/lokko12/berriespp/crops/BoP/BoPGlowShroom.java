@@ -4,7 +4,7 @@ import ic2.api.crops.CropCard;
 import ic2.api.crops.Crops;
 import ic2.api.crops.ICropTile;
 import lokko12.berriespp.Berriespp;
-import lokko12.berriespp.crops.bpp.BasicNetherShroomCrop;
+import lokko12.berriespp.crops.abstracts.BasicNetherShroomCrop;
 import net.minecraft.item.ItemStack;
 public class BoPGlowShroom extends BasicNetherShroomCrop{
 

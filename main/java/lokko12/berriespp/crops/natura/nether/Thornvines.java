@@ -28,7 +28,7 @@ public class Thornvines extends VineCrop {
 	
     @Override
     public ItemStack getGain(ICropTile crop) {
-        return new ItemStack(NContent.thornVines);
+        return new ItemStack(NContent.thornVines,2);
     }
 
     @Override

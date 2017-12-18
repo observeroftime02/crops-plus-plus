@@ -1,11 +1,10 @@
-package lokko12.berriespp.crops.TConstruct;
+package lokko12.berriespp.crops.abstracts;
 
 import java.util.List;
 
 import ic2.api.crops.CropCard;
 import ic2.api.crops.ICropTile;
-import lokko12.berriespp.Berriespp;
-import lokko12.berriespp.crops.bpp.BasicBerryCrop;
+import lokko12.berriespp.ConfigValures;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -16,8 +15,8 @@ import net.minecraft.util.DamageSource;
 
 public abstract class BasicTinkerBerryCrop extends BasicBerryCrop {
 	
-	//private ChunkCoordinates c;
-	//private ChunkCoordinates e;
+	private ChunkCoordinates c;
+	private ChunkCoordinates e;
 
 	public BasicTinkerBerryCrop ()
 	{
@@ -30,6 +29,11 @@ public abstract class BasicTinkerBerryCrop extends BasicBerryCrop {
         return 6;
     }
 
+	@Override
+	public float dropGainChance() { 
+		return (float) ((Math.pow(0.95, (float) tier()))*ConfigValures.TConstructBerryGain);
+	}
+    
     @Override
     public int stat(int n) {
         switch(n) {
@@ -44,7 +48,7 @@ public abstract class BasicTinkerBerryCrop extends BasicBerryCrop {
 
     @Override
     public boolean canGrow(ICropTile crop) {
-    	if (Berriespp.devbuild == true)
+    	if (ConfigValures.Debug == true)
     		return crop.getSize() < 4;
     	else
     	return crop.getSize() < 1 || (crop.getLightLevel() <= 3 && crop.getSize() < 4); //Codepiece by DaeFennek <3
@@ -78,15 +82,20 @@ public abstract class BasicTinkerBerryCrop extends BasicBerryCrop {
 		return 4;
 	}
 	
+	public static String OBname() {
+		return "Oreberry";
+	}
+	
     @Override
     public byte getSizeAfterHarvest(ICropTile crop) {
         // return to partially grown state when harvested
         return 2;
     }
 	
-	/*public void tick(ICropTile crop) 
+	public void tick(ICropTile crop, EntityPlayer player) 
 	{
 		//try to make them spiky
+		Entity entity = player;
 		
 		e.posX = entity.chunkCoordX;
 		e.posY = entity.chunkCoordY;
@@ -94,6 +103,7 @@ public abstract class BasicTinkerBerryCrop extends BasicBerryCrop {
 		c = crop.getLocation();
 		if (e == c || e.posX++ == c.posX || e.posZ++ == c.posZ || e.posY++ == c.posY) 
 		 if (!(entity instanceof EntityItem))
-	            entity.attackEntityFrom(DamageSource.cactus, 2);
-	}*/
+	            entity.attackEntityFrom(DamageSource.cactus, 1);
+	}
+	
 }

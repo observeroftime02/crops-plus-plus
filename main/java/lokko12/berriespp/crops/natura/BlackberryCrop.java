@@ -1,7 +1,7 @@
 package lokko12.berriespp.crops.natura;
 
 import ic2.api.crops.ICropTile;
-import lokko12.berriespp.crops.bpp.BasicBerryCrop;
+import lokko12.berriespp.crops.abstracts.BasicBerryCrop;
 import ic2.api.crops.CropCard;
 import mods.natura.common.NContent;
 import net.minecraft.item.ItemStack;

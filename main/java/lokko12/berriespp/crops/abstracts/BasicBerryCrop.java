@@ -1,10 +1,14 @@
-package lokko12.berriespp.crops.bpp;
+package lokko12.berriespp.crops.abstracts;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import ic2.api.crops.CropCard;
 import ic2.api.crops.ICropTile;
-import lokko12.berriespp.Berriespp;
+import lokko12.berriespp.ConfigValures;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.IIcon;
 
 public abstract class BasicBerryCrop extends ic2.api.crops.CropCard {
 
@@ -14,6 +18,20 @@ public abstract class BasicBerryCrop extends ic2.api.crops.CropCard {
 		super();
 	}
 	
+	@SideOnly(Side.CLIENT)
+	public void registerSprites(IIconRegister iconRegister) {
+		textures = new IIcon[maxSize()];
+
+		for (int i = 1; i <= textures.length; i++) {
+			// ic2:crop/blockCrop.NAME.n is the legacy name for backwards compatiblity
+			textures[i - 1] = iconRegister.registerIcon("bpp:crop/blockCrop."+name()+"."+i);
+		}
+	}
+	
+	@Override
+	public float dropGainChance() { 
+		return (float) ((Math.pow(0.95, (float) tier()))*ConfigValures.BerryGain);
+	}
 	
     @Override
     public int tier() {
@@ -57,7 +75,7 @@ public abstract class BasicBerryCrop extends ic2.api.crops.CropCard {
     @Override
     public int growthDuration(ICropTile crop) {
         // Same growth stages as melons and pumpkins
-    	if (Berriespp.devbuild == true)
+    	if (ConfigValures.Debug == true)
     		return 1;
     	else if (crop.getSize() == 2) {
             // Ripens quickly

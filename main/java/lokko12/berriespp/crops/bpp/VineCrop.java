@@ -3,6 +3,7 @@ package lokko12.berriespp.crops.bpp;
 import ic2.api.crops.CropCard;
 import ic2.api.crops.ICropTile;
 import lokko12.berriespp.Berriespp;
+import lokko12.berriespp.crops.abstracts.BasicDecorationCrop;
 import net.minecraft.block.Block;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -35,7 +36,7 @@ public class VineCrop extends BasicDecorationCrop {
 
     @Override
     public ItemStack getGain(ICropTile crop) {
-        return new ItemStack(Item.getItemById(106),2,0);
+        return new ItemStack(Item.getItemById(106),1,0);
     }
 
 }

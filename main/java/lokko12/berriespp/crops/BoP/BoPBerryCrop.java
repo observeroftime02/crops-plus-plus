@@ -1,8 +1,8 @@
 package lokko12.berriespp.crops.BoP;
 
 import ic2.api.crops.ICropTile;
-import lokko12.berriespp.Berriespp;
-import lokko12.berriespp.crops.bpp.BasicBerryCrop;
+import lokko12.berriespp.ConfigValures;
+import lokko12.berriespp.crops.abstracts.BasicBerryCrop;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
@@ -59,7 +59,7 @@ public class BoPBerryCrop extends BasicBerryCrop {
     @Override
     public int growthDuration(ICropTile crop) {
         // Same growth stages as melons and pumpkins
-    	if (Berriespp.devbuild == true)
+    	if (ConfigValures.Debug == true)
     		return 1;
     	else if (crop.getSize() == 2) {
             // Ripens quickly
@@ -83,7 +83,7 @@ public class BoPBerryCrop extends BasicBerryCrop {
 
 	@Override
 	public ItemStack getGain(ICropTile crop) {
-		return new ItemStack(biomesoplenty.api.content.BOPCItems.food,3,0);
+		return new ItemStack(biomesoplenty.api.content.BOPCItems.food,1,0);
 	}
 
 	@Override

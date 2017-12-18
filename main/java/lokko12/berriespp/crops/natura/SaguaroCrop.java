@@ -2,8 +2,8 @@ package lokko12.berriespp.crops.natura;
 import biomesoplenty.api.content.BOPCBlocks;
 import ic2.api.crops.Crops;
 import ic2.api.crops.ICropTile;
+import lokko12.berriespp.CropLoader;
 import lokko12.berriespp.crops.bpp.CactiCrop;
-import lokko12.croploadcore.CropLoader;
 import mods.natura.common.NContent;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack;
 public class SaguaroCrop extends CactiCrop {
 		
 		public SaguaroCrop() {
-			Crops.instance.registerBaseSeed(new ItemStack(NContent.saguaro,1,0),lokko12.croploadcore.CropLoader.CropunpackerCC(new CropLoader(this)),1,1,1,1);
+			Crops.instance.registerBaseSeed(new ItemStack(NContent.saguaro,1,0),lokko12.berriespp.CropLoader.CropunpackerCC(new CropLoader(this)),1,1,1,1);
 		}
 
 	    @Override
@@ -32,9 +32,9 @@ public class SaguaroCrop extends CactiCrop {
 		@Override
 		public ItemStack getGain(ICropTile crop) {
 			if (crop.getSize()==2)
-			return new ItemStack(NContent.saguaro,1,0);
+			return new ItemStack(NContent.saguaro,2,0);
 			else 
-			return new ItemStack(NContent.seedFood,1,0);
+			return new ItemStack(NContent.seedFood,3,0);
 		}
 	    @Override
 	    public boolean canBeHarvested(ICropTile crop) {

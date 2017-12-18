@@ -1,11 +1,9 @@
-package lokko12.berriespp.crops.bpp;
+package lokko12.berriespp.crops.abstracts;
 import biomesoplenty.api.content.BOPCBlocks;
 import ic2.api.crops.CropCard;
 import ic2.api.crops.Crops;
 import ic2.api.crops.ICropTile;
-import lokko12.berriespp.Berriespp;
-import lokko12.berriespp.crops.natura.nether.BasicNetherBerryCrop;
-import lokko12.croploadcore.CropLoader;
+import lokko12.berriespp.ConfigValures;
 import mods.natura.common.NContent;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -41,7 +39,7 @@ public abstract class BasicNetherShroomCrop extends BasicNetherBerryCrop {
 	    @Override
 	    public int growthDuration(ICropTile crop) {
 	        // Same growth stages as melons and pumpkins
-	    	if (Berriespp.devbuild == true)
+	    	if (ConfigValures.Debug == true)
 	    		return 1;
 	    	else if (crop.getSize() == 2) {
 	            // Ripens not so quickly

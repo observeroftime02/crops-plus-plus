@@ -1,8 +1,8 @@
 package lokko12.berriespp.crops.TC;
 
 import ic2.api.crops.ICropTile;
-import lokko12.berriespp.Berriespp;
-import lokko12.berriespp.crops.bpp.BasicBerryCrop;
+import lokko12.berriespp.ConfigValures;
+import lokko12.berriespp.crops.abstracts.BasicBerryCrop;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
@@ -14,7 +14,7 @@ public class PrimordialPearlBerryCrop extends BasicBerryCrop {
 	
 	@Override
     public String name() {
-        return "PrimordialBerry";
+        return "Primordial Berry";
     }
     
     @Override
@@ -57,12 +57,17 @@ public class PrimordialPearlBerryCrop extends BasicBerryCrop {
 
     @Override
     public int growthDuration(ICropTile crop) {
-    	if (Berriespp.devbuild == true)
+    	if (ConfigValures.Debug == true)
     		return 1;
         else {
             return 125000;
         }
     }
+    
+	@Override
+	public float dropGainChance() { 
+		return ConfigValures.PrimordialBerryGain;
+	}
 
     @Override
     public byte getSizeAfterHarvest(ICropTile crop) {
@@ -73,7 +78,12 @@ public class PrimordialPearlBerryCrop extends BasicBerryCrop {
 	public int maxSize() {
 		return 4;
 	}
-
+	
+	@Override
+	public ItemStack getSeeds(ICropTile crop) {
+		return crop.generateSeeds(crop.getCrop(),(byte)1,(byte)1,(byte)1, crop.getScanLevel());
+	}
+	
 	@Override
 	public ItemStack getGain(ICropTile crop) {
 		return thaumcraft.api.ItemApi.getItem("itemEldritchObject", 3);
@@ -86,7 +96,7 @@ public class PrimordialPearlBerryCrop extends BasicBerryCrop {
 	
     @Override
     public String discoveredBy() {
-        return "bartimaeusnek";
+        return "bartimaeusnek and ForTheHorde01";
     }
 
 }
