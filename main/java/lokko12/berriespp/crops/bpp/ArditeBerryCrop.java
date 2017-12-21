@@ -26,11 +26,12 @@ public class ArditeBerryCrop extends BasicTinkerBerryCrop {
 	    }
 	    @Override
 	    public ItemStack getGain(ICropTile crop) {
-	    	if (crop.isBlockBelow("blockArdite") == true||ConfigValures.Debug == true)
+	    	if ((crop.isBlockBelow("blockArdite") == true||ConfigValures.Debug == true) && OreDictionary.getOres("nuggetArdite").size()!= 0)
 	    	{
-	    		return new ItemStack(Item.getItemById(OreDictionary.getOreID("nuggetArdite")));
+	            return OreDictionary.getOres("nuggetArdite").get(OreDictionary.getOres("nuggetArdite").size()-1);
 	        }
-	    	else return null;
+	    	else 
+	    		return null;
 	    }
 	    
 	    @Override

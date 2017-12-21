@@ -19,7 +19,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import tconstruct.world.TinkerWorld;
 
-public class GrassCrop extends BasicDecorationCrop {
+public class GrassCrop extends BasicDecorationCrop{
 	private int random;
 	 public GrassCrop() {
 		 super();
@@ -96,6 +96,11 @@ public class GrassCrop extends BasicDecorationCrop {
 		public float dropGainChance() { 
 			return (float) 1;
 		}
+		
+	    @Override
+		public int maxSize() {
+				return 4;
+			}
 	    
 	    @Override
 	    public boolean canBeHarvested(ICropTile crop) {
@@ -109,9 +114,9 @@ public class GrassCrop extends BasicDecorationCrop {
 
 	    @Override
 	    public ItemStack getGain(ICropTile crop) {
-	    	if (crop.getSize() == 3)
+	    	if (crop.getSize() == 4)
 	    	return new ItemStack(Item.getItemById(32),1,0);	
-	    	if (crop.getSize() == 2) {
+	    	if (crop.getSize() == 3) {
 	    	random = Intrandom.intrandom(10);
 	    	switch (random){
 	    		case 9:
@@ -128,6 +133,12 @@ public class GrassCrop extends BasicDecorationCrop {
 	    			return new ItemStack(Item.getItemById(31),1,1);
 	    		}
 	    }
+	    
+	    @Override
+	    public boolean canGrow(ICropTile crop) {
+	    	return crop.getSize() < 4;
+	    }
+	    
 	    @Override
 	    public byte getSizeAfterHarvest(ICropTile crop) {
 	        return (byte)((int)crop.getSize()-1);

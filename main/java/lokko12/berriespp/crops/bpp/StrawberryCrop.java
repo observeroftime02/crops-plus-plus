@@ -1,18 +1,25 @@
 package lokko12.berriespp.crops.bpp;
 import ic2.api.crops.ICropTile;
 import ic2.api.item.IC2Items;
+import lokko12.berriespp.ConfigValures;
+import lokko12.berriespp.CropLoader;
 import lokko12.berriespp.crops.abstracts.BasicBerryCrop;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ic2.api.crops.CropCard;
+import ic2.api.crops.Crops;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class StrawberryCrop extends BasicBerryCrop {
 
-    public StrawberryCrop(int id, ItemStack item) {
-        super();
+    public StrawberryCrop() {
+    	super();
+    	if (OreDictionary.getOres("cropStrawberry").size()!= 0)
+    	Crops.instance.registerBaseSeed(OreDictionary.getOres("cropStrawberry").get(OreDictionary.getOres("cropStrawberry").size()-1),lokko12.berriespp.CropLoader.CropunpackerCC(new CropLoader(this)),1,1,1,1);
     }
 
     public String name() {
@@ -26,5 +33,15 @@ public class StrawberryCrop extends BasicBerryCrop {
 
     public String discoveredBy() {
         return "Ancient cultures";
+    }
+    
+    @Override
+    public ItemStack getGain(ICropTile crop) {
+    	if (OreDictionary.getOres("cropStrawberry").size()!= 0)
+    	{
+            return OreDictionary.getOres("cropStrawberry").get(OreDictionary.getOres("cropStrawberry").size()-1);
+        }
+    	else 
+    		return null;
     }
 }

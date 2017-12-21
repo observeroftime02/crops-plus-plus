@@ -4,8 +4,13 @@ import ic2.api.crops.ICropTile;
 import lokko12.berriespp.ConfigValures;
 import lokko12.berriespp.crops.abstracts.BasicTinkerBerryCrop;
 import lokko12.croploadcore.Operators;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.DamageSource;
+import net.minecraftforge.oredict.OreDictionary;
 import tconstruct.world.TinkerWorld;
 
 public class MagicMetalBerryCrop extends BasicTinkerBerryCrop{
@@ -28,11 +33,14 @@ public class MagicMetalBerryCrop extends BasicTinkerBerryCrop{
 			    public ItemStack getGain(ICropTile crop) {
 			    	if (Operators.OR(crop.isBlockBelow("blockThaumium"),crop.isBlockBelow("blockIron")))
 			    	{
-			    		return thaumcraft.api.ItemApi.getItem("nuggetThaumium", 1);
+			    		return OreDictionary.getOres("nuggetThaumium").get(OreDictionary.getOres("nuggetThaumium").size()-1);
 			        }
-			    	else if (crop.isBlockBelow("blockVoid")||ConfigValures.Debug == true)
-			    	return thaumcraft.api.ItemApi.getItem("nuggetVoid", 1);
-			    	else return null;
+			    	if ((crop.isBlockBelow("blockVoid") == true||ConfigValures.Debug == true) && OreDictionary.getOres("nuggetVoid").size()!= 0)
+			    	{
+			            return OreDictionary.getOres("nuggetVoid").get(OreDictionary.getOres("nuggetVoid").size()-1);
+			        }
+			    	else 
+			    		return null;
 			    }
 			    
 			    @Override
@@ -54,6 +62,16 @@ public class MagicMetalBerryCrop extends BasicTinkerBerryCrop{
 				@Override
 				public String[] attributes() {
 			        return new String[] {"Berry", "Magic", "Tendrilly", "Metal", "Thaumium", "Void"};
+				}
+				
+			    @Override
+				public boolean onEntityCollision(ICropTile crop, Entity entity) {
+			    	if (!(entity instanceof EntityItem))
+			            entity.attackEntityFrom(DamageSource.magic, 1);
+			    	if (entity instanceof EntityLivingBase) {
+						return ((EntityLivingBase) entity).isSprinting();
+					}
+					return false;
 				}
 
 	}

@@ -26,11 +26,12 @@ public class CobaltBerryCrop extends BasicTinkerBerryCrop {
     }
     @Override
     public ItemStack getGain(ICropTile crop) {
-    	if (crop.isBlockBelow("blockCobalt") == true||ConfigValures.Debug == true)
+    	if ((crop.isBlockBelow("blockCobalt") == true||ConfigValures.Debug == true) && OreDictionary.getOres("nuggetCobalt").size()!= 0)
     	{
-    		return new ItemStack(Item.getItemById(OreDictionary.getOreID("nuggetCobalt")));
+            return OreDictionary.getOres("nuggetCobalt").get(OreDictionary.getOres("nuggetCobalt").size()-1);
         }
-    	else return null;
+    	else 
+    		return null;
     }
     
     @Override

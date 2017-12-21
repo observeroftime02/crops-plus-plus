@@ -60,7 +60,7 @@ package lokko12.berriespp.crops.BoP;
 	    	if (crop.getSize() == 3)
 	        return new ItemStack(Item.getItemById(106),2,0);
 	    	else if (crop.getSize() == 4)
-	    		return new ItemStack(BOPCBlocks.flowerVine,1,0);
+	    		return new ItemStack(BOPCBlocks.flowerVine,2,0);
 	    	else 
 	    		return null;
 	    }

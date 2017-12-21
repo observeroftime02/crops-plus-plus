@@ -26,7 +26,7 @@ public class SaguaroCrop extends CactiCrop {
 
 		@Override
 		public String[] attributes() {
-			return new String[] {"Green","Edible", "Cactus"};
+			return new String[] {"Green","Edible","Cactus"};
 		}
 		
 		@Override

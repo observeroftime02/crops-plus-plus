@@ -13,6 +13,7 @@ import ic2.api.crops.Crops;
 //Crops
 import lokko12.berriespp.crops.bpp.ArditeBerryCrop;
 import lokko12.berriespp.crops.bpp.CobaltBerryCrop;
+import lokko12.berriespp.crops.bpp.StrawberryCrop;
 //Core
 import lokko12.croploadcore.ModsLoaded;
 import lokko12.croploadcore.config;
@@ -42,6 +43,9 @@ private static List<CropCard> cropLoader() {
 	if (lokko12.croploadcore.ModsLoaded.TConstruct)
 	p.add(new ArditeBerryCrop());
 	p.add(new CobaltBerryCrop());
+	
+	//has Base seeds but is called via Oredict:
+	p.add(new StrawberryCrop()); 
 	return p;
 }
 

@@ -83,7 +83,7 @@ public class BoPBerryCrop extends BasicBerryCrop {
 
 	@Override
 	public ItemStack getGain(ICropTile crop) {
-		return new ItemStack(biomesoplenty.api.content.BOPCItems.food,1,0);
+		return new ItemStack(biomesoplenty.api.content.BOPCItems.food,3,0);
 	}
 
 	@Override

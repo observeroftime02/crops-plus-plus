@@ -22,7 +22,7 @@ public class BoPGlowShroom extends BasicNetherShroomCrop{
 				}
 			    @Override
 			    public ItemStack getGain(ICropTile crop) {
-						return new ItemStack(BOPCBlocks.mushrooms,1,3);
+						return new ItemStack(BOPCBlocks.mushrooms,2,3);
 			    }
 
 }

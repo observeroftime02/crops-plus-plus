@@ -6,8 +6,12 @@ import ic2.api.crops.ICropTile;
 import lokko12.berriespp.CropLoader;
 import lokko12.berriespp.crops.abstracts.BasicDecorationCrop;
 import lokko12.croploadcore.ModsLoaded;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.DamageSource;
 
 public class CactiCrop extends BasicDecorationCrop {
 	
@@ -48,5 +52,14 @@ public class CactiCrop extends BasicDecorationCrop {
         // Requires more humidity than nutrients or air, but not much more
         return (int)((double)humidity*0.5 + (double)nutrients*1.25 + (double)air*1.25);
     }
+    @Override
+	public boolean onEntityCollision(ICropTile crop, Entity entity) {
+    	if (!(entity instanceof EntityItem))
+            entity.attackEntityFrom(DamageSource.cactus, 1);
+    	if (entity instanceof EntityLivingBase) {
+			return ((EntityLivingBase) entity).isSprinting();
+		}
+		return false;
+	}
 
 }

@@ -38,10 +38,10 @@ public class Berriespp {
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent preinit) {
 		ModsLoaded.check_init(name);
-		OreDictionaryPlants.register();
 		CropLoaderNBS.load(preinit);
 		CropLoader.load(preinit);
-		
+		if (ConfigValures.OreDictPlants==true)
+		OreDictionaryPlants.register();
 	}
 
 	@EventHandler
@@ -50,11 +50,9 @@ public class Berriespp {
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent postinit) {
-		CropLoader.registerBaseSeed(); 
+		CropLoader.registerBaseSeed();
 		CropLoaderNBS.register();
 		CropLoader.register();
-		
-
 	/*
 	 * TODO:
 	 * 1. Witchery, Pam's Harvestcraft, Twilight Forrest 

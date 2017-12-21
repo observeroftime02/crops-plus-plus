@@ -36,7 +36,7 @@ public class VineCrop extends BasicDecorationCrop {
 
     @Override
     public ItemStack getGain(ICropTile crop) {
-        return new ItemStack(Item.getItemById(106),1,0);
+        return new ItemStack(Item.getItemById(106),2,0);
     }
 
 }

@@ -7,6 +7,7 @@ import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.oredict.OreDictionary;
 //IC2API
 import ic2.api.crops.CropCard;
 import ic2.api.crops.Crops;
@@ -14,6 +15,7 @@ import ic2.api.crops.Crops;
 import lokko12.berriespp.crops.BoP.BoPBerryCrop;
 import lokko12.berriespp.crops.BoP.BoPGlowShroom;
 import lokko12.berriespp.crops.BoP.FloweringVinesCrop;
+import lokko12.berriespp.crops.BoP.IvyCrop;
 import lokko12.berriespp.crops.TC.MagicMetalBerryCrop;
 import lokko12.berriespp.crops.TC.PrimordialPearlBerryCrop;
 import lokko12.berriespp.crops.TConstruct.AluminiumOreBerryCrop;
@@ -25,6 +27,7 @@ import lokko12.berriespp.crops.TConstruct.TinOreBerryCrop;
 import lokko12.berriespp.crops.abstracts.BasicBerryCrop;
 import lokko12.berriespp.crops.abstracts.BasicNetherShroomCrop;
 import lokko12.berriespp.crops.bpp.GrassCrop;
+import lokko12.berriespp.crops.bpp.StrawberryCrop;
 import lokko12.berriespp.crops.bpp.CactiCrop;
 import lokko12.berriespp.crops.bpp.VineCrop;
 import lokko12.berriespp.crops.natura.BlackberryCrop;
@@ -101,7 +104,6 @@ private static List<CropLoader> cropLoader() {
 	p.add(new CropLoader(new VineCrop(),new ItemStack(Item.getItemById(106),1,0)));
 	p.add(new CropLoader(new GrassCrop(),new ItemStack(Item.getItemById(31),1,1)));
 	p.add(new CropLoader(new CactiCrop(),new ItemStack(Item.getItemById(81),1,0)));
-	
 	if (Operators.AND(ModsLoaded.Natura,mods[0])) {
 	p.add(new CropLoader(new MaloberryCrop(),new ItemStack(NContent.berryItem, 1, 3)));
 	p.add(new CropLoader(new BlackberryCrop(),new ItemStack(NContent.berryItem, 1, 2)));
@@ -129,6 +131,7 @@ private static List<CropLoader> cropLoader() {
 	p.add(new CropLoader(new BoPBerryCrop(),new ItemStack(BOPCItems.food,1,0)));
 	p.add(new CropLoader(new BoPGlowShroom(), new ItemStack(BOPCBlocks.mushrooms,1,3)));
 	p.add(new CropLoader(new FloweringVinesCrop(),new ItemStack(BOPCBlocks.flowerVine,1,0)));
+	p.add(new CropLoader(new IvyCrop(),new ItemStack(BOPCBlocks.ivy,1,0)));
 	}
 	if (Operators.AND(ModsLoaded.TC, mods[3])) {
 	p.add(new CropLoader(new PrimordialPearlBerryCrop(), thaumcraft.api.ItemApi.getItem("itemEldritchObject", 3)));
@@ -175,6 +178,7 @@ public static void load(FMLPreInitializationEvent preinit){
 			+ "\nBonsai Generation will generate crops from saplings, WiP state. (disabled bc of bugs with metadata, but sure you can try it.)");
 	ConfigValures.Debug = c.tConfig.get("System", "Debug", false).getBoolean(true);
 	ConfigValures.ayo_bonsai = c.tConfig.get("System", "Bonsai Generation", false).getBoolean(true);
+	ConfigValures.OreDictPlants = c.tConfig.get("System", "Register Plantes to OreDict", true).getBoolean(false);
 	c.tConfig.addCustomCategoryComment("Mods", "enable crops from Mods here:");
 	mods[0]=c.tConfig.get("Mods", "Natura", true).getBoolean(false);
 	mods[1]=c.tConfig.get("Mods", "Tinker\'s Construct", true).getBoolean(false);
@@ -211,7 +215,7 @@ public static void registerBaseSeed() {
 	ItemStack[] f = new ItemStack[anz];
 	setBaseSeed().toArray(f);
 	for(int i=0; i < anz; i++) {
-			Crops.instance.registerBaseSeed(f[i],g[i], 1, 3, 3, 3);
+			Crops.instance.registerBaseSeed(f[i],g[i], 1, 1, 1, 1);
 	}	
 }
 }

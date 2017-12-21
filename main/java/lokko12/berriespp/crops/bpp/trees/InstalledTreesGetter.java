@@ -23,7 +23,7 @@ public class InstalledTreesGetter {
 		for (int i=0; i < anz; i++) {
 			Tree[i]=TreeS[i].getItem();
 			TreeDMG[i]=TreeS[i].getItemDamage();
-			TreeName[i]=TreeS[i].getDisplayName();
+			TreeName[i]=TreeS[i].getUnlocalizedName();
 			if (TreeName[i] == "ic2.blockRubSapling") {
 				//ic2 integration
 				ret[i]=new BasicBonsaiCrop("Rubber Tree");
