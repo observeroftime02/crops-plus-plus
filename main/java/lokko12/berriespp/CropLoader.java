@@ -135,7 +135,7 @@ private static List<CropLoader> cropLoader() {
 	}
 	if (Operators.AND(ModsLoaded.TC, mods[3])) {
 	p.add(new CropLoader(new PrimordialPearlBerryCrop(), thaumcraft.api.ItemApi.getItem("itemEldritchObject", 3)));
-	p.add(new CropLoader(new MagicMetalBerryCrop(),thaumcraft.api.ItemApi.getItem("itemResource", 17)));
+	//p.add(new CropLoader(new MagicMetalBerryCrop(),thaumcraft.api.ItemApi.getItem("itemResource", 17)));
 	}
 	//trees
 	if (lokko12.berriespp.ConfigValures.ayo_bonsai == true)

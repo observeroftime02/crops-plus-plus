@@ -18,12 +18,12 @@ import net.minecraftforge.common.config.Configuration;
 
 
 @Mod(
-	modid = "berriespp", name = "Berries++", version = "0.2.3",
+	modid = "berriespp", name = "Berries++", version = "1.0.0",
 	/*
 	 * Versions: 
-	 * 			 0=Realises
-	 * 			 2=Milestones
-	 * 			 1=internal version Nr 
+	 * 			 1=Realises
+	 * 			 0=Milestones
+	 * 			 0=internal version Nr 
 	 */
 	dependencies = "required-after:IC2; after:Mantle; after:Natura; after:TConstruct; after:BiomesOPlenty; after:Thaumcraft;"
 	)
