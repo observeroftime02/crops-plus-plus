@@ -11,11 +11,14 @@ import lokko12.berriespp.CropLoader;
 import lokko12.berriespp.crops.abstracts.BasicDecorationCrop;
 import lokko12.croploadcore.Intrandom;
 import lokko12.croploadcore.ModsLoaded;
+import lokko12.croploadcore.Operators;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.IIcon;
 import tconstruct.world.TinkerWorld;
 
@@ -86,7 +89,9 @@ public class GrassCrop extends BasicDecorationCrop{
 	    
 	    @Override
 		public boolean onEntityCollision(ICropTile crop, Entity entity) {
-	    	return false;
+	    	if (Operators.AND((Operators.NOT(entity instanceof EntityItem)),crop.getSize()==4))
+	            entity.attackEntityFrom(DamageSource.cactus, 1);
+			return false;
 		}
 	    @Override
 	    public boolean leftclick(ICropTile crop, EntityPlayer player) {

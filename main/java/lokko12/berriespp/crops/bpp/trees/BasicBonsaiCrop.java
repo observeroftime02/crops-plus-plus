@@ -2,6 +2,7 @@ package lokko12.berriespp.crops.bpp.trees;
 
 import ic2.api.crops.CropCard;
 import ic2.api.crops.ICropTile;
+import lokko12.berriespp.ConfigValures;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -14,20 +15,7 @@ public class BasicBonsaiCrop extends ic2.api.crops.CropCard {
 	public BasicBonsaiCrop(String name){
 		super();
 		this.name = name +" Wood";
-		//this.drop = drop;
-		/*if (this.name == "Oak")
-			drop = new ItemStack(Item.getItemById(OreDictionary.getOreID(name)));
-		if (this.name == "Spruce")
-			drop = new ItemStack(Item.getItemById(OreDictionary.getOreID(name)));
-		if (this.name == "Birch")
-			drop = new ItemStack(Item.getItemById(OreDictionary.getOreID(name)));
-		if (this.name == "Jungle")
-			drop = new ItemStack(Item.getItemById(OreDictionary.getOreID(name)));
-		if (this.name == "Acacia")
-			drop = new ItemStack(Item.getItemById(OreDictionary.getOreID(name)));
-		else*/
-		drop = new ItemStack(Item.getItemById(OreDictionary.getOreID(name)));
-	}
+		    }
 	
 	@Override
 	public String name() {

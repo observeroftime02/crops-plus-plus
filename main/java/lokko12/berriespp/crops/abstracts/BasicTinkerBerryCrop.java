@@ -5,6 +5,7 @@ import java.util.List;
 import ic2.api.crops.CropCard;
 import ic2.api.crops.ICropTile;
 import lokko12.berriespp.ConfigValures;
+import lokko12.croploadcore.Operators;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -92,7 +93,7 @@ public abstract class BasicTinkerBerryCrop extends BasicBerryCrop {
 	
     @Override
 	public boolean onEntityCollision(ICropTile crop, Entity entity) {
-    	if (!(entity instanceof EntityItem))
+    	if (Operators.NOT(entity instanceof EntityItem))
             entity.attackEntityFrom(DamageSource.cactus, 1);
     	if (entity instanceof EntityLivingBase) {
 			return ((EntityLivingBase) entity).isSprinting();

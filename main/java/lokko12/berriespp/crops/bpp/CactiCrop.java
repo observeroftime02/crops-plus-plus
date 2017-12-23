@@ -6,6 +6,7 @@ import ic2.api.crops.ICropTile;
 import lokko12.berriespp.CropLoader;
 import lokko12.berriespp.crops.abstracts.BasicDecorationCrop;
 import lokko12.croploadcore.ModsLoaded;
+import lokko12.croploadcore.Operators;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -37,7 +38,7 @@ public class CactiCrop extends BasicDecorationCrop {
 	
 	@Override
 	public ItemStack getGain(ICropTile crop) {
-		if (ModsLoaded.BoP == true && crop.getSize()==2)
+		if (Operators.AND(ModsLoaded.BoP == true, crop.getSize()==2))
 		return new ItemStack(BOPCBlocks.plants,1,12);
 		else 
 		return new ItemStack(Item.getItemById(81),1,0);
@@ -54,7 +55,7 @@ public class CactiCrop extends BasicDecorationCrop {
     }
     @Override
 	public boolean onEntityCollision(ICropTile crop, Entity entity) {
-    	if (!(entity instanceof EntityItem))
+    	if (Operators.NOT(entity instanceof EntityItem))
             entity.attackEntityFrom(DamageSource.cactus, 1);
     	if (entity instanceof EntityLivingBase) {
 			return ((EntityLivingBase) entity).isSprinting();

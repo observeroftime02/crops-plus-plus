@@ -18,7 +18,7 @@ import net.minecraftforge.common.config.Configuration;
 
 
 @Mod(
-	modid = "berriespp", name = "Berries++", version = "0.2.2",
+	modid = "berriespp", name = "Berries++", version = "0.2.3",
 	/*
 	 * Versions: 
 	 * 			 0=Realises
