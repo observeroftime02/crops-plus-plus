@@ -48,16 +48,18 @@ public abstract class BasicNetherBerryCrop extends BasicBerryCrop {
 
     @Override
     public int growthDuration(ICropTile crop) {
+    	int r;
         // Same growth stages as melons and pumpkins
     	if (ConfigValures.Debug == true)
-    		return 1;
+    		r = 1;
     	else if (crop.getSize() == 2) {
             // Ripens not so quickly
-        	return 300;
+        	r = 300;
         } else {
             // Takes a while to grow from seed
-        	return 700;
+        	r = 700;
         }
+    	return r;
     }
 
 }

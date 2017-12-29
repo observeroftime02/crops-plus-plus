@@ -38,16 +38,18 @@ public abstract class BasicNetherShroomCrop extends BasicNetherBerryCrop {
    
 	    @Override
 	    public int growthDuration(ICropTile crop) {
+	    	int r;
 	        // Same growth stages as melons and pumpkins
 	    	if (ConfigValures.Debug == true)
-	    		return 1;
+	    		r = 1;
 	    	else if (crop.getSize() == 2) {
 	            // Ripens not so quickly
-	        	return 250;
+	        	r = 250;
 	        } else {
 	            // Takes a while to grow from seed
-	        	return 600;
+	        	r = 600;
 	        }
+	    	return r;
 	    
 	    }
 	    
@@ -73,24 +75,28 @@ public abstract class BasicNetherShroomCrop extends BasicNetherBerryCrop {
 
 		@Override
 		public String[] attributes() {
+			String[] r;
 			if (name == "Green"+" Glowshroom")
-				return new String[] {"Green", "Edible", "Mushroom", "Ingredient", "Nether"};
+				r = new String[] {"Green", "Edible", "Mushroom", "Ingredient", "Nether"};
 			if (name == "Blue"+" Glowshroom")
-		        return new String[] {"Blue", "Edible", "Mushroom", "Ingredient", "Nether"};
+		        r = new String[] {"Blue", "Edible", "Mushroom", "Ingredient", "Nether"};
 			if (name == "Purple"+" Glowshroom")
-				return new String[] {"Purple", "Edible", "Mushroom", "Ingredient", "Nether"};
+				r = new String[] {"Purple", "Edible", "Mushroom", "Ingredient", "Nether"};
 			else
-				return new String[] {"Yellow", "Edible", "Mushroom", "Ingredient", "Nether"};
+				r = new String[] {"Yellow", "Edible", "Mushroom", "Ingredient", "Nether"};
+			return r;
 		}
 	    @Override
 	    public ItemStack getGain(ICropTile crop) {
+	    	ItemStack r;
 			if (name == "Blue"+" Glowshroom")
-				return new ItemStack(NContent.glowshroom,1,2);
+				r = new ItemStack(NContent.glowshroom,1,2);
 			if (name == "Green"+" Glowshroom")
-				return new ItemStack(NContent.glowshroom,1,0);
+				r = new ItemStack(NContent.glowshroom,1,0);
 			if (name == "Purple"+" Glowshroom")
-				return new ItemStack(NContent.glowshroom,1,1);
-			else return new ItemStack(BOPCBlocks.mushrooms,1,4);
+				r = new ItemStack(NContent.glowshroom,1,1);
+			else r = new ItemStack(BOPCBlocks.mushrooms,1,4);
+			return r;
 	    }
 	    
 	    @Override

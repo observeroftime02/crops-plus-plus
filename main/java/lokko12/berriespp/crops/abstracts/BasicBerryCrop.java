@@ -74,16 +74,18 @@ public abstract class BasicBerryCrop extends ic2.api.crops.CropCard {
 
     @Override
     public int growthDuration(ICropTile crop) {
+    	int r;
         // Same growth stages as melons and pumpkins
     	if (ConfigValures.Debug == true)
-    		return 1;
+    		r = 1;
     	else if (crop.getSize() == 2) {
             // Ripens quickly
-            return 200;
+            r = 200;
         } else {
             // Takes a while to grow from seed
-            return 700;
+            r= 700;
         }
+    	return r;
     }
 
     @Override

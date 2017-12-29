@@ -62,16 +62,18 @@ public abstract class BasicManaBeanCrop extends BasicBerryCrop {
 
 	    @Override
 	    public int growthDuration(ICropTile crop) {
+	    	int r;
 	        // Same growth stages as melons and pumpkins
 	    	if (ConfigValures.Debug == true)
-	    		return 1;
+	    		r = 1;
 	    	else if (crop.getSize() == 2) {
 	            // Ripens not so quickly
-	        	return 1200;
+	        	r = 1200;
 	        } else {
 	            // Takes a while to grow from seed
-	        	return 800;
+	        	r = 800;
 	        }
+	    	return r;
 	    }
 	    
 	    @Override

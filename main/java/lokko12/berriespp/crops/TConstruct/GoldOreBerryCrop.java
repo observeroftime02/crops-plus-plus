@@ -34,23 +34,25 @@ public class GoldOreBerryCrop extends BasicTinkerBerryCrop {
 		    }
 		    
 		    @Override
-		    public int growthDuration(ICropTile crop) {
+			public int growthDuration(ICropTile crop) {
+		    	int r;
 		    	if (ConfigValures.Debug == true)
-		    		return 1;
+		    		r = 1;
 		    	// Same growth stages as melons and pumpkins
 		    	else if (crop.getSize() == 2) {
+
 		            // Ripens "quickly"
-		            return 3000;
+		            r = 3000;
 		        } else {
 		        	if (crop.getSize() == 3 && crop.isBlockBelow("blockGold") == true)
-		        	{ return 1500;
-		        			}        	
+		        	r = 1500;        	
 		        else 
 		        	{
 		            // Takes a while to grow from seed
-		            return 500;
+		            r = 500;
 		        }
 		        }
+		        return r;
 		    }
 		    
 			@Override

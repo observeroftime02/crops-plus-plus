@@ -178,25 +178,30 @@ public static void load(FMLPreInitializationEvent preinit){
 			+ "\nBonsai Generation will generate crops from saplings, WiP state. (disabled bc of bugs with metadata, but sure you can try it.)");
 	ConfigValures.Debug = c.tConfig.get("System", "Debug", false).getBoolean(true);
 	ConfigValures.ayo_bonsai = c.tConfig.get("System", "Bonsai Generation", false).getBoolean(true);
-	ConfigValures.OreDictPlants = c.tConfig.get("System", "Register Plantes to OreDict", true).getBoolean(false);
-	c.tConfig.addCustomCategoryComment("Mods", "enable crops from Mods here:");
+	ConfigValures.OreDictPlants = c.tConfig.get("System", "Register plants to OreDict", true).getBoolean(false);
+	
+	c.tConfig.addCustomCategoryComment("Mods", "enable crops from mods here:");
 	mods[0]=c.tConfig.get("Mods", "Natura", true).getBoolean(false);
 	mods[1]=c.tConfig.get("Mods", "Tinker\'s Construct", true).getBoolean(false);
 	mods[2]=c.tConfig.get("Mods", "Biomes O\' Plenty", true).getBoolean(false);
 	mods[3]=c.tConfig.get("Mods", "Thaumcraft", true).getBoolean(false);
 	anz=cropLoader().size();
+	
 	c.tConfig.addCustomCategoryComment("Crops", "enable single plants here:");
 	bHasCropObj = new boolean[anz];
 	for(int i=0; i < anz; i++) {
 		bHasCropObj[i] = c.tConfig.get("Crops", setnames()[i], true).getBoolean(false);
 	}
+	
 	c.tConfig.addCustomCategoryComment("Gain", "Set custom gain modifiers here:"
 			+ "\n Tinker's Construct Berries' Gain is not modified by All Crops."
-			+ "\n Primordial Berry's Gain is absolut.");
-	ConfigValures.BerryGain = (float) c.tConfig.get("Gain", "All Crops",(float) 1).getDouble(1);
-	ConfigValures.TConstructBerryGain = (float) c.tConfig.get("Gain", "Tinker's Construct Berries",(float) 1).getDouble(1);
+			+ "\n Primordial Berry's gain is absolut."
+			+ "\n Primordial Berry's groth time is divided by 4, in IC2 groth points."
+			+ "\n IC2 groth points are calculated by 3 + random 0-7 + statGrowth per 256ticks");
+	ConfigValures.BerryGain = (float) c.tConfig.get("Gain", "All crops",(float) 1).getDouble(1);
+	ConfigValures.TConstructBerryGain = (float) c.tConfig.get("Gain", "Tinker's Construct berries",(float) 1).getDouble(1);
 	ConfigValures.PrimordialBerryGain = (float) c.tConfig.get("Gain", "Primordial Berry",(float) 0.5).getDouble(0.5);
-	ConfigValures.PrimordialBerryGroth = c.tConfig.get("Gain", "Primordial Berry groth time",125000).getInt(125000);
+	ConfigValures.PrimordialBerryGroth = c.tConfig.get("Gain", "Primordial Berry groth time.",125000).getInt(125000);
 	c.save();
 }
 

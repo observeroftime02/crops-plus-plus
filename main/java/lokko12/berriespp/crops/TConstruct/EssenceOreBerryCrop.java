@@ -32,24 +32,26 @@ public class EssenceOreBerryCrop extends BasicTinkerBerryCrop {
 		    }
 		    
 		    @Override
-		    public int growthDuration(ICropTile crop) {
-		    	if (ConfigValures.Debug == true)
-		    		return 1;
-		        // Same growth stages as melons and pumpkins
-		        if (crop.getSize() == 2) {
-		            // Ripens "quickly"
-		            return 3000;
-		        } else {
-		        	if (crop.getSize() == 3 && crop.isBlockBelow("itemSkull") == true)
-		        	{ return 1500;
-		        			}        	
-		        else 
-		        	{
-		            // Takes a while to grow from seed
-		            return 500;
-		        }
-		        }
-		    }
+			public int growthDuration(ICropTile crop) {
+			    	int r;
+			    	if (ConfigValures.Debug == true)
+			    		r = 1;
+			    	// Same growth stages as melons and pumpkins
+			    	else if (crop.getSize() == 2) {
+
+			            // Ripens "quickly"
+			            r = 3000;
+			        } else {
+			        	if (crop.getSize() == 3 && crop.isBlockBelow("itemSkull") == true)
+			        	r = 1500;        	
+			        else 
+			        	{
+			            // Takes a while to grow from seed
+			            r = 500;
+			        }
+			        }
+			        return r;
+			    }
 		    @Override
 		    public boolean canGrow(ICropTile crop) {
 		    	return crop.getSize() < 4;

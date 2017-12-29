@@ -55,7 +55,8 @@ public class Berriespp {
 		CropLoader.register();
 	/*
 	 * TODO:
-	 * 1. Witchery, Pam's Harvestcraft, Twilight Forrest 
+	 * 1. Witchery, Pam's Harvestcraft, Twilight Forrest
+	 * 2. OreDict EVERYTHING!
 	 */
 		}
 }
