@@ -60,7 +60,7 @@ public class PrimordialPearlBerryCrop extends BasicBerryCrop {
     	if (ConfigValures.Debug == true)
     		return 1;
         else {
-            return 125000;
+            return ConfigValures.PrimordialBerryGroth;
         }
     }
     

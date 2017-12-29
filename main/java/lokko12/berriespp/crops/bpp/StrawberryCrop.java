@@ -18,8 +18,12 @@ public class StrawberryCrop extends BasicBerryCrop {
 
     public StrawberryCrop() {
     	super();
+    	int anz = OreDictionary.getOres("cropStrawberry").size();
+        ItemStack[] BaseSeeds = new ItemStack[anz];
+        OreDictionary.getOres("cropStrawberry").toArray(BaseSeeds);
     	if (OreDictionary.getOres("cropStrawberry").size()!= 0)
-    	Crops.instance.registerBaseSeed(OreDictionary.getOres("cropStrawberry").get(OreDictionary.getOres("cropStrawberry").size()-1),lokko12.berriespp.CropLoader.CropunpackerCC(new CropLoader(this)),1,1,1,1);
+    		for (int i=0; i < anz; i++)
+            Crops.instance.registerBaseSeed(BaseSeeds[i],this,1,1,1,1);
     }
 
     public String name() {
