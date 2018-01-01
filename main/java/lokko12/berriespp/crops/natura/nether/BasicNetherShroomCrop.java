@@ -1,23 +1,36 @@
-package lokko12.berriespp.crops.abstracts;
+package lokko12.berriespp.crops.natura.nether;
 import biomesoplenty.api.content.BOPCBlocks;
 import ic2.api.crops.CropCard;
 import ic2.api.crops.Crops;
 import ic2.api.crops.ICropTile;
 import lokko12.berriespp.ConfigValures;
+import lokko12.berriespp.crops.abstracts.BasicNetherBerryCrop;
+import lokko12.croploadcore.Operators;
 import mods.natura.common.NContent;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-public abstract class BasicNetherShroomCrop extends BasicNetherBerryCrop {
+public class BasicNetherShroomCrop extends BasicNetherBerryCrop {
 		
 		private String name;
 
-		public BasicNetherShroomCrop()
+		public BasicNetherShroomCrop(String color)
 		{
 			super();
+			if(color=="Purple"||color=="Yellow"||color=="Blue"||color=="Green") 
+			{
+			if (Operators.NOT(color=="Yellow"))
+			this.name = color+" Glowshroom";
+			else
+			this.name = "Glowshroom";
+			}
 		}
 
+		@Override
+	    public String name() {
+	        return name;
+	    }
 	    
 	    @Override
 	    public int tier() {

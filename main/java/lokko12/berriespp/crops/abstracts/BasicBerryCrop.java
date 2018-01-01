@@ -10,27 +10,12 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 
-public abstract class BasicBerryCrop extends ic2.api.crops.CropCard {
+public abstract class BasicBerryCrop extends BasicCrop {
 
 
 	public BasicBerryCrop ()
 	{
 		super();
-	}
-	
-	@SideOnly(Side.CLIENT)
-	public void registerSprites(IIconRegister iconRegister) {
-		textures = new IIcon[maxSize()];
-
-		for (int i = 1; i <= textures.length; i++) {
-			// ic2:crop/blockCrop.NAME.n is the legacy name for backwards compatiblity
-			textures[i - 1] = iconRegister.registerIcon("bpp:crop/blockCrop."+name()+"."+i);
-		}
-	}
-	
-	@Override
-	public float dropGainChance() { 
-		return (float) ((Math.pow(0.95, (float) tier()))*ConfigValures.BerryGain);
 	}
 	
     @Override
@@ -97,11 +82,6 @@ public abstract class BasicBerryCrop extends ic2.api.crops.CropCard {
 	@Override
 	public int maxSize() {
 		return 3;
-	}
-
-	@Override
-	public ItemStack getGain(ICropTile crop) {
-		return new ItemStack(Items.wheat, 1);
 	}
 	
 	@Override

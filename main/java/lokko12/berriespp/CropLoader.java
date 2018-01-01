@@ -13,7 +13,6 @@ import ic2.api.crops.CropCard;
 import ic2.api.crops.Crops;
 //Crops
 import lokko12.berriespp.crops.BoP.BoPBerryCrop;
-import lokko12.berriespp.crops.BoP.BoPGlowShroom;
 import lokko12.berriespp.crops.BoP.FloweringVinesCrop;
 import lokko12.berriespp.crops.BoP.IvyCrop;
 import lokko12.berriespp.crops.TC.MagicMetalBerryCrop;
@@ -25,8 +24,8 @@ import lokko12.berriespp.crops.TConstruct.GoldOreBerryCrop;
 import lokko12.berriespp.crops.TConstruct.IronOreBerryCrop;
 import lokko12.berriespp.crops.TConstruct.TinOreBerryCrop;
 import lokko12.berriespp.crops.abstracts.BasicBerryCrop;
-import lokko12.berriespp.crops.abstracts.BasicNetherShroomCrop;
 import lokko12.berriespp.crops.bpp.GrassCrop;
+import lokko12.berriespp.crops.bpp.HuckleberryCrop;
 import lokko12.berriespp.crops.bpp.StrawberryCrop;
 import lokko12.berriespp.crops.bpp.CactiCrop;
 import lokko12.berriespp.crops.bpp.VineCrop;
@@ -35,11 +34,9 @@ import lokko12.berriespp.crops.natura.BlueberryCrop;
 import lokko12.berriespp.crops.natura.MaloberryCrop;
 import lokko12.berriespp.crops.natura.RaspberryCrop;
 import lokko12.berriespp.crops.natura.SaguaroCrop;
+import lokko12.berriespp.crops.natura.nether.BasicNetherShroomCrop;
 import lokko12.berriespp.crops.natura.nether.BlightberryCrop;
 import lokko12.berriespp.crops.natura.nether.DuskberryCrop;
-import lokko12.berriespp.crops.natura.nether.NetherShroomBlue;
-import lokko12.berriespp.crops.natura.nether.NetherShroomGreen;
-import lokko12.berriespp.crops.natura.nether.NetherShroomPurple;
 import lokko12.berriespp.crops.natura.nether.SkyberryCrop;
 import lokko12.berriespp.crops.natura.nether.StingberryCrop;
 import lokko12.berriespp.crops.natura.nether.Thornvines;
@@ -47,6 +44,7 @@ import lokko12.berriespp.crops.bpp.trees.InstalledTreesGetter;
 //Core
 import lokko12.croploadcore.ModsLoaded;
 import lokko12.croploadcore.Operators;
+import lokko12.croploadcore.OreDict;
 import lokko12.croploadcore.config;
 //ItemsFromAPIs
 import mods.natura.common.NContent;
@@ -92,6 +90,10 @@ private static ItemStack CropunpackerCG (CropLoader inp) {
 	return inp.gain;
 }
 
+private static CropLoader CropHelper(CropCard cropObj) {
+	return new CropLoader(cropObj,OreDict.ISget("crop"+cropObj.name()));
+}
+
 private static List<CropLoader> cropLoader() {
 	
 	List<CropLoader> p = new ArrayList<CropLoader>();
@@ -105,18 +107,14 @@ private static List<CropLoader> cropLoader() {
 	p.add(new CropLoader(new GrassCrop(),new ItemStack(Item.getItemById(31),1,1)));
 	p.add(new CropLoader(new CactiCrop(),new ItemStack(Item.getItemById(81),1,0)));
 	if (Operators.AND(ModsLoaded.Natura,mods[0])) {
-	p.add(new CropLoader(new MaloberryCrop(),new ItemStack(NContent.berryItem, 1, 3)));
-	p.add(new CropLoader(new BlackberryCrop(),new ItemStack(NContent.berryItem, 1, 2)));
-	p.add(new CropLoader(new BlueberryCrop(),new ItemStack(NContent.berryItem, 1, 1)));
-	p.add(new CropLoader(new RaspberryCrop(),new ItemStack(NContent.berryItem, 1, 0)));
 	p.add(new CropLoader(new BlightberryCrop(),new ItemStack(NContent.netherBerryItem, 1, 0)));
 	p.add(new CropLoader(new DuskberryCrop(),new ItemStack(NContent.netherBerryItem, 1, 1)));
 	p.add(new CropLoader(new SkyberryCrop(),new ItemStack(NContent.netherBerryItem, 1, 2)));
 	p.add(new CropLoader(new StingberryCrop(),new ItemStack(NContent.netherBerryItem, 1, 3)));
 	p.add(new CropLoader(new Thornvines(), new ItemStack(NContent.thornVines,1,0))); 
-	p.add(new CropLoader(new NetherShroomBlue(), new ItemStack(NContent.glowshroom,1,2)));
-	p.add(new CropLoader(new NetherShroomGreen(), new ItemStack(NContent.glowshroom,1,0)));
-	p.add(new CropLoader(new NetherShroomPurple(), new ItemStack(NContent.glowshroom,1,1)));
+	p.add(new CropLoader(new BasicNetherShroomCrop("Blue"), new ItemStack(NContent.glowshroom,1,2)));
+	p.add(new CropLoader(new BasicNetherShroomCrop("Green"), new ItemStack(NContent.glowshroom,1,0)));
+	p.add(new CropLoader(new BasicNetherShroomCrop("Purple"), new ItemStack(NContent.glowshroom,1,1)));
 	p.add(new CropLoader(new SaguaroCrop(),new ItemStack(NContent.seedFood,1,0)));
 	}
 	if (Operators.AND(ModsLoaded.TConstruct,mods[1])) {
@@ -129,13 +127,13 @@ private static List<CropLoader> cropLoader() {
 	}
 	if (Operators.AND(ModsLoaded.BoP,mods[2])) {
 	p.add(new CropLoader(new BoPBerryCrop(),new ItemStack(BOPCItems.food,1,0)));
-	p.add(new CropLoader(new BoPGlowShroom(), new ItemStack(BOPCBlocks.mushrooms,1,3)));
+	p.add(new CropLoader(new BasicNetherShroomCrop("Yellow"), new ItemStack(BOPCBlocks.mushrooms,1,3)));
 	p.add(new CropLoader(new FloweringVinesCrop(),new ItemStack(BOPCBlocks.flowerVine,1,0)));
 	p.add(new CropLoader(new IvyCrop(),new ItemStack(BOPCBlocks.ivy,1,0)));
 	}
 	if (Operators.AND(ModsLoaded.TC, mods[3])) {
 	p.add(new CropLoader(new PrimordialPearlBerryCrop(), thaumcraft.api.ItemApi.getItem("itemEldritchObject", 3)));
-	//p.add(new CropLoader(new MagicMetalBerryCrop(),thaumcraft.api.ItemApi.getItem("itemResource", 17)));
+	p.add(new CropLoader(new MagicMetalBerryCrop(),thaumcraft.api.ItemApi.getItem("itemResource", 17)));
 	}
 	//trees
 	if (lokko12.berriespp.ConfigValures.ayo_bonsai == true)

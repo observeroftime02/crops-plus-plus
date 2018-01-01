@@ -15,7 +15,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.DamageSource;
 
-public abstract class BasicTinkerBerryCrop extends BasicBerryCrop {
+public abstract class BasicTinkerBerryCrop extends BasicCrop {
 
 	public BasicTinkerBerryCrop ()
 	{

@@ -4,6 +4,7 @@ import ic2.api.crops.CropCard;
 import ic2.api.crops.ICropTile;
 import lokko12.berriespp.Berriespp;
 import lokko12.berriespp.crops.abstracts.BasicDecorationCrop;
+import lokko12.croploadcore.OreDict;
 import net.minecraft.block.Block;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -12,6 +13,7 @@ import net.minecraft.item.ItemStack;
 public class VineCrop extends BasicDecorationCrop {
     public VineCrop() {
     	super();
+    	OreDict.BSget("crop"+this.name(),this);
     	}
 
     @Override

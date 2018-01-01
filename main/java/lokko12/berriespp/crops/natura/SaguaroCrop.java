@@ -2,6 +2,7 @@ package lokko12.berriespp.crops.natura;
 import biomesoplenty.api.content.BOPCBlocks;
 import ic2.api.crops.Crops;
 import ic2.api.crops.ICropTile;
+import lokko12.berriespp.ConfigValures;
 import lokko12.berriespp.CropLoader;
 import lokko12.berriespp.crops.bpp.CactiCrop;
 import mods.natura.common.NContent;
@@ -36,6 +37,19 @@ public class SaguaroCrop extends CactiCrop {
 			else 
 			return new ItemStack(NContent.seedFood,3,0);
 		}
+		
+		@Override
+	    public int growthDuration(ICropTile crop) {
+			int r;
+	    	if (ConfigValures.Debug == true)
+	    		r = 1;
+	    	else if (crop.getSize() > 2)
+	        r = 450;
+	    	else
+	    	r = 225;
+	    	return r;
+	    }
+		
 	    @Override
 	    public boolean canBeHarvested(ICropTile crop) {
 	        return crop.getSize() >= 2;

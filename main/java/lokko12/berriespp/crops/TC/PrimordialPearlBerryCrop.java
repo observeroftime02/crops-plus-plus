@@ -2,11 +2,11 @@ package lokko12.berriespp.crops.TC;
 
 import ic2.api.crops.ICropTile;
 import lokko12.berriespp.ConfigValures;
-import lokko12.berriespp.crops.abstracts.BasicBerryCrop;
+import lokko12.berriespp.crops.abstracts.BasicCrop;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
-public class PrimordialPearlBerryCrop extends BasicBerryCrop {
+public class PrimordialPearlBerryCrop extends BasicCrop {
 
 
 	public PrimordialPearlBerryCrop ()

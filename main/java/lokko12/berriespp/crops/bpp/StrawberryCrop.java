@@ -4,6 +4,7 @@ import ic2.api.item.IC2Items;
 import lokko12.berriespp.ConfigValures;
 import lokko12.berriespp.CropLoader;
 import lokko12.berriespp.crops.abstracts.BasicBerryCrop;
+import lokko12.croploadcore.OreDict;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ic2.api.crops.CropCard;
@@ -18,12 +19,8 @@ public class StrawberryCrop extends BasicBerryCrop {
 
     public StrawberryCrop() {
     	super();
-    	int anz = OreDictionary.getOres("cropStrawberry").size();
-        ItemStack[] BaseSeeds = new ItemStack[anz];
-        OreDictionary.getOres("cropStrawberry").toArray(BaseSeeds);
-    	if (OreDictionary.getOres("cropStrawberry").size()!= 0)
-    		for (int i=0; i < anz; i++)
-            Crops.instance.registerBaseSeed(BaseSeeds[i],this,1,1,1,1);
+    	OreDict.BSget("crop"+this.name(),this);
+    	OreDict.BSget("seed"+this.name(),this);
     }
 
     public String name() {
@@ -41,11 +38,6 @@ public class StrawberryCrop extends BasicBerryCrop {
     
     @Override
     public ItemStack getGain(ICropTile crop) {
-    	if (OreDictionary.getOres("cropStrawberry").size()!= 0)
-    	{
-            return OreDictionary.getOres("cropStrawberry").get(OreDictionary.getOres("cropStrawberry").size()-1);
-        }
-    	else 
-    		return null;
+    	return OreDict.ISget("crop"+this.name());
     }
 }

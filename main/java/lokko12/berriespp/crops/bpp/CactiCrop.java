@@ -3,6 +3,7 @@ package lokko12.berriespp.crops.bpp;
 import biomesoplenty.api.content.BOPCBlocks;
 import ic2.api.crops.Crops;
 import ic2.api.crops.ICropTile;
+import lokko12.berriespp.ConfigValures;
 import lokko12.berriespp.CropLoader;
 import lokko12.berriespp.crops.abstracts.BasicDecorationCrop;
 import lokko12.croploadcore.ModsLoaded;

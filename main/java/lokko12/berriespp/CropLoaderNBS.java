@@ -10,10 +10,17 @@ import net.minecraftforge.common.config.Configuration;
 //IC2API
 import ic2.api.crops.CropCard;
 import ic2.api.crops.Crops;
+import lokko12.berriespp.crops.TC.CinderpearlCrop;
+import lokko12.berriespp.crops.TC.ShimmerleafCrop;
 //Crops
 import lokko12.berriespp.crops.bpp.ArditeBerryCrop;
 import lokko12.berriespp.crops.bpp.CobaltBerryCrop;
+import lokko12.berriespp.crops.bpp.HuckleberryCrop;
 import lokko12.berriespp.crops.bpp.StrawberryCrop;
+import lokko12.berriespp.crops.natura.BlackberryCrop;
+import lokko12.berriespp.crops.natura.BlueberryCrop;
+import lokko12.berriespp.crops.natura.MaloberryCrop;
+import lokko12.berriespp.crops.natura.RaspberryCrop;
 //Core
 import lokko12.croploadcore.ModsLoaded;
 import lokko12.croploadcore.config;
@@ -46,6 +53,13 @@ private static List<CropCard> cropLoader() {
 	
 	//has Base seeds but is called via Oredict:
 	p.add(new StrawberryCrop()); 
+	p.add(new MaloberryCrop()); 
+	p.add(new BlackberryCrop()); 
+	p.add(new BlueberryCrop()); 
+	p.add(new RaspberryCrop()); 
+	p.add(new HuckleberryCrop()); 
+	p.add(new ShimmerleafCrop());
+	p.add(new CinderpearlCrop());
 	return p;
 }
 

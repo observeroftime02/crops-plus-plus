@@ -2,6 +2,8 @@ package lokko12.berriespp.crops.natura;
 
 import ic2.api.crops.ICropTile;
 import lokko12.berriespp.crops.abstracts.BasicBerryCrop;
+import lokko12.croploadcore.ModsLoaded;
+import lokko12.croploadcore.OreDict;
 import ic2.api.crops.CropCard;
 import ic2.api.crops.Crops;
 import mods.natura.common.NContent;
@@ -12,12 +14,9 @@ public class MaloberryCrop extends BasicBerryCrop {
 
     public MaloberryCrop() {
         super();
-    	int anz = OreDictionary.getOres("cropMaloberry").size();
-        ItemStack[] BaseSeeds = new ItemStack[anz];
-        OreDictionary.getOres("cropMaloberry").toArray(BaseSeeds);
-    	if (OreDictionary.getOres("cropMaloberry").size()!= 0)
-    		for (int i=0; i < anz; i++)
-            Crops.instance.registerBaseSeed(BaseSeeds[i],this,1,1,1,1);
+    	OreDict.BSget("crop"+this.name(),this);
+    	OreDict.BSget("seed"+this.name(),this);
+    	OreDict.BSget("cropGooseberry", this);
     }
 
     public String name() {
@@ -30,7 +29,10 @@ public class MaloberryCrop extends BasicBerryCrop {
     
     @Override
 	public ItemStack getGain(ICropTile crop) {
-		return new ItemStack(NContent.berryItem,3,3);
+    	if (ModsLoaded.Natura)
+    		return new ItemStack(NContent.berryItem,3,3);
+    	else
+    	return OreDict.ISget("crop"+this.name());
 	}
 
 }
