@@ -40,14 +40,12 @@ public class IronOreBerryCrop extends BasicTinkerBerryCrop {
 
 	            // Ripens "quickly"
 	            r = 3000;
-	        } else {
-	        	if (crop.getSize() == 3 && crop.isBlockBelow("blockIron") == true)
+	        } else if (crop.getSize() == 3 && crop.isBlockBelow("blockIron") == true)
 	        	r = 1500;        	
 	        else 
 	        	{
 	            // Takes a while to grow from seed
 	            r = 500;
-	        }
 	        }
 	        return r;
 	    }

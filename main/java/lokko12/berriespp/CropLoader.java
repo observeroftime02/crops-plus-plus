@@ -193,13 +193,13 @@ public static void load(FMLPreInitializationEvent preinit){
 	
 	c.tConfig.addCustomCategoryComment("Gain", "Set custom gain modifiers here:"
 			+ "\n Tinker's Construct Berries' Gain is not modified by All Crops."
-			+ "\n Primordial Berry's gain is absolut."
-			+ "\n Primordial Berry's groth time is divided by 4, in IC2 groth points."
+			+ "\n Primordial Berry's gain is absolut"
+			+ "\n Primordial Berry's groth time is divided by 4, in IC2 groth points. F.e. 10 = 40GP per groth-period"
 			+ "\n IC2 groth points are calculated by 3 + random 0-7 + statGrowth per 256ticks");
 	ConfigValures.BerryGain = (float) c.tConfig.get("Gain", "All crops",(float) 1).getDouble(1);
 	ConfigValures.TConstructBerryGain = (float) c.tConfig.get("Gain", "Tinker's Construct berries",(float) 1).getDouble(1);
 	ConfigValures.PrimordialBerryGain = (float) c.tConfig.get("Gain", "Primordial Berry",(float) 0.5).getDouble(0.5);
-	ConfigValures.PrimordialBerryGroth = c.tConfig.get("Gain", "Primordial Berry groth time.",125000).getInt(125000);
+	ConfigValures.PrimordialBerryGroth = c.tConfig.get("Gain", "Primordial Berry groth time",125000).getInt(125000);
 	c.save();
 }
 

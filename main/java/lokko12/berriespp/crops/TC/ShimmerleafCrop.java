@@ -22,26 +22,22 @@ public class ShimmerleafCrop extends BasicThaumcraftCrop {
 
 	@Override
 	public String[] attributes() {
-		return new String[] {"Berry", "Tendrilly", "Magic", "Silver"};
+		return new String[] {"Berry", "Magic", "Silver", "Toxic"};
 	}
     
     @Override
     public int growthDuration(ICropTile crop) {
-    	int r;
-    	if (ConfigValures.Debug == true)
-    		r = 1;
-    	else if (crop.getSize() == 2) {
-            r = 3000;
-        } else {
-        	if (crop.getSize() == 3 && crop.isBlockBelow("blockQuicksilver") == true && OreDictionary.doesOreNameExist("blockQuicksilver"))
-        	r = 1500;        	
-        else 
-        	{
-            r = 500;
-        }
-        }
-        return r;
-    }
+        	int r;
+        	if (ConfigValures.Debug == true)
+        		r = 1;
+        	else if (crop.getSize() == 1)
+                r = 2250;
+        	else if (crop.getSize() == 2 && crop.isBlockBelow("blockQuicksilver") == true && OreDictionary.doesOreNameExist("blockQuicksilver"))
+            	r = 1750;        	
+            else 
+                r = 250;
+        	return r;
+            }
 	
     @Override
     public String discoveredBy() {
@@ -52,11 +48,11 @@ public class ShimmerleafCrop extends BasicThaumcraftCrop {
 	public boolean canGrow(ICropTile crop) {
 		boolean r;
     	if (ConfigValures.Debug == true)
-    		r = true;
-    	else if (crop.getSize() < 2)
-    		r = crop.getSize() < 2;
-    	else if (crop.getSize() == 3 && Operators.XOR(crop.isBlockBelow("blockQuicksilver"),Operators.NOT(OreDictionary.doesOreNameExist("blockQuicksilver"))))
-    		r = (crop.getSize() == 3 && Operators.XOR(crop.isBlockBelow("blockQuicksilver"),Operators.NOT(OreDictionary.doesOreNameExist("blockQuicksilver"))));
+    		r = crop.getSize() < 3;
+    	else if (crop.getSize() < 1)
+    		r = crop.getSize() < 1;
+    	else if (crop.getSize() == 2 && Operators.XOR(crop.isBlockBelow("blockQuicksilver"),Operators.NOT(OreDictionary.doesOreNameExist("blockQuicksilver"))))
+    		r = (crop.getSize() == 2 && Operators.XOR(crop.isBlockBelow("blockQuicksilver"),Operators.NOT(OreDictionary.doesOreNameExist("blockQuicksilver"))));
     	else
     		r = crop.getSize() < 3;
 		return r;

@@ -39,15 +39,14 @@ public class CopperOreBerryCrop extends BasicTinkerBerryCrop {
 
 		            // Ripens "quickly"
 		            r = 3000;
-		        } else {
-		        	if (crop.getSize() == 3 && crop.isBlockBelow("blockCopper") == true)
+		        } else if (crop.getSize() == 3 && crop.isBlockBelow("blockCopper") == true)
 		        	r = 1500;        	
 		        else 
 		        	{
 		            // Takes a while to grow from seed
 		            r = 500;
 		        }
-		        }
+		        
 		        return r;
 		    }
 		    

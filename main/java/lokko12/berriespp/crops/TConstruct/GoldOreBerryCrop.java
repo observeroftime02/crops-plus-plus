@@ -20,10 +20,6 @@ public class GoldOreBerryCrop extends BasicTinkerBerryCrop {
 				return "Gold "+ BasicTinkerBerryCrop.OBname(); 
 			}
 		       
-			@Override
-			public int tier() {
-		        return 7;
-		    }
 		    @Override
 		    public ItemStack getGain(ICropTile crop) {
 		    	if (crop.getSize() == 4 && crop.isBlockBelow("blockGold") == true)
@@ -43,14 +39,13 @@ public class GoldOreBerryCrop extends BasicTinkerBerryCrop {
 
 		            // Ripens "quickly"
 		            r = 3000;
-		        } else {
-		        	if (crop.getSize() == 3 && crop.isBlockBelow("blockGold") == true)
+		        } 
+		    	else if (crop.getSize() == 3 && crop.isBlockBelow("blockGold") == true)
 		        	r = 1500;        	
 		        else 
 		        	{
 		            // Takes a while to grow from seed
 		            r = 500;
-		        }
 		        }
 		        return r;
 		    }

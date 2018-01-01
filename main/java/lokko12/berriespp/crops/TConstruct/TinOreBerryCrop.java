@@ -22,7 +22,7 @@ public class TinOreBerryCrop extends BasicTinkerBerryCrop {
 		       
 			@Override
 			public int tier() {
-		        return 5;
+		        return 4;
 		    }
 		    @Override
 		    public ItemStack getGain(ICropTile crop) {
@@ -39,19 +39,14 @@ public class TinOreBerryCrop extends BasicTinkerBerryCrop {
 		    	if (ConfigValures.Debug == true)
 		    		r = 1;
 		    	// Same growth stages as melons and pumpkins
-		    	else if (crop.getSize() == 2) {
-
+		    	else if (crop.getSize() == 2) 
 		            // Ripens "quickly"
 		            r = 3000;
-		        } else {
-		        	if (crop.getSize() == 3 && crop.isBlockBelow("blockTin") == true)
+		         else if (crop.getSize() == 3 && crop.isBlockBelow("blockTin") == true)
 		        	r = 1500;        	
 		        else 
-		        	{
-		            // Takes a while to grow from seed
+		           // Takes a while to grow from seed
 		            r = 500;
-		        }
-		        }
 		        return r;
 		    }
 		    

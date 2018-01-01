@@ -27,7 +27,7 @@ public class MagicMetalBerryCrop extends BasicTinkerBerryCrop{
 			       
 				@Override
 				public int tier() {
-			        return 8;
+			        return 7;
 			    }
 			    @Override
 			    public ItemStack getGain(ICropTile crop) {
@@ -48,20 +48,20 @@ public class MagicMetalBerryCrop extends BasicTinkerBerryCrop{
 			    	if (ConfigValures.Debug == true)
 			    		return 1;
 			        if (crop.getSize() == 2)
-			            return 1500;
+			            return 1200;
 			        else
 			        if (Operators.AND(crop.getSize() == 3,Operators.OR(crop.isBlockBelow("blockThaumium"),crop.isBlockBelow("blockIron"))))
-			        	return 1500;     	
+			        	return 1800;     	
 			        else
 			        if (Operators.AND(crop.getSize() == 3,crop.isBlockBelow("blockVoid")))
-			            return 3000;
+			            return 3300;
 			        else
 			    	return 500;
 			    }
 			    
 				@Override
 				public String[] attributes() {
-			        return new String[] {"Berry", "Magic", "Tendrilly", "Metal", "Thaumium", "Void"};
+			        return new String[] {"Berry", "Magic", "Metal", "Tendrilly", "Thaumium", "Void"};
 				}
 				
 			    @Override

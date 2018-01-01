@@ -2,8 +2,10 @@ package lokko12.berriespp;
 
 import lokko12.berriespp.items.BppItems;
 import lokko12.croploadcore.ModsLoaded;
+import lokko12.croploadcore.Operators;
 import lokko12.croploadcore.OreDict;
 import lokko12.croploadcore.config;
+import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
@@ -19,7 +21,7 @@ import net.minecraftforge.common.config.Configuration;
 
 
 @Mod(
-	modid = "berriespp", name = "Berries++", version = "1.0.2pre",
+	modid = "berriespp", name = "Berries++", version = "1.0.2",
 	/*
 	 * Versions: 
 	 * 			 1=Realises
@@ -44,7 +46,8 @@ public class Berriespp {
 		CropLoader.load(preinit);
 		if (ConfigValures.OreDictPlants==true)
 		OreDict.register();
-		//BppItems.OreDictItems();
+		//BppItems.OreDictItems()
+		
 	}
 
 	@EventHandler

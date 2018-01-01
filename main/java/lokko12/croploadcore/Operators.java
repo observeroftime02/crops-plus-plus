@@ -23,4 +23,31 @@ public class Operators {
 	public static boolean NOT (boolean a) {
 	    return !a;
 	}
+	public static boolean Cab(boolean a, boolean b) {
+		/**
+		 * All true execpt
+		 * a=T b=F = false
+		 */
+		return	(NOR(NOR(NOR(a,a), b),NOR(NOR(a,a), b)));
+	}
+	public static boolean Cba(boolean a, boolean b) {
+		/**
+		 * All true execpt
+		 * a=F b=T = false
+		 */
+		return	(NOR(NOR(NOR(b,b), a),NOR(NOR(b,b), a)));
+		
+	}
+	public static boolean Epq(boolean a, boolean b) {
+		/**
+		 * true if a == b
+		 */
+		return	(NOR(NOR(NOR(a,b), a),NOR(NOR(a,b), a)));
+	}
+	public static boolean T(boolean a, boolean b) {
+		return true;
+	}
+	public static boolean F(boolean a, boolean b) {
+		return false;
+	}
 }

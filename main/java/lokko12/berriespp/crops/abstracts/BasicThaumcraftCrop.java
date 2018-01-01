@@ -18,7 +18,7 @@ public abstract class BasicThaumcraftCrop extends BasicCrop {
 	    
 	    @Override
 	    public int tier() {
-	        return 7;
+	        return 4;
 	    }
 
 	    @Override

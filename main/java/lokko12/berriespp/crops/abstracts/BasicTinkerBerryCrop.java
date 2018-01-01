@@ -25,7 +25,7 @@ public abstract class BasicTinkerBerryCrop extends BasicCrop {
     
     @Override
     public int tier() {
-        return 6;
+        return 5;
     }
 
 	@Override
