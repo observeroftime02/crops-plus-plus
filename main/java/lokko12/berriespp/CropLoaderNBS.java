@@ -10,6 +10,8 @@ import net.minecraftforge.common.config.Configuration;
 //IC2API
 import ic2.api.crops.CropCard;
 import ic2.api.crops.Crops;
+import lokko12.berriespp.crops.BoP.TurnipCrop;
+import lokko12.berriespp.crops.BoP.WildCarrotsCrop;
 import lokko12.berriespp.crops.TC.CinderpearlCrop;
 import lokko12.berriespp.crops.TC.ShimmerleafCrop;
 //Crops
@@ -17,10 +19,20 @@ import lokko12.berriespp.crops.bpp.ArditeBerryCrop;
 import lokko12.berriespp.crops.bpp.CobaltBerryCrop;
 import lokko12.berriespp.crops.bpp.HuckleberryCrop;
 import lokko12.berriespp.crops.bpp.StrawberryCrop;
+import lokko12.berriespp.crops.bpp.WeedCrop;
 import lokko12.berriespp.crops.natura.BlackberryCrop;
 import lokko12.berriespp.crops.natura.BlueberryCrop;
 import lokko12.berriespp.crops.natura.MaloberryCrop;
 import lokko12.berriespp.crops.natura.RaspberryCrop;
+import lokko12.berriespp.crops.witchery.BelladonnaCrop;
+import lokko12.berriespp.crops.witchery.EmberMossCrop;
+import lokko12.berriespp.crops.witchery.GarlicCrop;
+import lokko12.berriespp.crops.witchery.GlintWeedCrop;
+import lokko12.berriespp.crops.witchery.MandragoraCrop;
+import lokko12.berriespp.crops.witchery.SnowbellCrop;
+import lokko12.berriespp.crops.witchery.SpanishMossCrop;
+import lokko12.berriespp.crops.witchery.WaterArtichokeCrop;
+import lokko12.berriespp.crops.witchery.WolfsBaneCrop;
 //Core
 import lokko12.croploadcore.ModsLoaded;
 import lokko12.croploadcore.config;
@@ -41,15 +53,16 @@ public class CropLoaderNBS {
 	private static boolean bHasCropObj[];
 	private CropCard cropObj;
 	
-private static List<CropCard> cropLoader() {
+public static List<CropCard> cropLoader() {
 	List<CropCard> p = new ArrayList<CropCard>();
 	/*
 	 * Add your crops without base seed here by
 	 * p.add(new CropLoader(new YourCropClass());
 	 */
-	if (lokko12.croploadcore.ModsLoaded.TConstruct)
+	if (lokko12.croploadcore.ModsLoaded.TConstruct) {
 	p.add(new ArditeBerryCrop());
 	p.add(new CobaltBerryCrop());
+	}
 	
 	//has Base seeds but is called via Oredict:
 	p.add(new StrawberryCrop()); 
@@ -58,8 +71,29 @@ private static List<CropCard> cropLoader() {
 	p.add(new BlueberryCrop()); 
 	p.add(new RaspberryCrop()); 
 	p.add(new HuckleberryCrop()); 
+	
+	if (lokko12.croploadcore.ModsLoaded.TC) {
 	p.add(new ShimmerleafCrop());
 	p.add(new CinderpearlCrop());
+	}
+	
+	//no ingame Textures	
+	if (lokko12.croploadcore.ModsLoaded.witchery) {
+	p.add(new GlintWeedCrop());
+	p.add(new SpanishMossCrop());
+	p.add(new BelladonnaCrop());
+	p.add(new MandragoraCrop());
+	p.add(new SnowbellCrop());
+	p.add(new WolfsBaneCrop());
+	p.add(new WaterArtichokeCrop());
+	p.add(new EmberMossCrop());
+	}
+	
+	p.add(new GarlicCrop());
+	
+	p.add(new TurnipCrop());
+	p.add(new WildCarrotsCrop());
+	//p.add(new WeedCrop());
 	return p;
 }
 

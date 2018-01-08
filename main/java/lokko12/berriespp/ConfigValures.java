@@ -9,4 +9,5 @@ public class ConfigValures {
 	public static float BerryGain=1;
 	public static float TConstructBerryGain=1;
 	public static float PrimordialBerryGain=(float) 0.5;
+	public static boolean WiPItems =false;
 }

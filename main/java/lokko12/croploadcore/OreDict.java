@@ -4,6 +4,7 @@ import biomesoplenty.api.content.BOPCBlocks;
 import ic2.api.crops.CropCard;
 import ic2.api.crops.Crops;
 import mods.natura.common.NContent;
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
@@ -106,6 +107,38 @@ public class OreDict {
 		 	if (ModsLoaded.TC) {
 		 	OreDictionary.registerOre("cropShimmerleaf",thaumcraft.api.ItemApi.getBlock("blockCustomPlant",2));
 		 	OreDictionary.registerOre("cropCinderpearl",thaumcraft.api.ItemApi.getBlock("blockCustomPlant",3));
+		 	}
+		 	
+		 //witchery Stuff
+		 	if (ModsLoaded.witchery) {
+		 	//Plants
+		 	OreDictionary.registerOre("cropGlintWeed",new ItemStack(com.emoniph.witchery.Witchery.Blocks.GLINT_WEED));
+			OreDictionary.registerOre("cropSpanishMoss",new ItemStack(com.emoniph.witchery.Witchery.Blocks.SPANISH_MOSS));
+			OreDictionary.registerOre("cropEmberMoss",new ItemStack(com.emoniph.witchery.Witchery.Blocks.EMBER_MOSS));
+			
+			//Seeds
+			OreDictionary.registerOre("seedWaterArtichoke", new ItemStack(com.emoniph.witchery.Witchery.Items.SEEDS_ARTICHOKE));
+			OreDictionary.registerOre("seedWolfsBane", new ItemStack(com.emoniph.witchery.Witchery.Items.SEEDS_WOLFSBANE));
+			OreDictionary.registerOre("seedMandrake", new ItemStack(com.emoniph.witchery.Witchery.Items.SEEDS_MANDRAKE));
+			OreDictionary.registerOre("seedSnowbell", new ItemStack(com.emoniph.witchery.Witchery.Items.SEEDS_SNOWBELL));
+			OreDictionary.registerOre("seedBelladonna", new ItemStack(com.emoniph.witchery.Witchery.Items.SEEDS_BELLADONNA));
+			
+			OreDictionary.registerOre("listAllseed", new ItemStack(com.emoniph.witchery.Witchery.Items.SEEDS_ARTICHOKE));
+			OreDictionary.registerOre("listAllseed", new ItemStack(com.emoniph.witchery.Witchery.Items.SEEDS_WOLFSBANE));
+			OreDictionary.registerOre("listAllseed", new ItemStack(com.emoniph.witchery.Witchery.Items.SEEDS_MANDRAKE));
+			OreDictionary.registerOre("listAllseed", new ItemStack(com.emoniph.witchery.Witchery.Items.SEEDS_SNOWBELL));
+			OreDictionary.registerOre("listAllseed", new ItemStack(com.emoniph.witchery.Witchery.Items.SEEDS_BELLADONNA));
+			
+			//items
+			OreDictionary.registerOre("itemWaterArtichoke", new ItemStack(com.emoniph.witchery.Witchery.Items.GENERIC,1,69));
+			OreDictionary.registerOre("itemWolfsBane", new ItemStack(com.emoniph.witchery.Witchery.Items.GENERIC,1,156));
+			OreDictionary.registerOre("itemMandrake", new ItemStack(com.emoniph.witchery.Witchery.Items.GENERIC,1,22));
+			OreDictionary.registerOre("itemSnowbell", new ItemStack(com.emoniph.witchery.Witchery.Items.GENERIC,1,78));
+			OreDictionary.registerOre("itemBelladonna", new ItemStack(com.emoniph.witchery.Witchery.Items.GENERIC,1,21));
+			OreDictionary.registerOre("itemGypsum",new ItemStack(com.emoniph.witchery.Witchery.Items.GENERIC,1,17));
+			
+			//dusts
+			OreDictionary.registerOre("dustQuicklime",new ItemStack(com.emoniph.witchery.Witchery.Items.GENERIC,1,16));
 		 	}
 		 isregistered=true;
 		}

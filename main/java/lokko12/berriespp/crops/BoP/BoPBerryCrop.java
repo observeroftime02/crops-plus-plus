@@ -10,7 +10,9 @@ public class BoPBerryCrop extends BasicBerryCrop {
 
 
 	public BoPBerryCrop ()
-	{}
+	{
+		super();
+	}
 	
 	@Override
     public String name() {

@@ -32,4 +32,17 @@ public abstract class BasicCrop extends ic2.api.crops.CropCard {
 	public ItemStack getGain(ICropTile crop) {
     	return OreDict.ISget("crop"+this.name());
 	}
+	
+	@Override
+	public String discoveredBy() {
+	    return "bartimaeusnek";
+	}
+	
+	@Override
+	public String owner() {
+		return "berriespp";
+	}
+	
+	
+	
 }

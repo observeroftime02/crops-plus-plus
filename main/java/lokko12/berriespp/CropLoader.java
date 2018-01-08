@@ -94,7 +94,7 @@ private static CropLoader CropHelper(CropCard cropObj) {
 	return new CropLoader(cropObj,OreDict.ISget("crop"+cropObj.name()));
 }
 
-private static List<CropLoader> cropLoader() {
+public static List<CropLoader> cropLoader() {
 	
 	List<CropLoader> p = new ArrayList<CropLoader>();
 	
@@ -173,10 +173,12 @@ public static void load(FMLPreInitializationEvent preinit){
 	config c = new config(preinit, "berriespp.cfg");
 	c.tConfig.addCustomCategoryComment("System", "enable or disable system config:"
 			+ "\nDebug will set all crops groth duration to 1 and disable all requirements.(aka. \"Cheatmode\")"
-			+ "\nBonsai Generation will generate crops from saplings, WiP state. (disabled bc of bugs with metadata, but sure you can try it.)");
-	ConfigValures.Debug = c.tConfig.get("System", "Debug", false).getBoolean(true);
-	ConfigValures.ayo_bonsai = c.tConfig.get("System", "Bonsai Generation", false).getBoolean(true);
-	ConfigValures.OreDictPlants = c.tConfig.get("System", "Register plants to OreDict", true).getBoolean(false);
+			+ "\nBonsai Generation will generate crops from saplings, WiP state. (disabled bc of bugs with metadata, but sure you can try it.)"
+			+ "\nWiP Items are not finished Items");
+	ConfigValures.Debug 		= c.tConfig.get("System", "Debug", false).getBoolean(true);
+	ConfigValures.ayo_bonsai 	= c.tConfig.get("System", "Bonsai Generation", false).getBoolean(true);
+	ConfigValures.WiPItems 		= c.tConfig.get("System", "WiP Items", false).getBoolean(true);
+	//ConfigValures.OreDictPlants = c.tConfig.get("System", "Register plants to OreDict", true).getBoolean(false);
 	
 	c.tConfig.addCustomCategoryComment("Mods", "enable crops from mods here:");
 	mods[0]=c.tConfig.get("Mods", "Natura", true).getBoolean(false);

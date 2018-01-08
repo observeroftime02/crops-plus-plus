@@ -21,14 +21,14 @@ import net.minecraftforge.common.config.Configuration;
 
 
 @Mod(
-	modid = "berriespp", name = "Berries++", version = "1.0.2",
+	modid = "berriespp", name = "Berries++", version = "1.1.0",
 	/*
 	 * Versions: 
 	 * 			 1=Realises
 	 * 			 0=Milestones
 	 * 			 0=internal version Nr 
 	 */
-	dependencies = "required-after:IC2; after:Mantle; after:Natura; after:TConstruct; after:BiomesOPlenty; after:Thaumcraft; after:ExtraTrees;"
+	dependencies = "required-after:IC2; after:gregtech; after:Mantle; after:Natura; after:TConstruct; after:BiomesOPlenty; after:Thaumcraft; after:ExtraTrees; after:witchery"
 	)
 
 public class Berriespp {
@@ -41,12 +41,11 @@ public class Berriespp {
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent preinit) {
 		ModsLoaded.check_init(name);
-		//BppItems.register_Items();
+		BppItems.register_Items();
 		CropLoaderNBS.load(preinit);
 		CropLoader.load(preinit);
-		if (ConfigValures.OreDictPlants==true)
 		OreDict.register();
-		//BppItems.OreDictItems()
+		BppItems.OreDictItems();
 		
 	}
 
@@ -61,7 +60,7 @@ public class Berriespp {
 		CropLoader.register();
 	/*
 	 * TODO:
-	 * 1. Witchery, Pam's Harvestcraft, Twilight Forrest
+	 * 1. Pam's Harvestcraft, Twilight Forrest
 	 * 2. OreDict EVERYTHING!
 	 */
 		}

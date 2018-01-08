@@ -1,0 +1,113 @@
+package lokko12.berriespp.items;
+
+import java.util.List;
+import java.util.Set;
+import com.google.common.collect.Sets;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import ic2.core.IC2;
+import ic2.core.Ic2Items;
+import ic2.core.crop.IC2Crops;
+import ic2.core.crop.TileEntityCrop;
+import ic2.core.util.StackUtil;
+import lokko12.berriespp.crops.bpp.GrassCrop;
+import lokko12.berriespp.crops.bpp.WeedCrop;
+import lokko12.croploadcore.MyRandom;
+import lokko12.croploadcore.Operators;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemHoe;
+import net.minecraft.item.ItemSpade;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemTool;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.IIcon;
+import net.minecraft.world.World;
+
+public class ItemBppSpade extends ItemSpade {
+		public IIcon icon;
+		private static Set BlocksAffected = Sets.newHashSet(new Block[] {Blocks.grass, Blocks.dirt, Blocks.snow_layer, Blocks.farmland, Blocks.mycelium});
+		private static float efficiencyOnProperMaterial = 4.0F;
+		
+		public ItemBppSpade() {
+			super(Item.ToolMaterial.IRON);
+			this.setUnlocalizedName("Spade");
+	        this.setMaxStackSize(1);
+	        this.setCreativeTab(CreativeTab.bpp);
+	        this.setTextureName("bpp:itemSpade");
+	        this.setMaxDamage(0);
+	        }
+		
+		@Override
+	    @SideOnly(Side.CLIENT)
+	    public void addInformation (ItemStack stack, EntityPlayer player, List list, boolean par4)
+		{
+			list.add("Weeding Trowel, Shovel and Hoe in one Item!");
+			list.add("Lower tier plants has a higher chanche to generate seeds when digged!");
+		}
+		
+		@Override
+		public boolean onItemUseFirst(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
+	        TileEntity te = world.getTileEntity(x, y, z);
+	        if (te instanceof TileEntityCrop) {
+	            TileEntityCrop crop = (TileEntityCrop)te;
+	            if (crop.getCrop() instanceof ic2.api.crops.CropCard && crop.getCrop().tier()>=1) {
+	            		if(MyRandom.intrandom(100, 0) <= 100*Operators.csig((float)crop.getCrop().tier(),12,false)) {
+	            			if (crop.getCrop().getGain(crop) != null && crop.getCrop().canBeHarvested(crop))
+	            				StackUtil.dropAsEntity(world, x, y, z, crop.getCrop().getGain(crop));
+	            			StackUtil.dropAsEntity(world, x, y, z, crop.generateSeeds(crop.getCrop(), crop.getGrowth(), crop.getGain(), crop.getResistance(), crop.getScanLevel()));
+	                    }
+	            }
+	            else {
+	            	StackUtil.dropAsEntity(world, x, y, z, new ItemStack(Ic2Items.weed.getItem(), crop.size));
+	            	if (crop.getCrop().name()=="weed") {
+	            		if (crop.getSize() == crop.getCrop().maxSize())
+	            		StackUtil.dropAsEntity(world, x, y, z, crop.generateSeeds(crop.getCrop(), crop.getGrowth(), crop.getGain(), crop.getResistance(), crop.getScanLevel()));
+	            	}
+	            	else
+	            		if (crop.getCrop().getGain(crop) != null && crop.getCrop().canBeHarvested(crop))
+	            			StackUtil.dropAsEntity(world, x, y, z, crop.getCrop().getGain(crop));
+	            	StackUtil.dropAsEntity(world, x, y, z, crop.generateSeeds(crop.getCrop(), crop.getGrowth(), crop.getGain(), crop.getResistance(), crop.getScanLevel()));
+	            }
+	            crop.reset();
+	            return true; 
+	        }
+	       return false;
+		}
+		
+		@Override
+		public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
+			 	if (side != 0 && world.getBlock(x, y + 1, z).getMaterial() == Material.air && (world.getBlock(x, y, z) == Blocks.grass || world.getBlock(x, y, z) == Blocks.dirt || world.getBlock(x, y, z) == Blocks.mycelium))
+	            {
+	               		world.setBlock(x, y, z, Blocks.farmland);
+	               		return true;
+	            }
+	            else if (side != 0 && world.getBlock(x, y + 1, z).getMaterial() == Material.air && (world.getBlock(x, y, z) == Blocks.farmland))
+	            {
+		               world.setBlock(x, y, z, Blocks.dirt);
+		               return true;
+		        }
+	            else
+	            {
+	                return false;
+	            }
+		}
+		
+		@Override
+		public boolean onBlockDestroyed(ItemStack p_150894_1_, World p_150894_2_, Block p_150894_3_, int p_150894_4_, int p_150894_5_, int p_150894_6_, EntityLivingBase p_150894_7_) {
+			return true;
+		}
+		
+		@Override
+		public boolean hitEntity(ItemStack p_77644_1_, EntityLivingBase p_77644_2_, EntityLivingBase p_77644_3_){
+	        return true;
+	    }
+		
+}
+

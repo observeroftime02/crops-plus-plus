@@ -9,7 +9,7 @@ import ic2.api.crops.Crops;
 import ic2.api.crops.ICropTile;
 import lokko12.berriespp.CropLoader;
 import lokko12.berriespp.crops.abstracts.BasicDecorationCrop;
-import lokko12.croploadcore.Intrandom;
+import lokko12.croploadcore.MyRandom;
 import lokko12.croploadcore.ModsLoaded;
 import lokko12.croploadcore.Operators;
 import net.minecraft.entity.Entity;
@@ -122,7 +122,7 @@ public class GrassCrop extends BasicDecorationCrop{
 	    	if (crop.getSize() == 4)
 	    	return new ItemStack(Item.getItemById(32),1,0);	
 	    	if (crop.getSize() == 3) {
-	    	random = Intrandom.intrandom(10);
+	    	random = MyRandom.intrandom(0,10);
 	    	switch (random){
 	    		case 9:
 	    			return new ItemStack(Item.getItemById(175),1,3);
@@ -130,7 +130,7 @@ public class GrassCrop extends BasicDecorationCrop{
 	    			return new ItemStack(Item.getItemById(31),1,2);
 	    		}
 	    	}
-	    	random = Intrandom.intrandom(10);
+	    	random = MyRandom.intrandom(0,10);
 	    	switch (random){
 	    		case 9:
 	    			return new ItemStack(Item.getItemById(175),1,2);

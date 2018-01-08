@@ -1,5 +1,11 @@
 The missing resources for domain bpp are:
 
+textures/blocks/crop/blockCrop.GoldOreBerry.3.png
+textures/blocks/crop/blockCrop.GoldOreBerry.4.png
+textures/blocks/crop/blockCrop.TinOreBerry.2.png
+textures/blocks/crop/blockCrop.TinOreBerry.3.png
+textures/blocks/crop/blockCrop.TinOreBerry.4.png
+
 textures/blocks/crop/blockCrop.Magic Metal Berry.1.png
 textures/blocks/crop/blockCrop.Magic Metal Berry.2.png
 textures/blocks/crop/blockCrop.Magic Metal Berry.3.png

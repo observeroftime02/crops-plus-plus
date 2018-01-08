@@ -50,4 +50,13 @@ public class Operators {
 	public static boolean F(boolean a, boolean b) {
 		return false;
 	}
+	public static float csig(float input, float modifier, boolean rising) {
+		/**
+		 * Calculates a percentage in a coustom way
+		 */
+		if (rising == false)
+	    return (float) ((float) 1 + Math.tanh((-1.0)*input/modifier));
+		else
+		return (float) ((float) 1 + Math.tanh(input/modifier));
+	}
 }
