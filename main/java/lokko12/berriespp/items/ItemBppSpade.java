@@ -38,9 +38,9 @@ public class ItemBppSpade extends ItemSpade {
 		public ItemBppSpade() {
 			super(Item.ToolMaterial.IRON);
 			this.setUnlocalizedName("Spade");
+			this.setTextureName("bpp:itemSpade");
 	        this.setMaxStackSize(1);
 	        this.setCreativeTab(CreativeTab.bpp);
-	        this.setTextureName("bpp:itemSpade");
 	        this.setMaxDamage(0);
 	        }
 		
@@ -49,37 +49,44 @@ public class ItemBppSpade extends ItemSpade {
 	    public void addInformation (ItemStack stack, EntityPlayer player, List list, boolean par4)
 		{
 			list.add("Weeding Trowel, Shovel and Hoe in one Item!");
-			list.add("Lower tier plants has a higher chanche to generate seeds when digged!");
+			list.add("Indestructible");
 		}
 		
 		@Override
 		public boolean onItemUseFirst(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
-	        TileEntity te = world.getTileEntity(x, y, z);
+			if (!IC2.platform.isSimulating())
+	            return false;
+			TileEntity te = world.getTileEntity(x, y, z);
 	        if (te instanceof TileEntityCrop) {
 	            TileEntityCrop crop = (TileEntityCrop)te;
-	            if (crop.getCrop() instanceof ic2.api.crops.CropCard && crop.getCrop().tier()>=1) {
-	            		if(MyRandom.intrandom(100, 0) <= 100*Operators.csig((float)crop.getCrop().tier(),12,false)) {
+	            if (crop.getCrop() != null) {
+	            	if (crop.getCrop() instanceof ic2.api.crops.CropCard && crop.getCrop().tier()>=1) {
+	            		float i = crop.getCrop().tier()+5*((crop.getResistance()+crop.getGain()+crop.getGrowth())/21);
+	            			if(MyRandom.intrandom(100, 0) <= 100*Operators.csig(i,12,false)) {
+	            				if (crop.getCrop().getGain(crop) != null && crop.getCrop().canBeHarvested(crop))
+	            					StackUtil.dropAsEntity(world, x, y, z, crop.getCrop().getGain(crop));
+	            				StackUtil.dropAsEntity(world, x, y, z, crop.generateSeeds(crop.getCrop(), crop.getGrowth(), crop.getGain(), crop.getResistance(), crop.getScanLevel()));
+	            			}
+	            	}
+	            	else {
+	            		StackUtil.dropAsEntity(world, x, y, z, new ItemStack(Ic2Items.weed.getItem(), crop.size));
+	            		if (crop.getCrop().name()=="weed") {
+	            			if (crop.getSize() == crop.getCrop().maxSize())
+	            				StackUtil.dropAsEntity(world, x, y, z, crop.generateSeeds(crop.getCrop(), crop.getGrowth(), crop.getGain(), crop.getResistance(), crop.getScanLevel()));
+	            		}
+	            		else
 	            			if (crop.getCrop().getGain(crop) != null && crop.getCrop().canBeHarvested(crop))
 	            				StackUtil.dropAsEntity(world, x, y, z, crop.getCrop().getGain(crop));
-	            			StackUtil.dropAsEntity(world, x, y, z, crop.generateSeeds(crop.getCrop(), crop.getGrowth(), crop.getGain(), crop.getResistance(), crop.getScanLevel()));
-	                    }
-	            }
-	            else {
-	            	StackUtil.dropAsEntity(world, x, y, z, new ItemStack(Ic2Items.weed.getItem(), crop.size));
-	            	if (crop.getCrop().name()=="weed") {
-	            		if (crop.getSize() == crop.getCrop().maxSize())
 	            		StackUtil.dropAsEntity(world, x, y, z, crop.generateSeeds(crop.getCrop(), crop.getGrowth(), crop.getGain(), crop.getResistance(), crop.getScanLevel()));
 	            	}
-	            	else
-	            		if (crop.getCrop().getGain(crop) != null && crop.getCrop().canBeHarvested(crop))
-	            			StackUtil.dropAsEntity(world, x, y, z, crop.getCrop().getGain(crop));
-	            	StackUtil.dropAsEntity(world, x, y, z, crop.generateSeeds(crop.getCrop(), crop.getGrowth(), crop.getGain(), crop.getResistance(), crop.getScanLevel()));
-	            }
-	            crop.reset();
-	            return true; 
+	            	crop.reset();
+	            	return true; 
 	        }
+	        crop.reset();
+            return true;     
+	    }
 	       return false;
-		}
+	}
 		
 		@Override
 		public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
@@ -100,12 +107,12 @@ public class ItemBppSpade extends ItemSpade {
 		}
 		
 		@Override
-		public boolean onBlockDestroyed(ItemStack p_150894_1_, World p_150894_2_, Block p_150894_3_, int p_150894_4_, int p_150894_5_, int p_150894_6_, EntityLivingBase p_150894_7_) {
+		public boolean onBlockDestroyed(ItemStack stack, World p_150894_2_, Block p_150894_3_, int p_150894_4_, int p_150894_5_, int p_150894_6_, EntityLivingBase player) {
 			return true;
 		}
 		
 		@Override
-		public boolean hitEntity(ItemStack p_77644_1_, EntityLivingBase p_77644_2_, EntityLivingBase p_77644_3_){
+		public boolean hitEntity(ItemStack stack, EntityLivingBase p_77644_2_, EntityLivingBase player){
 	        return true;
 	    }
 		

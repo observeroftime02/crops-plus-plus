@@ -13,7 +13,6 @@ import net.minecraft.item.ItemStack;
 public class VineCrop extends BasicDecorationCrop {
     public VineCrop() {
     	super();
-    	OreDict.BSget("crop"+this.name(),this);
     	}
 
     @Override

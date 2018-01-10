@@ -80,6 +80,12 @@ public class PrimordialPearlBerryCrop extends BasicCrop {
 	}
 	
 	@Override
+	public boolean canCross(ICropTile crop) {
+		return false;
+	}
+	
+	
+	@Override
 	public ItemStack getSeeds(ICropTile crop) {
 		return crop.generateSeeds(crop.getCrop(),(byte)1,(byte)1,(byte)1, crop.getScanLevel());
 	}

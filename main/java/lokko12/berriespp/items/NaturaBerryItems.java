@@ -27,7 +27,7 @@ public class NaturaBerryItems extends ItemFood
 {
     public IIcon[] icons;
     
-    public String[] textureNames = new String[] {"rasp", "blue", "black", "geo", "Cactus"};
+    public String[] textureNames = new String[] {"rasp", "blue", "black", "geo", "cactus"};
 
     public NaturaBerryItems(int heal)
     {

@@ -29,6 +29,12 @@ public abstract class BasicCrop extends ic2.api.crops.CropCard {
 	}
 	
 	@Override
+	public boolean canCross(ICropTile crop) {
+		return crop.getSize() == maxSize();
+	}
+	
+	
+	@Override
 	public ItemStack getGain(ICropTile crop) {
     	return OreDict.ISget("crop"+this.name());
 	}

@@ -178,7 +178,6 @@ public static void load(FMLPreInitializationEvent preinit){
 	ConfigValures.Debug 		= c.tConfig.get("System", "Debug", false).getBoolean(true);
 	ConfigValures.ayo_bonsai 	= c.tConfig.get("System", "Bonsai Generation", false).getBoolean(true);
 	ConfigValures.WiPItems 		= c.tConfig.get("System", "WiP Items", false).getBoolean(true);
-	//ConfigValures.OreDictPlants = c.tConfig.get("System", "Register plants to OreDict", true).getBoolean(false);
 	
 	c.tConfig.addCustomCategoryComment("Mods", "enable crops from mods here:");
 	mods[0]=c.tConfig.get("Mods", "Natura", true).getBoolean(false);

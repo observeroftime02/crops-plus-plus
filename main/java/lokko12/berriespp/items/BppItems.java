@@ -1,12 +1,18 @@
 package lokko12.berriespp.items;
 
 import biomesoplenty.api.content.BOPCBlocks;
+import cpw.mods.fml.common.registry.ExistingSubstitutionException;
+import cpw.mods.fml.common.registry.GameData;
+import cpw.mods.fml.common.registry.GameData.GameDataSnapshot;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.GameRegistry.Type;
 import gregtech.api.enums.ToolDictNames;
 import ic2.core.Ic2Items;
+import ic2.core.init.InternalName;
 import lokko12.berriespp.ConfigValures;
 import lokko12.croploadcore.ModsLoaded;
 import lokko12.croploadcore.OreDict;
+import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -14,6 +20,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
 public final class BppItems {
+	public enum InternalName2 {BppCrop};
 	public final static Item BerryItems = new NaturaBerryItems(1).setUnlocalizedName("berry");
 	public final static Item itemSpade = new ItemBppSpade();
 	public final static Item itemWCan = new ItemBppWateringCan();
@@ -23,11 +30,13 @@ public final class BppItems {
 			GameRegistry.registerItem(itemSpade, "itemSpade");
 			if (ConfigValures.WiPItems==true)
 			GameRegistry.registerItem(itemWCan,"itemWateringCan");
-			if (!ModsLoaded.GT)
+			if (!ModsLoaded.GT) {
 				GameRegistry.addRecipe(itemSpadeStack, new Object[] {" P ", "PWP", " S ", 'P', OreDict.ISget("plateDenseSteel"), 'W', Ic2Items.weedingTrowel.getItem(),'S',Items.stick});
-			else
+			}
+			else {
 				//gregtech.api.util.GT_ModHandler.addCraftingRecipe(itemSpadeStack,new Object[] {"fPh","PWP"," S ",'P', OreDict.ISget("plateDenseSteel"),'W', Ic2Items.weedingTrowel.getItem(),'S',Items.stick});
 				GameRegistry.addRecipe(itemSpadeStack, new Object[] {"fPh", "PWP", " S ", 'f',OreDict.ISget("craftingToolFile"),'h',OreDict.ISget("craftingToolHardHammer"), 'P',OreDict.ISget("plateDenseSteel"), 'W', Ic2Items.weedingTrowel.getItem(),'S',Items.stick});
+			}
 			if (ModsLoaded.Natura==false) {
 	        GameRegistry.registerItem(BerryItems, "berry");
 	        GameRegistry.registerCustomItemStack("berryRasp", new ItemStack(BerryItems, 1, 0));

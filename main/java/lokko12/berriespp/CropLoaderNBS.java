@@ -20,8 +20,10 @@ import lokko12.berriespp.crops.bpp.CobaltBerryCrop;
 import lokko12.berriespp.crops.bpp.HuckleberryCrop;
 import lokko12.berriespp.crops.bpp.StrawberryCrop;
 import lokko12.berriespp.crops.bpp.WeedCrop;
+import lokko12.berriespp.crops.natura.BarleyCrop;
 import lokko12.berriespp.crops.natura.BlackberryCrop;
 import lokko12.berriespp.crops.natura.BlueberryCrop;
+import lokko12.berriespp.crops.natura.CottonCrop;
 import lokko12.berriespp.crops.natura.MaloberryCrop;
 import lokko12.berriespp.crops.natura.RaspberryCrop;
 import lokko12.berriespp.crops.witchery.BelladonnaCrop;
@@ -70,14 +72,13 @@ public static List<CropCard> cropLoader() {
 	p.add(new BlackberryCrop()); 
 	p.add(new BlueberryCrop()); 
 	p.add(new RaspberryCrop()); 
-	p.add(new HuckleberryCrop()); 
+	//p.add(new HuckleberryCrop()); 
 	
 	if (lokko12.croploadcore.ModsLoaded.TC) {
 	p.add(new ShimmerleafCrop());
 	p.add(new CinderpearlCrop());
 	}
 	
-	//no ingame Textures	
 	if (lokko12.croploadcore.ModsLoaded.witchery) {
 	p.add(new GlintWeedCrop());
 	p.add(new SpanishMossCrop());
@@ -86,7 +87,7 @@ public static List<CropCard> cropLoader() {
 	p.add(new SnowbellCrop());
 	p.add(new WolfsBaneCrop());
 	p.add(new WaterArtichokeCrop());
-	p.add(new EmberMossCrop());
+	//p.add(new EmberMossCrop());
 	}
 	
 	p.add(new GarlicCrop());
@@ -94,6 +95,8 @@ public static List<CropCard> cropLoader() {
 	p.add(new TurnipCrop());
 	p.add(new WildCarrotsCrop());
 	//p.add(new WeedCrop());
+	p.add(new BarleyCrop());
+	p.add(new CottonCrop());
 	return p;
 }
 

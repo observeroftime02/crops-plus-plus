@@ -15,6 +15,7 @@ public class TurnipCrop extends BasicFoodCrop {
 	{
 		super();
 		OreDict.BSget("crop"+this.name(),this);
+		OreDict.BSget("seed"+this.name(),this);
 	}
 	
 	@Override

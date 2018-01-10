@@ -2,7 +2,7 @@ package lokko12.berriespp.crops.abstracts;
 
 import ic2.api.crops.ICropTile;
 
-public abstract class BasicFoodCrop extends BasicCrop {
+public abstract class BasicFoodCrop extends BasicDecorationCrop {
 	
 	public BasicFoodCrop()
 	{

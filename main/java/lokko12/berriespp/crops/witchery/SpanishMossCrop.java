@@ -22,7 +22,7 @@ public class SpanishMossCrop extends FloweringVinesCrop{
 
 	@Override
 	public int tier() {
-		return super.tier()+1;
+		return 7;
 	}
 	
     @Override

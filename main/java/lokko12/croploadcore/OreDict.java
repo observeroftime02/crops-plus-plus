@@ -33,7 +33,6 @@ public class OreDict {
 	
 	public static void register() {
 
-		
 		if (isregistered==false){
 		//Grass
 			OreDictionary.registerOre("cropGrass", new ItemStack(Item.getItemById(32),1,0));
@@ -67,16 +66,20 @@ public class OreDict {
 		 }
 		 
 		 //Vines
+		 	 OreDictionary.registerOre("cropVine",Item.getItemById(106));
 		 	 OreDictionary.registerOre("cropVines",Item.getItemById(106));
 		 
 		 if (ModsLoaded.BoP)
 		 {
-			 OreDictionary.registerOre("cropVines",new ItemStack(BOPCBlocks.flowerVine,1,0));
-		 	 OreDictionary.registerOre("cropVines",new ItemStack(BOPCBlocks.ivy,1,0));
+			 OreDictionary.registerOre("cropVine",new ItemStack(BOPCBlocks.flowerVine,1,0));
+			 OreDictionary.registerOre("cropFloweringVines",new ItemStack(BOPCBlocks.flowerVine,1,0));
+		 	 OreDictionary.registerOre("cropVine",new ItemStack(BOPCBlocks.ivy,1,0));
+		 	 OreDictionary.registerOre("cropIvy",new ItemStack(BOPCBlocks.ivy,1,0));
 		 }
 		
 		 if (ModsLoaded.Natura) {
-			 OreDictionary.registerOre("cropVines",new ItemStack(NContent.thornVines));
+			 OreDictionary.registerOre("cropVine",new ItemStack(NContent.thornVines));
+			 OreDictionary.registerOre("cropThornVines",new ItemStack(NContent.thornVines));
 		 }
 		 //Cacti
 		 OreDictionary.registerOre("cropCacti", new ItemStack(Item.getItemById(81),1,0));
@@ -111,6 +114,11 @@ public class OreDict {
 		 	
 		 //witchery Stuff
 		 	if (ModsLoaded.witchery) {
+		 	
+		 	//herb
+		 	OreDictionary.registerOre("listAllherb",new ItemStack(com.emoniph.witchery.Witchery.Items.SEEDS_GARLIC));
+		 	OreDictionary.registerOre("listAllherb",new ItemStack(com.emoniph.witchery.Witchery.Items.GENERIC,1,69));
+		 	
 		 	//Plants
 		 	OreDictionary.registerOre("cropGlintWeed",new ItemStack(com.emoniph.witchery.Witchery.Blocks.GLINT_WEED));
 			OreDictionary.registerOre("cropSpanishMoss",new ItemStack(com.emoniph.witchery.Witchery.Blocks.SPANISH_MOSS));
