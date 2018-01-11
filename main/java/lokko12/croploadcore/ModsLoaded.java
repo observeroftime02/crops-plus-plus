@@ -11,6 +11,7 @@ public class ModsLoaded {
 	public static boolean BoP = false;
 	public static boolean TC = false;
 	public static boolean witchery = false;
+	
 	public static void check_init(String name) {
 		IC2 = Loader.isModLoaded("IC2");
 		Natura = Loader.isModLoaded("Natura");
@@ -19,6 +20,7 @@ public class ModsLoaded {
 		TC=Loader.isModLoaded("Thaumcraft");
 		witchery=Loader.isModLoaded("witchery");
 		GT=Loader.isModLoaded("gregtech");
+		
 		if (ModsLoaded.IC2 == true)
 			FMLLog.info("IC2 found! "+name+" will now load!");
 		else 
@@ -49,6 +51,7 @@ public class ModsLoaded {
 			FMLLog.info("Gregtech found! "+name+" will use their items!");
 		else
 			FMLLog.warning("Gregtech NOT found! "+name+" will NOT use their items!");
+		
 	}
 	
 }

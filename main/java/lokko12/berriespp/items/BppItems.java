@@ -20,23 +20,16 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
 public final class BppItems {
-	public enum InternalName2 {BppCrop};
 	public final static Item BerryItems = new NaturaBerryItems(1).setUnlocalizedName("berry");
 	public final static Item itemSpade = new ItemBppSpade();
 	public final static Item itemWCan = new ItemBppWateringCan();
 	public final static ItemStack itemSpadeStack = new ItemStack(itemSpade);
 	
 	public static void register_Items() {
+			if (ConfigValures.Items==true)
 			GameRegistry.registerItem(itemSpade, "itemSpade");
 			if (ConfigValures.WiPItems==true)
 			GameRegistry.registerItem(itemWCan,"itemWateringCan");
-			if (!ModsLoaded.GT) {
-				GameRegistry.addRecipe(itemSpadeStack, new Object[] {" P ", "PWP", " S ", 'P', OreDict.ISget("plateDenseSteel"), 'W', Ic2Items.weedingTrowel.getItem(),'S',Items.stick});
-			}
-			else {
-				//gregtech.api.util.GT_ModHandler.addCraftingRecipe(itemSpadeStack,new Object[] {"fPh","PWP"," S ",'P', OreDict.ISget("plateDenseSteel"),'W', Ic2Items.weedingTrowel.getItem(),'S',Items.stick});
-				GameRegistry.addRecipe(itemSpadeStack, new Object[] {"fPh", "PWP", " S ", 'f',OreDict.ISget("craftingToolFile"),'h',OreDict.ISget("craftingToolHardHammer"), 'P',OreDict.ISget("plateDenseSteel"), 'W', Ic2Items.weedingTrowel.getItem(),'S',Items.stick});
-			}
 			if (ModsLoaded.Natura==false) {
 	        GameRegistry.registerItem(BerryItems, "berry");
 	        GameRegistry.registerCustomItemStack("berryRasp", new ItemStack(BerryItems, 1, 0));
@@ -45,6 +38,18 @@ public final class BppItems {
 	        GameRegistry.registerCustomItemStack("berryMalo", new ItemStack(BerryItems, 1, 3));
 	        GameRegistry.registerCustomItemStack("berrySaguaro", new ItemStack(BerryItems, 1, 4));
 			}
+	}
+	
+	public static void register_recipes() {
+		if (ConfigValures.Items==true) {
+			if (!ModsLoaded.GT) {
+				GameRegistry.addRecipe(itemSpadeStack, new Object[] {" P ", "PWP", " S ", 'P', OreDict.ISget("plateDenseSteel"), 'W', Ic2Items.weedingTrowel.getItem(),'S',Items.stick});
+			}
+			else {
+				//gregtech.api.util.GT_ModHandler.addCraftingRecipe(itemSpadeStack,new Object[] {"fPh","PWP"," S ",'P', OreDict.ISget("plateDenseSteel"),'W', Ic2Items.weedingTrowel.getItem(),'S',Items.stick});
+				GameRegistry.addRecipe(itemSpadeStack, new Object[] {"fPh", "PWP", " S ", 'f',OreDict.ISget("craftingToolFile"),'h',OreDict.ISget("craftingToolHardHammer"), 'P',OreDict.ISget("plateDenseSteel"), 'W', Ic2Items.weedingTrowel.getItem(),'S',Items.stick});
+			}
+		}
 	}
 	
 	public static void OreDictItems() {

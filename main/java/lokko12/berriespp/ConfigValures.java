@@ -2,6 +2,7 @@ package lokko12.berriespp;
 
 public class ConfigValures {
 
+	public static boolean Items = false;
 	public static int PrimordialBerryGroth = 125000;
 	public static boolean ayo_bonsai = false; //ayo = add your own
 	public static boolean Debug = false;

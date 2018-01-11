@@ -174,10 +174,12 @@ public static void load(FMLPreInitializationEvent preinit){
 	c.tConfig.addCustomCategoryComment("System", "enable or disable system config:"
 			+ "\nDebug will set all crops groth duration to 1 and disable all requirements.(aka. \"Cheatmode\")"
 			+ "\nBonsai Generation will generate crops from saplings, WiP state. (disabled bc of bugs with metadata, but sure you can try it.)"
-			+ "\nWiP Items are not finished Items");
+			+ "\nWiP Items are not finished items."
+			+ "\nItems will enable/disable all items.");
 	ConfigValures.Debug 		= c.tConfig.get("System", "Debug", false).getBoolean(true);
 	ConfigValures.ayo_bonsai 	= c.tConfig.get("System", "Bonsai Generation", false).getBoolean(true);
 	ConfigValures.WiPItems 		= c.tConfig.get("System", "WiP Items", false).getBoolean(true);
+	ConfigValures.Items 		= c.tConfig.get("System", "Items", true).getBoolean(false);
 	
 	c.tConfig.addCustomCategoryComment("Mods", "enable crops from mods here:");
 	mods[0]=c.tConfig.get("Mods", "Natura", true).getBoolean(false);

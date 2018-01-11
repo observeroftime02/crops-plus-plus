@@ -22,14 +22,14 @@ import net.minecraftforge.common.config.Configuration;
 
 
 @Mod(
-	modid = "berriespp", name = "Berries++", version = "1.1.0",
+	modid = "berriespp", name = "Berries++", version = "1.1.1",
 	/*
 	 * Versions: 
 	 * 			 1=Realises
 	 * 			 0=Milestones
 	 * 			 0=internal version Nr 
 	 */
-	dependencies = "required-after:IC2; after:gregtech; after:Mantle; after:Natura; after:TConstruct; after:BiomesOPlenty; after:Thaumcraft; after:ExtraTrees; after:witchery"
+	dependencies = "required-after:IC2; after:Mantle; after:Natura; after:TConstruct; after:BiomesOPlenty; after:Thaumcraft; after:ExtraTrees; after:witchery"
 	)
 
 public class Berriespp {
@@ -42,27 +42,22 @@ public class Berriespp {
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent preinit) {
 		ModsLoaded.check_init(name);
-		BppItems.register_Items();
 		CropLoaderNBS.load(preinit);
 		CropLoader.load(preinit);
 		OreDict.register();
+		BppItems.register_Items();
 		BppItems.OreDictItems();
-		
 	}
 
 	@EventHandler
-	public void load(FMLPreInitializationEvent load) {
+	public void init(FMLInitializationEvent init) {
+		BppItems.register_recipes();
 	}
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent postinit) {
-		CropLoader.registerBaseSeed();
 		CropLoaderNBS.register();
 		CropLoader.register();
-	/*
-	 * TODO:
-	 * 1. Pam's Harvestcraft, Twilight Forrest
-	 * 2. OreDict EVERYTHING!
-	 */
+		CropLoader.registerBaseSeed();
 		}
 }
