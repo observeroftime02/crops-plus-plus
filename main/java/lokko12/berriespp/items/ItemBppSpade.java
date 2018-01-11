@@ -30,18 +30,19 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
-public class ItemBppSpade extends ItemSpade {
+public class ItemBppSpade extends ItemTool {
 		public IIcon icon;
+		private String toolClass;
 		private static Set BlocksAffected = Sets.newHashSet(new Block[] {Blocks.grass, Blocks.dirt, Blocks.snow_layer, Blocks.farmland, Blocks.mycelium});
-		private static float efficiencyOnProperMaterial = 4.0F;
 		
 		public ItemBppSpade() {
-			super(Item.ToolMaterial.IRON);
+			super(1.0F,Item.ToolMaterial.IRON,BlocksAffected);
 			this.setUnlocalizedName("Spade");
 			this.setTextureName("bpp:itemSpade");
 	        this.setMaxStackSize(1);
 	        this.setCreativeTab(CreativeTab.bpp);
 	        this.setMaxDamage(0);
+	        this.toolClass = "shovel";
 	        }
 		
 		@Override
