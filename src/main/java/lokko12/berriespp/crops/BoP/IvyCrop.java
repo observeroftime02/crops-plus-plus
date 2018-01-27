@@ -42,7 +42,7 @@ import net.minecraft.item.ItemStack;
 
 	    @Override
 	    public String[] attributes() {
-	        return new String[] {"Green", "Tendrilly", "Climbable", "Flower", "Bad", "Poison"};
+	        return new String[] {"Green", "Tendrilly", "Flower", "Bad", "Poison"};
 	    }
 	    
 	    @Override

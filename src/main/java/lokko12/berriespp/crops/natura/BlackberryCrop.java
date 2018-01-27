@@ -16,7 +16,6 @@ public class BlackberryCrop extends BasicBerryCrop {
     public BlackberryCrop() {
         super();
     	OreDict.BSget("crop"+this.name(),this);
-    	OreDict.BSget("seed"+this.name(),this);
     }
 
     public String name() {
@@ -24,7 +23,7 @@ public class BlackberryCrop extends BasicBerryCrop {
     }
 
     public String[] attributes() {
-        return new String[] {"Berry", "Edible", "Tendrilly", "Black", "Purple"}; // purple like CropVenomilia
+        return new String[] {"Berry", "Edible", "Black"}; // purple like CropVenomilia
     }
 
     public String discoveredBy() {

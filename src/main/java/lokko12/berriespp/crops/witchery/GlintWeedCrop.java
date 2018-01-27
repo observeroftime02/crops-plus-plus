@@ -2,11 +2,11 @@ package lokko12.berriespp.crops.witchery;
 
 import ic2.api.crops.ICropTile;
 import lokko12.berriespp.crops.abstracts.BasicDecorationCrop;
+import lokko12.berriespp.crops.abstracts.BasicWitcheryCrop;
 import lokko12.croploadcore.OreDict;
 import net.minecraft.item.ItemStack;
 
-public class GlintWeedCrop extends BasicDecorationCrop {
-	String color = "Orange";
+public class GlintWeedCrop extends BasicWitcheryCrop {
 	public GlintWeedCrop() {
 		super();
 		OreDict.BSget("crop"+name().replaceAll(" ", ""),this );
@@ -19,12 +19,12 @@ public class GlintWeedCrop extends BasicDecorationCrop {
 
 	@Override
 	public int tier() {
-		return super.tier()+1;
+		return super.tier();
 	}
 	
     @Override
     public String[] attributes() {
-        return new String[] {color, "Flower", "Magic"};
+        return new String[] {"Orange", "Flower", "Magic"};
     }
 
     @Override

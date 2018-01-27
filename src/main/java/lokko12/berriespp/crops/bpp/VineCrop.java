@@ -32,7 +32,7 @@ public class VineCrop extends BasicDecorationCrop {
 
     @Override
     public String[] attributes() {
-        return new String[] {"Green", "Tendrilly", "Climbable"};
+        return new String[] {"Green", "Tendrilly"};
     }
 
     @Override

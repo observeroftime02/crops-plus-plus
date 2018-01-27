@@ -57,7 +57,7 @@ public class EssenceOreBerryCrop extends BasicTinkerBerryCrop {
 		    
 			@Override
 			public String[] attributes() {
-		        return new String[] {"Berry", "Essence", "Tendrilly", "Undead"};
+		        return new String[] {"OreBerry", "Essence", "Undead"};
 			}
 
 			@Override

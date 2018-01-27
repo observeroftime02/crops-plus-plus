@@ -50,7 +50,7 @@ public class ArditeBerryCrop extends BasicTinkerBerryCrop {
 	        }
 		@Override
 		public String[] attributes() {
-	        return new String[] {"Berry", "Ardite", "Tendrilly", "Metal", "Orange"};
+	        return new String[] {"OreBerry", "Ardite", "Metal", "Orange"};
 		}
 
 		@Override

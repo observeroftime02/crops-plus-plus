@@ -50,7 +50,7 @@ public class CobaltBerryCrop extends BasicTinkerBerryCrop {
         }
 	@Override
 	public String[] attributes() {
-        return new String[] {"Berry", "Cobalt", "Tendrilly", "Metal", "Blue"};
+        return new String[] {"OreBerry", "Cobalt", "Metal", "Blue"};
 	}
 
 

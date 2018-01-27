@@ -12,7 +12,6 @@ public class CottonCrop extends BasicDecorationCrop {
 	public CottonCrop() {
 		super();
 		OreDict.BSget("crop"+name().replaceAll(" ", ""),this );
-		OreDict.BSget("seed"+name().replaceAll(" ", ""),this );
 	}
 
 	@Override
@@ -49,7 +48,7 @@ public class CottonCrop extends BasicDecorationCrop {
 
 	@Override
 	public String[] attributes() {
-		return new String[] {"White", "Tendrilly", "Cotton"};
+		return new String[] {"White", "Cotton"};
 	}
 
 	@Override

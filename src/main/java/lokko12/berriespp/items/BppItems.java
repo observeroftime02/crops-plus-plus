@@ -34,13 +34,6 @@ public final class BppItems {
 	public final static ItemStack ModifierAnti = new ItemStack(Modifier, 1, 2);
 	public final static ItemStack Trophy = new ItemStack(Modifier, 1, 3);
 	
-	
-	public static void init_cfg(FMLPreInitializationEvent preinit) {
-			config c = new config(preinit, "berriespp.cfg");
-			ConfigValures.WiPItems 		= c.tConfig.get("System", "WiP Items", false).getBoolean(true);
-			ConfigValures.Items 		= c.tConfig.get("System", "Items", true).getBoolean(false);
-	}
-	
 	public static void register_Items() {
 			if (ConfigValures.Items==true)
 			GameRegistry.registerItem(itemSpade, "itemSpade");
@@ -68,9 +61,9 @@ public final class BppItems {
 			if (!ModsLoaded.GT) {
 				GameRegistry.addRecipe(itemSpadeStack, new Object[] {" P ", "PWP", " S ", 'P', OreDict.ISget("plateDenseSteel"), 'W', Ic2Items.weedingTrowel.getItem(),'S',Items.stick});
 			}
-			/*else {
+			else {
 				GameRegistry.addRecipe(itemSpadeStack, new Object[] {"fPh", "PWP", " S ", 'f',OreDict.ISget("craftingToolFile"),'h',OreDict.ISget("craftingToolHardHammer"), 'P',OreDict.ISget("plateDenseSteel"), 'W', Ic2Items.weedingTrowel.getItem(),'S',Items.stick});
-			}*/
+			}
 		}
 	}
 	

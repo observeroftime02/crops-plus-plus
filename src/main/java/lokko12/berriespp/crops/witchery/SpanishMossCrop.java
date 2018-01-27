@@ -27,7 +27,7 @@ public class SpanishMossCrop extends FloweringVinesCrop{
 	
     @Override
     public String[] attributes() {
-        return new String[] {"Green", "Tendrilly", "Climbable", "Magic"};
+        return new String[] {"Green", "Climbable", "Magic"};
     }
 
     @Override

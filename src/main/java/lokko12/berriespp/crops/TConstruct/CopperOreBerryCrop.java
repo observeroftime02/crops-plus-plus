@@ -52,7 +52,7 @@ public class CopperOreBerryCrop extends BasicTinkerBerryCrop {
 		    
 			@Override
 			public String[] attributes() {
-		        return new String[] {"Berry", "Copper", "Tendrilly", "Metal", "Shiny"};
+		        return new String[] {"OreBerry", "Copper", "Metal", "Shiny"};
 			}
 			@Override
 			public ItemStack getDisplayItem() {

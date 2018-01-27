@@ -22,7 +22,7 @@ public class HuckleberryCrop extends BasicBerryCrop {
     }
     
     public String[] attributes() {
-        return new String[] {"Berry", "Food", "Tendrilly", "Purple", "Leaves"}; // Purple like CropVenomilia, Leaves like CropFerru
+        return new String[] {"Berry", "Food", "Purple", "Leaves"}; // Purple like CropVenomilia, Leaves like CropFerru
     }
 
 

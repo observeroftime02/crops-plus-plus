@@ -21,6 +21,10 @@ public class GTMachineRecipeLoader implements Runnable{
 	
     @Override
 public void run(){
+    	
+    	//Space Modifier = Space Plant (Tier13, Naquadah plant +1 tier)
+    	//Magic Modifier = Primordial Pearl
+    	
     	//Goldfish
     	GT_Values.RA.addFluidExtractionRecipe(BppItems.GoldfischS, new ItemStack(Items.gold_nugget), Materials.FishOil.getFluid(100L), 1, 16, 8);
     	GT_Values.RA.addPulveriserRecipe(BppItems.GoldfischS, new ItemStack[] {Materials.MeatRaw.getDust(1), Materials.Gold.getDustTiny(1), null, null, null}, new int[] {10000,100,0,0,0},3,8,false); //(ItemStack aInput, ItemStack[] aOutputs, int[] aChances, int aDuration, int aEUt, boolean hidden
@@ -33,11 +37,11 @@ public void run(){
     	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {Materials.Titanium.getDust(1),new ItemStack(BppItems.Modifier,16,0) }, new FluidStack[] {Materials.UUMatter.getFluid(Materials.Desh.getNeutrons()+Materials.Desh.getProtons())}, null, new ItemStack[] {Materials.Desh.getDust(1)}, 200, 512);
     	//NON-ELEMENTAR
     	//UV
-    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {Materials.Plutonium241.getDust(1),new ItemStack(BppItems.Modifier,64,0) }, new FluidStack[] {Materials.UUMatter.getFluid((Materials.BlackPlutonium.getNeutrons()+Materials.BlackPlutonium.getProtons())*1000)}, null, new ItemStack[] {Materials.BlackPlutonium.getDust(1)}, 18000, 524544);
-    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {Materials.MeteoricIron.getDust(1),new ItemStack(BppItems.Modifier,64,0) }, new FluidStack[] {Materials.UUMatter.getFluid((Materials.Trinium.getNeutrons()+Materials.Trinium.getProtons())*1000)}, null, new ItemStack[] {Materials.DeepIron.getDust(1)}, 18000, 524544);
+    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {Materials.Plutonium241.getDust(1),new ItemStack(BppItems.Modifier,64,0) }, new FluidStack[] {Materials.UUMatter.getFluid((Materials.Plutonium.getNeutrons()+Materials.Plutonium.getProtons())*1000)}, null, new ItemStack[] {Materials.BlackPlutonium.getDust(1)}, 18000, 524544);
+    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {Materials.MeteoricIron.getDust(1),new ItemStack(BppItems.Modifier,64,0) }, new FluidStack[] {Materials.UUMatter.getFluid((85*2)*1000)}, null, new ItemStack[] {Materials.DeepIron.getDust(1)}, 18000, 524544);
     	//IV
-    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {new ItemStack(Blocks.ice),new ItemStack(BppItems.Modifier,16,0) }, new FluidStack[] {Materials.UUMatter.getFluid((Materials.Water.getProtons()+Materials.Water.getNeutrons())*10)}, null, new ItemStack[] {Materials.CallistoIce.getDust(1)}, 200, 8196);
-    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {Materials.Lead.getDust(1),new ItemStack(BppItems.Modifier,16,0) }, new FluidStack[] {Materials.UUMatter.getFluid(Materials.Ledox.getProtons()+Materials.Ledox.getNeutrons())}, null, new ItemStack[] {Materials.Ledox.getDust(1)}, 200, 8196);
+    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {Materials.Ice.getDust(1),new ItemStack(BppItems.Modifier,16,0) }, new FluidStack[] {Materials.UUMatter.getFluid((Materials.Water.getProtons()+Materials.Water.getNeutrons())*10)}, null, new ItemStack[] {Materials.CallistoIce.getDust(1)}, 200, 8196);
+    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {Materials.Lead.getDust(1),new ItemStack(BppItems.Modifier,16,0) }, new FluidStack[] {Materials.UUMatter.getFluid(Materials.Lead.getProtons()+Materials.Lead.getNeutrons())}, null, new ItemStack[] {Materials.Ledox.getDust(1)}, 200, 8196);
     	}
     	
     	if(ModsLoaded.TC) {
@@ -47,13 +51,13 @@ public void run(){
     	
     	//Magic Modifier
     	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {Materials.Iron.getDust(1),new ItemStack(BppItems.Modifier,1,1) }, new FluidStack[] {Materials.UUMatter.getFluid(Materials.Thaumium.getNeutrons()+Materials.Thaumium.getProtons())}, null, new ItemStack[] {Materials.Thaumium.getDust(1)}, 200, 128);
-    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {Materials.Thaumium.getDust(1),new ItemStack(BppItems.Modifier,1,1) }, new FluidStack[] {Materials.UUMatter.getFluid(Materials.Void.getNeutrons()+Materials.Void.getProtons())}, null, new ItemStack[] {Materials.Void.getDust(1)}, 200, 512);
-    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {Materials.Void.getDust(1),new ItemStack(BppItems.Modifier,2,1) }, new FluidStack[] {Materials.UUMatter.getFluid(Materials.Shadow.getNeutrons()+Materials.Shadow.getProtons())}, null, new ItemStack[] {Materials.Shadow.getDust(1)}, 200, 8196);
-    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {Materials.Shadow.getDust(1),new ItemStack(BppItems.Modifier,16,1) }, new FluidStack[] {Materials.UUMatter.getFluid(Materials.Ichorium.getNeutrons()+Materials.Ichorium.getProtons())}, null, new ItemStack[] {Materials.Ichorium.getDust(1)}, 1800, 32768);
+    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {Materials.Thaumium.getDust(1),new ItemStack(BppItems.Modifier,1,1) }, new FluidStack[] {Materials.UUMatter.getFluid(Materials.Arsenic.getNeutrons()+Materials.Arsenic.getProtons())}, null, new ItemStack[] {Materials.Void.getDust(1)}, 200, 512);
+    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {Materials.Void.getDust(1),new ItemStack(BppItems.Modifier,2,1) }, new FluidStack[] {Materials.UUMatter.getFluid(Materials.Indium.getNeutrons()+Materials.Indium.getProtons())}, null, new ItemStack[] {Materials.Shadow.getDust(1)}, 200, 8196);
+    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {Materials.Shadow.getDust(1),new ItemStack(BppItems.Modifier,16,1) }, new FluidStack[] {Materials.UUMatter.getFluid(Materials.Osmium.getNeutrons()+Materials.Osmium.getProtons())}, null, new ItemStack[] {Materials.Ichorium.getIngots(1)}, 1800, 32768);
     	}
     	if(ModsLoaded.dreamcraft&&ModsLoaded.witchery) {
     	//Magic Modifier + Space Modifier
-    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {new ItemStack(BppItems.Modifier,16,0), new ItemStack(BppItems.Modifier,4,1),new ItemStack(com.emoniph.witchery.Witchery.Items.GENERIC,1,130) }, new FluidStack[] {Materials.Platinum.getMolten(288L),Materials.MeteoricIron.getMolten(144L), Materials.UUMatter.getFluid(Materials.Mytryl.getProtons()+Materials.Mytryl.getNeutrons())}, null, new ItemStack[] {Materials.Mytryl.getDust(1)}, 1800, 8196);
+    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] { new ItemStack(BppItems.Modifier,16,0), new ItemStack(BppItems.Modifier,4,1)}, new FluidStack[] {Materials.Platinum.getMolten(288L),Materials.MeteoricIron.getMolten(144L), Materials.UUMatter.getFluid(Materials.Platinum.getProtons()+Materials.Platinum.getNeutrons())}, null, new ItemStack[] {Materials.Mytryl.getDust(1)}, 1800, 8196);
     	}
     	//Trophy
     	GT_Values.RA.addExtruderRecipe(Materials.Neutronium.getBlocks(64), Materials.Neutronium.getBlocks(64), new ItemStack(BppItems.Modifier,1,3), 2147483647, 8);

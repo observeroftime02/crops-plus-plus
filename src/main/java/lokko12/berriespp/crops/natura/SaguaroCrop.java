@@ -12,7 +12,7 @@ import net.minecraft.item.ItemStack;
 public class SaguaroCrop extends CactiCrop {
 		
 		public SaguaroCrop() {
-			Crops.instance.registerBaseSeed(new ItemStack(NContent.saguaro,1,0),lokko12.berriespp.CropLoader.CropunpackerCC(new CropLoader(this)),1,1,1,1);
+			super();
 		}
 
 	    @Override

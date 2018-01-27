@@ -3,10 +3,11 @@ package lokko12.berriespp.crops.witchery;
 import ic2.api.crops.ICropTile;
 import lokko12.berriespp.ConfigValures;
 import lokko12.berriespp.crops.abstracts.BasicDecorationCrop;
+import lokko12.berriespp.crops.abstracts.BasicWitcheryCrop;
 import lokko12.croploadcore.OreDict;
 import net.minecraft.item.ItemStack;
 
-public class MandragoraCrop extends BasicDecorationCrop {
+public class MandragoraCrop extends BasicWitcheryCrop {
 	
 	public MandragoraCrop() {
 		super();
@@ -15,7 +16,7 @@ public class MandragoraCrop extends BasicDecorationCrop {
 	 	
 	@Override
 	public int tier() {
-		return super.tier()+3;
+		return super.tier();
 	}
 	
 	@Override

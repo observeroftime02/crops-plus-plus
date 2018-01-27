@@ -9,7 +9,6 @@ public class GarlicCrop extends BasicDecorationCrop {
 	public GarlicCrop() {
 		super();
 		OreDict.BSget("crop"+name(),this);
-		OreDict.BSget("seed"+name(),this);
 	}
 	 	
 	@Override
@@ -19,7 +18,7 @@ public class GarlicCrop extends BasicDecorationCrop {
 	
 	@Override
 	public int tier() {
-		return super.tier();
+		return super.tier()+2;
 	}
 	
 	@Override

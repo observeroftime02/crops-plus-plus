@@ -52,7 +52,7 @@ public class AluminiumOreBerryCrop extends BasicTinkerBerryCrop {
 		    
 			@Override
 			public String[] attributes() {
-		        return new String[] {"Berry", "Aluminium", "Tendrilly", "Metal", "Aluminum"};
+		        return new String[] {"OreBerry", "Aluminium", "Metal", "Aluminum"};
 			}
 
 			@Override

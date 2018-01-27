@@ -5,6 +5,7 @@ import java.util.List;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ic2.core.crop.TileEntityCrop;
+import lokko12.berriespp.ConfigValures;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -22,6 +23,7 @@ public class ItemBppWateringCan extends Item implements IFluidContainerItem {
 	private int max_capacity = 1000;
 	private int capacity = 0;
 	private boolean nutrient = false;
+	private boolean debug = false;
 	public ItemBppWateringCan() {
 		super();
 		this.setUnlocalizedName("WateringCan");
@@ -29,6 +31,7 @@ public class ItemBppWateringCan extends Item implements IFluidContainerItem {
         this.setCreativeTab(CreativeTab.bpp);
         this.setTextureName("bpp:itemWateringCan");
         this.setMaxDamage(0);
+        this.debug=ConfigValures.Debug;
 	}
 	
 	@Override
@@ -58,6 +61,7 @@ public class ItemBppWateringCan extends Item implements IFluidContainerItem {
             TileEntityCrop crop = (TileEntityCrop)te;
             if (crop.getCrop() instanceof ic2.api.crops.CropCard)
             {
+            	if (debug == false)
             	if (nutrient==false) {
             		crop.waterStorage++;
             		capacity--;
@@ -70,6 +74,9 @@ public class ItemBppWateringCan extends Item implements IFluidContainerItem {
             		capacity--;
                 	return true;
             	}
+            	else
+            	crop.size++;
+            	return true;
             }
         }
 	return false;

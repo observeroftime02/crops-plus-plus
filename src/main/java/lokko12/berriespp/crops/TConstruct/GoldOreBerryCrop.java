@@ -52,7 +52,7 @@ public class GoldOreBerryCrop extends BasicTinkerBerryCrop {
 		    
 			@Override
 			public String[] attributes() {
-		        return new String[] {"Berry", "Gold", "Tendrilly", "Metal"};
+		        return new String[] {"OreBerry", "Gold", "Metal"};
 			}
 
 			@Override

@@ -12,7 +12,6 @@ public class BarleyCrop extends BasicFoodCrop {
 	public BarleyCrop() {
 		super();
 		OreDict.BSget("crop"+name().replaceAll(" ", ""),this );
-		OreDict.BSget("seed"+name().replaceAll(" ", ""),this );
 	}
 
 	@Override

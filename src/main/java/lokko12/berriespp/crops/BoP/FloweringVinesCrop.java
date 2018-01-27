@@ -42,7 +42,7 @@ package lokko12.berriespp.crops.BoP;
 
 	    @Override
 	    public String[] attributes() {
-	        return new String[] {"Green", "Tendrilly", "Climbable", "Flower"};
+	        return new String[] {"Green", "Tendrilly", "Flower"};
 	    }
 	    @Override
 	    public int getOptimalHavestSize(ICropTile crop) {

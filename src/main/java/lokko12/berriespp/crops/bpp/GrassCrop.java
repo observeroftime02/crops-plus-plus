@@ -87,7 +87,7 @@ public class GrassCrop extends BasicDecorationCrop{
 	    
 	    @Override
 	    public String[] attributes() {
-	        return new String[] {"Green", "Tendrilly"};
+	        return new String[] {"Green", "Bad"};
 	    }
 
 	    @Override

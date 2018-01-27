@@ -2,13 +2,14 @@ package lokko12.berriespp.crops.witchery;
 
 import ic2.api.crops.ICropTile;
 import lokko12.berriespp.crops.abstracts.BasicDecorationCrop;
+import lokko12.berriespp.crops.abstracts.BasicWitcheryCrop;
 import lokko12.croploadcore.OreDict;
 import net.minecraft.item.ItemStack;
 
-public class WaterArtichokeCrop extends BasicDecorationCrop {
+public class WaterArtichokeCrop extends BasicWitcheryCrop {
 	public WaterArtichokeCrop() {
 		super();
-		OreDict.BSget("seedWaterArtichoke",this);
+		OreDict.BSget("cropArtichoke",this);
 	}
 	 	
 	@Override
@@ -18,7 +19,7 @@ public class WaterArtichokeCrop extends BasicDecorationCrop {
 	
 	@Override
 	public int tier() {
-		return super.tier()+1;
+		return super.tier();
 	}
 	
 	@Override

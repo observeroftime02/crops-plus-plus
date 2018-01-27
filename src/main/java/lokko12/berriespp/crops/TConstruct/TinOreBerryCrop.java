@@ -52,7 +52,7 @@ public class TinOreBerryCrop extends BasicTinkerBerryCrop {
 		    
 			@Override
 			public String[] attributes() {
-		        return new String[] {"Berry", "Tin", "Tendrilly", "Metal", "Shiny"};
+		        return new String[] {"OreBerry", "Tin", "Metal", "Shiny"};
 			}
 			
 			@Override

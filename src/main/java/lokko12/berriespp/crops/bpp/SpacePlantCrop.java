@@ -23,12 +23,19 @@ public class SpacePlantCrop extends BasicCrop {
 
 	@Override
 	public int tier() {
-		return 12;
+		return 13;
 	}
 
 	@Override
 	public int stat(int n) {
-		return 0;
+		switch(n) {
+        case 0: return 8;   // chemical
+        case 1: return 0;   // edible
+        case 2: return 0;   // defensive properties
+        case 3: return 4;   // colorful
+        case 4: return 0;   // weed-like
+        default: return 0;
+        }
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package lokko12.berriespp.crops.abstracts;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cpw.mods.fml.relauncher.Side;
@@ -48,7 +49,9 @@ public abstract class BasicCrop extends CropCard implements ICropCardInfo {
 	}
 	
 	public List<String> getCropInformation(){
-		return null;
+		List<String> ret = new ArrayList<String>();
+			ret.add(attributes().toString());
+		return ret;
 	}
 	
 	public ItemStack getDisplayItem(CropCard card) {

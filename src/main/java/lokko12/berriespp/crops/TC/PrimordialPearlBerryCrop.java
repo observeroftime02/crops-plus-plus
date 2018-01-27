@@ -11,7 +11,9 @@ public class PrimordialPearlBerryCrop extends BasicCrop {
 
 
 	public PrimordialPearlBerryCrop ()
-	{}
+	{
+		super();
+	}
 	
 	@Override
     public String name() {

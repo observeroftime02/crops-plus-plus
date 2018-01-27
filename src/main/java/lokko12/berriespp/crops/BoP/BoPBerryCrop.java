@@ -21,7 +21,7 @@ public class BoPBerryCrop extends BasicBerryCrop {
     
     @Override
     public int tier() {
-        return 5;
+        return 2;
     }
 
     @Override

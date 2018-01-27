@@ -22,20 +22,18 @@ public class ShimmerleafCrop extends BasicThaumcraftCrop {
 
 	@Override
 	public String[] attributes() {
-		return new String[] {"Berry", "Magic", "Silver", "Toxic"};
+		return new String[] {"Magic", "Silver", "Toxic"};
 	}
     
     @Override
     public int growthDuration(ICropTile crop) {
-        	int r;
+        	int r = 9999999;
         	if (ConfigValures.Debug == true)
         		r = 1;
         	else if (crop.getSize() == 1)
                 r = 2250;
-        	else if (crop.getSize() == 2 && crop.isBlockBelow("blockQuicksilver") == true && OreDictionary.doesOreNameExist("blockQuicksilver"))
-            	r = 1750;        	
-            else 
-                r = 250;
+        	else if (crop.getSize() == 2 && Operators.OR(crop.isBlockBelow("blockQuicksilver") == true, OreDictionary.doesOreNameExist("blockQuicksilver")))
+            	r = 1750;
         	return r;
             }
 	
@@ -46,15 +44,13 @@ public class ShimmerleafCrop extends BasicThaumcraftCrop {
 
 	@Override
 	public boolean canGrow(ICropTile crop) {
-		boolean r;
+		boolean r = false;
     	if (ConfigValures.Debug == true)
     		r = crop.getSize() < 3;
     	else if (crop.getSize() < 1)
     		r = crop.getSize() < 1;
-    	else if (crop.getSize() == 2 && Operators.XOR(crop.isBlockBelow("blockQuicksilver"),Operators.NOT(OreDictionary.doesOreNameExist("blockQuicksilver"))))
-    		r = (crop.getSize() == 2 && Operators.XOR(crop.isBlockBelow("blockQuicksilver"),Operators.NOT(OreDictionary.doesOreNameExist("blockQuicksilver"))));
-    	else
-    		r = crop.getSize() < 3;
+    	else if (crop.getSize() == 2)
+    		r = (crop.getSize() == 2 && Operators.OR(crop.isBlockBelow("blockQuicksilver"),Operators.NOT(OreDictionary.doesOreNameExist("blockQuicksilver"))));
 		return r;
 	}
 

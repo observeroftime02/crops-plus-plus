@@ -8,6 +8,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 
 public class Goldfish extends ItemFood {
 
@@ -22,7 +23,20 @@ public class Goldfish extends ItemFood {
     @SideOnly(Side.CLIENT)
     public void addInformation (ItemStack stack, EntityPlayer player, List list, boolean par4)
 	{
-		list.add("Hozuki no Reitetsu!");
+		list.add("Hozuki no Reitetsu! A truely hellish planimal?!");
 	}
 	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public boolean onItemUseFirst(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
+	player.playSound("mob.ghast.scream", 5, (float) 0.5);
+	return true;
+	}
+	
+	@Override
+	public ItemStack onEaten(ItemStack p_77654_1_, World p_77654_2_, EntityPlayer p_77654_3_)
+    {
+        p_77654_3_.playSound("mob.ghast.scream", 5, (float) 0.5);
+        return super.onEaten(p_77654_1_, p_77654_2_, p_77654_3_);
+    }
 }

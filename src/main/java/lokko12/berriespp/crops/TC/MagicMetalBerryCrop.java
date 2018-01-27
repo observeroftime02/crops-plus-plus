@@ -61,7 +61,7 @@ public class MagicMetalBerryCrop extends BasicTinkerBerryCrop{
 			    
 				@Override
 				public String[] attributes() {
-			        return new String[] {"Berry", "Magic", "Metal", "Tendrilly", "Thaumium", "Void"};
+			        return new String[] {"OreBerry", "Magic", "Metal", "Thaumium", "Void"};
 				}
 				
 			    @Override
