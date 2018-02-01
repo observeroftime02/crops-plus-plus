@@ -2,7 +2,8 @@
 item.Spade.name=Spade
 item.WateringCan.name=[WiP]Watering Can
 itemGroup.Berriespp=Berries++
-item.berrycactus.name=SaguaroFruit
+item.berry.cactus.name=SaguaroFruit
+item.berry.huckle.name=Huckleberry
 item.foodGoldfish.name=Goldfish
 item_Modifier_Space.name=Space Flower
 item_Modifier_Magic.name=Magic Essence

@@ -65,7 +65,8 @@ public class SpacePlantCrop extends BasicCrop {
 			ret = (crop.getSize() < (maxSize()-1));
 		if (crop.getSize()==3) 
 		{
-			if((new ItemStack(crop.getWorld().getBlock((crop.getLocation().posX), (crop.getLocation().posY-1), (crop.getLocation().posZ))).equals(new ItemStack(GCBlocks.blockMoon,1,3)))||(new ItemStack(crop.getWorld().getBlock((crop.getLocation().posX), (crop.getLocation().posY-1), (crop.getLocation().posZ))).equals(new ItemStack(GCBlocks.blockMoon,1,4)))||(new ItemStack(crop.getWorld().getBlock((crop.getLocation().posX), (crop.getLocation().posY-1), (crop.getLocation().posZ))).equals(new ItemStack(GCBlocks.blockMoon,1,5)))||(new ItemStack(crop.getWorld().getBlock((crop.getLocation().posX), (crop.getLocation().posY-1), (crop.getLocation().posZ))).equals(new ItemStack(GCBlocks.blockMoon,1,14))))
+			//if((new ItemStack(crop.getWorld().getBlock((crop.getLocation().posX), (crop.getLocation().posY-1), (crop.getLocation().posZ))).equals(new ItemStack(GCBlocks.blockMoon,1,3)))||(new ItemStack(crop.getWorld().getBlock((crop.getLocation().posX), (crop.getLocation().posY-1), (crop.getLocation().posZ))).equals(new ItemStack(GCBlocks.blockMoon,1,4)))||(new ItemStack(crop.getWorld().getBlock((crop.getLocation().posX), (crop.getLocation().posY-1), (crop.getLocation().posZ))).equals(new ItemStack(GCBlocks.blockMoon,1,5)))||(new ItemStack(crop.getWorld().getBlock((crop.getLocation().posX), (crop.getLocation().posY-1), (crop.getLocation().posZ))).equals(new ItemStack(GCBlocks.blockMoon,1,14))))
+				if (crop.isBlockBelow(GCBlocks.blockMoon))
 				ret = true;
 			}
 		else if (crop.getSize() < 3)

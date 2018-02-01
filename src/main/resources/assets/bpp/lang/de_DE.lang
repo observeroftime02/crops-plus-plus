@@ -2,7 +2,8 @@
 item.Spade.name=Sparten
 item.WateringCan.name=[WiP] Gießkanne
 itemGroup.Berriespp=Berries++
-item.berrycactus.name=Kaktusfrucht
+item.berry.cactus.name=Kaktusfrucht
+item.berry.huckle.name=Amerikanische Blaubeere
 item.foodGoldfish.name=Goldfisch
 item_Modifier_Space.name=Kosmos Blüten
 item_Modifier_Magic.name=Magie Essenz

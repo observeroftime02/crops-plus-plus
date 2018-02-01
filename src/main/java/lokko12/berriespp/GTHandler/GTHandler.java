@@ -9,6 +9,7 @@ public class GTHandler implements Runnable {
 		super();
 		MachineReps = new GTMachineRecipeLoader();
 		CraftingReps = new GTCraftingRecipeLoader();
+		
 	}
 
 
@@ -16,6 +17,7 @@ public class GTHandler implements Runnable {
 	public void run() {
 		MachineReps.run();
 		CraftingReps.run();
+		
 	}
 
 }
