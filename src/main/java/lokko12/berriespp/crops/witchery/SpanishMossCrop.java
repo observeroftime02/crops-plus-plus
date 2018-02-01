@@ -1,10 +1,8 @@
 package lokko12.berriespp.crops.witchery;
 
-import biomesoplenty.api.content.BOPCBlocks;
 import ic2.api.crops.ICropTile;
 import lokko12.berriespp.crops.BoP.FloweringVinesCrop;
 import lokko12.croploadcore.OreDict;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class SpanishMossCrop extends FloweringVinesCrop{

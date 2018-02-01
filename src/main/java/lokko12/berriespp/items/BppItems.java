@@ -1,21 +1,10 @@
 package lokko12.berriespp.items;
 
-import biomesoplenty.api.content.BOPCBlocks;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.registry.ExistingSubstitutionException;
-import cpw.mods.fml.common.registry.GameData;
-import cpw.mods.fml.common.registry.GameData.GameDataSnapshot;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.GameRegistry.Type;
-import gregtech.api.enums.ToolDictNames;
 import ic2.core.Ic2Items;
-import ic2.core.init.InternalName;
 import lokko12.berriespp.ConfigValures;
 import lokko12.croploadcore.ModsLoaded;
 import lokko12.croploadcore.OreDict;
-import lokko12.croploadcore.config;
-import net.minecraft.block.Block;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -33,6 +22,7 @@ public final class BppItems {
 	public final static ItemStack ModifierMagic = new ItemStack(Modifier, 1, 1);
 	public final static ItemStack ModifierAnti = new ItemStack(Modifier, 1, 2);
 	public final static ItemStack Trophy = new ItemStack(Modifier, 1, 3);
+	public final static Item BppBerries = new BppBerries();
 	
 	public static void register_Items() {
 			if (ConfigValures.Items==true)
@@ -43,6 +33,8 @@ public final class BppItems {
 			GameRegistry.registerCustomItemStack("ModifierMagic", ModifierMagic);
 			GameRegistry.registerCustomItemStack("ModifierAnti", ModifierAnti);
 			GameRegistry.registerCustomItemStack("Trophy", Trophy);
+			GameRegistry.registerItem(BppBerries,"foodBerries");
+			GameRegistry.registerCustomItemStack("berryHuckle", new ItemStack(BppBerries, 1, 0));
 			if (ConfigValures.WiPItems==true)
 			GameRegistry.registerItem(itemWCan,"itemWateringCan");
 			if (ModsLoaded.Natura==false) {
@@ -62,7 +54,7 @@ public final class BppItems {
 				GameRegistry.addRecipe(itemSpadeStack, new Object[] {" P ", "PWP", " S ", 'P', OreDict.ISget("plateDenseSteel"), 'W', Ic2Items.weedingTrowel.getItem(),'S',Items.stick});
 			}
 			else {
-				GameRegistry.addRecipe(itemSpadeStack, new Object[] {"fPh", "PWP", " S ", 'f',OreDict.ISget("craftingToolFile"),'h',OreDict.ISget("craftingToolHardHammer"), 'P',OreDict.ISget("plateDenseSteel"), 'W', Ic2Items.weedingTrowel.getItem(),'S',Items.stick});
+				//GameRegistry.addRecipe(itemSpadeStack, new Object[] {"fPh", "PWP", " S ", 'f',OreDict.ISget("craftingToolFile"),'h',OreDict.ISget("craftingToolHardHammer"), 'P',OreDict.ISget("plateDenseSteel"), 'W', Ic2Items.weedingTrowel.getItem(),'S',Items.stick});
 			}
 		}
 	}
@@ -70,6 +62,9 @@ public final class BppItems {
 	public static void OreDictItems() {
 		if (ConfigValures.Items==true) {
 			OreDictionary.registerOre("listAllfishraw",new ItemStack(Goldfisch));	
+			OreDictionary.registerOre("listAllberry", new ItemStack(BppBerries,1,0));
+			OreDictionary.registerOre("listAllfruit", new ItemStack(BppBerries,1,0));
+			OreDictionary.registerOre("cropHuckleberry", new ItemStack(BppBerries,1,0));
 		}
 		
 	if (ModsLoaded.Natura==false) {

@@ -1,14 +1,8 @@
 package lokko12.berriespp.crops.bpp;
 import ic2.api.crops.ICropTile;
-import ic2.api.item.IC2Items;
 import lokko12.berriespp.crops.abstracts.BasicBerryCrop;
 import lokko12.croploadcore.OreDict;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import ic2.api.crops.CropCard;
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IIcon;
 
 public class HuckleberryCrop extends BasicBerryCrop {
 

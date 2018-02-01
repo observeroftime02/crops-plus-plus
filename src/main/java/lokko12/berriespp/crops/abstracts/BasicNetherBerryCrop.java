@@ -1,10 +1,7 @@
 package lokko12.berriespp.crops.abstracts;
 
-import ic2.api.crops.CropCard;
 import ic2.api.crops.ICropTile;
 import lokko12.berriespp.ConfigValures;
-import net.minecraft.block.Block;
-import net.minecraft.init.Blocks;
 
 public abstract class BasicNetherBerryCrop extends BasicBerryCrop {
 

@@ -2,28 +2,23 @@ package lokko12.berriespp.items;
 
 import java.util.List;
 import java.util.Set;
+
 import com.google.common.collect.Sets;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ic2.core.IC2;
 import ic2.core.Ic2Items;
-import ic2.core.crop.IC2Crops;
 import ic2.core.crop.TileEntityCrop;
 import ic2.core.util.StackUtil;
-import lokko12.berriespp.crops.bpp.GrassCrop;
-import lokko12.berriespp.crops.bpp.WeedCrop;
 import lokko12.croploadcore.MyRandom;
 import lokko12.croploadcore.Operators;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemHoe;
-import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 import net.minecraft.tileentity.TileEntity;

@@ -1,18 +1,11 @@
 package lokko12.berriespp.crops.abstracts;
 
-import java.util.List;
-
-import ic2.api.crops.CropCard;
 import ic2.api.crops.ICropTile;
 import lokko12.berriespp.ConfigValures;
 import lokko12.croploadcore.Operators;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.DamageSource;
 
 public abstract class BasicTinkerBerryCrop extends BasicCrop {

@@ -3,8 +3,6 @@ package lokko12.berriespp.crops.TC;
 import ic2.api.crops.ICropTile;
 import lokko12.berriespp.ConfigValures;
 import lokko12.berriespp.crops.abstracts.BasicCrop;
-import lokko12.croploadcore.OreDict;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 public class PrimordialPearlBerryCrop extends BasicCrop {

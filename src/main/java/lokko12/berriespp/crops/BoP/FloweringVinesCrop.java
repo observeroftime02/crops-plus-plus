@@ -1,14 +1,9 @@
 package lokko12.berriespp.crops.BoP;
 	import biomesoplenty.api.content.BOPCBlocks;
-	import ic2.api.crops.CropCard;
-	import ic2.api.crops.ICropTile;
-	import lokko12.berriespp.Berriespp;
-	import lokko12.berriespp.crops.abstracts.BasicDecorationCrop;
-	import lokko12.berriespp.crops.bpp.VineCrop;
-	import net.minecraft.block.Block;
-	import net.minecraft.init.Items;
-	import net.minecraft.item.Item;
-	import net.minecraft.item.ItemStack;
+import ic2.api.crops.ICropTile;
+import lokko12.berriespp.crops.bpp.VineCrop;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 	public class FloweringVinesCrop extends VineCrop {
 	    public FloweringVinesCrop() {

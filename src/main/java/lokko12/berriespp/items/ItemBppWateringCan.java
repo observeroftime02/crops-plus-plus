@@ -12,12 +12,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
-import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidContainerItem;
 import net.minecraftforge.fluids.IFluidHandler;
-import net.minecraftforge.fluids.IFluidTank;
 
 public class ItemBppWateringCan extends Item implements IFluidContainerItem {
 	private int max_capacity = 1000;
@@ -61,7 +59,7 @@ public class ItemBppWateringCan extends Item implements IFluidContainerItem {
             TileEntityCrop crop = (TileEntityCrop)te;
             if (crop.getCrop() instanceof ic2.api.crops.CropCard)
             {
-            	if (debug == false)
+            	if (debug == false) {
             	if (nutrient==false) {
             		crop.waterStorage++;
             		capacity--;
@@ -74,11 +72,15 @@ public class ItemBppWateringCan extends Item implements IFluidContainerItem {
             		capacity--;
                 	return true;
             	}
-            	else
-            	crop.size++;
+            	}
+            	else {
+            	crop.size=crop.size+1;
+            	crop.updateState();
             	return true;
+            	}
             }
         }
+        
 	return false;
 	}
 

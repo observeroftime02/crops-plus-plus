@@ -1,12 +1,9 @@
 package lokko12.berriespp.crops.TC;
 
-import ic2.api.crops.CropCard;
 import ic2.api.crops.ICropTile;
 import lokko12.berriespp.ConfigValures;
 import lokko12.berriespp.crops.abstracts.BasicThaumcraftCrop;
 import lokko12.croploadcore.BlockGetterTC;
-import net.minecraft.block.Block;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 
 public class BasicManaBeanCrop extends BasicThaumcraftCrop {
@@ -70,19 +67,16 @@ public class BasicManaBeanCrop extends BasicThaumcraftCrop {
 
 		@Override
 		public String name() {
-			// TODO Auto-generated method stub
 			return null;
 		}
 
 		@Override
 		public ItemStack getGain(ICropTile crop) {
-			// TODO Auto-generated method stub
-			return null;
+			return this.getDisplayItem();
 		}
 
 		@Override
 		public ItemStack getDisplayItem() {
-			// TODO Auto-generated method stub
 			return null;
 		}
 

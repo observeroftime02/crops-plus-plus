@@ -1,25 +1,16 @@
 package lokko12.berriespp.crops.bpp;
 
-import java.util.Random;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import ic2.api.crops.Crops;
 import ic2.api.crops.ICropTile;
-import lokko12.berriespp.CropLoader;
 import lokko12.berriespp.crops.abstracts.BasicDecorationCrop;
 import lokko12.croploadcore.MyRandom;
-import lokko12.croploadcore.ModsLoaded;
 import lokko12.croploadcore.Operators;
 import lokko12.croploadcore.OreDict;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.IIcon;
 
 public class GrassCrop extends BasicDecorationCrop{
 	private int random;

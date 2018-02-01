@@ -1,10 +1,8 @@
 package lokko12.berriespp.crops.natura;
 
 import ic2.api.crops.ICropTile;
-import ic2.core.crop.CropWheat;
 import lokko12.berriespp.crops.abstracts.BasicDecorationCrop;
 import lokko12.croploadcore.OreDict;
-import mods.natura.common.NContent;
 import net.minecraft.item.ItemStack;
 
 public class CottonCrop extends BasicDecorationCrop {

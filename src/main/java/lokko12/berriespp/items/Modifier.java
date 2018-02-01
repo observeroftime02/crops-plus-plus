@@ -1,18 +1,15 @@
 package lokko12.berriespp.items;
 
 import java.util.List;
-import java.util.Random;
-import java.util.UUID;
 
-import cpw.mods.fml.common.registry.GameData;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.util.RegistryNamespaced;
 
 public class Modifier extends Item {
 	public Modifier() {
@@ -32,6 +29,27 @@ public class Modifier extends Item {
         return icons[meta];
     }
 
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation (ItemStack stack, EntityPlayer player, List list, boolean par4)
+    {
+        switch (stack.getItemDamage() % textureNames.length)
+        {
+        case 0:
+            list.add("Space Radiation caught in a Flower!");
+            break;
+        case 1:
+            list.add("Pure Magic!");
+            break;
+        case 2:
+            list.add("!stooR-rettaM-itnA");
+            break;
+        case 3:
+            list.add("Challenge Accepted!");
+            break;
+        }
+}
+    
     @SideOnly(Side.CLIENT)
     @Override
     public void registerIcons (IIconRegister iconRegister)

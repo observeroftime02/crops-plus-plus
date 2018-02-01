@@ -5,7 +5,6 @@ import lokko12.berriespp.ConfigValures;
 import lokko12.berriespp.crops.abstracts.BasicTinkerBerryCrop;
 import lokko12.croploadcore.Operators;
 import lokko12.croploadcore.OreDict;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 

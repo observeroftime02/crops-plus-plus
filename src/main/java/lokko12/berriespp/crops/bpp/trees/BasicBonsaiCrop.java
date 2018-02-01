@@ -1,25 +1,13 @@
 package lokko12.berriespp.crops.bpp.trees;
 
-import java.io.IOException;
-
-import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import ic2.api.crops.BaseSeed;
-import ic2.api.crops.CropCard;
-import ic2.api.crops.Crops;
 import ic2.api.crops.ICropTile;
 import ic2.core.Ic2Items;
-import ic2.core.util.StackUtil;
 import lokko12.berriespp.ConfigValures;
-import lokko12.croploadcore.OreDict;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraftforge.oredict.OreDictionary;
 
 public class BasicBonsaiCrop extends ic2.api.crops.CropCard {
 	private String name;

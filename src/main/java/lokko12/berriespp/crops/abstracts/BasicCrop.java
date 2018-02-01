@@ -8,9 +8,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import ic2.api.crops.CropCard;
 import ic2.api.crops.ICropTile;
 import lokko12.berriespp.ConfigValures;
-import lokko12.croploadcore.ModsLoaded;
 import lokko12.croploadcore.OreDict;
-import mods.natura.common.NContent;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
@@ -37,6 +35,11 @@ public abstract class BasicCrop extends CropCard implements ICropCardInfo {
 	public boolean canCross(ICropTile crop) {
 		return crop.getSize() == maxSize();
 	}
+	
+	@Override
+    public int getrootslength(ICropTile crop) {
+        return 3;
+    }
 	
 	@Override
 	public String discoveredBy() {

@@ -1,8 +1,6 @@
 package lokko12.berriespp.crops.natura;
 
 import ic2.api.crops.ICropTile;
-import ic2.core.crop.CropWheat;
-import lokko12.berriespp.crops.abstracts.BasicDecorationCrop;
 import lokko12.berriespp.crops.abstracts.BasicFoodCrop;
 import lokko12.croploadcore.OreDict;
 import net.minecraft.item.ItemStack;

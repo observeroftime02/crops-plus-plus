@@ -2,7 +2,6 @@ package lokko12.berriespp.crops.abstracts;
 
 import ic2.api.crops.ICropTile;
 import lokko12.berriespp.ConfigValures;
-import net.minecraft.item.ItemStack;
 
 public abstract class BasicWitcheryCrop extends BasicDecorationCrop {
 

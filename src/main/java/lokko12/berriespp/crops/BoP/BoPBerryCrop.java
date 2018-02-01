@@ -3,7 +3,6 @@ package lokko12.berriespp.crops.BoP;
 import ic2.api.crops.ICropTile;
 import lokko12.berriespp.ConfigValures;
 import lokko12.berriespp.crops.abstracts.BasicBerryCrop;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 public class BoPBerryCrop extends BasicBerryCrop {

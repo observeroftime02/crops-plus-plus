@@ -1,10 +1,8 @@
 package lokko12.berriespp.crops.TConstruct;
 
-import ic2.api.crops.CropCard;
 import ic2.api.crops.ICropTile;
 import lokko12.berriespp.ConfigValures;
 import lokko12.berriespp.crops.abstracts.BasicTinkerBerryCrop;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import tconstruct.world.TinkerWorld;
 

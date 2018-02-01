@@ -2,12 +2,10 @@ package lokko12.berriespp;
 
 import java.util.ArrayList;
 import java.util.List;
-//Forge
-import cpw.mods.fml.common.FMLLog;
-import cpw.mods.fml.common.Loader;
+
+import biomesoplenty.api.content.BOPCBlocks;
+import biomesoplenty.api.content.BOPCItems;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.oredict.OreDictionary;
 //IC2API
 import ic2.api.crops.CropCard;
 import ic2.api.crops.Crops;
@@ -30,16 +28,17 @@ import lokko12.berriespp.crops.TConstruct.EssenceOreBerryCrop;
 import lokko12.berriespp.crops.TConstruct.GoldOreBerryCrop;
 import lokko12.berriespp.crops.TConstruct.IronOreBerryCrop;
 import lokko12.berriespp.crops.TConstruct.TinOreBerryCrop;
-import lokko12.berriespp.crops.abstracts.BasicBerryCrop;
-import lokko12.berriespp.crops.bpp.GrassCrop;
-import lokko12.berriespp.crops.bpp.HuckleberryCrop;
-import lokko12.berriespp.crops.bpp.PapyrusCrop;
-import lokko12.berriespp.crops.bpp.SpacePlantCrop;
-import lokko12.berriespp.crops.bpp.StrawberryCrop;
 import lokko12.berriespp.crops.bpp.ArditeBerryCrop;
 import lokko12.berriespp.crops.bpp.CactiCrop;
 import lokko12.berriespp.crops.bpp.CobaltBerryCrop;
 import lokko12.berriespp.crops.bpp.GoldfishCrop;
+import lokko12.berriespp.crops.bpp.GrassCrop;
+import lokko12.berriespp.crops.bpp.HuckleberryCrop;
+import lokko12.berriespp.crops.bpp.MagicModifierCrop;
+import lokko12.berriespp.crops.bpp.PapyrusCrop;
+import lokko12.berriespp.crops.bpp.SpacePlantCrop;
+import lokko12.berriespp.crops.bpp.StonelillyCrop;
+import lokko12.berriespp.crops.bpp.StrawberryCrop;
 import lokko12.berriespp.crops.bpp.VineCrop;
 import lokko12.berriespp.crops.natura.BarleyCrop;
 import lokko12.berriespp.crops.natura.BlackberryCrop;
@@ -63,8 +62,6 @@ import lokko12.berriespp.crops.witchery.SnowbellCrop;
 import lokko12.berriespp.crops.witchery.SpanishMossCrop;
 import lokko12.berriespp.crops.witchery.WaterArtichokeCrop;
 import lokko12.berriespp.crops.witchery.WolfsBaneCrop;
-import lokko12.berriespp.crops.bpp.trees.BasicBonsaiCrop;
-import lokko12.berriespp.crops.bpp.trees.InstalledTreesGetter;
 //Core
 import lokko12.croploadcore.ModsLoaded;
 import lokko12.croploadcore.Operators;
@@ -72,13 +69,9 @@ import lokko12.croploadcore.OreDict;
 import lokko12.croploadcore.config;
 //ItemsFromAPIs
 import mods.natura.common.NContent;
-import tconstruct.world.TinkerWorld;
-import biomesoplenty.api.content.BOPCBlocks;
-import biomesoplenty.api.content.BOPCItems;
-//MinecraftAPI
-import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import tconstruct.world.TinkerWorld;
 
 public class CropLoader {
 	private static boolean mods[] = new boolean[4];
@@ -131,13 +124,24 @@ public static List<CropLoader> cropLoader() {
 	 * Add your crops with base seed here by
 	 * p.add(new CropLoader(new YourCropClass(),YourItem));
 	 */
-	p.add(new CropLoader(new PapyrusCrop(),null));
-	p.add(new CropLoader(new GoldfishCrop(),null));
-	if(ModsLoaded.dreamcraft)
-	p.add(new CropLoader(new SpacePlantCrop(),null));
 	p.add(new CropLoader(new VineCrop(),new ItemStack(Item.getItemById(106),1,0)));
 	p.add(new CropLoader(new GrassCrop(),new ItemStack(Item.getItemById(31),1,1)));
 	p.add(new CropLoader(new CactiCrop(),new ItemStack(Item.getItemById(81),1,0)));
+	p.add(new CropLoader(new PapyrusCrop(),null));
+	p.add(new CropLoader(new GoldfishCrop(),null));
+	
+	if(ModsLoaded.dreamcraft) {
+	p.add(new CropLoader(new SpacePlantCrop(),null));
+	p.add(new CropLoader(new MagicModifierCrop(),null));
+	}
+	if(ModsLoaded.GT) {
+	p.add(new CropLoader(new StonelillyCrop("Red"),null));
+	p.add(new CropLoader(new StonelillyCrop("Black"),null));
+	p.add(new CropLoader(new StonelillyCrop("Gray"),null));
+	p.add(new CropLoader(new StonelillyCrop("White"),null));
+	p.add(new CropLoader(new StonelillyCrop("Yellow"),null));
+	p.add(new CropLoader(new StonelillyCrop("Nether"),null));
+	}
 	if (Operators.AND(ModsLoaded.Natura,mods[0])) {
 	p.add(new CropLoader(new BlightberryCrop(),new ItemStack(NContent.netherBerryItem, 1, 0)));
 	p.add(new CropLoader(new DuskberryCrop(),new ItemStack(NContent.netherBerryItem, 1, 1)));
@@ -148,7 +152,7 @@ public static List<CropLoader> cropLoader() {
 	p.add(new CropLoader(new BasicNetherShroomCrop("Green"), new ItemStack(NContent.glowshroom,1,0)));
 	p.add(new CropLoader(new BasicNetherShroomCrop("Purple"), new ItemStack(NContent.glowshroom,1,1)));
 	p.add(new CropLoader(new SaguaroCrop(),new ItemStack(NContent.seedFood,1,0)));
-	
+	p.add(new CropLoader(new CottonCrop(),null));
 	}
 	if (Operators.AND(ModsLoaded.TConstruct,mods[1])) {
 	p.add(new CropLoader(new IronOreBerryCrop(),new ItemStack(TinkerWorld.oreBerries, 1, 0)));
@@ -168,6 +172,9 @@ public static List<CropLoader> cropLoader() {
 	p.add(new CropLoader(new EyebulbCrop(),new ItemStack(BOPCBlocks.flowers,1,13)));
 	p.add(new CropLoader(new GlowingCoralCrop(),new ItemStack(BOPCBlocks.coral1,1,15)));
 	p.add(new CropLoader(new GlowflowerCrop(), new ItemStack(BOPCBlocks.flowers,1,3)));
+	p.add(new CropLoader(new TurnipCrop(),null));
+	p.add(new CropLoader(new WildCarrotsCrop(),null));
+	p.add(new CropLoader(new BarleyCrop(),null));
 	}
 	if (Operators.AND(ModsLoaded.TC, mods[3])) {
 	p.add(new CropLoader(new PrimordialPearlBerryCrop(), thaumcraft.api.ItemApi.getItem("itemEldritchObject", 3)));
@@ -175,14 +182,12 @@ public static List<CropLoader> cropLoader() {
 	p.add(new CropLoader(new ShimmerleafCrop(),null));
 	p.add(new CropLoader(new CinderpearlCrop(),null));
 	}
-	
-	//has Base seeds but is called via Oredict:
+	p.add(new CropLoader(new HuckleberryCrop(),null));
 	p.add(new CropLoader(new StrawberryCrop(),null)); 
 	p.add(new CropLoader(new MaloberryCrop(),null)); 
 	p.add(new CropLoader(new BlackberryCrop(),null)); 
 	p.add(new CropLoader(new BlueberryCrop(),null)); 
 	p.add(new CropLoader(new RaspberryCrop(),null)); 
-	if (lokko12.croploadcore.ModsLoaded.TC) {
 	if (lokko12.croploadcore.ModsLoaded.witchery) {
 	p.add(new CropLoader(new GlintWeedCrop(),null));
 	p.add(new CropLoader(new SpanishMossCrop(),null));
@@ -194,13 +199,9 @@ public static List<CropLoader> cropLoader() {
 	p.add(new CropLoader(new EmberMossCrop(),null));
 	}
 	p.add(new CropLoader(new GarlicCrop(),null));
-	p.add(new CropLoader(new TurnipCrop(),null));
-	p.add(new CropLoader(new WildCarrotsCrop(),null));
+
 	//p.add(new WeedCrop());
-	p.add(new CropLoader(new BarleyCrop(),null));
-	p.add(new CropLoader(new CottonCrop(),null));
-	
-	}
+
 	/*if (lokko12.berriespp.ConfigValures.ayo_bonsai)
 		if (InstalledTreesGetter.savedNames != null)	
 	for(int i=0; i < InstalledTreesGetter.savedNames.size(); i++) {

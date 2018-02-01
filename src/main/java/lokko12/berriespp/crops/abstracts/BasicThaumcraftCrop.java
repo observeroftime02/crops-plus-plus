@@ -1,12 +1,7 @@
 package lokko12.berriespp.crops.abstracts;
 
-import ic2.api.crops.CropCard;
 import ic2.api.crops.ICropTile;
 import lokko12.berriespp.ConfigValures;
-import lokko12.croploadcore.BlockGetterTC;
-import net.minecraft.block.Block;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
 
 public abstract class BasicThaumcraftCrop extends BasicCrop {
 

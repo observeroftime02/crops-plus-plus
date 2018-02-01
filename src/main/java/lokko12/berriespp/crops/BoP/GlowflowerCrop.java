@@ -15,6 +15,7 @@ public class GlowflowerCrop extends BasicDecorationCrop {
 	@Override
 	public ItemStack getDisplayItem() {
 		return OreDict.ISget("crop"+name());
+		
 	}
 	
 	@Override

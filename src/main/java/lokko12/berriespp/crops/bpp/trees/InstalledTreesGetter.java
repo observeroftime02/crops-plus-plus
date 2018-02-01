@@ -10,19 +10,15 @@ import java.util.Set;
 
 import javax.imageio.ImageIO;
 
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import ic2.api.crops.CropCard;
-
 import lokko12.berriespp.Berriespp;
 import lokko12.berriespp.ConfigValures;
 import lokko12.croploadcore.Operators;
 import lokko12.croploadcore.OreDict;
 import lokko12.croploadcore.config;
-
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IIcon;
-
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class InstalledTreesGetter {

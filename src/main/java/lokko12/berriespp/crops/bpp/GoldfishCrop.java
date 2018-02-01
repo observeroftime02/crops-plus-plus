@@ -4,14 +4,10 @@ import ic2.api.crops.ICropTile;
 import lokko12.berriespp.ConfigValures;
 import lokko12.berriespp.crops.abstracts.BasicDecorationCrop;
 import lokko12.berriespp.items.BppItems;
-import lokko12.croploadcore.Operators;
-import lokko12.croploadcore.OreDict;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.DamageSource;
 
 public class GoldfishCrop extends BasicDecorationCrop {
 	
@@ -41,7 +37,7 @@ public class GoldfishCrop extends BasicDecorationCrop {
 	
 	 @Override
 	    public int growthDuration(ICropTile crop) {
-	    	if (ConfigValures.Debug == true)
+	    	if (ConfigValures.Debug)
 	    		return 1;
 	    	else
 	    		return 225;

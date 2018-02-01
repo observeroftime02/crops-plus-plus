@@ -1,34 +1,20 @@
 package lokko12.berriespp;
 
-import lokko12.berriespp.GTHandler.GTHandler;
-import lokko12.berriespp.crops.bpp.trees.InstalledTreesGetter;
-import lokko12.berriespp.items.BppItems;
-import lokko12.croploadcore.ModsLoaded;
-import lokko12.croploadcore.Operators;
-import lokko12.croploadcore.OreDict;
-
 import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.core.Logger;
 
-import cpw.mods.fml.common.FMLLog;
-import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.registry.ExistingSubstitutionException;
-import cpw.mods.fml.common.registry.GameRegistry;
-
-import net.minecraftforge.common.*;
-import net.minecraftforge.common.config.Configuration;
-
+import lokko12.berriespp.GTHandler.GTHandler;
+import lokko12.berriespp.items.BppItems;
+import lokko12.croploadcore.ModsLoaded;
 
 @Mod(
 	modid = Berriespp.modID, name = Berriespp.name, version = Berriespp.version,
-	dependencies = "required-after:IC2; required-after:croploadcore@0.0.6; after:Mantle; after:Natura; after:TConstruct; after:BiomesOPlenty; after:Thaumcraft; after:ExtraTrees; after:witchery; after:gregtech"
+	dependencies = "required-after:IC2; required-after:croploadcore@0.0.6; after:GalacticraftCore; after:Mantle; after:Natura; after:TConstruct; after:BiomesOPlenty; after:Thaumcraft; after:ExtraTrees; after:witchery; after:gregtech"
 	)
 
 public class Berriespp {
@@ -47,7 +33,7 @@ public class Berriespp {
 		/*if(InstalledTreesGetter.check_bonsai(preinit))
 			InstalledTreesGetter.InstalledTreesGet();*/
 		CropLoader.load(preinit);
-		
+		//WitcheryMachineRecipeRemover.DistilleryRecipesRemover3(new ItemStack(Items.glowstone_dust),new ItemStack(Items.glowstone_dust),Witchery.Items.GENERIC.itemReekOfMisfortune.createStack(1));
 	}
 
 	@EventHandler

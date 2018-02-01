@@ -4,11 +4,8 @@ import ic2.api.crops.ICropTile;
 import lokko12.berriespp.crops.abstracts.BasicBerryCrop;
 import lokko12.croploadcore.ModsLoaded;
 import lokko12.croploadcore.OreDict;
-import ic2.api.crops.CropCard;
-import ic2.api.crops.Crops;
 import mods.natura.common.NContent;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.oredict.OreDictionary;
 
 public class MaloberryCrop extends BasicBerryCrop {
 

@@ -32,7 +32,7 @@ public class ShimmerleafCrop extends BasicThaumcraftCrop {
         		r = 1;
         	else if (crop.getSize() == 1)
                 r = 2250;
-        	else if (crop.getSize() == 2 && Operators.OR(crop.isBlockBelow("blockQuicksilver") == true, OreDictionary.doesOreNameExist("blockQuicksilver")))
+        	else if (crop.getSize() == 2 && Operators.OR(crop.isBlockBelow("blockQuicksilver") == true, !OreDictionary.doesOreNameExist("blockQuicksilver")))
             	r = 1750;
         	return r;
             }
@@ -50,7 +50,7 @@ public class ShimmerleafCrop extends BasicThaumcraftCrop {
     	else if (crop.getSize() < 1)
     		r = crop.getSize() < 1;
     	else if (crop.getSize() == 2)
-    		r = (crop.getSize() == 2 && Operators.OR(crop.isBlockBelow("blockQuicksilver"),Operators.NOT(OreDictionary.doesOreNameExist("blockQuicksilver"))));
+    		r = (crop.getSize() == 2 && Operators.OR(crop.isBlockBelow("blockQuicksilver"),!(OreDictionary.doesOreNameExist("blockQuicksilver"))));
 		return r;
 	}
 

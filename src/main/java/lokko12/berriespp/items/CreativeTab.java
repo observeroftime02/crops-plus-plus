@@ -4,7 +4,6 @@ import lokko12.croploadcore.ModsLoaded;
 import lokko12.croploadcore.OreDict;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 
 public class CreativeTab extends CreativeTabs {
 	

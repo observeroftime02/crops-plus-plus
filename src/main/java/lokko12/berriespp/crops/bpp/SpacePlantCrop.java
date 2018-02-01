@@ -1,8 +1,10 @@
 package lokko12.berriespp.crops.bpp;
 
 import ic2.api.crops.ICropTile;
+import lokko12.berriespp.ConfigValures;
 import lokko12.berriespp.crops.abstracts.BasicCrop;
 import lokko12.berriespp.items.BppItems;
+import micdoodle8.mods.galacticraft.core.blocks.GCBlocks;
 import net.minecraft.item.ItemStack;
 
 public class SpacePlantCrop extends BasicCrop {
@@ -16,6 +18,14 @@ public class SpacePlantCrop extends BasicCrop {
 		return new ItemStack(BppItems.Modifier,1,0);
 	}
 
+	@Override
+	public int growthDuration(ICropTile crop) {
+		if(ConfigValures.Debug)
+		return 1;
+		return 5000;
+	}
+	
+	
 	@Override
 	public String name() {
 		return "Space Plant";
@@ -50,7 +60,18 @@ public class SpacePlantCrop extends BasicCrop {
 
 	@Override
 	public boolean canGrow(ICropTile crop) {
-		return false;
+		boolean ret= false;
+		if (ConfigValures.Debug)
+			ret = (crop.getSize() < (maxSize()-1));
+		if (crop.getSize()==3) 
+		{
+			if((new ItemStack(crop.getWorld().getBlock((crop.getLocation().posX), (crop.getLocation().posY-1), (crop.getLocation().posZ))).equals(new ItemStack(GCBlocks.blockMoon,1,3)))||(new ItemStack(crop.getWorld().getBlock((crop.getLocation().posX), (crop.getLocation().posY-1), (crop.getLocation().posZ))).equals(new ItemStack(GCBlocks.blockMoon,1,4)))||(new ItemStack(crop.getWorld().getBlock((crop.getLocation().posX), (crop.getLocation().posY-1), (crop.getLocation().posZ))).equals(new ItemStack(GCBlocks.blockMoon,1,5)))||(new ItemStack(crop.getWorld().getBlock((crop.getLocation().posX), (crop.getLocation().posY-1), (crop.getLocation().posZ))).equals(new ItemStack(GCBlocks.blockMoon,1,14))))
+				ret = true;
+			}
+		else if (crop.getSize() < 3)
+			ret = true;
+		return ret;
+		
 	}
 
 	@Override

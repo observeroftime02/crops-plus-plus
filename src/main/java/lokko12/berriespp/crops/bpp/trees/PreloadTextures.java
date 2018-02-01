@@ -1,11 +1,8 @@
 package lokko12.berriespp.crops.bpp.trees;
 
-import java.io.IOException;
-
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import lokko12.croploadcore.Operators;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.event.TextureStitchEvent;

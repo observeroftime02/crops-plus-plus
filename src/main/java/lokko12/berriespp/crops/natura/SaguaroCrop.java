@@ -1,12 +1,8 @@
 package lokko12.berriespp.crops.natura;
-import biomesoplenty.api.content.BOPCBlocks;
-import ic2.api.crops.Crops;
 import ic2.api.crops.ICropTile;
 import lokko12.berriespp.ConfigValures;
-import lokko12.berriespp.CropLoader;
 import lokko12.berriespp.crops.bpp.CactiCrop;
 import mods.natura.common.NContent;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class SaguaroCrop extends CactiCrop {

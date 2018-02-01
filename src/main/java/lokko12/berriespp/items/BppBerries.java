@@ -1,4 +1,5 @@
 package lokko12.berriespp.items;
+
 import java.util.List;
 
 import cpw.mods.fml.relauncher.Side;
@@ -12,25 +13,16 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
-
-/*
- * code by progwml6, Natura
- * modified by lokko12
- * 
- * 
- * 
- * 
- */
-
-public class NaturaBerryItems extends ItemFood
-{
-    public IIcon[] icons;
+public class BppBerries extends ItemFood{
+	
+	public IIcon[] icons;
     
-    public String[] textureNames = new String[] {"rasp", "blue", "black", "geo", "cactus"};
+    public String[] textureNames = new String[] {"huckle"/*, more names*/};
 
-    public NaturaBerryItems(int heal)
+    public BppBerries()
     {
-        super(heal, 0.4F, false);
+        super(1, 0.4F, false);
+        this.setCreativeTab(CreativeTab.bpp);
         setHasSubtypes(true);
         setMaxDamage(0);
         this.setMaxStackSize(16);
@@ -78,16 +70,27 @@ public class NaturaBerryItems extends ItemFood
         return (new StringBuilder()).append("item.berry.").append(textureNames[itemstack.getItemDamage()]).toString();
     }
 
-    /**
-     * returns a list of items with the same ID, but different meta (eg: dye returns 16 items)
-     */
+
     @SideOnly(Side.CLIENT)
     @Override
-    public void getSubItems (Item par1, CreativeTabs par2CreativeTabs, List par3List)
+    public void getSubItems (Item item, CreativeTabs par2CreativeTabs, List list)
     {
-        for (int var4 = 0; var4 < 8; ++var4)
+        for (int i = 0; i < textureNames.length; ++i)
         {
-            par3List.add(new ItemStack(par1, 1, var4));
+            list.add(new ItemStack(item, 1, i));
         }
     }
+    
+	@Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation (ItemStack stack, EntityPlayer player, List list, boolean par4)
+	{
+		switch (stack.getItemDamage()) {
+		case 0:{
+		list.add("Huckle-dae-Duckle-dae-Doo");
+		list.add("A sweet treat!");
+		}
+		//other cases
+		}
+	}
 }

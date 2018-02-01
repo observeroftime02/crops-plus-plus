@@ -1,14 +1,9 @@
 package lokko12.berriespp.crops.BoP;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import ic2.api.crops.ICropTile;
-import lokko12.berriespp.ConfigValures;
 import lokko12.berriespp.crops.abstracts.BasicFoodCrop;
 import lokko12.croploadcore.OreDict;
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IIcon;
 
 public class TurnipCrop extends BasicFoodCrop {
 	public TurnipCrop()
