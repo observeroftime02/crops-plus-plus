@@ -90,7 +90,17 @@ task getGalacticraftPlanets(type: Download, dependsOn: "getGalacticraft") {
     mustRunAfter "repackMinecraft"
 }
 
-task getGregTech(type: Download, dependsOn: "getGalacticraftPlanets") {
+task getCropLoadCore(type: Download, dependsOn: "getGalacticraftPlanets") {
+    onlyIf {
+        !file("libs/CropLoadCore-${config.croploadcore.version}.jar").exists()
+    }
+    src "https://github.com/bartimaeusnek/CropLoadCore/releases/download/${config.croploadcore.version}/CropLoadCore-${config.croploadcore.version}.jar"
+    dest file("libs/CropLoadCore-${config.croploadcore.version}.jar")
+    mustRunAfter "deobfBinJar"
+    mustRunAfter "repackMinecraft"
+}
+
+task getGregTech(type: Download, dependsOn: "getCropLoadCore") {
     onlyIf {
         !file("libs/gregtech-${config.gregtech.version}-dev.jar").exists()
     }
@@ -99,6 +109,7 @@ task getGregTech(type: Download, dependsOn: "getGalacticraftPlanets") {
     mustRunAfter "deobfBinJar"
     mustRunAfter "repackMinecraft"
 }
+
 
 tasks.setupCIWorkspace.dependsOn getGregTech
 tasks.setupDevWorkspace.dependsOn getGregTech
