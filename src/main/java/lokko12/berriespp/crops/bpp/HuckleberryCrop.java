@@ -12,7 +12,7 @@ public class HuckleberryCrop extends BasicBerryCrop {
     }
 
     public String name() {
-        return "Huckelberry";
+        return "Huckleberry";
     }
     
     public String[] attributes() {
