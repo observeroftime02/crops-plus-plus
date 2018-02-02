@@ -12,12 +12,14 @@ buildscript {
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+        classpath "de.undercouch:gradle-download-task:3.1.2"
     }
 }
 
 apply plugin: 'forge'
+import de.undercouch.gradle.tasks.download.Download
 
-version = "1.2.3"
+version = "1.2.4"
     //
     // Versions: 
     //           1=Realises
@@ -39,22 +41,69 @@ minecraft {
     replace "@version@", project.version
     runDir = "eclipse"
 }
+file "build.properties" withReader {
+    def prop = new Properties()
+    prop.load(it)
+    ext.config = new ConfigSlurper().parse prop
+}
+
+repositories {
+    mavenLocal()
+    maven {
+        name = "ic2"
+        url = "http://maven.ic2.player.to/"
+    }
+}
+
 
 dependencies {
-    // you may put jars on which you depend on in ./libs
-    // or you may define them like so..
-    //compile "some.group:artifact:version:classifier"
-    //compile "some.group:artifact:version"
-      
-    // real examples
-    //compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // adds buildcraft to the dev env
-    //compile 'com.googlecode.efficient-java-matrix-library:ejml:0.24' // adds ejml to the dev env
-
-    // for more info...
-    // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
-    // http://www.gradle.org/docs/current/userguide/dependency_management.html
-
+    compile "net.industrial-craft:industrialcraft-2:${config.ic2.version}:dev"
 }
+
+task getThaucraftDev(type: Download) {
+    onlyIf {
+        !file("libs/Thaumcraft-deobf-1.7.10-4.2.3.5.jar").exists()
+    }
+    src "https://minecraft.curseforge.com/projects/thaumcraft/files/2227552/download"
+    dest file("libs/Thaumcraft-deobf-1.7.10-4.2.3.5.jar")
+    mustRunAfter "deobfBinJar"
+    mustRunAfter "repackMinecraft"
+}
+
+task getGalacticraft(type: Download, dependsOn: "getThaucraftDev") {
+    onlyIf {
+        !file("libs/GalacticraftCore-Dev-1.7-3.0.12.503.jar").exists()
+    }
+    src "https://ci.micdoodle8.com/job/Galacticraft3-dev/503/artifact/Forge/build/libs/GalacticraftCore-Dev-1.7-3.0.12.503.jar"
+    dest file("libs/GalacticraftCore-Dev-1.7-3.0.12.503.jar")
+    mustRunAfter "deobfBinJar"
+    mustRunAfter "repackMinecraft"
+}
+
+task getGalacticraftPlanets(type: Download, dependsOn: "getGalacticraft") {
+    onlyIf {
+        !file("libs/Galacticraft-Planets-Dev-1.7-3.0.12.503.jar").exists()
+    }
+    src "https://ci.micdoodle8.com/job/Galacticraft3-dev/503/artifact/Forge/build/libs/Galacticraft-Planets-Dev-1.7-3.0.12.503.jar"
+    dest file("libs/Galacticraft-Planets-Dev-1.7-3.0.12.503.jar")
+    mustRunAfter "deobfBinJar"
+    mustRunAfter "repackMinecraft"
+}
+
+task getGregTech(type: Download, dependsOn: "getGalacticraftPlanets") {
+    onlyIf {
+        !file("libs/gregtech-${config.gregtech.version}-dev.jar").exists()
+    }
+    src "http://jenkins.usrv.de:8081/job/Gregtech-5-Unofficial/${config.gregtech.jenkinsbuild}/artifact/build/libs/gregtech-${config.gregtech.version}-dev.jar"
+    dest file("libs/gregtech-${config.gregtech.version}-dev.jar")
+    mustRunAfter "deobfBinJar"
+    mustRunAfter "repackMinecraft"
+}
+
+tasks.setupCIWorkspace.dependsOn getGregTech
+tasks.setupDevWorkspace.dependsOn getGregTech
+tasks.setupDecompWorkspace.dependsOn getGregTech
+tasks.compileJava.dependsOn getGregTech
 
 processResources
 {

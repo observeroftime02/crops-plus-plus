@@ -14,7 +14,7 @@ import lokko12.croploadcore.ModsLoaded;
 
 @Mod(
 	modid = Berriespp.modID, name = Berriespp.name, version = Berriespp.version,
-	dependencies = "required-after:IC2; required-after:croploadcore@0.0.6; after:GalacticraftCore; after:Mantle; after:Natura; after:TConstruct; after:BiomesOPlenty; after:Thaumcraft; after:ExtraTrees; after:witchery; after:gregtech"
+	dependencies = "required-after:IC2; required-after:croploadcore@0.0.7; after:GalacticraftCore; after:Mantle; after:Natura; after:TConstruct; after:BiomesOPlenty; after:Thaumcraft; after:ExtraTrees; after:witchery; after:gregtech"
 	)
 
 public class Berriespp {

@@ -20,7 +20,7 @@ public final class BppItems {
 	public final static Item Modifier = new Modifier();
 	public final static ItemStack ModifierSpace = new ItemStack(Modifier, 1, 0);
 	public final static ItemStack ModifierMagic = new ItemStack(Modifier, 1, 1);
-	public final static ItemStack ModifierAnti = new ItemStack(Modifier, 1, 2);
+	//public final static ItemStack ModifierAnti = new ItemStack(Modifier, 1, 2);
 	public final static ItemStack Trophy = new ItemStack(Modifier, 1, 3);
 	public final static Item BppBerries = new BppBerries();
 	
@@ -31,7 +31,7 @@ public final class BppItems {
 			GameRegistry.registerItem(Modifier,"Modifier");
 			GameRegistry.registerCustomItemStack("ModifierSpace", ModifierSpace);
 			GameRegistry.registerCustomItemStack("ModifierMagic", ModifierMagic);
-			GameRegistry.registerCustomItemStack("ModifierAnti", ModifierAnti);
+			//GameRegistry.registerCustomItemStack("ModifierAnti", ModifierAnti);
 			GameRegistry.registerCustomItemStack("Trophy", Trophy);
 			GameRegistry.registerItem(BppBerries,"foodBerries");
 			GameRegistry.registerCustomItemStack("berryHuckle", new ItemStack(BppBerries, 1, 0));
@@ -49,7 +49,8 @@ public final class BppItems {
 	
 	public static void register_recipes() {
 		if (ConfigValures.Items==true) {
-				//GameRegistry.addShapelessRecipe(new ItemStack(Items.fish), new ItemStack(Goldfisch));
+			if (!ModsLoaded.dreamcraft)
+				GameRegistry.addShapelessRecipe(new ItemStack(Items.fish), new ItemStack(Goldfisch));
 			if (!ModsLoaded.GT) {
 				GameRegistry.addRecipe(itemSpadeStack, new Object[] {" P ", "PWP", " S ", 'P', OreDict.ISget("plateDenseSteel"), 'W', Ic2Items.weedingTrowel.getItem(),'S',Items.stick});
 			}

@@ -9,6 +9,7 @@ import gregtech.api.util.GT_OreDictUnificator;
 import lokko12.berriespp.items.BppItems;
 import lokko12.croploadcore.ModsLoaded;
 import micdoodle8.mods.galacticraft.core.items.GCItems;
+import micdoodle8.mods.galacticraft.planets.mars.items.MarsItems;
 import mods.natura.common.NContent;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -122,8 +123,16 @@ public class GTMachineRecipeLoader implements Runnable{
     	//Trophy
     	GT_Values.RA.addExtruderRecipe(Materials.Neutronium.getBlocks(64), Materials.Neutronium.getBlocks(64), new ItemStack(BppItems.Modifier,1,3), 2147483647, 8);
     	GT_Values.RA.addFluidExtractionRecipe(new ItemStack(BppItems.Modifier,1,0), null, Materials.UUMatter.getFluid(2L), 5000, 128, 4);
-    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {new ItemStack(BppItems.Modifier,9,0), new ItemStack(GCItems.meteoricIronRaw,1) }, new FluidStack[] {Materials.Water.getFluid(1000L)}, null, new ItemStack[] {Materials.MeteoricIron.getDust(4)}, 240, 512);
-    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {new ItemStack(BppItems.Modifier,9,0), GT_OreDictUnificator.get(OrePrefixes.crushed.get(Materials.MeteoricIron), 1)}, new FluidStack[] {Materials.Water.getFluid(1000L)}, null, new ItemStack[] {GT_OreDictUnificator.get(OrePrefixes.crushedPurified.get(Materials.MeteoricIron), 4)}, 240, 512);
     	
+    	//Chem Refine
+    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {new ItemStack(BppItems.Modifier,9,0), new ItemStack(GCItems.meteoricIronRaw) }, new FluidStack[] {Materials.Water.getFluid(1000L)}, null, new ItemStack[] {Materials.MeteoricIron.getDust(4)}, 240, 512);
+    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {new ItemStack(BppItems.Modifier,9,0), new ItemStack(MarsItems.marsItemBasic) }, new FluidStack[] {Materials.Water.getFluid(1000L)}, null, new ItemStack[] {Materials.Desh.getDust(4)}, 240, 512);
+    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {new ItemStack(BppItems.Modifier,9,0), GT_OreDictUnificator.get(OrePrefixes.crushed.get(Materials.MeteoricIron), 1)}, new FluidStack[] {Materials.Water.getFluid(1000L)}, null, new ItemStack[] {GT_OreDictUnificator.get(OrePrefixes.crushedPurified.get(Materials.MeteoricIron), 4)}, 240, 512);
+      	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {new ItemStack(BppItems.Modifier,9,0), GT_OreDictUnificator.get(OrePrefixes.crushed.get(Materials.Desh), 1)}, new FluidStack[] {Materials.Water.getFluid(1000L)}, null, new ItemStack[] {GT_OreDictUnificator.get(OrePrefixes.crushedPurified.get(Materials.Desh), 4)}, 240, 512);
+    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {new ItemStack(BppItems.Modifier,9,0), GT_OreDictUnificator.get(OrePrefixes.crushed.get(Materials.Oriharukon), 1)}, new FluidStack[] {Materials.Water.getFluid(1000L)}, null, new ItemStack[] {GT_OreDictUnificator.get(OrePrefixes.crushedPurified.get(Materials.Oriharukon), 4)}, 240, 512);
+    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {new ItemStack(BppItems.Modifier,9,0), GT_OreDictUnificator.get(OrePrefixes.crushed.get(Materials.Ledox), 1)}, new FluidStack[] {Materials.Water.getFluid(1000L)}, null, new ItemStack[] {GT_OreDictUnificator.get(OrePrefixes.crushedPurified.get(Materials.Ledox), 4)}, 240, 512);
+    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {new ItemStack(BppItems.Modifier,9,0), GT_OreDictUnificator.get(OrePrefixes.crushed.get(Materials.CallistoIce), 1)}, new FluidStack[] {Materials.Water.getFluid(1000L)}, null, new ItemStack[] {GT_OreDictUnificator.get(OrePrefixes.crushedPurified.get(Materials.CallistoIce), 4)}, 240, 512);
+    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {new ItemStack(BppItems.Modifier,9,0), GT_OreDictUnificator.get(OrePrefixes.crushed.get(Materials.BlackPlutonium), 1)}, new FluidStack[] {Materials.Water.getFluid(1000L)}, null, new ItemStack[] {GT_OreDictUnificator.get(OrePrefixes.crushedPurified.get(Materials.BlackPlutonium), 4)}, 240, 32768);
+    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {new ItemStack(BppItems.Modifier,9,0), GT_OreDictUnificator.get(OrePrefixes.crushed.get(Materials.DeepIron), 1)}, new FluidStack[] {Materials.Water.getFluid(1000L)}, null, new ItemStack[] {GT_OreDictUnificator.get(OrePrefixes.crushedPurified.get(Materials.DeepIron), 4)}, 240, 32768);
     }
 }
