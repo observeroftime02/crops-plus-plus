@@ -1,0 +1,138 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+        maven {
+            name = "sonatype"
+            url = "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+        classpath "de.undercouch:gradle-download-task:3.1.2"
+    }
+}
+
+apply plugin: 'forge'
+import de.undercouch.gradle.tasks.download.Download
+
+version = "1.2.4"
+    //
+    // Versions: 
+    //           1=Realises
+    //           0=Milestones
+    //           0=internal version Nr 
+    //
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+group= "LOKKO12.Berries++" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "Berries++"
+
+minecraft {
+    version = "1.7.10-10.13.4.1558-1.7.10"
+    replaceIn "Berriespp.java"
+    replace "@version@", project.version
+    runDir = "eclipse"
+}
+file "build.properties" withReader {
+    def prop = new Properties()
+    prop.load(it)
+    ext.config = new ConfigSlurper().parse prop
+}
+
+repositories {
+    mavenLocal()
+    maven {
+        name = "ic2"
+        url = "http://maven.ic2.player.to/"
+    }
+}
+
+
+dependencies {
+    compile "net.industrial-craft:industrialcraft-2:${config.ic2.version}:dev"
+}
+
+task getThaucraftDev(type: Download) {
+    onlyIf {
+        !file("libs/Thaumcraft-deobf-1.7.10-4.2.3.5.jar").exists()
+    }
+    src "https://minecraft.curseforge.com/projects/thaumcraft/files/2227552/download"
+    dest file("libs/Thaumcraft-deobf-1.7.10-4.2.3.5.jar")
+    mustRunAfter "deobfBinJar"
+    mustRunAfter "repackMinecraft"
+}
+
+task getGalacticraft(type: Download, dependsOn: "getThaucraftDev") {
+    onlyIf {
+        !file("libs/GalacticraftCore-Dev-1.7-3.0.12.503.jar").exists()
+    }
+    src "https://ci.micdoodle8.com/job/Galacticraft3-dev/503/artifact/Forge/build/libs/GalacticraftCore-Dev-1.7-3.0.12.503.jar"
+    dest file("libs/GalacticraftCore-Dev-1.7-3.0.12.503.jar")
+    mustRunAfter "deobfBinJar"
+    mustRunAfter "repackMinecraft"
+}
+
+task getGalacticraftPlanets(type: Download, dependsOn: "getGalacticraft") {
+    onlyIf {
+        !file("libs/Galacticraft-Planets-Dev-1.7-3.0.12.503.jar").exists()
+    }
+    src "https://ci.micdoodle8.com/job/Galacticraft3-dev/503/artifact/Forge/build/libs/Galacticraft-Planets-Dev-1.7-3.0.12.503.jar"
+    dest file("libs/Galacticraft-Planets-Dev-1.7-3.0.12.503.jar")
+    mustRunAfter "deobfBinJar"
+    mustRunAfter "repackMinecraft"
+}
+
+task getCropLoadCore(type: Download, dependsOn: "getGalacticraftPlanets") {
+    onlyIf {
+        !file("libs/CropLoadCore-${config.croploadcore.version}.jar").exists()
+    }
+    src "https://github.com/bartimaeusnek/CropLoadCore/releases/download/${config.croploadcore.version}/CropLoadCore-${config.croploadcore.version}.jar"
+    dest file("libs/CropLoadCore-${config.croploadcore.version}.jar")
+    mustRunAfter "deobfBinJar"
+    mustRunAfter "repackMinecraft"
+}
+
+task getGregTech(type: Download, dependsOn: "getCropLoadCore") {
+    onlyIf {
+        !file("libs/gregtech-${config.gregtech.version}-dev.jar").exists()
+    }
+    src "http://jenkins.usrv.de:8081/job/Gregtech-5-Unofficial/${config.gregtech.jenkinsbuild}/artifact/build/libs/gregtech-${config.gregtech.version}-dev.jar"
+    dest file("libs/gregtech-${config.gregtech.version}-dev.jar")
+    mustRunAfter "deobfBinJar"
+    mustRunAfter "repackMinecraft"
+}
+
+
+tasks.setupCIWorkspace.dependsOn getGregTech
+tasks.setupDevWorkspace.dependsOn getGregTech
+tasks.setupDecompWorkspace.dependsOn getGregTech
+tasks.compileJava.dependsOn getGregTech
+
+processResources
+{
+    // this will ensure that this task is redone when the versions change.
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    // replace stuff in mcmod.info, nothing else
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+        // replace version and mcversion
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+        
+    // copy everything else, thats not the mcmod.info
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+    
+    
+}

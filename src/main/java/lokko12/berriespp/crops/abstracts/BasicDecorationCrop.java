@@ -1,0 +1,40 @@
+package lokko12.berriespp.crops.abstracts;
+import ic2.api.crops.ICropTile;
+import lokko12.berriespp.ConfigValures;
+
+public abstract class BasicDecorationCrop extends BasicBerryCrop {
+
+	    public BasicDecorationCrop() {
+	    	super();
+	    	}
+
+	    @Override
+	    public int tier() {
+	        return 1;
+	    }
+
+	    @Override
+	    public int stat(int n) {
+	        switch(n) {
+	        case 0: return 0;   // not chemical
+	        case 1: return 0;   // not edible
+	        case 2: return 0;   // no defensive properties
+	        case 3: return 4;   // primarily decorative
+	        case 4: return 0;   // not particularly weed-like
+	        default: return 0;
+	        }
+	    }
+
+	    @Override
+	    public int growthDuration(ICropTile crop) {
+	    	if (ConfigValures.Debug == true)
+	    		return 1;
+	    	else
+	        return 225;
+	    }
+
+	    @Override
+	    public byte getSizeAfterHarvest(ICropTile crop) {
+	        return 1;
+	    }
+}
