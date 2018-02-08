@@ -4,12 +4,16 @@ import java.util.List;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import ic2.core.IC2;
+import ic2.core.crop.TileEntityCrop;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
+import net.minecraft.world.World;
 
 public class Modifier extends Item {
 	public Modifier() {
@@ -20,13 +24,16 @@ public class Modifier extends Item {
 	}
 	
 	public IIcon[] icons;
-    public String[] textureNames = new String[] {"Space", "Magic", "Anti","Trophy"};
+    public String[] textureNames = new String[] {"Space", "Magic", "Trophy"/*, "Anti","Growth","Gain","Resistance"*/};
 
-    @SideOnly(Side.CLIENT)
     @Override
+    @SideOnly(Side.CLIENT)
     public IIcon getIconFromDamage (int meta)
     {
-        return icons[meta];
+    	if (meta < textureNames.length)
+    		return icons[meta];
+    	else
+    		return icons[0];
     }
 
     @Override
@@ -42,16 +49,25 @@ public class Modifier extends Item {
             list.add("Pure Magic!");
             break;
         case 2:
-            list.add("!stooR-rettaM-itnA");
-            break;
-        case 3:
             list.add("Challenge Accepted!");
             break;
+        /*case 3:
+            list.add("!stooR-rettaM-itnA");
+            break;
+        case 4:
+        	list.add("Boosts the Growth-Statt of a plant!");
+            break;
+        case 5:
+        	list.add("Boosts the Gain-Statt of a plant!");
+            break;
+        case 6:
+        	list.add("Boosts the Resistance-Statt of a plant!");
+            break;*/
         }
 }
     
-    @SideOnly(Side.CLIENT)
     @Override
+    @SideOnly(Side.CLIENT)
     public void registerIcons (IIconRegister iconRegister)
     {
         this.icons = new IIcon[textureNames.length];
@@ -61,19 +77,62 @@ public class Modifier extends Item {
             this.icons[i] = iconRegister.registerIcon("bpp:item_Modifier_" + textureNames[i]);
         }
     }
+    
     @Override
     public String getUnlocalizedName (ItemStack itemstack)
     {
-        return (new StringBuilder()).append("item_Modifier_").append(textureNames[itemstack.getItemDamage()]).toString();
+    	if (itemstack.getItemDamage()<textureNames.length)
+    		return (new StringBuilder()).append("item_Modifier_").append(textureNames[itemstack.getItemDamage()]).toString();
+    	else
+    		return (new StringBuilder()).append("item_Modifier_").append(textureNames[0]).toString();
     }
 
-    @SideOnly(Side.CLIENT)
     @Override
-    public void getSubItems (Item par1, CreativeTabs par2CreativeTabs, List par3List)
+    @SideOnly(Side.CLIENT)
+    public void getSubItems (Item item, CreativeTabs par2CreativeTabs, List list)
     {
-        for (int var4 = 0; var4 < textureNames.length; ++var4)
+        for (int i = 0; i < textureNames.length; ++i)
         {
-            par3List.add(new ItemStack(par1, 1, var4));
+            list.add(new ItemStack(item, 1, i));
         }
     }
+    
+/*    
+    @Override
+	public boolean onItemUseFirst(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
+		if (!IC2.platform.isSimulating())
+            return false;
+		TileEntity te = world.getTileEntity(x, y, z);
+        if (te instanceof TileEntityCrop) {
+            TileEntityCrop crop = (TileEntityCrop)te;
+            if (crop.getCrop() != null) {
+            	if (crop.getCrop() instanceof ic2.api.crops.CropCard && crop.getCrop().tier()>=1) {
+            		switch (stack.getItemDamage() % textureNames.length)
+                    {	
+                    case 4:
+                    	if (crop.statGrowth < 31)
+                    	crop.statGrowth=crop.statGrowth+1;
+                    	crop.updateState();
+                    	stack.stackSize=stack.stackSize-1;
+                        break;
+                    case 5:
+                    	if (crop.statGain < 31)
+                    	crop.statGain=crop.statGain+1;
+                    	crop.updateState();
+                    	stack.stackSize=stack.stackSize-1;
+                        break;
+                    case 6:
+                    	if (crop.statResistance < 31)
+                    	crop.statResistance=crop.statResistance+1;
+                    	crop.updateState();
+                    	stack.stackSize=stack.stackSize-1;
+                        break;
+                    }
+            		return true;
+            	}
+            }
+        }
+        return false;
+    }
+*/
 }

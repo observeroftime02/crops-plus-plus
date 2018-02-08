@@ -34,6 +34,11 @@ public class GlowflowerCrop extends BasicDecorationCrop {
 	}
 
 	@Override
+	public int getEmittedLight(ICropTile crop) {
+        return 7;
+    }
+	
+	@Override
 	public ItemStack getGain(ICropTile crop) {
 		return new ItemStack(BOPCBlocks.flowers,1,3);
 	}

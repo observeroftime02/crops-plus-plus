@@ -46,38 +46,47 @@ public class GoldfishCrop extends BasicDecorationCrop {
 	
 	@Override
 	public boolean rightclick(ICropTile crop, EntityPlayer player) {
-		if (player instanceof EntityPlayer) {
-			if (crop.getSize()!=this.maxSize())
+		boolean ret;
+			if (((int)crop.getSize())!=this.maxSize()) {
 			player.playSound("mob.ghast.scream", crop.getSize(), (maxSize()+1)+(-1)*crop.getSize());
-			else if (crop.getSize()==this.maxSize())
+			ret = crop.harvest(true);
+			}
+			else if (((int)crop.getSize())==this.maxSize()) {
             player.playSound("mob.ghast.scream", 5, (float) 0.5);
-    	}
-		return crop.harvest(true);
+			ret = crop.harvest(true);
+			}
+			else
+			ret = false;
+		return ret;
 	}
 	 
 	@Override
 	public boolean leftclick(ICropTile crop, EntityPlayer player) {
-		if (player instanceof EntityPlayer) {
-			if (crop.getSize()!=this.maxSize())
-			player.playSound("mob.ghast.scream", crop.getSize(), (maxSize()+1)+(-1)*crop.getSize());
-			else if (crop.getSize()==this.maxSize())
-            player.playSound("mob.ghast.scream", 5, (float) 0.5);
-    	}
-		return crop.pick(true);
+		boolean ret;
+		if (((int)crop.getSize())!=this.maxSize()) {
+		player.playSound("mob.ghast.scream", crop.getSize(), (maxSize()+1)+(-1)*crop.getSize());
+		ret = crop.pick(true);
+		}
+		else if (((int)crop.getSize())==this.maxSize()) {
+        player.playSound("mob.ghast.scream", 5, (float) 0.5);
+		ret = crop.pick(true);
+		}
+		else
+		ret = false;
+	return ret;
 	}
 	 
 	@Override
 	public boolean onEntityCollision(ICropTile crop, Entity entity) {
     	if (entity instanceof EntityLivingBase) {
+        	if (entity instanceof EntityPlayer) {
+        		if (((int)crop.getSize())!=this.maxSize())
+        		entity.playSound("mob.ghast.scream", crop.getSize(), (maxSize()+1)+(-1)*crop.getSize());
+        		else if (((int)crop.getSize())==this.maxSize())
+                entity.playSound("mob.ghast.scream", 5, (float) 0.5);
+        	}
 			return ((EntityLivingBase) entity).isSprinting();
 		}
-    	
-    	if (entity instanceof EntityPlayer) {
-    		if (crop.getSize()!=this.maxSize())
-    		entity.playSound("mob.ghast.scream", crop.getSize(), (maxSize()+1)+(-1)*crop.getSize());
-    		else if (crop.getSize()==this.maxSize())
-            entity.playSound("mob.ghast.scream", 5, (float) 0.5);
-    	}
 		return false;
 	}
 	

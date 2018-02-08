@@ -16,14 +16,16 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidContainerItem;
 import net.minecraftforge.fluids.IFluidHandler;
+import net.minecraftforge.fluids.ItemFluidContainer;
 
-public class ItemBppWateringCan extends Item implements IFluidContainerItem {
-	private int max_capacity = 1000;
+public class ItemBppWateringCan extends ItemFluidContainer implements IFluidContainerItem {
+	private static int max_capacity = 1000;
 	private int capacity = 0;
 	private boolean nutrient = false;
 	private boolean debug = false;
 	public ItemBppWateringCan() {
-		super();
+		super(max_capacity);
+		this.setCapacity(1000);
 		this.setUnlocalizedName("WateringCan");
         this.setMaxStackSize(1);
         this.setCreativeTab(CreativeTab.bpp);
@@ -88,7 +90,7 @@ public class ItemBppWateringCan extends Item implements IFluidContainerItem {
 	public FluidStack getFluid(ItemStack container) {
 		if (nutrient==false)
 		return new FluidStack(FluidRegistry.WATER,capacity);
-		else return FluidRegistry.getFluidStack("fluidNutrientSolution",capacity);
+		else return FluidRegistry.getFluidStack("NutrientSolution",capacity);
 	}
 
 
@@ -104,7 +106,7 @@ public class ItemBppWateringCan extends Item implements IFluidContainerItem {
 			return 0;
 		else {
 			if (resource!=null)
-			if ((resource.isFluidEqual(new FluidStack(FluidRegistry.WATER,max_capacity))||resource.isFluidEqual(FluidRegistry.getFluidStack("fluidNutrientSolution",capacity)))&&(!(capacity>=max_capacity))) {
+			if ((resource.isFluidEqual(new FluidStack(FluidRegistry.WATER,max_capacity))||resource.isFluidEqual(FluidRegistry.getFluidStack("NutrientSolution",capacity)))&&(!(capacity>=max_capacity))) {
 					int afterfill;
 					afterfill = resource.amount-(max_capacity-capacity);
 					capacity = resource.amount;

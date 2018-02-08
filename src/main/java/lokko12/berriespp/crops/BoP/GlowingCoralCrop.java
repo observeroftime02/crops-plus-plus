@@ -19,7 +19,7 @@ public class GlowingCoralCrop extends BasicDecorationCrop {
 
 	@Override
 	public String name() {
-		return "Glowing Coral";
+		return "Glowing Earth Coral";
 	}
 	
 	@Override
@@ -32,6 +32,11 @@ public class GlowingCoralCrop extends BasicDecorationCrop {
 		return new String[] {"Water", "Light", "Shiny"};
 	}
 
+	@Override
+	public int getEmittedLight(ICropTile crop) {
+        return 7;
+    }
+	
 	@Override
 	public ItemStack getGain(ICropTile crop) {
 		return new ItemStack(BOPCBlocks.coral1,1,15);

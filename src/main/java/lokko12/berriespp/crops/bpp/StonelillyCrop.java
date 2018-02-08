@@ -44,7 +44,14 @@ public class StonelillyCrop extends BasicDecorationCrop{
     	
     	boolean ret = false;
     	switch (crop.getSize()) {
-    	case 1: ret = true;
+    	case 0: {
+    		ret = true;
+    		break;
+    	}
+    	case 1: {
+    		ret = true;
+    		break;
+    	}
     	case 2: {
     	switch (color){
 		case "Red":{

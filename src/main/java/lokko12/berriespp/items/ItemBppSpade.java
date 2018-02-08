@@ -28,7 +28,7 @@ import net.minecraft.world.World;
 public class ItemBppSpade extends ItemTool {
 		public IIcon icon;
 		private String toolClass;
-		private static Set BlocksAffected = Sets.newHashSet(new Block[] {Blocks.grass, Blocks.dirt, Blocks.snow_layer, Blocks.farmland, Blocks.mycelium});
+		private static Set BlocksAffected = Sets.newHashSet(new Block[] {Blocks.grass, Blocks.dirt, Blocks.snow_layer, Blocks.farmland, Blocks.mycelium, StackUtil.getBlock(ic2.core.Ic2Items.crop)});
 		
 		public ItemBppSpade() {
 			super(1.0F,Item.ToolMaterial.IRON,BlocksAffected);
@@ -57,7 +57,7 @@ public class ItemBppSpade extends ItemTool {
 	            TileEntityCrop crop = (TileEntityCrop)te;
 	            if (crop.getCrop() != null) {
 	            	if (crop.getCrop() instanceof ic2.api.crops.CropCard && crop.getCrop().tier()>=1) {
-	            		float i = crop.getCrop().tier()+5*((crop.getResistance()+crop.getGain()+crop.getGrowth())/21);
+	            			float i = crop.getCrop().tier()+5*((((-crop.getResistance())/2)+crop.getGain()+crop.getGrowth())/21);
 	            			if(MyRandom.intrandom(100, 0) <= 100*Operators.csig(i,12,false)) {
 	            				if (crop.getCrop().getGain(crop) != null && crop.getCrop().canBeHarvested(crop))
 	            					StackUtil.dropAsEntity(world, x, y, z, crop.getCrop().getGain(crop));
