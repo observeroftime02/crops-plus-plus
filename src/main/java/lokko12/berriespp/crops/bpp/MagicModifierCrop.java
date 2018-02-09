@@ -5,6 +5,7 @@ import lokko12.berriespp.ConfigValures;
 import lokko12.berriespp.crops.TC.PrimordialPearlBerryCrop;
 import lokko12.berriespp.items.BppItems;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class MagicModifierCrop extends PrimordialPearlBerryCrop {
 
@@ -16,7 +17,8 @@ public class MagicModifierCrop extends PrimordialPearlBerryCrop {
     public String name() {
         return "Magical Nightshade";
     }
-
+	
+	@Override
 	public int tier() {
 		return 13;
 	}
@@ -45,15 +47,27 @@ public class MagicModifierCrop extends PrimordialPearlBerryCrop {
 		return (float) ((float) ((Math.pow(0.95, (float) tier()))*ConfigValures.BerryGain)*(ConfigValures.PrimordialBerryGain*1.5));
 	}
 
+	@Override
+	public int getEmittedLight(ICropTile crop) {
+		if (crop.getSize()==4)
+        return 4;
+		else return 0;
+    }
+	
+    @Override
+    public boolean canGrow(ICropTile crop) {
+    	boolean ret = false;
+    	if (crop.getSize() < 3)
+    		ret = true;
+    	else if ((crop.getSize() == 3 && crop.isBlockBelow("blockIchorium")) || (crop.getSize() == 3 && !OreDictionary.doesOreNameExist("blockIchorium")))
+    		ret = true;
+        return ret;
+    }
+	
     @Override
     public byte getSizeAfterHarvest(ICropTile crop) {
         return 1;
     }
-    
-	@Override
-	public int maxSize() {
-		return 3;
-	}
 	
 	@Override
 	public ItemStack getGain(ICropTile crop) {
