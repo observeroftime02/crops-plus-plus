@@ -14,13 +14,10 @@ public class BasicNetherShroomCrop extends BasicNetherBerryCrop {
 		public BasicNetherShroomCrop(String color)
 		{
 			super();
-			if(color=="Purple"||color=="Yellow"||color=="Blue"||color=="Green") 
-			{
-			if (Operators.NOT(color=="Yellow"))
-			this.name = color+" Glowshroom";
+			if(color.equals("Purple")||color.equals("Blue")||color.equals("Green")) 
+				this.name = color+" Glowshroom";
 			else
-			this.name = "Glowshroom";
-			}
+				this.name = "Glowshroom";
 		}
 
 		@Override
@@ -91,13 +88,13 @@ public class BasicNetherShroomCrop extends BasicNetherBerryCrop {
 	    @Override
 	    public ItemStack getGain(ICropTile crop) {
 	    	ItemStack r;
-			if (name == "Blue"+" Glowshroom")
+			if (name.contains("Blue"))
 				r = new ItemStack(NContent.glowshroom,1,2);
-			if (name == "Green"+" Glowshroom")
+			if (name.contains("Green"))
 				r = new ItemStack(NContent.glowshroom,1,0);
-			if (name == "Purple"+" Glowshroom")
+			if (name.contains("Purple"))
 				r = new ItemStack(NContent.glowshroom,1,1);
-			else r = new ItemStack(BOPCBlocks.mushrooms,1,4);
+			else r = new ItemStack(BOPCBlocks.mushrooms,1,3);
 			return r;
 	    }
 	    
