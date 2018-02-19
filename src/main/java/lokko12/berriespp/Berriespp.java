@@ -17,7 +17,7 @@ import net.minecraftforge.fluids.FluidStack;
 
 @Mod(
 	modid = Berriespp.modID, name = Berriespp.name, version = Berriespp.version,
-	dependencies = "required-after:IC2; required-after:croploadcore@0.0.8; after:GalacticraftCore; after:Mantle; after:Natura; after:TConstruct; after:BiomesOPlenty; after:Thaumcraft; after:ExtraTrees; after:witchery; after:gregtech"
+	dependencies = "required-after:IC2; required-after:croploadcore@0.0.8; after:GalacticraftCore; after:Mantle; after:Natura; after:TConstruct; after:BiomesOPlenty; after:Thaumcraft; after:ExtraTrees; after:witchery; after:gregtech; after:TwilightForest"
 	)
 
 public class Berriespp {

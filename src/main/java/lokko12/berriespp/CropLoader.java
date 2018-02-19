@@ -5,6 +5,7 @@ import java.util.List;
 
 import biomesoplenty.api.content.BOPCBlocks;
 import biomesoplenty.api.content.BOPCItems;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 //IC2API
 import ic2.api.crops.CropCard;
@@ -34,6 +35,7 @@ import lokko12.berriespp.crops.bpp.CobaltBerryCrop;
 import lokko12.berriespp.crops.bpp.GoldfishCrop;
 import lokko12.berriespp.crops.bpp.GrassCrop;
 import lokko12.berriespp.crops.bpp.HuckleberryCrop;
+import lokko12.berriespp.crops.bpp.KnighmetalCrop;
 import lokko12.berriespp.crops.bpp.MagicModifierCrop;
 import lokko12.berriespp.crops.bpp.PapyrusCrop;
 import lokko12.berriespp.crops.bpp.SpacePlantCrop;
@@ -129,6 +131,8 @@ public static List<CropLoader> cropLoader() {
 	p.add(new CropLoader(new CactiCrop(),new ItemStack(Item.getItemById(81),1,0)));
 	p.add(new CropLoader(new PapyrusCrop(),null));
 	p.add(new CropLoader(new GoldfishCrop(),null));
+	if(Loader.isModLoaded("TwilightForest"))
+	p.add(new CropLoader(new KnighmetalCrop(),null));
 	
 	if(ModsLoaded.dreamcraft) {
 	p.add(new CropLoader(new SpacePlantCrop(),null));
