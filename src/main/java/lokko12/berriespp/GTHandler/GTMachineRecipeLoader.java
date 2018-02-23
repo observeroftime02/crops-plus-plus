@@ -124,10 +124,6 @@ public class GTMachineRecipeLoader implements Runnable{
     	GT_Values.RA.addBrewingRecipe(new ItemStack(Items.sugar,8),FluidRegistry.getFluid("potion.weakness"), BppFluids.Mash, false);
     	
     	//Sugar Related
-    	if (OreDictionary.getOres("listAllberry").size()>=1) {
-        	for (int i=0;i<OreDictionary.getOres("listAllberry").size();i++)
-        		GT_Values.RA.addExtractorRecipe(OreDictionary.getOres("listAllberry").get(i), new ItemStack(Items.sugar,4,0), 16, 8);}
-    	
     	for (int i=0;i<OreDictionary.getOres("cropTurnip").size();i++)
     	GT_Values.RA.addExtractorRecipe(OreDictionary.getOres("cropTurnip").get(i), new ItemStack(Items.sugar,8,0), 160, 8);
 
