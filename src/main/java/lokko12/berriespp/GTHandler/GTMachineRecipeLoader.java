@@ -39,11 +39,11 @@ public class GTMachineRecipeLoader implements Runnable{
     	//Magic Modifier = Primordial Pearl,
     	
     	//StonePlant
-    	GT_Values.RA.addCompressorRecipe(Materials.Marble.getDust(1), Materials.Marble.getPlates(1), 300, 2);
+    	GT_Values.RA.addCompressorRecipe(Materials.Marble.getDust(9), Materials.Marble.getBlocks(1),300,2);// Materials.Marble.getPlates(1), 300, 2);
     	GT_Values.RA.addCompressorRecipe(Materials.GraniteRed.getDust(1), Materials.GraniteRed.getPlates(1), 300, 2);
     	GT_Values.RA.addCompressorRecipe(Materials.GraniteBlack.getDust(1), Materials.GraniteBlack.getPlates(1), 300, 2);
     	GT_Values.RA.addCompressorRecipe(Materials.Stone.getPlates(9), new ItemStack(Blocks.stone),300,2);
-    	GT_Values.RA.addCompressorRecipe(Materials.Marble.getPlates(9), Materials.Marble.getBlocks(1),300,2);
+    	//GT_Values.RA.addCompressorRecipe(Materials.Marble.getPlates(9), Materials.Marble.getBlocks(1),300,2);
     	GT_Values.RA.addCompressorRecipe(Materials.GraniteRed.getPlates(9),  new ItemStack(GregTech_API.sBlockGranites,1,8),300,2);
     	GT_Values.RA.addCompressorRecipe(Materials.GraniteBlack.getPlates(9), new ItemStack(GregTech_API.sBlockGranites),300,2);
     	
