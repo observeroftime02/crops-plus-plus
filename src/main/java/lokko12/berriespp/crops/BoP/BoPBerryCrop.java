@@ -91,7 +91,7 @@ public class BoPBerryCrop extends BasicBerryCrop {
 
 	@Override
 	public String[] attributes() {
-		return new String[] {"Berry", "Edible", "Red", "Ingredient"};
+		return new String[] {"Berry", "Food", "Red", "Ingredient"};
 	}
 	
     @Override

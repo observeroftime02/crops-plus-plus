@@ -82,7 +82,7 @@ public class BasicNetherShroomCrop extends BasicNetherBerryCrop {
 		@Override
 		public String[] attributes() {
 			String[] r;
-				r = new String[] {"Food", "Edible", "Mushroom", "Ingredient", "Nether"};
+				r = new String[] {"Food", "Mushroom", "Ingredient", "Nether"};
 			return r;
 		}
 	    @Override

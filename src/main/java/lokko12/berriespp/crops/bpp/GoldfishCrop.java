@@ -33,7 +33,7 @@ public class GoldfishCrop extends BasicDecorationCrop {
 
 	@Override
 	public String[] attributes() {
-		return new String[] {"Nether", "Fish", "Bad", "Water"};
+		return new String[] {"Nether", "Fish", "Food", "Bad", "Water"};
 	}
 	
 	@Override
