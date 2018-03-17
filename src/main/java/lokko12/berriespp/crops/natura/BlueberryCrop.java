@@ -19,7 +19,7 @@ public class BlueberryCrop extends BasicBerryCrop {
     }
     
     public String[] attributes() {
-        return new String[] {"Berry", "Edible", "Blue"}; // Blue like CropTerraWart
+        return new String[] {"Berry", "Food", "Blue"}; // Blue like CropTerraWart
     }
 
     public String discoveredBy() {

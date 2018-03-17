@@ -19,7 +19,7 @@ public class RaspberryCrop extends BasicBerryCrop {
     }
 
     public String[] attributes() {
-        return new String[] {"Berry", "Edible", "Red"}; // Red like CropRedWheat, CropNetherWart
+        return new String[] {"Berry", "Food", "Red"}; // Red like CropRedWheat, CropNetherWart
     }
 
 

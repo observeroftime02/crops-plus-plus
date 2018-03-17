@@ -20,7 +20,7 @@ public class MaloberryCrop extends BasicBerryCrop {
     }
 
     public String[] attributes() {
-        return new String[] {"Berry", "Edible", "Yellow"}; // orange like CropCarrots
+        return new String[] {"Berry", "Food", "Yellow"}; // orange like CropCarrots
     }
     
     @Override

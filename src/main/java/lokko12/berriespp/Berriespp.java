@@ -46,6 +46,7 @@ public class Berriespp {
 		BppItems.register_Items();
 		BppItems.OreDictItems();
 		BppItems.register_recipes();
+		
 	}
 
 	@EventHandler
