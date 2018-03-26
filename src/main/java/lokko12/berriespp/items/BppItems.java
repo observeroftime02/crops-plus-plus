@@ -28,7 +28,7 @@ public final class BppItems {
 	public final static Item BppBerries = new BppBerries();
 	public final static Item BppPotions = new BppPotions();
 	
-	public static void register_Items() {
+	public final static void register_Items() {
 			if (ConfigValures.Items==true)
 				GameRegistry.registerItem(itemSpade, "itemSpade");
 				GameRegistry.registerItem(Goldfisch,"foodGoldfish");
@@ -41,6 +41,7 @@ public final class BppItems {
 				GameRegistry.registerItem(BppPotions,"BppPotions");
 				GameRegistry.registerItem(BppBerries,"foodBerries");
 				GameRegistry.registerCustomItemStack("berryHuckle", new ItemStack(BppBerries, 1, 0));
+				GameRegistry.registerCustomItemStack("sugarbeet", new ItemStack(BppBerries, 1, 1));
 			if (ConfigValures.WiPItems==true)
 				GameRegistry.registerItem(itemWCan,"itemWateringCan");
 			if (ModsLoaded.Natura==false) {
@@ -53,7 +54,7 @@ public final class BppItems {
 			}
 	}
 	
-	public static void register_recipes() {
+	public final static void register_recipes() {
 		if (ConfigValures.Items==true) {
 			if (!ModsLoaded.dreamcraft)
 				GameRegistry.addShapelessRecipe(new ItemStack(Items.fish), new ItemStack(Goldfisch));
@@ -66,12 +67,15 @@ public final class BppItems {
 		}
 	}
 	
-	public static void OreDictItems() {
+	public final static void OreDictItems() {
 		if (ConfigValures.Items==true) {
 			OreDictionary.registerOre("listAllfishraw",new ItemStack(Goldfisch));	
 			OreDictionary.registerOre("listAllberry", new ItemStack(BppBerries,1,0));
 			OreDictionary.registerOre("listAllfruit", new ItemStack(BppBerries,1,0));
 			OreDictionary.registerOre("cropHuckleberry", new ItemStack(BppBerries,1,0));
+			OreDictionary.registerOre("listAllveggie", new ItemStack(BppBerries,1,1));
+			OreDictionary.registerOre("listAllrootveggie", new ItemStack(BppBerries,1,1));
+			OreDictionary.registerOre("cropSugarbeet", new ItemStack(BppBerries,1,1));
 		}
 		
 	if (ModsLoaded.Natura==false) {
