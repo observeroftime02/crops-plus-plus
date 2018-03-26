@@ -1,11 +1,11 @@
 package lokko12.berriespp.crops.bpp;
 
 import ic2.api.crops.ICropTile;
-import lokko12.berriespp.crops.abstracts.BasicBerryCrop;
+import lokko12.berriespp.crops.abstracts.BasicFoodCrop;
 import lokko12.berriespp.items.BppItems;
 import net.minecraft.item.ItemStack;
 
-public class SugarBeetCrop extends BasicBerryCrop {
+public class SugarBeetCrop extends BasicFoodCrop {
 
 	public SugarBeetCrop() {
 		super();
