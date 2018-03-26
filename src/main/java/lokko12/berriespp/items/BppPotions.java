@@ -119,21 +119,21 @@ public class BppPotions extends Item{
 		break;
 		}
 		case 8:{
-			list.add("Das ist des Jägers' Eherenschild,");
-			list.add("daß er beschützt und hegt sein Wild,");
-			list.add("weidmännisch jagt, wie sich's gehört,");
-			list.add("den Schöpfer im Geschöpfe ehrt.");
+			list.add("Das ist des Jaegers' Eherenschild,");
+			list.add("dass er beschützt und hegt sein Wild,");
+			list.add("weidmaennisch jagt, wie sich's gehoert,");
+			list.add("den Schoepfer im Geschoepfe ehrt.");
 			list.add("");
 			list.add("It will give 1h potioneffects!");			
 		break;
 		}
 		case 9:{
-			list.add("Das ist des Jägers' Eherenschild,");
-			list.add("daß er beschützt und hegt sein Wild,");
-			list.add("weidmännisch jagt, wie sich's gehört,");
-			list.add("den Schöpfer im Geschöpfe ehrt.");
+			list.add("Das ist des Jaegers' Eherenschild,");
+			list.add("dass er beschützt und hegt sein Wild,");
+			list.add("weidmaennisch jagt, wie sich's gehoert,");
+			list.add("den Schoepfer im Geschoepfe ehrt.");
 			list.add("");
-			list.add("It smells like fake Jägermeister...");
+			list.add("It smells like fake Jaegermeister...");
 		break;
 		}
 		//other cases

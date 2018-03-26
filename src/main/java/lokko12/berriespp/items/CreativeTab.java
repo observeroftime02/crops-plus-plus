@@ -5,10 +5,9 @@ import lokko12.croploadcore.OreDict;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
-public class CreativeTab extends CreativeTabs {
+public final class CreativeTab extends CreativeTabs {
 	
-	
-	public static CreativeTab bpp = new CreativeTab();
+	public final static CreativeTab bpp = new CreativeTab();
 
 	public CreativeTab() {
 		super("Berriespp");

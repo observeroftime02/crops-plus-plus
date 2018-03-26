@@ -2,8 +2,8 @@ package lokko12.berriespp.GTHandler;
 
 public class GTHandler implements Runnable {
 
-	private GTMachineRecipeLoader MachineReps;
-	private GTCraftingRecipeLoader CraftingReps;
+	private static GTMachineRecipeLoader MachineReps;
+	private static GTCraftingRecipeLoader CraftingReps;
 	
 	public GTHandler() {
 		super();

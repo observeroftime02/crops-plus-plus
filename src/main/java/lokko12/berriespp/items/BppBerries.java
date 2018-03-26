@@ -17,7 +17,7 @@ public class BppBerries extends ItemFood{
 	
 	public IIcon[] icons;
     
-    public String[] textureNames = new String[] {"huckle"/*, more names*/};
+    public String[] textureNames = new String[] {"huckle","sugarbeet"/*, more names*/};
 
     public BppBerries()
     {
@@ -87,9 +87,15 @@ public class BppBerries extends ItemFood{
 	{
 		switch (stack.getItemDamage()) {
 		case 0:{
-		list.add("Huckle-dae-Duckle-dae-Doo");
-		list.add("A sweet treat!");
-		}
+			list.add("Huckle-dae-Duckle-dae-Doo");
+			list.add("A sweet treat!");
+			break;
+			}
+		case 1:{
+			list.add("A sweet beet, commonly found in France, Germany, Russia and China.");
+			list.add("Industrial Sugar!");
+			break;
+			}
 		//other cases
 		}
 	}

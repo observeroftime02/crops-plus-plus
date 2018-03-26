@@ -41,6 +41,7 @@ import lokko12.berriespp.crops.bpp.PapyrusCrop;
 import lokko12.berriespp.crops.bpp.SpacePlantCrop;
 import lokko12.berriespp.crops.bpp.StonelillyCrop;
 import lokko12.berriespp.crops.bpp.StrawberryCrop;
+import lokko12.berriespp.crops.bpp.SugarBeetCrop;
 import lokko12.berriespp.crops.bpp.VineCrop;
 import lokko12.berriespp.crops.natura.BarleyCrop;
 import lokko12.berriespp.crops.natura.BlackberryCrop;
@@ -118,7 +119,7 @@ private static CropLoader CropHelper(CropCard cropObj) {
 	return new CropLoader(cropObj,OreDict.ISget("crop"+cropObj.name()));
 }
 
-public static List<CropLoader> cropLoader() {
+public final static List<CropLoader> cropLoader() {
 	
 	List<CropLoader> p = new ArrayList<CropLoader>();
 	
@@ -131,6 +132,7 @@ public static List<CropLoader> cropLoader() {
 	p.add(new CropLoader(new CactiCrop(),new ItemStack(Item.getItemById(81),1,0)));
 	p.add(new CropLoader(new PapyrusCrop(),null));
 	p.add(new CropLoader(new GoldfishCrop(),null));
+	p.add(new CropLoader(new SugarBeetCrop(),null));
 	if(Loader.isModLoaded("TwilightForest"))
 	p.add(new CropLoader(new KnighmetalCrop(),null));
 	
@@ -208,7 +210,7 @@ public static List<CropLoader> cropLoader() {
 
 	/*if (lokko12.berriespp.ConfigValures.ayo_bonsai)
 		if (InstalledTreesGetter.savedNames != null)	
-	for(int i=0; i < InstalledTreesGetter.savedNames.size(); i++) {
+	for(int i=0; i < InstalledTreesGetter.savedNames.size(); ++i) {
 		if( Operators.AND(Operators.NOR( InstalledTreesGetter.savedNames.get(i).contains("Shimmerleaf"),InstalledTreesGetter.savedNames.get(i).contains("Cinderpearl") ) , Operators.NOR(InstalledTreesGetter.savedNames.get(i).contains("Vishroom"),InstalledTreesGetter.savedNames.get(i).contains("Ethereal Bloom")))) 
 		{
 			p.add(new CropLoader(new BasicBonsaiCrop(InstalledTreesGetter.savedNames.get(i),
@@ -222,24 +224,24 @@ public static List<CropLoader> cropLoader() {
 			Berriespp.bpplogger.info("Something wrent wrong at getting Trees, BonsaiGen Disabled!");*/
 	return p;
 }
-private static List<CropCard> cropObjs(){
+private final static List<CropCard> cropObjs(){
 	List<CropCard> p = new ArrayList<CropCard>();
-	for (int i=0;i < cropLoader().size();i++) {
+	for (int i=0;i < cropLoader().size();++i) {
 		p.add(CropunpackerCC(cropLoader().get(i)));
 	}
 	return p;
 }
-private static List<ItemStack> setBaseSeed(){
+private final static List<ItemStack> setBaseSeed(){
 	List<ItemStack> p = new ArrayList<ItemStack>();
-	for (int i=0;i < cropLoader().size();i++) {
+	for (int i=0;i < cropLoader().size();++i) {
 		p.add(CropunpackerCG(cropLoader().get(i)));
 	}
 	return p;
 }
 
-private static List<String> setnames() {
+private final static List<String> setnames() {
 	List<String> s = new ArrayList<String>();
-	 for (int i=0; i<cropLoader().size(); i++) {
+	 for (int i=0; i<cropLoader().size(); ++i) {
 	 s.add(cropObjs().get(i).name());
 	}
 	 return s;
@@ -263,7 +265,7 @@ public static void load(FMLPreInitializationEvent preinit){
 	mods[3]=c.tConfig.get("Mods", "Thaumcraft", true).getBoolean(false);
 	
 	c.tConfig.addCustomCategoryComment("Crops", "enable single plants here:");
-	for(int i=0; i < cropLoader().size(); i++) {
+	for(int i=0; i < cropLoader().size(); ++i) {
 		bHasCropObj.add(c.tConfig.get("Crops", setnames().get(i), true).getBoolean(false));
 	}
 	
@@ -280,7 +282,7 @@ public static void load(FMLPreInitializationEvent preinit){
 }
 
 public static void register () {
-	for(int i=0; i < cropLoader().size(); i++) {
+	for(int i=0; i < cropLoader().size(); ++i) {
 	if (bHasCropObj.get(i)&&cropObjs().get(i)!=null)
 		Crops.instance.registerCrop(cropObjs().get(i));
     }
@@ -292,7 +294,7 @@ public static void registerBaseSeed() {
 	
 	List<ItemStack> baseseed = new ArrayList<ItemStack>(setBaseSeed());
 	
-	for(int i=0; i < cropLoader().size(); i++) {
+	for(int i=0; i < cropLoader().size(); ++i) {
 		if(baseseed.get(i)!=null && cropObjs().get(i)!=null)
 			Crops.instance.registerBaseSeed(baseseed.get(i),cropObjs().get(i), 1, 1, 1, 1);
 	}

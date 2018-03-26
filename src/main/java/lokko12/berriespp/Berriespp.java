@@ -9,18 +9,16 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import lokko12.berriespp.GTHandler.GTHandler;
-import lokko12.berriespp.crops.bpp.trees.InstalledTreesGetter;
 import lokko12.berriespp.fluids.BppFluids;
 import lokko12.berriespp.items.BppItems;
 import lokko12.croploadcore.ModsLoaded;
-import net.minecraftforge.fluids.FluidStack;
 
 @Mod(
 	modid = Berriespp.modID, name = Berriespp.name, version = Berriespp.version,
 	dependencies = "required-after:IC2; required-after:croploadcore@0.0.8; after:GalacticraftCore; after:Mantle; after:Natura; after:TConstruct; after:BiomesOPlenty; after:Thaumcraft; after:ExtraTrees; after:witchery; after:gregtech; after:TwilightForest"
 	)
 
-public class Berriespp {
+public final class Berriespp {
 	public static final String name = "Berries++";
 	public static final String version = "@version@";
 	public static final String modID = "berriespp";
@@ -54,7 +52,7 @@ public class Berriespp {
 		CropLoader.register();
 		CropLoader.registerBaseSeed();
 		if (ModsLoaded.GT) {
-			GTHandler GTHandler = new GTHandler();
+			final GTHandler GTHandler = new GTHandler();
 			GTHandler.run();
 			BppFluids.run();
 			}

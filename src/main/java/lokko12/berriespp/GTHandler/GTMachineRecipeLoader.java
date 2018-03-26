@@ -33,7 +33,7 @@ public class GTMachineRecipeLoader implements Runnable{
 	}
 	
     @Override
-    public void run(){
+    public final void run(){
     	
     	//Space Modifier = Space Plant (Tier13, Naquadah plant +1 tier)
     	//Magic Modifier = Primordial Pearl,
@@ -118,14 +118,16 @@ public class GTMachineRecipeLoader implements Runnable{
     	GT_Values.RA.addMixerRecipe(ItemList.Crop_Drop_Chilly.get(1), Materials.CosmicNeutronium.getDustTiny(1), ItemList.Crop_Drop_Lemon.get(64), ItemList.Crop_Drop_TeaLeaf.get(64), BppItems.ModifierMagic.splitStack(8),BppItems.ModifierSpace.splitStack(9), new FluidStack(BppFluids.njagi,50000),new FluidStack(BppFluids.jagi,250), null, 1, 32832);
     	
     	
+    	//Brewery
     	if (OreDictionary.getOres("listAllberry").size()>=1)
     		for (int i=0;i<OreDictionary.getOres("listAllberry").size();i++)
     			GT_Values.RA.addBrewingRecipe(OreDictionary.getOres("listAllberry").get(i).splitStack(16), Materials.Water.getFluid(1000L).getFluid(), BppFluids.Mash, false);
     	GT_Values.RA.addBrewingRecipe(new ItemStack(Items.sugar,8),FluidRegistry.getFluid("potion.weakness"), BppFluids.Mash, false);
+		//GT_Values.RA.addBrewingRecipe(new ItemStack(BppItems.BppBerries,1,1), Materials.Water.getFluid(1000L).getFluid(), FluidRegistry.getFluid("potion.reedwater"), false);
+
     	
     	//Sugar Related
-    	for (int i=0;i<OreDictionary.getOres("cropTurnip").size();i++)
-    	GT_Values.RA.addExtractorRecipe(OreDictionary.getOres("cropTurnip").get(i), new ItemStack(Items.sugar,8,0), 160, 8);
+    	GT_Values.RA.addExtractorRecipe(new ItemStack(BppItems.BppBerries,1,1), new ItemStack(Items.sugar,8,0), 160, 8);
 
     	//Dyes from Plants
     	for (int i=0;i<OreDictionary.getOres("cropBlackberry").size();i++)

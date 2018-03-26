@@ -47,8 +47,8 @@ public class ShimmerleafCrop extends BasicThaumcraftCrop {
 		boolean r = false;
     	if (ConfigValures.Debug == true)
     		r = crop.getSize() < 3;
-    	else if (crop.getSize() < 1)
-    		r = crop.getSize() < 1;
+    	else if (crop.getSize() == 1)
+    		r = crop.getSize() == 1;
     	else if (crop.getSize() == 2)
     		r = (crop.getSize() == 2 && Operators.OR(crop.isBlockBelow("blockQuicksilver"),!(OreDictionary.doesOreNameExist("blockQuicksilver"))));
 		return r;
