@@ -1,7 +1,7 @@
-< en_US.lang - English localization file for the mod bpp >
+< en_US.lang - English localization file for the mod Crops++ >
 item.Spade.name=Spade
 item.WateringCan.name=[WiP]Watering Can
-itemGroup.Berriespp=Berries++
+itemGroup.Cropspp=Crops++
 item.berry.cactus.name=SaguaroFruit
 item.berry.huckle.name=Huckleberry
 item.berry.sugarbeet.name=Sugar Beet
@@ -18,8 +18,8 @@ fluid.potion.SWhine=Sugar Whine
 fluid.potion.Mash=Mash
 fluid.potion.Wash=Wash
 fluid.potion.GHP=Generic High Proof
-fluid.potion.jagi=Real Jägermeister!
-fluid.potion.njagi=Fake Jägermeister
+fluid.potion.jagi=Real Jaegermeister!
+fluid.potion.njagi=Fake Jaegermeister
 potion.DKorn.bottled.name=Bottled Doppelkorn
 potion.Korn.bottled.name=Bottled Korn
 potion.FWheat.bottled.name=Bottled Fermented Wheat
@@ -28,5 +28,5 @@ potion.SWhine.bottled.name=Bottled Sugar Whine
 potion.Mash.bottled.name=Bottled Mash
 potion.Wash.bottled.name=Bottled Wash
 potion.GHP.bottled.name=Bottled Generic High Proof
-potion.jagi.bottled.name=Real Bottled Jägermeister!
-potion.njagi.bottled.name=Bottled Fake Jägermeister
+potion.jagi.bottled.name=Real Bottled Jaegermeister!
+potion.njagi.bottled.name=Bottled Fake Jaegermeister

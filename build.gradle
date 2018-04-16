@@ -19,8 +19,7 @@ buildscript {
 apply plugin: 'forge'
 import de.undercouch.gradle.tasks.download.Download
 
-version = "1.2.7b"
-
+version = "1.2.8"
     //
     // Versions: 
     //           1=Realises
@@ -33,20 +32,22 @@ targetCompatibility = JavaVersion.VERSION_1_8
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-group= "LOKKO12.Berries++" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "BerriesPP"
+group= "bartimaeusnek.Crops++" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "CropsPP"
 
-minecraft {
-    version = "1.7.10-10.13.4.1558-1.7.10"
-    replaceIn "Berriespp.java"
-    replace "@version@", project.version
-    runDir = "eclipse"
-}
 file "build.properties" withReader {
     def prop = new Properties()
     prop.load(it)
     ext.config = new ConfigSlurper().parse prop
 }
+
+minecraft {
+    version = "1.7.10-10.13.4.1558-1.7.10"
+    replaceIn "Cropspp.java"
+    replace "@version@", project.version
+    runDir = "eclipse"
+}
+
 
 repositories {
     mavenLocal()
@@ -63,10 +64,10 @@ dependencies {
 
 task getThaucraftDev(type: Download) {
     onlyIf {
-        !file("libs/Thaumcraft-deobf-1.7.10-4.2.3.5.jar").exists()
+        !file("libs/Thaumcraft-1.7.10-4.2.3.5.jar").exists()
     }
     src "https://minecraft.curseforge.com/projects/thaumcraft/files/2227552/download"
-    dest file("libs/Thaumcraft-deobf-1.7.10-4.2.3.5.jar")
+    dest file("libs/Thaumcraft-1.7.10-4.2.3.5.jar")
     mustRunAfter "deobfBinJar"
     mustRunAfter "repackMinecraft"
 }

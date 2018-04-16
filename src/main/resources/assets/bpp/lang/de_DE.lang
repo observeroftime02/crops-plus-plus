@@ -1,7 +1,7 @@
-< de_DE.lang - Deutsche Sprachdatei für Berries++ >
+< de_DE.lang - Deutsche Sprachdatei für Crops++ >
 item.Spade.name=Sparten
 item.WateringCan.name=[WiP] Gießkanne
-itemGroup.Berriespp=Berries++
+itemGroup.Cropspp=Crops++
 item.berry.cactus.name=Kaktusfrucht
 item.berry.huckle.name=Amerikanische Blaubeere
 item.berry.sugarbeet.name=Zuckerrübe
