@@ -79,8 +79,8 @@ public final class CppItems {
 		}
 		
 	if (!ModsLoaded.Natura) {
-		final ItemStack[] BerryItemsS = new ItemStack[4];
-			for (int i = 0; i < 4; ++i) {
+		ItemStack[] BerryItemsS = new ItemStack[5];
+			for (int i = 0; i < 5; ++i) {
 				BerryItemsS[i] = new ItemStack(BerryItems,i);
 				OreDictionary.registerOre("listAllberry", BerryItemsS[i]);
 				OreDictionary.registerOre("listAllfruit", BerryItemsS[i]);

@@ -1,8 +1,10 @@
 package com.github.bartimaeusnek.cropspp.crops.natura;
 import com.github.bartimaeusnek.cropspp.ConfigValures;
 import com.github.bartimaeusnek.cropspp.cpp.CactiCrop;
+import com.github.bartimaeusnek.cropspp.items.CppItems;
 
 import ic2.api.crops.ICropTile;
+import lokko12.croploadcore.ModsLoaded;
 import mods.natura.common.NContent;
 import net.minecraft.item.ItemStack;
 
@@ -29,10 +31,14 @@ public class SaguaroCrop extends CactiCrop {
 		
 		@Override
 		public ItemStack getGain(ICropTile crop) {
+			if (ModsLoaded.Natura) {
 			if (crop.getSize()==2)
 			return new ItemStack(NContent.saguaro,2,0);
 			else 
 			return new ItemStack(NContent.seedFood,3,0);
+			}else {
+				return new ItemStack(CppItems.BerryItems, 1, 4);
+			}
 		}
 		
 		@Override
@@ -61,7 +67,10 @@ public class SaguaroCrop extends CactiCrop {
 	    }
 		@Override
 		public ItemStack getDisplayItem() {
-			return new ItemStack(NContent.seedFood,3,0);
+			if (ModsLoaded.Natura)
+				return new ItemStack(NContent.seedFood,3,0);
+			else
+				return new ItemStack(CppItems.BerryItems, 1, 4);
 		}
 	    
 	    @Override

@@ -43,11 +43,6 @@ import com.github.bartimaeusnek.cropspp.crops.natura.MaloberryCrop;
 import com.github.bartimaeusnek.cropspp.crops.natura.RaspberryCrop;
 import com.github.bartimaeusnek.cropspp.crops.natura.SaguaroCrop;
 import com.github.bartimaeusnek.cropspp.crops.natura.nether.BasicNetherShroomCrop;
-import com.github.bartimaeusnek.cropspp.crops.natura.nether.BlightberryCrop;
-import com.github.bartimaeusnek.cropspp.crops.natura.nether.DuskberryCrop;
-import com.github.bartimaeusnek.cropspp.crops.natura.nether.SkyberryCrop;
-import com.github.bartimaeusnek.cropspp.crops.natura.nether.StingberryCrop;
-import com.github.bartimaeusnek.cropspp.crops.natura.nether.Thornvines;
 import com.github.bartimaeusnek.cropspp.crops.witchery.BelladonnaCrop;
 import com.github.bartimaeusnek.cropspp.crops.witchery.EmberMossCrop;
 import com.github.bartimaeusnek.cropspp.crops.witchery.GarlicCrop;
@@ -58,8 +53,6 @@ import com.github.bartimaeusnek.cropspp.crops.witchery.SpanishMossCrop;
 import com.github.bartimaeusnek.cropspp.crops.witchery.WaterArtichokeCrop;
 import com.github.bartimaeusnek.cropspp.crops.witchery.WolfsBaneCrop;
 
-import biomesoplenty.api.content.BOPCBlocks;
-import biomesoplenty.api.content.BOPCItems;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 //IC2API
@@ -71,17 +64,15 @@ import lokko12.croploadcore.Operators;
 import lokko12.croploadcore.OreDict;
 import lokko12.croploadcore.config;
 //ItemsFromAPIs
-import mods.natura.common.NContent;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import tconstruct.world.TinkerWorld;
 
 public class CropLoader {
-	private static boolean mods[] = new boolean[4];
+	private static boolean _modcategories[] = new boolean[4];
 	private static List<Boolean> bHasCropObj = new ArrayList<Boolean>();
 	private CropCard cropObj;
-	private ItemStack gain;
-	
+	private ItemStack baseseed;
+	private static List<CropLoader> list = cropLoader();
 	
 	/*
 	 * This Class Loades Crops with Base Seed.
@@ -101,16 +92,16 @@ public CropLoader(CropCard cropObj, ItemStack gain) {
 		
 		this.cropObj = cropObj;
 		if (gain != null)
-		this.gain = gain;
+		this.baseseed = gain;
 		else
-		this.gain = null;
+		this.baseseed = null;
 }
 public static CropCard CropunpackerCC (CropLoader inp) {
 	return inp.cropObj;
 }
 private static ItemStack CropunpackerCG (CropLoader inp) {
-	if (inp.gain!=null)
-	return inp.gain;
+	if (inp.baseseed!=null)
+	return inp.baseseed;
 	else
 	return null;
 }
@@ -127,15 +118,10 @@ public final static List<CropLoader> cropLoader() {
 	 * Add your crops with base seed here by
 	 * p.add(new CropLoader(new YourCropClass(),YourItem));
 	 */
-	p.add(new CropLoader(new VineCrop(),new ItemStack(Item.getItemById(106),1,0)));
-	p.add(new CropLoader(new GrassCrop(),new ItemStack(Item.getItemById(31),1,1)));
-	p.add(new CropLoader(new CactiCrop(),new ItemStack(Item.getItemById(81),1,0)));
-	p.add(new CropLoader(new PapyrusCrop(),null));
-	p.add(new CropLoader(new GoldfishCrop(),null));
-	p.add(new CropLoader(new SugarBeetCrop(),null));
-	if(Loader.isModLoaded("TwilightForest"))
-	p.add(new CropLoader(new KnighmetalCrop(),null));
 	
+	if(Loader.isModLoaded("TwilightForest")) {
+	p.add(new CropLoader(new KnighmetalCrop(),null));
+	}
 	if(ModsLoaded.dreamcraft) {
 	p.add(new CropLoader(new SpacePlantCrop(),null));
 	p.add(new CropLoader(new MagicModifierCrop(),null));
@@ -148,53 +134,38 @@ public final static List<CropLoader> cropLoader() {
 	p.add(new CropLoader(new StonelillyCrop("Yellow"),null));
 	p.add(new CropLoader(new StonelillyCrop("Nether"),null));
 	}
-	if (Operators.AND(ModsLoaded.Natura,mods[0])) {
-	p.add(new CropLoader(new BlightberryCrop(),new ItemStack(NContent.netherBerryItem, 1, 0)));
-	p.add(new CropLoader(new DuskberryCrop(),new ItemStack(NContent.netherBerryItem, 1, 1)));
-	p.add(new CropLoader(new SkyberryCrop(),new ItemStack(NContent.netherBerryItem, 1, 2)));
-	p.add(new CropLoader(new StingberryCrop(),new ItemStack(NContent.netherBerryItem, 1, 3)));
-	p.add(new CropLoader(new Thornvines(), new ItemStack(NContent.thornVines,1,0))); 
-	p.add(new CropLoader(new BasicNetherShroomCrop("Blue"), new ItemStack(NContent.glowshroom,1,2)));
-	p.add(new CropLoader(new BasicNetherShroomCrop("Green"), new ItemStack(NContent.glowshroom,1,0)));
-	p.add(new CropLoader(new BasicNetherShroomCrop("Purple"), new ItemStack(NContent.glowshroom,1,1)));
-	p.add(new CropLoader(new SaguaroCrop(),new ItemStack(NContent.seedFood,1,0)));
+	if(ModsLoaded.Natura && _modcategories[0])
+		p.addAll(NaturaLoader.NaturaLoaderList());
+	else {
+		p.add(new CropLoader(new SaguaroCrop(),null));
+	}
+	if (ModsLoaded.Natura||ModsLoaded.PHC) {
 	p.add(new CropLoader(new CottonCrop(),null));
 	}
-	if (Operators.AND(ModsLoaded.TConstruct,mods[1])) {
-	p.add(new CropLoader(new IronOreBerryCrop(),new ItemStack(TinkerWorld.oreBerries, 1, 0)));
-	p.add(new CropLoader(new GoldOreBerryCrop(),new ItemStack(TinkerWorld.oreBerries, 1, 1)));
-	p.add(new CropLoader(new CopperOreBerryCrop(),new ItemStack(TinkerWorld.oreBerries, 1, 2)));
-	p.add(new CropLoader(new TinOreBerryCrop(),new ItemStack(TinkerWorld.oreBerries, 1, 3)));
-	p.add(new CropLoader(new AluminiumOreBerryCrop(),new ItemStack(TinkerWorld.oreBerries, 1, 4)));
-	p.add(new CropLoader(new EssenceOreBerryCrop(),new ItemStack(TinkerWorld.oreBerries, 1, 5)));
+	
+	if (Operators.AND(ModsLoaded.TConstruct,_modcategories[1])) {
+	p.add(new CropLoader(new IronOreBerryCrop(),new ItemStack(tconstruct.world.TinkerWorld.oreBerries, 1, 0)));
+	p.add(new CropLoader(new GoldOreBerryCrop(),new ItemStack(tconstruct.world.TinkerWorld.oreBerries, 1, 1)));
+	p.add(new CropLoader(new CopperOreBerryCrop(),new ItemStack(tconstruct.world.TinkerWorld.oreBerries, 1, 2)));
+	p.add(new CropLoader(new TinOreBerryCrop(),new ItemStack(tconstruct.world.TinkerWorld.oreBerries, 1, 3)));
+	p.add(new CropLoader(new AluminiumOreBerryCrop(),new ItemStack(tconstruct.world.TinkerWorld.oreBerries, 1, 4)));
+	p.add(new CropLoader(new EssenceOreBerryCrop(),new ItemStack(tconstruct.world.TinkerWorld.oreBerries, 1, 5)));
 	p.add(new CropLoader(new ArditeBerryCrop(),null));
 	p.add(new CropLoader(new CobaltBerryCrop(),null));
 	}
-	if (Operators.AND(ModsLoaded.BoP,mods[2])) {
-	p.add(new CropLoader(new BoPBerryCrop(),new ItemStack(BOPCItems.food,1,0)));
-	p.add(new CropLoader(new BasicNetherShroomCrop("Yellow"), new ItemStack(BOPCBlocks.mushrooms,1,3)));
-	p.add(new CropLoader(new FloweringVinesCrop(),new ItemStack(BOPCBlocks.flowerVine,1,0)));
-	p.add(new CropLoader(new IvyCrop(),new ItemStack(BOPCBlocks.ivy,1,0)));
-	p.add(new CropLoader(new EyebulbCrop(),new ItemStack(BOPCBlocks.flowers,1,13)));
-	p.add(new CropLoader(new GlowingCoralCrop(),new ItemStack(BOPCBlocks.coral1,1,15)));
-	p.add(new CropLoader(new GlowflowerCrop(), new ItemStack(BOPCBlocks.flowers,1,3)));
-	p.add(new CropLoader(new TurnipCrop(),null));
-	p.add(new CropLoader(new WildCarrotsCrop(),null));
+	if (ModsLoaded.BoP && _modcategories[2]) {
+		p.addAll(BoPLoader.BoPLoaderList());
+	}
+	if (ModsLoaded.BoP || ModsLoaded.PHC) {
 	p.add(new CropLoader(new BarleyCrop(),null));
 	}
-	if (Operators.AND(ModsLoaded.TC, mods[3])) {
+	if (Operators.AND(ModsLoaded.TC, _modcategories[3])) {
 	p.add(new CropLoader(new PrimordialPearlBerryCrop(), thaumcraft.api.ItemApi.getItem("itemEldritchObject", 3)));
 	p.add(new CropLoader(new MagicMetalBerryCrop(), thaumcraft.api.ItemApi.getItem("itemResource", 17)));
 	p.add(new CropLoader(new ShimmerleafCrop(),null));
 	p.add(new CropLoader(new CinderpearlCrop(),null));
 	}
-	p.add(new CropLoader(new HuckleberryCrop(),null));
-	p.add(new CropLoader(new StrawberryCrop(),null)); 
-	p.add(new CropLoader(new MaloberryCrop(),null)); 
-	p.add(new CropLoader(new BlackberryCrop(),null)); 
-	p.add(new CropLoader(new BlueberryCrop(),null)); 
-	p.add(new CropLoader(new RaspberryCrop(),null)); 
-	if (lokko12.croploadcore.ModsLoaded.witchery) {
+	if (ModsLoaded.witchery) {
 	p.add(new CropLoader(new GlintWeedCrop(),null));
 	p.add(new CropLoader(new SpanishMossCrop(),null));
 	p.add(new CropLoader(new BelladonnaCrop(),null));
@@ -204,7 +175,23 @@ public final static List<CropLoader> cropLoader() {
 	p.add(new CropLoader(new WaterArtichokeCrop(),null));
 	p.add(new CropLoader(new EmberMossCrop(),null));
 	}
+	if (ModsLoaded.witchery || ModsLoaded.PHC) {
 	p.add(new CropLoader(new GarlicCrop(),null));
+	}
+	
+	p.add(new CropLoader(new VineCrop(),new ItemStack(Item.getItemById(106),1,0)));
+	p.add(new CropLoader(new GrassCrop(),new ItemStack(Item.getItemById(31),1,1)));
+	p.add(new CropLoader(new CactiCrop(),new ItemStack(Item.getItemById(81),1,0)));
+	p.add(new CropLoader(new PapyrusCrop(),null));
+	p.add(new CropLoader(new GoldfishCrop(),null));
+	p.add(new CropLoader(new SugarBeetCrop(),null));
+	
+	p.add(new CropLoader(new HuckleberryCrop(),null));
+	p.add(new CropLoader(new StrawberryCrop(),null)); 
+	p.add(new CropLoader(new MaloberryCrop(),null)); 
+	p.add(new CropLoader(new BlackberryCrop(),null)); 
+	p.add(new CropLoader(new BlueberryCrop(),null)); 
+	p.add(new CropLoader(new RaspberryCrop(),null)); 
 
 	//p.add(new WeedCrop());
 
@@ -226,28 +213,27 @@ public final static List<CropLoader> cropLoader() {
 }
 private final static List<CropCard> cropObjs(){
 	List<CropCard> p = new ArrayList<CropCard>();
-	for (int i=0;i < cropLoader().size();++i) {
-		p.add(CropunpackerCC(cropLoader().get(i)));
+	for (int i=0;i < list.size();++i) {
+		p.add(CropunpackerCC(list.get(i)));
 	}
 	return p;
 }
 private final static List<ItemStack> setBaseSeed(){
 	List<ItemStack> p = new ArrayList<ItemStack>();
-	for (int i=0;i < cropLoader().size();++i) {
-		p.add(CropunpackerCG(cropLoader().get(i)));
+	for (int i=0;i < list.size();++i) {
+		p.add(CropunpackerCG(list.get(i)));
 	}
 	return p;
 }
 
 private final static List<String> setnames() {
 	List<String> s = new ArrayList<String>();
-	 for (int i=0; i<cropLoader().size(); ++i) {
+	 for (int i=0; i<list.size(); ++i) {
 	 s.add(cropObjs().get(i).name());
 	}
 	 return s;
 }
 public static void load(FMLPreInitializationEvent preinit){
-	
 	config c = new config(preinit, "berriespp.cfg");
 	c.tConfig.addCustomCategoryComment("System", "enable or disable system config:"
 			+ "\nDebug will set all crops groth duration to 1 and disable all requirements.(aka. \"Cheatmode\")"
@@ -259,13 +245,14 @@ public static void load(FMLPreInitializationEvent preinit){
 	ConfigValures.Items 		= c.tConfig.get("System", "Items", true).getBoolean(false);
 	
 	c.tConfig.addCustomCategoryComment("Mods", "enable crops from mods here:");
-	mods[0]=c.tConfig.get("Mods", "Natura", true).getBoolean(false);
-	mods[1]=c.tConfig.get("Mods", "Tinker\'s Construct", true).getBoolean(false);
-	mods[2]=c.tConfig.get("Mods", "Biomes O\' Plenty", true).getBoolean(false);
-	mods[3]=c.tConfig.get("Mods", "Thaumcraft", true).getBoolean(false);
+	_modcategories[0]=c.tConfig.get("Mods", "Natura", true).getBoolean(false);
+	_modcategories[1]=c.tConfig.get("Mods", "Tinker\'s Construct", true).getBoolean(false);
+	_modcategories[2]=c.tConfig.get("Mods", "Biomes O\' Plenty", true).getBoolean(false);
+	_modcategories[3]=c.tConfig.get("Mods", "Thaumcraft", true).getBoolean(false);
 	
 	c.tConfig.addCustomCategoryComment("Crops", "enable single plants here:");
-	for(int i=0; i < cropLoader().size(); ++i) {
+	
+	for(int i=0; i < list.size(); ++i) {
 		bHasCropObj.add(c.tConfig.get("Crops", setnames().get(i), true).getBoolean(false));
 	}
 	
@@ -282,7 +269,7 @@ public static void load(FMLPreInitializationEvent preinit){
 }
 
 public static void register () {
-	for(int i=0; i < cropLoader().size(); ++i) {
+	for(int i=0; i < list.size(); ++i) {
 	if (bHasCropObj.get(i)&&cropObjs().get(i)!=null)
 		Crops.instance.registerCrop(cropObjs().get(i));
     }
@@ -294,7 +281,7 @@ public static void registerBaseSeed() {
 	
 	List<ItemStack> baseseed = new ArrayList<ItemStack>(setBaseSeed());
 	
-	for(int i=0; i < cropLoader().size(); ++i) {
+	for(int i=0; i < list.size(); ++i) {
 		if(baseseed.get(i)!=null && cropObjs().get(i)!=null)
 			Crops.instance.registerBaseSeed(baseseed.get(i),cropObjs().get(i), 1, 1, 1, 1);
 	}

@@ -37,6 +37,9 @@ public class RaspberryCrop extends BasicBerryCrop {
 	}
 	@Override
 	public ItemStack getDisplayItem() {
-		return new ItemStack(NContent.berryItem,3,0);
+		if (ModsLoaded.Natura)
+    		return new ItemStack(NContent.berryItem,3,0);
+    	else
+    	return OreDict.ISget("crop"+this.name());
 	}
 }
