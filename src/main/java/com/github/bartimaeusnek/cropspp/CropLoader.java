@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.github.bartimaeusnek.croploadcore.ModsLoaded;
-import com.github.bartimaeusnek.croploadcore.Operators;
 import com.github.bartimaeusnek.croploadcore.OreDict;
 import com.github.bartimaeusnek.croploadcore.config;
 import com.github.bartimaeusnek.cropspp.cpp.ArditeBerryCrop;
@@ -58,7 +57,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class CropLoader {
-	private static boolean _modcategories[] = new boolean[4];
 	private static List<Boolean> bHasCropObj = new ArrayList<Boolean>();
 	private CropCard cropObj;
 	private ItemStack baseseed;
@@ -124,7 +122,8 @@ public final static List<CropLoader> cropLoader() {
 	p.add(new CropLoader(new StonelillyCrop("Yellow"),null));
 	p.add(new CropLoader(new StonelillyCrop("Nether"),null));
 	}
-	if(ModsLoaded.Natura && _modcategories[0])
+
+	if(ModsLoaded.Natura)
 		p.addAll(NaturaLoader.NaturaLoaderList());
 	else {
 		p.add(new CropLoader(new SaguaroCrop(),null));
@@ -133,7 +132,8 @@ public final static List<CropLoader> cropLoader() {
 	p.add(new CropLoader(new CottonCrop(),null));
 	}
 	
-	if (Operators.AND(ModsLoaded.TConstruct,_modcategories[1])) {
+
+	if (ModsLoaded.TConstruct) {
 	p.add(new CropLoader(new IronOreBerryCrop(),new ItemStack(tconstruct.world.TinkerWorld.oreBerries, 1, 0)));
 	p.add(new CropLoader(new GoldOreBerryCrop(),new ItemStack(tconstruct.world.TinkerWorld.oreBerries, 1, 1)));
 	p.add(new CropLoader(new CopperOreBerryCrop(),new ItemStack(tconstruct.world.TinkerWorld.oreBerries, 1, 2)));
@@ -143,13 +143,15 @@ public final static List<CropLoader> cropLoader() {
 	p.add(new CropLoader(new ArditeBerryCrop(),null));
 	p.add(new CropLoader(new CobaltBerryCrop(),null));
 	}
-	if (ModsLoaded.BoP && _modcategories[2]) {
+
+	if (ModsLoaded.BoP) {
 		p.addAll(BoPLoader.BoPLoaderList());
 	}
 	if (ModsLoaded.BoP || ModsLoaded.PHC) {
 	p.add(new CropLoader(new BarleyCrop(),null));
 	}
-	if (Operators.AND(ModsLoaded.TC, _modcategories[3])) {
+
+	if (ModsLoaded.TC) {
 	p.add(new CropLoader(new PrimordialPearlBerryCrop(), thaumcraft.api.ItemApi.getItem("itemEldritchObject", 3)));
 	p.add(new CropLoader(new MagicMetalBerryCrop(), thaumcraft.api.ItemApi.getItem("itemResource", 17)));
 	p.add(new CropLoader(new ShimmerleafCrop(),null));
@@ -233,12 +235,6 @@ public static void load(FMLPreInitializationEvent preinit){
 	ConfigValures.Debug 		= c.tConfig.get("System", "Debug", false).getBoolean(true);
 	ConfigValures.WiPItems 		= c.tConfig.get("System", "WiP Items", false).getBoolean(true);
 	ConfigValures.Items 		= c.tConfig.get("System", "Items", true).getBoolean(false);
-	
-	c.tConfig.addCustomCategoryComment("Mods", "enable crops from mods here:");
-	_modcategories[0]=c.tConfig.get("Mods", "Natura", true).getBoolean(false);
-	_modcategories[1]=c.tConfig.get("Mods", "Tinker\'s Construct", true).getBoolean(false);
-	_modcategories[2]=c.tConfig.get("Mods", "Biomes O\' Plenty", true).getBoolean(false);
-	_modcategories[3]=c.tConfig.get("Mods", "Thaumcraft", true).getBoolean(false);
 	
 	c.tConfig.addCustomCategoryComment("Crops", "enable single plants here:");
 	

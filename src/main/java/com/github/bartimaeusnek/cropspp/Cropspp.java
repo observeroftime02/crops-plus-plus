@@ -18,7 +18,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 @Mod(
 	modid = Cropspp.modID, name = Cropspp.name, version = Cropspp.version,
 	dependencies = "required-after:IC2; "
-			+ "required-after:croploadcore@0.0.8; "
+			+ "required-after:croploadcore@0.1.0; "
 			+ "after:GalacticraftCore; "
 			+ "after:Mantle; "
 			+ "after:Natura; "
