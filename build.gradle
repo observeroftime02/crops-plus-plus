@@ -19,7 +19,7 @@ buildscript {
 apply plugin: 'forge'
 import de.undercouch.gradle.tasks.download.Download
 
-version = "1.2.8"
+version = "1.2.8c"
     //
     // Versions: 
     //           1=Realises
@@ -42,7 +42,7 @@ file "build.properties" withReader {
 }
 
 minecraft {
-    version = "1.7.10-10.13.4.1558-1.7.10"
+    version = "1.7.10-10.13.4.1614-1.7.10"
     replaceIn "Cropspp.java"
     replace "@version@", project.version
     runDir = "eclipse"

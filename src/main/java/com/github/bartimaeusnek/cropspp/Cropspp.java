@@ -18,7 +18,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 @Mod(
 	modid = Cropspp.modID, name = Cropspp.name, version = Cropspp.version,
 	dependencies = "required-after:IC2; "
-			+ "required-after:croploadcore@0.0.8; "
+			+ "required-after:croploadcore@0.1.0; "
 			+ "after:GalacticraftCore; "
 			+ "after:Mantle; "
 			+ "after:Natura; "
@@ -46,7 +46,6 @@ public final class Cropspp {
 		// (=<`:9876Z4321UT.-Q+*)M'&%$H\"!~}|Bzy?=|{z]KwZY44Eq0/{mlk**hKs_dG5[m_BA{?-Y;;Vb'rR5431M}/.zHGwEDCBA@98\\6543W10/.R,+O<
 		//if(InstalledTreesGetter.check_bonsai(preinit))
 		//	InstalledTreesGetter.InstalledTreesGet();
-		CropLoader.cropLoader();
 		CropLoader.load(preinit);
 	}
 
