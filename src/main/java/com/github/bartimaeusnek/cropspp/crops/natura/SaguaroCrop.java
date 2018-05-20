@@ -1,10 +1,10 @@
 package com.github.bartimaeusnek.cropspp.crops.natura;
+import com.github.bartimaeusnek.croploadcore.ModsLoaded;
 import com.github.bartimaeusnek.cropspp.ConfigValures;
 import com.github.bartimaeusnek.cropspp.cpp.CactiCrop;
 import com.github.bartimaeusnek.cropspp.items.CppItems;
 
 import ic2.api.crops.ICropTile;
-import lokko12.croploadcore.ModsLoaded;
 import mods.natura.common.NContent;
 import net.minecraft.item.ItemStack;
 

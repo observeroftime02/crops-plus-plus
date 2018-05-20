@@ -1,13 +1,12 @@
 package com.github.bartimaeusnek.cropspp.BoP;
 
+import com.github.bartimaeusnek.croploadcore.OreDict;
 import com.github.bartimaeusnek.cropspp.abstracts.BasicDecorationCrop;
 
 import biomesoplenty.api.content.BOPCBlocks;
 import ic2.api.crops.ICropTile;
-import lokko12.croploadcore.OreDict;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.oredict.OreDictionary;
 
 public class GlowflowerCrop extends BasicDecorationCrop {
 	

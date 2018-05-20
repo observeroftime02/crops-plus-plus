@@ -3,7 +3,7 @@ package com.github.bartimaeusnek.cropspp;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.github.bartimaeusnek.cropspp.crops.natura.CottonCrop;
+import com.github.bartimaeusnek.croploadcore.ModsLoaded;
 import com.github.bartimaeusnek.cropspp.crops.natura.SaguaroCrop;
 import com.github.bartimaeusnek.cropspp.crops.natura.nether.BasicNetherShroomCrop;
 import com.github.bartimaeusnek.cropspp.crops.natura.nether.BlightberryCrop;
@@ -12,7 +12,6 @@ import com.github.bartimaeusnek.cropspp.crops.natura.nether.SkyberryCrop;
 import com.github.bartimaeusnek.cropspp.crops.natura.nether.StingberryCrop;
 import com.github.bartimaeusnek.cropspp.crops.natura.nether.Thornvines;
 
-import lokko12.croploadcore.ModsLoaded;
 import net.minecraft.item.ItemStack;
 
 public class NaturaLoader {

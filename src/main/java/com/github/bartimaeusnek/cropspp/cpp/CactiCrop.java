@@ -1,13 +1,13 @@
 package com.github.bartimaeusnek.cropspp.cpp;
 
+import com.github.bartimaeusnek.croploadcore.ModsLoaded;
+import com.github.bartimaeusnek.croploadcore.Operators;
 import com.github.bartimaeusnek.cropspp.CropLoader;
 import com.github.bartimaeusnek.cropspp.abstracts.BasicDecorationCrop;
 
 import biomesoplenty.api.content.BOPCBlocks;
 import ic2.api.crops.Crops;
 import ic2.api.crops.ICropTile;
-import lokko12.croploadcore.ModsLoaded;
-import lokko12.croploadcore.Operators;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;

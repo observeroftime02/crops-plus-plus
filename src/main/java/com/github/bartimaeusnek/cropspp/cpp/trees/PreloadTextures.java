@@ -1,7 +1,8 @@
 package com.github.bartimaeusnek.cropspp.cpp.trees;
 
+import com.github.bartimaeusnek.croploadcore.Operators;
+
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import lokko12.croploadcore.Operators;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.item.ItemStack;

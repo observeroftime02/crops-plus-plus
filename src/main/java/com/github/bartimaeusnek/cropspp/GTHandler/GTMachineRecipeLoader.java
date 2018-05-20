@@ -2,6 +2,8 @@ package com.github.bartimaeusnek.cropspp.GTHandler;
 
 import java.util.Locale;
 
+import com.github.bartimaeusnek.croploadcore.ModsLoaded;
+import com.github.bartimaeusnek.croploadcore.OreDict;
 import com.github.bartimaeusnek.cropspp.fluids.CppFluids;
 import com.github.bartimaeusnek.cropspp.items.CppItems;
 import com.github.bartimaeusnek.cropspp.items.CppPotions;
@@ -15,8 +17,6 @@ import gregtech.api.util.GT_ModHandler;
 import gregtech.api.util.GT_OreDictUnificator;
 import gregtech.api.util.GT_Utility;
 import ic2.api.item.IC2Items;
-import lokko12.croploadcore.ModsLoaded;
-import lokko12.croploadcore.OreDict;
 import micdoodle8.mods.galacticraft.core.items.GCItems;
 import micdoodle8.mods.galacticraft.planets.mars.items.MarsItems;
 import mods.natura.common.NContent;

@@ -12,7 +12,6 @@ import com.github.bartimaeusnek.cropspp.BoP.IvyCrop;
 import com.github.bartimaeusnek.cropspp.BoP.TurnipCrop;
 import com.github.bartimaeusnek.cropspp.BoP.WildCarrotsCrop;
 
-import lokko12.croploadcore.ModsLoaded;
 import net.minecraft.item.ItemStack;
 
 public class BoPLoader {

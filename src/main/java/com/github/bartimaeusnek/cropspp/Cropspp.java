@@ -2,6 +2,8 @@ package com.github.bartimaeusnek.cropspp;
 
 import org.apache.logging.log4j.LogManager;
 
+import com.github.bartimaeusnek.croploadcore.ModsLoaded;
+import com.github.bartimaeusnek.croploadcore.OreDict;
 import com.github.bartimaeusnek.cropspp.GTHandler.GTHandler;
 import com.github.bartimaeusnek.cropspp.fluids.CppFluids;
 import com.github.bartimaeusnek.cropspp.items.CppItems;
@@ -12,7 +14,6 @@ import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import lokko12.croploadcore.ModsLoaded;
 
 @Mod(
 	modid = Cropspp.modID, name = Cropspp.name, version = Cropspp.version,

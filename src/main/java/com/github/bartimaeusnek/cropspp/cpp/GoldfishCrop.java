@@ -1,11 +1,11 @@
 package com.github.bartimaeusnek.cropspp.cpp;
 
+import com.github.bartimaeusnek.croploadcore.MyRandom;
 import com.github.bartimaeusnek.cropspp.ConfigValures;
 import com.github.bartimaeusnek.cropspp.abstracts.BasicDecorationCrop;
 import com.github.bartimaeusnek.cropspp.items.CppItems;
 
 import ic2.api.crops.ICropTile;
-import lokko12.croploadcore.MyRandom;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;

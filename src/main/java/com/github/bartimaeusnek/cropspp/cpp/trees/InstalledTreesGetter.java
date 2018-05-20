@@ -10,14 +10,14 @@ import java.util.Set;
 
 import javax.imageio.ImageIO;
 
-import com.github.bartimaeusnek.cropspp.Cropspp;
+import com.github.bartimaeusnek.croploadcore.Operators;
+import com.github.bartimaeusnek.croploadcore.OreDict;
+import com.github.bartimaeusnek.croploadcore.config;
 import com.github.bartimaeusnek.cropspp.ConfigValures;
+import com.github.bartimaeusnek.cropspp.Cropspp;
 
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import ic2.api.crops.CropCard;
-import lokko12.croploadcore.Operators;
-import lokko12.croploadcore.OreDict;
-import lokko12.croploadcore.config;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;

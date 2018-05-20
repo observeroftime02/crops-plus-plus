@@ -1,9 +1,9 @@
 package com.github.bartimaeusnek.cropspp.abstracts;
 
+import com.github.bartimaeusnek.croploadcore.Operators;
 import com.github.bartimaeusnek.cropspp.ConfigValures;
 
 import ic2.api.crops.ICropTile;
-import lokko12.croploadcore.Operators;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;

@@ -1,11 +1,11 @@
 package com.github.bartimaeusnek.cropspp.crops.TC;
 
+import com.github.bartimaeusnek.croploadcore.Operators;
+import com.github.bartimaeusnek.croploadcore.OreDict;
 import com.github.bartimaeusnek.cropspp.ConfigValures;
 import com.github.bartimaeusnek.cropspp.abstracts.BasicThaumcraftCrop;
 
 import ic2.api.crops.ICropTile;
-import lokko12.croploadcore.Operators;
-import lokko12.croploadcore.OreDict;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 

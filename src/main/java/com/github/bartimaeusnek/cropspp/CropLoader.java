@@ -3,14 +3,10 @@ package com.github.bartimaeusnek.cropspp;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.github.bartimaeusnek.cropspp.BoP.BoPBerryCrop;
-import com.github.bartimaeusnek.cropspp.BoP.EyebulbCrop;
-import com.github.bartimaeusnek.cropspp.BoP.FloweringVinesCrop;
-import com.github.bartimaeusnek.cropspp.BoP.GlowflowerCrop;
-import com.github.bartimaeusnek.cropspp.BoP.GlowingCoralCrop;
-import com.github.bartimaeusnek.cropspp.BoP.IvyCrop;
-import com.github.bartimaeusnek.cropspp.BoP.TurnipCrop;
-import com.github.bartimaeusnek.cropspp.BoP.WildCarrotsCrop;
+import com.github.bartimaeusnek.croploadcore.ModsLoaded;
+import com.github.bartimaeusnek.croploadcore.Operators;
+import com.github.bartimaeusnek.croploadcore.OreDict;
+import com.github.bartimaeusnek.croploadcore.config;
 import com.github.bartimaeusnek.cropspp.cpp.ArditeBerryCrop;
 import com.github.bartimaeusnek.cropspp.cpp.CactiCrop;
 import com.github.bartimaeusnek.cropspp.cpp.CobaltBerryCrop;
@@ -42,7 +38,6 @@ import com.github.bartimaeusnek.cropspp.crops.natura.CottonCrop;
 import com.github.bartimaeusnek.cropspp.crops.natura.MaloberryCrop;
 import com.github.bartimaeusnek.cropspp.crops.natura.RaspberryCrop;
 import com.github.bartimaeusnek.cropspp.crops.natura.SaguaroCrop;
-import com.github.bartimaeusnek.cropspp.crops.natura.nether.BasicNetherShroomCrop;
 import com.github.bartimaeusnek.cropspp.crops.witchery.BelladonnaCrop;
 import com.github.bartimaeusnek.cropspp.crops.witchery.EmberMossCrop;
 import com.github.bartimaeusnek.cropspp.crops.witchery.GarlicCrop;
@@ -58,11 +53,6 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 //IC2API
 import ic2.api.crops.CropCard;
 import ic2.api.crops.Crops;
-//Core
-import lokko12.croploadcore.ModsLoaded;
-import lokko12.croploadcore.Operators;
-import lokko12.croploadcore.OreDict;
-import lokko12.croploadcore.config;
 //ItemsFromAPIs
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

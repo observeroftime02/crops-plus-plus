@@ -1,9 +1,9 @@
 package com.github.bartimaeusnek.cropspp.crops.witchery;
 
+import com.github.bartimaeusnek.croploadcore.OreDict;
 import com.github.bartimaeusnek.cropspp.abstracts.BasicDecorationCrop;
 
 import ic2.api.crops.ICropTile;
-import lokko12.croploadcore.OreDict;
 import net.minecraft.item.ItemStack;
 
 public class GarlicCrop extends BasicDecorationCrop {
