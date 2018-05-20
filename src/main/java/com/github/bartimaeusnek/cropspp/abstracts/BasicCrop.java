@@ -3,6 +3,7 @@ package com.github.bartimaeusnek.cropspp.abstracts;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.github.bartimaeusnek.croploadcore.OreDict;
 import com.github.bartimaeusnek.cropspp.ConfigValures;
 import com.github.bartimaeusnek.cropspp.Cropspp;
 
@@ -10,7 +11,6 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ic2.api.crops.CropCard;
 import ic2.api.crops.ICropTile;
-import lokko12.croploadcore.OreDict;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;

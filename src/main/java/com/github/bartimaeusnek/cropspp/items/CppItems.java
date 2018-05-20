@@ -1,11 +1,11 @@
 package com.github.bartimaeusnek.cropspp.items;
 
+import com.github.bartimaeusnek.croploadcore.ModsLoaded;
+import com.github.bartimaeusnek.croploadcore.OreDict;
 import com.github.bartimaeusnek.cropspp.ConfigValures;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import ic2.core.Ic2Items;
-import lokko12.croploadcore.ModsLoaded;
-import lokko12.croploadcore.OreDict;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -38,7 +38,7 @@ public final class CppItems {
 				GameRegistry.registerCustomItemStack("ModifierMagic", ModifierMagic);
 			  //GameRegistry.registerCustomItemStack("ModifierAnti", ModifierAnti);
 				GameRegistry.registerCustomItemStack("Trophy", Trophy);
-				if(ModsLoaded.GT)
+			if(ModsLoaded.GT)
 				GameRegistry.registerItem(CppPotions,"BppPotions");
 				GameRegistry.registerItem(CppBerries,"foodBerries");
 				GameRegistry.registerCustomItemStack("berryHuckle", new ItemStack(CppBerries, 1, 0));
@@ -79,8 +79,8 @@ public final class CppItems {
 		}
 		
 	if (!ModsLoaded.Natura) {
-		final ItemStack[] BerryItemsS = new ItemStack[4];
-			for (int i = 0; i < 4; ++i) {
+		ItemStack[] BerryItemsS = new ItemStack[5];
+			for (int i = 0; i < 5; ++i) {
 				BerryItemsS[i] = new ItemStack(BerryItems,i);
 				OreDictionary.registerOre("listAllberry", BerryItemsS[i]);
 				OreDictionary.registerOre("listAllfruit", BerryItemsS[i]);

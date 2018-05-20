@@ -1,8 +1,8 @@
 package com.github.bartimaeusnek.cropspp.cpp;
+import com.github.bartimaeusnek.croploadcore.OreDict;
 import com.github.bartimaeusnek.cropspp.abstracts.BasicBerryCrop;
 
 import ic2.api.crops.ICropTile;
-import lokko12.croploadcore.OreDict;
 import net.minecraft.item.ItemStack;
 
 public class HuckleberryCrop extends BasicBerryCrop {

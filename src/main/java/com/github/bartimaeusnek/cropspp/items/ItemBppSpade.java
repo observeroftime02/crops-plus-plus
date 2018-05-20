@@ -3,6 +3,8 @@ package com.github.bartimaeusnek.cropspp.items;
 import java.util.List;
 import java.util.Set;
 
+import com.github.bartimaeusnek.croploadcore.MyRandom;
+import com.github.bartimaeusnek.croploadcore.Operators;
 import com.google.common.collect.Sets;
 
 import cpw.mods.fml.relauncher.Side;
@@ -11,8 +13,6 @@ import ic2.core.IC2;
 import ic2.core.Ic2Items;
 import ic2.core.crop.TileEntityCrop;
 import ic2.core.util.StackUtil;
-import lokko12.croploadcore.MyRandom;
-import lokko12.croploadcore.Operators;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;

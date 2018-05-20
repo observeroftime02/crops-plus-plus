@@ -4,7 +4,6 @@ import com.github.bartimaeusnek.cropspp.abstracts.BasicNetherBerryCrop;
 
 import biomesoplenty.api.content.BOPCBlocks;
 import ic2.api.crops.ICropTile;
-import lokko12.croploadcore.Operators;
 import mods.natura.common.NContent;
 import net.minecraft.item.ItemStack;
 

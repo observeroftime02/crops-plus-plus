@@ -34,6 +34,7 @@ public class NaturaBerryItems extends ItemFood
         setHasSubtypes(true);
         setMaxDamage(0);
         this.setMaxStackSize(16);
+        this.setCreativeTab(CreativeTab.cpp);
     }
 
     @Override
@@ -57,7 +58,10 @@ public class NaturaBerryItems extends ItemFood
     @Override
     public IIcon getIconFromDamage (int meta)
     {
-        return icons[meta];
+    	if (meta<textureNames.length)
+    		return icons[meta];
+    	else
+    		return null;
     }
 
     @SideOnly(Side.CLIENT)
@@ -85,7 +89,7 @@ public class NaturaBerryItems extends ItemFood
     @Override
     public void getSubItems (Item par1, CreativeTabs par2CreativeTabs, List par3List)
     {
-        for (int var4 = 0; var4 < 8; ++var4)
+        for (int var4 = 0; var4 < this.icons.length; ++var4)
         {
             par3List.add(new ItemStack(par1, 1, var4));
         }

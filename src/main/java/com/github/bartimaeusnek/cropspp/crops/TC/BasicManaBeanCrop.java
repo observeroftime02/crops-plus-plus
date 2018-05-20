@@ -1,10 +1,10 @@
 package com.github.bartimaeusnek.cropspp.crops.TC;
 
+import com.github.bartimaeusnek.croploadcore.BlockGetterTC;
 import com.github.bartimaeusnek.cropspp.ConfigValures;
 import com.github.bartimaeusnek.cropspp.abstracts.BasicThaumcraftCrop;
 
 import ic2.api.crops.ICropTile;
-import lokko12.croploadcore.BlockGetterTC;
 import net.minecraft.item.ItemStack;
 
 public class BasicManaBeanCrop extends BasicThaumcraftCrop {
