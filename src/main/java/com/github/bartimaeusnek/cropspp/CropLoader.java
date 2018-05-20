@@ -122,6 +122,7 @@ public final static List<CropLoader> cropLoader() {
 	p.add(new CropLoader(new StonelillyCrop("Yellow"),null));
 	p.add(new CropLoader(new StonelillyCrop("Nether"),null));
 	}
+
 	if(ModsLoaded.Natura)
 		p.addAll(NaturaLoader.NaturaLoaderList());
 	else {
@@ -131,6 +132,7 @@ public final static List<CropLoader> cropLoader() {
 	p.add(new CropLoader(new CottonCrop(),null));
 	}
 	
+
 	if (ModsLoaded.TConstruct) {
 	p.add(new CropLoader(new IronOreBerryCrop(),new ItemStack(tconstruct.world.TinkerWorld.oreBerries, 1, 0)));
 	p.add(new CropLoader(new GoldOreBerryCrop(),new ItemStack(tconstruct.world.TinkerWorld.oreBerries, 1, 1)));
@@ -141,12 +143,14 @@ public final static List<CropLoader> cropLoader() {
 	p.add(new CropLoader(new ArditeBerryCrop(),null));
 	p.add(new CropLoader(new CobaltBerryCrop(),null));
 	}
+
 	if (ModsLoaded.BoP) {
 		p.addAll(BoPLoader.BoPLoaderList());
 	}
 	if (ModsLoaded.BoP || ModsLoaded.PHC) {
 	p.add(new CropLoader(new BarleyCrop(),null));
 	}
+
 	if (ModsLoaded.TC) {
 	p.add(new CropLoader(new PrimordialPearlBerryCrop(), thaumcraft.api.ItemApi.getItem("itemEldritchObject", 3)));
 	p.add(new CropLoader(new MagicMetalBerryCrop(), thaumcraft.api.ItemApi.getItem("itemResource", 17)));
