@@ -3,8 +3,8 @@ package com.github.bartimaeusnek.cropspp;
 import org.apache.logging.log4j.LogManager;
 
 import com.github.bartimaeusnek.croploadcore.ModsLoaded;
-import com.github.bartimaeusnek.croploadcore.OreDict;
 import com.github.bartimaeusnek.cropspp.GTHandler.GTHandler;
+import com.github.bartimaeusnek.cropspp.croploader.CropLoader;
 import com.github.bartimaeusnek.cropspp.fluids.CppFluids;
 import com.github.bartimaeusnek.cropspp.items.CppItems;
 
@@ -46,7 +46,6 @@ public final class Cropspp {
 		// (=<`:9876Z4321UT.-Q+*)M'&%$H\"!~}|Bzy?=|{z]KwZY44Eq0/{mlk**hKs_dG5[m_BA{?-Y;;Vb'rR5431M}/.zHGwEDCBA@98\\6543W10/.R,+O<
 		//if(InstalledTreesGetter.check_bonsai(preinit))
 		//	InstalledTreesGetter.InstalledTreesGet();
-		CropLoader.cropLoader();
 		CropLoader.load(preinit);
 	}
 

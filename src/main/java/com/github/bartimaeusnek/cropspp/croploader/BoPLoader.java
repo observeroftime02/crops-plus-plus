@@ -1,4 +1,4 @@
-package com.github.bartimaeusnek.cropspp;
+package com.github.bartimaeusnek.cropspp.croploader;
 
 import java.util.ArrayList;
 import java.util.List;
