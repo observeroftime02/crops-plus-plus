@@ -1,4 +1,4 @@
-package com.github.bartimaeusnek.cropspp;
+package com.github.bartimaeusnek.cropspp.croploader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,30 +6,16 @@ import java.util.List;
 import com.github.bartimaeusnek.croploadcore.ModsLoaded;
 import com.github.bartimaeusnek.croploadcore.OreDict;
 import com.github.bartimaeusnek.croploadcore.config;
-import com.github.bartimaeusnek.cropspp.cpp.ArditeBerryCrop;
+import com.github.bartimaeusnek.cropspp.ConfigValures;
+import com.github.bartimaeusnek.cropspp.Cropspp;
 import com.github.bartimaeusnek.cropspp.cpp.CactiCrop;
-import com.github.bartimaeusnek.cropspp.cpp.CobaltBerryCrop;
 import com.github.bartimaeusnek.cropspp.cpp.GoldfishCrop;
 import com.github.bartimaeusnek.cropspp.cpp.GrassCrop;
 import com.github.bartimaeusnek.cropspp.cpp.HuckleberryCrop;
-import com.github.bartimaeusnek.cropspp.cpp.KnighmetalCrop;
-import com.github.bartimaeusnek.cropspp.cpp.MagicModifierCrop;
 import com.github.bartimaeusnek.cropspp.cpp.PapyrusCrop;
-import com.github.bartimaeusnek.cropspp.cpp.SpacePlantCrop;
-import com.github.bartimaeusnek.cropspp.cpp.StonelillyCrop;
 import com.github.bartimaeusnek.cropspp.cpp.StrawberryCrop;
 import com.github.bartimaeusnek.cropspp.cpp.SugarBeetCrop;
 import com.github.bartimaeusnek.cropspp.cpp.VineCrop;
-import com.github.bartimaeusnek.cropspp.crops.TC.CinderpearlCrop;
-import com.github.bartimaeusnek.cropspp.crops.TC.MagicMetalBerryCrop;
-import com.github.bartimaeusnek.cropspp.crops.TC.PrimordialPearlBerryCrop;
-import com.github.bartimaeusnek.cropspp.crops.TC.ShimmerleafCrop;
-import com.github.bartimaeusnek.cropspp.crops.TConstruct.AluminiumOreBerryCrop;
-import com.github.bartimaeusnek.cropspp.crops.TConstruct.CopperOreBerryCrop;
-import com.github.bartimaeusnek.cropspp.crops.TConstruct.EssenceOreBerryCrop;
-import com.github.bartimaeusnek.cropspp.crops.TConstruct.GoldOreBerryCrop;
-import com.github.bartimaeusnek.cropspp.crops.TConstruct.IronOreBerryCrop;
-import com.github.bartimaeusnek.cropspp.crops.TConstruct.TinOreBerryCrop;
 import com.github.bartimaeusnek.cropspp.crops.natura.BarleyCrop;
 import com.github.bartimaeusnek.cropspp.crops.natura.BlackberryCrop;
 import com.github.bartimaeusnek.cropspp.crops.natura.BlueberryCrop;
@@ -37,15 +23,7 @@ import com.github.bartimaeusnek.cropspp.crops.natura.CottonCrop;
 import com.github.bartimaeusnek.cropspp.crops.natura.MaloberryCrop;
 import com.github.bartimaeusnek.cropspp.crops.natura.RaspberryCrop;
 import com.github.bartimaeusnek.cropspp.crops.natura.SaguaroCrop;
-import com.github.bartimaeusnek.cropspp.crops.witchery.BelladonnaCrop;
-import com.github.bartimaeusnek.cropspp.crops.witchery.EmberMossCrop;
 import com.github.bartimaeusnek.cropspp.crops.witchery.GarlicCrop;
-import com.github.bartimaeusnek.cropspp.crops.witchery.GlintWeedCrop;
-import com.github.bartimaeusnek.cropspp.crops.witchery.MandragoraCrop;
-import com.github.bartimaeusnek.cropspp.crops.witchery.SnowbellCrop;
-import com.github.bartimaeusnek.cropspp.crops.witchery.SpanishMossCrop;
-import com.github.bartimaeusnek.cropspp.crops.witchery.WaterArtichokeCrop;
-import com.github.bartimaeusnek.cropspp.crops.witchery.WolfsBaneCrop;
 
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -108,67 +86,41 @@ public final static List<CropLoader> cropLoader() {
 	 */
 	
 	if(Loader.isModLoaded("TwilightForest")) {
-	p.add(new CropLoader(new KnighmetalCrop(),null));
+		p.addAll(TwilightForestLoader.load());
 	}
 	if(ModsLoaded.dreamcraft) {
-	p.add(new CropLoader(new SpacePlantCrop(),null));
-	p.add(new CropLoader(new MagicModifierCrop(),null));
+		p.addAll(DreamCraftLoader.load());
 	}
 	if(ModsLoaded.GT) {
-	p.add(new CropLoader(new StonelillyCrop("Red"),null));
-	p.add(new CropLoader(new StonelillyCrop("Black"),null));
-	p.add(new CropLoader(new StonelillyCrop("Gray"),null));
-	p.add(new CropLoader(new StonelillyCrop("White"),null));
-	p.add(new CropLoader(new StonelillyCrop("Yellow"),null));
-	p.add(new CropLoader(new StonelillyCrop("Nether"),null));
+		p.addAll(GTLoader.load());
 	}
-
 	if(ModsLoaded.Natura)
-		p.addAll(NaturaLoader.NaturaLoaderList());
+		p.addAll(NaturaLoader.load());
 	else {
 		p.add(new CropLoader(new SaguaroCrop(),null));
 	}
 	if (ModsLoaded.Natura||ModsLoaded.PHC) {
-	p.add(new CropLoader(new CottonCrop(),null));
+		p.add(new CropLoader(new CottonCrop(),null));
 	}
 	
-
 	if (ModsLoaded.TConstruct) {
-	p.add(new CropLoader(new IronOreBerryCrop(),new ItemStack(tconstruct.world.TinkerWorld.oreBerries, 1, 0)));
-	p.add(new CropLoader(new GoldOreBerryCrop(),new ItemStack(tconstruct.world.TinkerWorld.oreBerries, 1, 1)));
-	p.add(new CropLoader(new CopperOreBerryCrop(),new ItemStack(tconstruct.world.TinkerWorld.oreBerries, 1, 2)));
-	p.add(new CropLoader(new TinOreBerryCrop(),new ItemStack(tconstruct.world.TinkerWorld.oreBerries, 1, 3)));
-	p.add(new CropLoader(new AluminiumOreBerryCrop(),new ItemStack(tconstruct.world.TinkerWorld.oreBerries, 1, 4)));
-	p.add(new CropLoader(new EssenceOreBerryCrop(),new ItemStack(tconstruct.world.TinkerWorld.oreBerries, 1, 5)));
-	p.add(new CropLoader(new ArditeBerryCrop(),null));
-	p.add(new CropLoader(new CobaltBerryCrop(),null));
+		p.addAll(TConstructLoader.load());
 	}
-
 	if (ModsLoaded.BoP) {
 		p.addAll(BoPLoader.BoPLoaderList());
 	}
-	if (ModsLoaded.BoP || ModsLoaded.PHC) {
-	p.add(new CropLoader(new BarleyCrop(),null));
-	}
-
+	
 	if (ModsLoaded.TC) {
-	p.add(new CropLoader(new PrimordialPearlBerryCrop(), thaumcraft.api.ItemApi.getItem("itemEldritchObject", 3)));
-	p.add(new CropLoader(new MagicMetalBerryCrop(), thaumcraft.api.ItemApi.getItem("itemResource", 17)));
-	p.add(new CropLoader(new ShimmerleafCrop(),null));
-	p.add(new CropLoader(new CinderpearlCrop(),null));
+		p.addAll(ThaumcraftLoader.load());
 	}
 	if (ModsLoaded.witchery) {
-	p.add(new CropLoader(new GlintWeedCrop(),null));
-	p.add(new CropLoader(new SpanishMossCrop(),null));
-	p.add(new CropLoader(new BelladonnaCrop(),null));
-	p.add(new CropLoader(new MandragoraCrop(),null));
-	p.add(new CropLoader(new SnowbellCrop(),null));;
-	p.add(new CropLoader(new WolfsBaneCrop(),null));
-	p.add(new CropLoader(new WaterArtichokeCrop(),null));
-	p.add(new CropLoader(new EmberMossCrop(),null));
+		p.addAll(WitcheryLoader.load());
 	}
 	if (ModsLoaded.witchery || ModsLoaded.PHC) {
 	p.add(new CropLoader(new GarlicCrop(),null));
+	}
+	if (ModsLoaded.BoP || ModsLoaded.PHC) {
+	p.add(new CropLoader(new BarleyCrop(),null));
 	}
 	
 	p.add(new CropLoader(new VineCrop(),new ItemStack(Item.getItemById(106),1,0)));

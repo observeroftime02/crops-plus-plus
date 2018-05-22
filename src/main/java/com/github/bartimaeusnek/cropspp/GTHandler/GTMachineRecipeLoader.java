@@ -51,18 +51,18 @@ public class GTMachineRecipeLoader implements Runnable{
     	
     	
     	//honey related
-    	GT_Values.RA.addCentrifugeRecipe(GT_Utility.getIntegratedCircuit(9), null, new FluidStack(FluidRegistry.getFluid("for.honey"), 1000), null, new ItemStack(Items.sugar,9,0), null, null, null, null, null, new int[] {10000}, 1020, 8, false);
+    	GT_Values.RA.addCentrifugeRecipe(GT_Utility.getIntegratedCircuit(9), GT_Values.NI, new FluidStack(FluidRegistry.getFluid("for.honey"), 1000), GT_Values.NF, new ItemStack(Items.sugar,9,0), GT_Values.NI, GT_Values.NI,GT_Values.NI, GT_Values.NI, GT_Values.NI, new int[] {10000}, 1020, 8, false);
     	if (ModsLoaded.BoP) {
-    	GT_Values.RA.addCentrifugeRecipe(GT_Utility.getIntegratedCircuit(9), null, new FluidStack(FluidRegistry.getFluid("honey"), 1000), null, new ItemStack(Items.sugar,9,0), null, null, null, null, null, new int[] {10000}, 1020, 8, false);
-    	GT_Values.RA.addCentrifugeRecipe(GT_Utility.getIntegratedCircuit(1), null, new FluidStack(FluidRegistry.getFluid("honey"),1000), new FluidStack(FluidRegistry.getFluid("for.honey"), 1000), null, null, null, null, null, null, null, 1020, 8, false);
+    	GT_Values.RA.addCentrifugeRecipe(GT_Utility.getIntegratedCircuit(9), GT_Values.NI, new FluidStack(FluidRegistry.getFluid("honey"), 1000), GT_Values.NF, new ItemStack(Items.sugar,9,0), GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, new int[] {10000}, 1020, 8, false);
+    	GT_Values.RA.addCentrifugeRecipe(GT_Utility.getIntegratedCircuit(1), GT_Values.NI, new FluidStack(FluidRegistry.getFluid("honey"),1000), new FluidStack(FluidRegistry.getFluid("for.honey"), 1000), GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, new int[] {}, 1020, 8, false);
     	}
     	
     	//Ethanol related
-    	GT_Values.RA.addFluidCannerRecipe(new ItemStack(IC2Items.getItem("mugBooze").getItem(),1,2), IC2Items.getItem("mugEmpty"), null,new FluidStack(FluidRegistry.getFluid("potion.rum"), 250));
+    	GT_Values.RA.addFluidCannerRecipe(new ItemStack(IC2Items.getItem("mugBooze").getItem(),1,2), IC2Items.getItem("mugEmpty"), GT_Values.NF,new FluidStack(FluidRegistry.getFluid("potion.rum"), 250));
     	
     	for(int i=0;i<CppPotions.textureNames.length;i++) {
-    		GT_Values.RA.addFluidCannerRecipe(new ItemStack(CppItems.CppPotions,1,i), new ItemStack(Items.glass_bottle), null,new FluidStack(FluidRegistry.getFluid("potion."+CppPotions.textureNames[i].toLowerCase(Locale.ENGLISH)), 250));
-    		GT_Values.RA.addFluidCannerRecipe( new ItemStack(Items.glass_bottle),new ItemStack(CppItems.CppPotions,1,i),new FluidStack(FluidRegistry.getFluid("potion."+CppPotions.textureNames[i].toLowerCase(Locale.ENGLISH)),250), null);
+    		GT_Values.RA.addFluidCannerRecipe(new ItemStack(CppItems.CppPotions,1,i), new ItemStack(Items.glass_bottle), GT_Values.NF,new FluidStack(FluidRegistry.getFluid("potion."+CppPotions.textureNames[i].toLowerCase(Locale.ENGLISH)), 250));
+    		GT_Values.RA.addFluidCannerRecipe(new ItemStack(Items.glass_bottle),new ItemStack(CppItems.CppPotions,1,i),new FluidStack(FluidRegistry.getFluid("potion."+CppPotions.textureNames[i].toLowerCase(Locale.ENGLISH)),250), GT_Values.NF);
     	}
     			
     	GT_Values.RA.addFermentingRecipe(new FluidStack(CppFluids.Mash,10), new FluidStack(CppFluids.Wash,8), 1000, false);
@@ -71,19 +71,19 @@ public class GTMachineRecipeLoader implements Runnable{
     	GT_Values.RA.addFermentingRecipe(new FluidStack(FluidRegistry.getFluid("potion.reedwater"),10), new FluidStack(CppFluids.FReed,8), 1020, false);
     	
     	GT_Values.RA.addDistillationTowerRecipe(new FluidStack(FluidRegistry.getFluid("potion.rum"), 1000), new FluidStack[] {Materials.Ethanol.getFluid(580L),Materials.Water.getFluid(420L)}, new ItemStack(Items.sugar), 80, 180);
-    	GT_Values.RA.addDistillationTowerRecipe(new FluidStack(FluidRegistry.getFluid("potion.piratebrew"), 1000), new FluidStack[] {Materials.Ethanol.getFluid(800L),Materials.Water.getFluid(200L)}, null, 80, 180);
+    	GT_Values.RA.addDistillationTowerRecipe(new FluidStack(FluidRegistry.getFluid("potion.piratebrew"), 1000), new FluidStack[] {Materials.Ethanol.getFluid(800L),Materials.Water.getFluid(200L)}, GT_Values.NI, 80, 180);
     	GT_Values.RA.addDistillationTowerRecipe(new FluidStack(FluidRegistry.getFluid("potion.beer"), 1000), new FluidStack[] {Materials.Ethanol.getFluid(45L),Materials.Water.getFluid(955L)},IC2Items.getItem("fertilizer"), 80, 180);
     	GT_Values.RA.addDistillationTowerRecipe(new FluidStack(FluidRegistry.getFluid("potion.darkbeer"), 1000), new FluidStack[] {Materials.Ethanol.getFluid(75L),Materials.Water.getFluid(925L)}, IC2Items.getItem("fertilizer"), 80, 180);
     	GT_Values.RA.addDistillationTowerRecipe(new FluidStack(FluidRegistry.getFluid("potion.cider"), 1000), new FluidStack[] {Materials.Ethanol.getFluid(100L),Materials.Water.getFluid(900L)}, IC2Items.getItem("fertilizer"), 80, 180);
     	GT_Values.RA.addDistillationTowerRecipe(new FluidStack(FluidRegistry.getFluid("potion.wine"), 1000), new FluidStack[] {Materials.Ethanol.getFluid(120L),Materials.Water.getFluid(880L)}, IC2Items.getItem("fertilizer"), 80, 180);
-    	GT_Values.RA.addDistillationTowerRecipe(new FluidStack(FluidRegistry.getFluid("potion.vodka"), 1000), new FluidStack[] {Materials.Ethanol.getFluid(400L),Materials.Water.getFluid(600L)}, null, 80, 180);
+    	GT_Values.RA.addDistillationTowerRecipe(new FluidStack(FluidRegistry.getFluid("potion.vodka"), 1000), new FluidStack[] {Materials.Ethanol.getFluid(400L),Materials.Water.getFluid(600L)}, GT_Values.NI, 80, 180);
     	GT_Values.RA.addDistillationTowerRecipe(new FluidStack(FluidRegistry.getFluid("potion.alcopops"), 1000), new FluidStack[] {Materials.Ethanol.getFluid(160L),Materials.Water.getFluid(840L)}, new ItemStack(Items.sugar,8,0), 80, 180);
-    	GT_Values.RA.addDistillationTowerRecipe(new FluidStack(CppFluids.Korn,1000), new FluidStack[] {Materials.Ethanol.getFluid(320L),Materials.Water.getFluid(680L)}, null, 80, 180);
-    	GT_Values.RA.addDistillationTowerRecipe(new FluidStack(CppFluids.DKorn,1000), new FluidStack[] {Materials.Ethanol.getFluid(380L),Materials.Water.getFluid(620L)}, null, 80, 180);
-    	GT_Values.RA.addDistillationTowerRecipe(new FluidStack(CppFluids.SWhine,1000), new FluidStack[] {Materials.Ethanol.getFluid(700L),Materials.Water.getFluid(300L)}, null, 80, 180);
-    	GT_Values.RA.addDistillationTowerRecipe(new FluidStack(CppFluids.GHP,1000), new FluidStack[] {Materials.Ethanol.getFluid(750L),Materials.Water.getFluid(250L)}, null, 80, 180);
-    	GT_Values.RA.addDistillationTowerRecipe(new FluidStack(CppFluids.jagi,1000), new FluidStack[] {Materials.Ethanol.getFluid(350L),Materials.Water.getFluid(650L)}, null, 80, 180);
-    	GT_Values.RA.addDistillationTowerRecipe(new FluidStack(CppFluids.njagi,1000), new FluidStack[] {Materials.Ethanol.getFluid(350L),Materials.Water.getFluid(650L)}, null, 80, 180);
+    	GT_Values.RA.addDistillationTowerRecipe(new FluidStack(CppFluids.Korn,1000), new FluidStack[] {Materials.Ethanol.getFluid(320L),Materials.Water.getFluid(680L)}, GT_Values.NI, 80, 180);
+    	GT_Values.RA.addDistillationTowerRecipe(new FluidStack(CppFluids.DKorn,1000), new FluidStack[] {Materials.Ethanol.getFluid(380L),Materials.Water.getFluid(620L)}, GT_Values.NI, 80, 180);
+    	GT_Values.RA.addDistillationTowerRecipe(new FluidStack(CppFluids.SWhine,1000), new FluidStack[] {Materials.Ethanol.getFluid(700L),Materials.Water.getFluid(300L)}, GT_Values.NI, 80, 180);
+    	GT_Values.RA.addDistillationTowerRecipe(new FluidStack(CppFluids.GHP,1000), new FluidStack[] {Materials.Ethanol.getFluid(750L),Materials.Water.getFluid(250L)}, GT_Values.NI, 80, 180);
+    	GT_Values.RA.addDistillationTowerRecipe(new FluidStack(CppFluids.jagi,1000), new FluidStack[] {Materials.Ethanol.getFluid(350L),Materials.Water.getFluid(650L)}, GT_Values.NI, 80, 180);
+    	GT_Values.RA.addDistillationTowerRecipe(new FluidStack(CppFluids.njagi,1000), new FluidStack[] {Materials.Ethanol.getFluid(350L),Materials.Water.getFluid(650L)}, GT_Values.NI, 80, 180);
     	
     	GT_Values.RA.addDistilleryRecipe(GT_Utility.getIntegratedCircuit(1), new FluidStack(FluidRegistry.getFluid("potion.rum"), 100), Materials.Ethanol.getFluid(50L), 16, 24, false);
     	GT_Values.RA.addDistilleryRecipe(GT_Utility.getIntegratedCircuit(2), new FluidStack(FluidRegistry.getFluid("potion.rum"), 100), Materials.Water.getFluid(42L), 16, 24, false);
@@ -106,18 +106,18 @@ public class GTMachineRecipeLoader implements Runnable{
     	GT_Values.RA.addDistilleryRecipe(GT_Utility.getIntegratedCircuit(1), new FluidStack(CppFluids.Wash,100), new FluidStack(CppFluids.GHP,6), 22, 24, false);
     	GT_Values.RA.addDistilleryRecipe(GT_Utility.getIntegratedCircuit(4), new FluidStack(CppFluids.Wash,100), new FluidStack(FluidRegistry.getFluid("fermentedbiomass"),14), 24, 24, false);
         	
-    	GT_Values.RA.addMixerRecipe(new ItemStack(Items.sugar,32,0), new ItemStack(Items.dye,4,1), new ItemStack(Items.dye,4,11), new ItemStack(Items.dye,4,2), Materials.Water.getCells(4), null, new FluidStack(CppFluids.GHP,375), new FluidStack(FluidRegistry.getFluid("potion.alcopops"),4375), Materials.Empty.getCells(4), 10, 8);
-    	GT_Values.RA.addMixerRecipe(new ItemStack(Items.sugar,8,0), new ItemStack(Items.dye,1,1), new ItemStack(Items.dye,1,11), new ItemStack(Items.dye,1,2), Materials.Water.getCells(1), null, new FluidStack(FluidRegistry.getFluid("potion.vodka"),500), new FluidStack(FluidRegistry.getFluid("potion.alcopops"),1500), Materials.Empty.getCells(1), 10, 8);
-    	GT_Values.RA.addMixerRecipe(new ItemStack(Items.sugar,8,0), new ItemStack(Items.dye,1,1), new ItemStack(Items.dye,1,11), new ItemStack(Items.dye,1,2), Materials.Water.getCells(1), null, new FluidStack(CppFluids.Korn,1000), new FluidStack(FluidRegistry.getFluid("potion.alcopops"),2000), Materials.Empty.getCells(1), 10, 8);
-    	GT_Values.RA.addMixerRecipe(new ItemStack(Items.sugar,8,0), new ItemStack(Items.dye,1,1), new ItemStack(Items.dye,1,11), new ItemStack(Items.dye,1,2), Materials.Water.getCells(1), null, new FluidStack(CppFluids.DKorn,750), new FluidStack(FluidRegistry.getFluid("potion.alcopops"),1750), Materials.Empty.getCells(1), 10, 8);
-    	GT_Values.RA.addMixerRecipe(Materials.Water.getCells(1), null, null, null, Materials.Ethanol.getFluid(1000L),new FluidStack(FluidRegistry.getFluid("potion.vodka"),2500), Materials.Empty.getCells(1), 10, 8);
-    	//GT_Values.RA.addMixerRecipe(new ItemStack(Items.reeds,64),null, null, null, null, null, Materials.Water.getFluid(1000L),new FluidStack(FluidRegistry.getFluid("potion.reedwater"),1000),null, 1200,8);
-    	GT_Values.RA.addMixerRecipe(Materials.Water.getCells(1), new ItemStack(Items.sugar), null, null, new FluidStack(CppFluids.SWhine,5000),new FluidStack(FluidRegistry.getFluid("potion.rum"),6000), Materials.Empty.getCells(1), 10, 8);
-    	GT_Values.RA.addMixerRecipe(new ItemStack(Items.sugar,8,0), OreDict.ISget("cropSpiceleaf"), OreDict.ISget("cropGinger"), new ItemStack(Items.dye,1,2), Materials.Water.getCells(1), null, new FluidStack(FluidRegistry.getFluid("potion.vodka"),4000), new FluidStack(CppFluids.njagi,5000), Materials.Empty.getCells(1), 10, 8);
+    	GT_Values.RA.addMixerRecipe(new ItemStack(Items.sugar,32,0), new ItemStack(Items.dye,4,1), new ItemStack(Items.dye,4,11), new ItemStack(Items.dye,4,2), Materials.Water.getCells(4), GT_Values.NI, new FluidStack(CppFluids.GHP,375), new FluidStack(FluidRegistry.getFluid("potion.alcopops"),4375), Materials.Empty.getCells(4), 10, 8);
+    	GT_Values.RA.addMixerRecipe(new ItemStack(Items.sugar,8,0), new ItemStack(Items.dye,1,1), new ItemStack(Items.dye,1,11), new ItemStack(Items.dye,1,2), Materials.Water.getCells(1), GT_Values.NI, new FluidStack(FluidRegistry.getFluid("potion.vodka"),500), new FluidStack(FluidRegistry.getFluid("potion.alcopops"),1500), Materials.Empty.getCells(1), 10, 8);
+    	GT_Values.RA.addMixerRecipe(new ItemStack(Items.sugar,8,0), new ItemStack(Items.dye,1,1), new ItemStack(Items.dye,1,11), new ItemStack(Items.dye,1,2), Materials.Water.getCells(1), GT_Values.NI, new FluidStack(CppFluids.Korn,1000), new FluidStack(FluidRegistry.getFluid("potion.alcopops"),2000), Materials.Empty.getCells(1), 10, 8);
+    	GT_Values.RA.addMixerRecipe(new ItemStack(Items.sugar,8,0), new ItemStack(Items.dye,1,1), new ItemStack(Items.dye,1,11), new ItemStack(Items.dye,1,2), Materials.Water.getCells(1), GT_Values.NI, new FluidStack(CppFluids.DKorn,750), new FluidStack(FluidRegistry.getFluid("potion.alcopops"),1750), Materials.Empty.getCells(1), 10, 8);
+    	GT_Values.RA.addMixerRecipe(Materials.Water.getCells(1), GT_Values.NI, GT_Values.NI, GT_Values.NI, Materials.Ethanol.getFluid(1000L),new FluidStack(FluidRegistry.getFluid("potion.vodka"),2500), Materials.Empty.getCells(1), 10, 8);
+    	//GT_Values.RA.addMixerRecipe(new ItemStack(Items.reeds,64),GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, Materials.Water.getFluid(1000L),new FluidStack(FluidRegistry.getFluid("potion.reedwater"),1000),GT_Values.NI, 1200,8);
+    	GT_Values.RA.addMixerRecipe(Materials.Water.getCells(1), new ItemStack(Items.sugar), GT_Values.NI, GT_Values.NI, new FluidStack(CppFluids.SWhine,5000),new FluidStack(FluidRegistry.getFluid("potion.rum"),6000), Materials.Empty.getCells(1), 10, 8);
+    	GT_Values.RA.addMixerRecipe(new ItemStack(Items.sugar,8,0), OreDict.ISget("cropSpiceleaf"), OreDict.ISget("cropGinger"), new ItemStack(Items.dye,1,2), Materials.Water.getCells(1), GT_Values.NI, new FluidStack(FluidRegistry.getFluid("potion.vodka"),4000), new FluidStack(CppFluids.njagi,5000), Materials.Empty.getCells(1), 10, 8);
     	
     	
     	if (ModsLoaded.dreamcraft)
-    	GT_Values.RA.addMixerRecipe(ItemList.Crop_Drop_Chilly.get(1), Materials.CosmicNeutronium.getDustTiny(1), ItemList.Crop_Drop_Lemon.get(64), ItemList.Crop_Drop_TeaLeaf.get(64), CppItems.ModifierMagic.splitStack(8),CppItems.ModifierSpace.splitStack(9), new FluidStack(CppFluids.njagi,50000),new FluidStack(CppFluids.jagi,250), null, 1, 32832);
+    	GT_Values.RA.addMixerRecipe(ItemList.Crop_Drop_Chilly.get(1), Materials.CosmicNeutronium.getDustTiny(1), ItemList.Crop_Drop_Lemon.get(64), ItemList.Crop_Drop_TeaLeaf.get(64), CppItems.ModifierMagic.splitStack(8),CppItems.ModifierSpace.splitStack(9), new FluidStack(CppFluids.njagi,50000),new FluidStack(CppFluids.jagi,250), GT_Values.NI, 1, 28760);
     	
     	
     	//Brewery
@@ -140,12 +140,12 @@ public class GTMachineRecipeLoader implements Runnable{
     		GT_Values.RA.addChemicalRecipe(OreDictionary.getOres("cropRaspberry").get(i).splitStack(16), Materials.Salt.getDust(2), Materials.SulfuricAcid.getFluid(432L), new FluidStack(FluidRegistry.getFluid("dye.chemical.dyepink"), 288), new ItemStack(Items.sugar), 600, 48 );
     	for (int i=0;i<OreDictionary.getOres("cropVine").size();i++) {
     		if(!OreDictionary.getOres("cropVine").get(i).getUnlocalizedName().equals(NContent.thornVines.getUnlocalizedName()))
-    		GT_Values.RA.addChemicalRecipe(OreDictionary.getOres("cropVine").get(i).splitStack(16), Materials.Salt.getDust(2), Materials.SulfuricAcid.getFluid(432L), new FluidStack(FluidRegistry.getFluid("dye.chemical.dyegreen"), 288), null, 600, 48 );
+    		GT_Values.RA.addChemicalRecipe(OreDictionary.getOres("cropVine").get(i).splitStack(16), Materials.Salt.getDust(2), Materials.SulfuricAcid.getFluid(432L), new FluidStack(FluidRegistry.getFluid("dye.chemical.dyegreen"), 288), GT_Values.NI, 600, 48 );
     		else
-    		GT_Values.RA.addChemicalRecipe(OreDictionary.getOres("cropVine").get(i).splitStack(16), Materials.Salt.getDust(2), Materials.SulfuricAcid.getFluid(432L), new FluidStack(FluidRegistry.getFluid("dye.chemical.dyeyellow"), 288), null, 600, 48 );	
+    		GT_Values.RA.addChemicalRecipe(OreDictionary.getOres("cropVine").get(i).splitStack(16), Materials.Salt.getDust(2), Materials.SulfuricAcid.getFluid(432L), new FluidStack(FluidRegistry.getFluid("dye.chemical.dyeyellow"), 288), GT_Values.NI, 600, 48 );	
     	}
     	for (int i=0;i<OreDictionary.getOres("cropCacti").size();i++)
-    		GT_Values.RA.addChemicalRecipe(OreDictionary.getOres("cropCacti").get(i).splitStack(16), Materials.Salt.getDust(2), Materials.SulfuricAcid.getFluid(432L), new FluidStack(FluidRegistry.getFluid("dye.chemical.dyegreen"), 288), null, 600, 48 );
+    		GT_Values.RA.addChemicalRecipe(OreDictionary.getOres("cropCacti").get(i).splitStack(16), Materials.Salt.getDust(2), Materials.SulfuricAcid.getFluid(432L), new FluidStack(FluidRegistry.getFluid("dye.chemical.dyegreen"), 288), GT_Values.NI, 600, 48 );
     	for (int i=0;i<OreDictionary.getOres("cropGooseberry").size();i++)
     		GT_Values.RA.addChemicalRecipe(OreDictionary.getOres("cropGooseberry").get(i).splitStack(16), Materials.Salt.getDust(2), Materials.SulfuricAcid.getFluid(432L), new FluidStack(FluidRegistry.getFluid("dye.chemical.dyeyellow"), 288), new ItemStack(Items.sugar), 600, 48 );
     	for (int i=0;i<OreDictionary.getOres("cropStrawberry").size();i++)
@@ -165,21 +165,21 @@ public class GTMachineRecipeLoader implements Runnable{
     	
     	//Goldfish
     	GT_Values.RA.addFluidExtractionRecipe(CppItems.GoldfischS, new ItemStack(Items.gold_nugget), Materials.FishOil.getFluid(100L), 1, 16, 8);
-    	GT_Values.RA.addPulveriserRecipe(CppItems.GoldfischS, new ItemStack[] {Materials.MeatRaw.getDust(1), Materials.Gold.getDustTiny(1), null, null, null}, new int[] {10000,100,0,0,0},3,8,false); //(ItemStack aInput, ItemStack[] aOutputs, int[] aChances, int aDuration, int aEUt, boolean hidden
+    	GT_Values.RA.addPulveriserRecipe(CppItems.GoldfischS, new ItemStack[] {Materials.MeatRaw.getDust(1), Materials.Gold.getDustTiny(1)}, new int[] {10000,100},3,8,false);
     	
     	if(ModsLoaded.dreamcraft) {
     	//Space Modifier
-    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {Materials.Iron.getDust(1),new ItemStack(CppItems.Modifier,16,0) }, new FluidStack[] {Materials.UUMatter.getFluid(Materials.MeteoricIron.getNeutrons()+Materials.MeteoricIron.getProtons())}, null, new ItemStack[] {Materials.MeteoricIron.getDust(1)}, 240, 512);
-    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {Materials.Steel.getDust(1),new ItemStack(CppItems.Modifier,16,0) }, new FluidStack[] {Materials.UUMatter.getFluid(Materials.MeteoricSteel.getNeutrons()+Materials.MeteoricSteel.getProtons())}, null, new ItemStack[] {Materials.MeteoricSteel.getDust(1)}, 240, 512);
-    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {Materials.Bismuth.getDust(1),new ItemStack(CppItems.Modifier,16,0) }, new FluidStack[] {Materials.UUMatter.getFluid(Materials.Oriharukon.getNeutrons()+Materials.Oriharukon.getProtons())}, null, new ItemStack[] {Materials.Oriharukon.getDust(1)}, 240, 512);
-    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {Materials.Titanium.getDust(1),new ItemStack(CppItems.Modifier,16,0) }, new FluidStack[] {Materials.UUMatter.getFluid(Materials.Desh.getNeutrons()+Materials.Desh.getProtons())}, null, new ItemStack[] {Materials.Desh.getDust(1)}, 240, 512);
+    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {Materials.Iron.getDust(1),new ItemStack(CppItems.Modifier,16,0) }, new FluidStack[] {Materials.UUMatter.getFluid(Materials.MeteoricIron.getNeutrons()+Materials.MeteoricIron.getProtons())}, new FluidStack[] {}, new ItemStack[] {Materials.MeteoricIron.getDust(1)}, 240, 480);
+    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {Materials.Steel.getDust(1),new ItemStack(CppItems.Modifier,16,0) }, new FluidStack[] {Materials.UUMatter.getFluid(Materials.MeteoricSteel.getNeutrons()+Materials.MeteoricSteel.getProtons())}, new FluidStack[] {}, new ItemStack[] {Materials.MeteoricSteel.getDust(1)}, 240, 480);
+    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {Materials.Bismuth.getDust(1),new ItemStack(CppItems.Modifier,16,0) }, new FluidStack[] {Materials.UUMatter.getFluid(Materials.Oriharukon.getNeutrons()+Materials.Oriharukon.getProtons())}, new FluidStack[] {}, new ItemStack[] {Materials.Oriharukon.getDust(1)}, 240, 480);
+    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {Materials.Titanium.getDust(1),new ItemStack(CppItems.Modifier,16,0) }, new FluidStack[] {Materials.UUMatter.getFluid(Materials.Desh.getNeutrons()+Materials.Desh.getProtons())}, new FluidStack[] {}, new ItemStack[] {Materials.Desh.getDust(1)}, 240, 480);
     	//NON-ELEMENTAR
     	//UV
-    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {Materials.Plutonium241.getDust(1),new ItemStack(CppItems.Modifier,64,0) }, new FluidStack[] {Materials.UUMatter.getFluid((Materials.Neutronium.getNeutrons()+Materials.Neutronium.getProtons()))}, null, new ItemStack[] {Materials.BlackPlutonium.getDust(1)}, 120, 524544);
-    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {Materials.MeteoricIron.getDust(1),new ItemStack(CppItems.Modifier,64,0) }, new FluidStack[] {Materials.UUMatter.getFluid((Materials.Neutronium.getNeutrons()+Materials.Neutronium.getProtons()))}, null, new ItemStack[] {Materials.DeepIron.getDust(1)}, 120, 524544);
+    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {Materials.Plutonium241.getDust(1),new ItemStack(CppItems.Modifier,64,0) }, new FluidStack[] {Materials.UUMatter.getFluid((Materials.Neutronium.getNeutrons()+Materials.Neutronium.getProtons()))}, new FluidStack[] {}, new ItemStack[] {Materials.BlackPlutonium.getDust(1)}, 120, 484544);
+    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {Materials.MeteoricIron.getDust(1),new ItemStack(CppItems.Modifier,64,0) }, new FluidStack[] {Materials.UUMatter.getFluid((Materials.Neutronium.getNeutrons()+Materials.Neutronium.getProtons()))}, new FluidStack[] {}, new ItemStack[] {Materials.DeepIron.getDust(1)}, 120, 484544);
     	//IV
-    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {Materials.Ice.getDust(1),new ItemStack(CppItems.Modifier,16,0) }, new FluidStack[] {Materials.UUMatter.getFluid((Materials.Water.getProtons()+Materials.Water.getNeutrons())*10)}, null, new ItemStack[] {Materials.CallistoIce.getDust(1)}, 240, 8196);
-    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {Materials.Lead.getDust(1),new ItemStack(CppItems.Modifier,16,0) }, new FluidStack[] {Materials.UUMatter.getFluid((Materials.Water.getProtons()+Materials.Water.getNeutrons())*10)}, null, new ItemStack[] {Materials.Ledox.getDust(1)}, 240, 8196);
+    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {Materials.Ice.getDust(1),new ItemStack(CppItems.Modifier,16,0) }, new FluidStack[] {Materials.UUMatter.getFluid((Materials.Water.getProtons()+Materials.Water.getNeutrons())*10)}, new FluidStack[] {}, new ItemStack[] {Materials.CallistoIce.getDust(1)}, 240, 7980);
+    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {Materials.Lead.getDust(1),new ItemStack(CppItems.Modifier,16,0) }, new FluidStack[] {Materials.UUMatter.getFluid((Materials.Water.getProtons()+Materials.Water.getNeutrons())*10)}, new FluidStack[] {}, new ItemStack[] {Materials.Ledox.getDust(1)}, 240, 7980);
     	}
     	
     	if(ModsLoaded.TC) {
@@ -190,17 +190,17 @@ public class GTMachineRecipeLoader implements Runnable{
     		GT_Values.RA.addAutoclaveRecipe(new ItemStack(CppItems.Modifier,16,1), Materials.UUMatter.getFluid(52L),thaumcraft.api.ItemApi.getItem("itemEldritchObject", 3), 10000, 24000, 384, false);	
     	else
     		GT_Values.RA.addAutoclaveRecipe(new ItemStack(CppItems.Modifier,16,1), Materials.UUMatter.getFluid(52L),com.dreammaster.item.ItemList.PrimordialPearlFragment.getIS().splitStack(3), 10000, 24000, 384, false);	
-    	GT_Values.RA.addAutoclaveRecipe(new ItemStack(thaumcraft.api.ItemApi.getItem("itemResource", 14).getItem(),32,14), Materials.UUMatter.getFluid(500L),new ItemStack(CppItems.Modifier,1,1), 3300, 2400, 128, false);	
+    	GT_Values.RA.addAutoclaveRecipe(new ItemStack(thaumcraft.api.ItemApi.getItem("itemResource", 14).getItem(),32,14), Materials.UUMatter.getFluid(500L),new ItemStack(CppItems.Modifier,1,1), 3300, 2400, 120, false);	
     	//Magic Modifier
-    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {Materials.Iron.getDust(1),new ItemStack(CppItems.Modifier,1,1) }, new FluidStack[] {Materials.UUMatter.getFluid(Materials.Thaumium.getNeutrons()+Materials.Thaumium.getProtons())}, null, new ItemStack[] {Materials.Thaumium.getDust(1)}, 240, 128);
-    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {Materials.Thaumium.getDust(1),new ItemStack(CppItems.Modifier,1,1) }, new FluidStack[] {Materials.UUMatter.getFluid(Materials.Arsenic.getNeutrons()+Materials.Arsenic.getProtons())}, null, new ItemStack[] {Materials.Void.getDust(1)}, 240, 512);
-    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {Materials.Void.getDust(1),new ItemStack(CppItems.Modifier,2,1) }, new FluidStack[] {Materials.UUMatter.getFluid(Materials.Indium.getNeutrons()+Materials.Indium.getProtons())}, null, new ItemStack[] {Materials.Shadow.getDust(1)}, 240, 8196);
-    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {Materials.Shadow.getDust(1),new ItemStack(CppItems.Modifier,16,1) }, new FluidStack[] {Materials.UUMatter.getFluid((Materials.Osmium.getNeutrons()+Materials.Osmium.getProtons())*1000)}, null, new ItemStack[] {Materials.Ichorium.getIngots(1)}, 1800, 32768);
+    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {Materials.Iron.getDust(1),new ItemStack(CppItems.Modifier,1,1) }, new FluidStack[] {Materials.UUMatter.getFluid(Materials.Thaumium.getNeutrons()+Materials.Thaumium.getProtons())}, new FluidStack[] {}, new ItemStack[] {Materials.Thaumium.getDust(1)}, 240, 120);
+    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {Materials.Thaumium.getDust(1),new ItemStack(CppItems.Modifier,1,1) }, new FluidStack[] {Materials.UUMatter.getFluid(Materials.Arsenic.getNeutrons()+Materials.Arsenic.getProtons())}, new FluidStack[] {}, new ItemStack[] {Materials.Void.getDust(1)}, 240, 510);
+    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {Materials.Void.getDust(1),new ItemStack(CppItems.Modifier,2,1) }, new FluidStack[] {Materials.UUMatter.getFluid(Materials.Indium.getNeutrons()+Materials.Indium.getProtons())}, new FluidStack[] {}, new ItemStack[] {Materials.Shadow.getDust(1)}, 240, 7890);
+    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {Materials.Shadow.getDust(1),new ItemStack(CppItems.Modifier,16,1) }, new FluidStack[] {Materials.UUMatter.getFluid((Materials.Osmium.getNeutrons()+Materials.Osmium.getProtons())*1000)}, new FluidStack[] {}, new ItemStack[] {Materials.Ichorium.getIngots(1)}, 1800, 28760);
     	}
     	
     	if(ModsLoaded.dreamcraft) {
     	//Magic Modifier + Space Modifier
-    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] { new ItemStack(CppItems.Modifier,16,0), new ItemStack(CppItems.Modifier,4,1)}, new FluidStack[] {Materials.Platinum.getMolten(288L),Materials.MeteoricIron.getMolten(144L), Materials.UUMatter.getFluid(Materials.Platinum.getProtons()+Materials.Platinum.getNeutrons())}, null, new ItemStack[] {Materials.Mytryl.getDust(1)}, 1800, 8196);
+    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] { new ItemStack(CppItems.Modifier,16,0), new ItemStack(CppItems.Modifier,4,1)}, new FluidStack[] {Materials.Platinum.getMolten(288L),Materials.MeteoricIron.getMolten(144L), Materials.UUMatter.getFluid(Materials.Platinum.getProtons()+Materials.Platinum.getNeutrons())}, new FluidStack[] {}, new ItemStack[] {Materials.Mytryl.getDust(1)}, 1800, 7890);
     	}
     	
     	if(!ModsLoaded.dreamcraft) {
@@ -212,20 +212,22 @@ public class GTMachineRecipeLoader implements Runnable{
     	GT_Values.RA.addExtractorRecipe(GT_ModHandler.getModItem("Natura", "Glowshroom", 2L, 2), new ItemStack(Items.glowstone_dust, 1, 32767), 300, 2);
     	}
     	
+    	GT_Values.RA.addAutoclaveSpaceRecipe(GT_ModHandler.getModItem("BiomesOPlenty", "coral1", 64L, 15), Materials.UUMatter.getFluid(2L), Materials.Sunnarium.getDust(8), 5000, 15000, 7890, true);
+    	
     	//Trophy
     	GT_Values.RA.addExtruderRecipe(Materials.Neutronium.getBlocks(64), Materials.Neutronium.getBlocks(64), CppItems.Trophy, 2147483647, 8);
-    	GT_Values.RA.addFluidExtractionRecipe(new ItemStack(CppItems.Modifier,1,0), null, Materials.UUMatter.getFluid(2L), 5000, 128, 4);
+    	GT_Values.RA.addFluidExtractionRecipe(new ItemStack(CppItems.Modifier,1,0), GT_Values.NI, Materials.UUMatter.getFluid(2L), 5000, 128, 4);
     	
     	//Chem Refine
-    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {new ItemStack(CppItems.Modifier,9,0), new ItemStack(GCItems.meteoricIronRaw) }, new FluidStack[] {Materials.Water.getFluid(1000L)}, null, new ItemStack[] {Materials.MeteoricIron.getDust(4)}, 240, 512);
-    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {new ItemStack(CppItems.Modifier,9,0), new ItemStack(MarsItems.marsItemBasic) }, new FluidStack[] {Materials.Water.getFluid(1000L)}, null, new ItemStack[] {Materials.Desh.getDust(4)}, 240, 512);
-    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {new ItemStack(CppItems.Modifier,9,0), GT_OreDictUnificator.get(OrePrefixes.crushed.get(Materials.MeteoricIron), 1)}, new FluidStack[] {Materials.Water.getFluid(1000L)}, null, new ItemStack[] {GT_OreDictUnificator.get(OrePrefixes.crushedPurified.get(Materials.MeteoricIron), 4)}, 240, 512);
-      	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {new ItemStack(CppItems.Modifier,9,0), GT_OreDictUnificator.get(OrePrefixes.crushed.get(Materials.Desh), 1)}, new FluidStack[] {Materials.Water.getFluid(1000L)}, null, new ItemStack[] {GT_OreDictUnificator.get(OrePrefixes.crushedPurified.get(Materials.Desh), 4)}, 240, 512);
-    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {new ItemStack(CppItems.Modifier,9,0), GT_OreDictUnificator.get(OrePrefixes.crushed.get(Materials.Oriharukon), 1)}, new FluidStack[] {Materials.Water.getFluid(1000L)}, null, new ItemStack[] {GT_OreDictUnificator.get(OrePrefixes.crushedPurified.get(Materials.Oriharukon), 4)}, 240, 512);
-    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {new ItemStack(CppItems.Modifier,9,0), GT_OreDictUnificator.get(OrePrefixes.crushed.get(Materials.Ledox), 1)}, new FluidStack[] {Materials.Water.getFluid(1000L)}, null, new ItemStack[] {GT_OreDictUnificator.get(OrePrefixes.crushedPurified.get(Materials.Ledox), 4)}, 240, 512);
-    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {new ItemStack(CppItems.Modifier,9,0), GT_OreDictUnificator.get(OrePrefixes.crushed.get(Materials.CallistoIce), 1)}, new FluidStack[] {Materials.Water.getFluid(1000L)}, null, new ItemStack[] {GT_OreDictUnificator.get(OrePrefixes.crushedPurified.get(Materials.CallistoIce), 4)}, 240, 512);
-    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {new ItemStack(CppItems.Modifier,9,0), GT_OreDictUnificator.get(OrePrefixes.crushed.get(Materials.BlackPlutonium), 1)}, new FluidStack[] {Materials.Water.getFluid(1000L)}, null, new ItemStack[] {GT_OreDictUnificator.get(OrePrefixes.crushedPurified.get(Materials.BlackPlutonium), 4)}, 240, 32768);
-    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {new ItemStack(CppItems.Modifier,9,0), GT_OreDictUnificator.get(OrePrefixes.crushed.get(Materials.DeepIron), 1)}, new FluidStack[] {Materials.Water.getFluid(1000L)}, null, new ItemStack[] {GT_OreDictUnificator.get(OrePrefixes.crushedPurified.get(Materials.DeepIron), 4)}, 240, 32768);
+    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {new ItemStack(CppItems.Modifier,9,0), new ItemStack(GCItems.meteoricIronRaw) }, new FluidStack[] {Materials.Water.getFluid(1000L)}, new FluidStack[] {}, new ItemStack[] {Materials.MeteoricIron.getDust(4)}, 240, 480);
+    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {new ItemStack(CppItems.Modifier,9,0), new ItemStack(MarsItems.marsItemBasic) }, new FluidStack[] {Materials.Water.getFluid(1000L)}, new FluidStack[] {}, new ItemStack[] {Materials.Desh.getDust(4)}, 240, 480);
+    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {new ItemStack(CppItems.Modifier,9,0), GT_OreDictUnificator.get(OrePrefixes.crushed.get(Materials.MeteoricIron), 1)}, new FluidStack[] {Materials.Water.getFluid(1000L)}, new FluidStack[] {}, new ItemStack[] {GT_OreDictUnificator.get(OrePrefixes.crushedPurified.get(Materials.MeteoricIron), 4)}, 240, 480);
+      	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {new ItemStack(CppItems.Modifier,9,0), GT_OreDictUnificator.get(OrePrefixes.crushed.get(Materials.Desh), 1)}, new FluidStack[] {Materials.Water.getFluid(1000L)}, new FluidStack[] {}, new ItemStack[] {GT_OreDictUnificator.get(OrePrefixes.crushedPurified.get(Materials.Desh), 4)}, 240, 480);
+    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {new ItemStack(CppItems.Modifier,9,0), GT_OreDictUnificator.get(OrePrefixes.crushed.get(Materials.Oriharukon), 1)}, new FluidStack[] {Materials.Water.getFluid(1000L)}, new FluidStack[] {}, new ItemStack[] {GT_OreDictUnificator.get(OrePrefixes.crushedPurified.get(Materials.Oriharukon), 4)}, 240, 480);
+    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {new ItemStack(CppItems.Modifier,9,0), GT_OreDictUnificator.get(OrePrefixes.crushed.get(Materials.Ledox), 1)}, new FluidStack[] {Materials.Water.getFluid(1000L)}, new FluidStack[] {}, new ItemStack[] {GT_OreDictUnificator.get(OrePrefixes.crushedPurified.get(Materials.Ledox), 4)}, 240, 480);
+    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {new ItemStack(CppItems.Modifier,9,0), GT_OreDictUnificator.get(OrePrefixes.crushed.get(Materials.CallistoIce), 1)}, new FluidStack[] {Materials.Water.getFluid(1000L)}, new FluidStack[] {}, new ItemStack[] {GT_OreDictUnificator.get(OrePrefixes.crushedPurified.get(Materials.CallistoIce), 4)}, 240, 480);
+    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {new ItemStack(CppItems.Modifier,9,0), GT_OreDictUnificator.get(OrePrefixes.crushed.get(Materials.BlackPlutonium), 1)}, new FluidStack[] {Materials.Water.getFluid(1000L)}, new FluidStack[] {}, new ItemStack[] {GT_OreDictUnificator.get(OrePrefixes.crushedPurified.get(Materials.BlackPlutonium), 4)}, 240, 28760);
+    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {new ItemStack(CppItems.Modifier,9,0), GT_OreDictUnificator.get(OrePrefixes.crushed.get(Materials.DeepIron), 1)}, new FluidStack[] {Materials.Water.getFluid(1000L)}, new FluidStack[] {}, new ItemStack[] {GT_OreDictUnificator.get(OrePrefixes.crushedPurified.get(Materials.DeepIron), 4)}, 240, 28760);
    
     	//Potions from Netherberries
     	GT_Values.RA.addBrewingRecipe(new ItemStack(NContent.netherBerryItem,16,0), Materials.Water.getFluid(1000L).getFluid(), FluidRegistry.getFluid("potion.regen"), false);
@@ -236,7 +238,7 @@ public class GTMachineRecipeLoader implements Runnable{
     	/*if (ModsLoaded.dreamcraft)
     	for (int i=0; i<OreDictionary.getOres("blockUnstable").size();i++)
     		for (int j=0; j<OreDictionary.getOres("ingotBedrockium").size();j++)
-    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {OreDictionary.getOres("blockUnstable").get(i),OreDictionary.getOres("ingotBedrockium").get(j),thaumcraft.api.ItemApi.getItem("itemEldritchObject", 3)} , new FluidStack[] {new FluidStack(FluidRegistry.getFluid("mutagen"),1000),Materials.UUMatter.getFluid(1000L)}, null, new ItemStack[] {new ItemStack(BppItems.Modifier,1,6)}, 2400, 8192);
+    	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {OreDictionary.getOres("blockUnstable").get(i),OreDictionary.getOres("ingotBedrockium").get(j),thaumcraft.api.ItemApi.getItem("itemEldritchObject", 3)} , new FluidStack[] {new FluidStack(FluidRegistry.getFluid("mutagen"),1000),Materials.UUMatter.getFluid(1000L)}, GT_Values.NI, new ItemStack[] {new ItemStack(BppItems.Modifier,1,6)}, 2400, 8192);
     	 */
     }
 }
