@@ -14,12 +14,6 @@ public class BasicBonsaiCrop extends ic2.api.crops.CropCard {
 	private String name;
 	private ItemStack drop;
 	private String ICNNAME;
-	
-	public BasicBonsaiCrop()
-	{
-		super();
-	}
-	
 
 	public BasicBonsaiCrop(String name, String ICNNAME, ItemStack drop){
 		super();

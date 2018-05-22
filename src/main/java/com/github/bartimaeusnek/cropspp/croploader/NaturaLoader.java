@@ -1,4 +1,4 @@
-package com.github.bartimaeusnek.cropspp;
+package com.github.bartimaeusnek.cropspp.croploader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,9 +16,7 @@ import net.minecraft.item.ItemStack;
 
 public class NaturaLoader {
 	
-	
-
-	public static List<CropLoader> NaturaLoaderList() {
+	public static List<CropLoader> load() {
 
 		List<CropLoader> p = new ArrayList<CropLoader>();
 		

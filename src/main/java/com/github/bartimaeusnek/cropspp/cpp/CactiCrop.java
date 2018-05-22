@@ -2,8 +2,8 @@ package com.github.bartimaeusnek.cropspp.cpp;
 
 import com.github.bartimaeusnek.croploadcore.ModsLoaded;
 import com.github.bartimaeusnek.croploadcore.Operators;
-import com.github.bartimaeusnek.cropspp.CropLoader;
 import com.github.bartimaeusnek.cropspp.abstracts.BasicDecorationCrop;
+import com.github.bartimaeusnek.cropspp.croploader.CropLoader;
 
 import biomesoplenty.api.content.BOPCBlocks;
 import ic2.api.crops.Crops;
@@ -19,7 +19,7 @@ public class CactiCrop extends BasicDecorationCrop {
 	
 	public CactiCrop() {
 		if (ModsLoaded.BoP == true)
-		Crops.instance.registerBaseSeed(new ItemStack(BOPCBlocks.plants,1,12),com.github.bartimaeusnek.cropspp.CropLoader.CropunpackerCC(new CropLoader(this)),1,1,1,1);
+		Crops.instance.registerBaseSeed(new ItemStack(BOPCBlocks.plants,1,12),com.github.bartimaeusnek.cropspp.croploader.CropLoader.CropunpackerCC(new CropLoader(this)),1,1,1,1);
 	}
 
     @Override
