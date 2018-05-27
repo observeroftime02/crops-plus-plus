@@ -30,6 +30,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 //IC2API
 import ic2.api.crops.CropCard;
 import ic2.api.crops.Crops;
+import ic2.core.crop.IC2Crops;
 //ItemsFromAPIs
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -136,7 +137,6 @@ public final static List<CropLoader> cropLoader() {
 	p.add(new CropLoader(new BlackberryCrop(),null)); 
 	p.add(new CropLoader(new BlueberryCrop(),null)); 
 	p.add(new CropLoader(new RaspberryCrop(),null)); 
-
 	//p.add(new WeedCrop());
 
 	/*if (lokko12.berriespp.ConfigValures.ayo_bonsai)
