@@ -62,7 +62,11 @@ public final class CppItems {
 				GameRegistry.addRecipe(itemSpadeStack, new Object[] {" P ", "PWP", " S ", 'P', OreDict.ISget("plateDenseSteel"), 'W', Ic2Items.weedingTrowel.getItem(),'S',Items.stick});
 				GameRegistry.addShapelessRecipe(new ItemStack(Items.sugar,8), new ItemStack(CppBerries, 1, 1));
 				GameRegistry.addShapelessRecipe(new ItemStack(Items.dye,2,5), new ItemStack(CppBerries, 1, 0));
-				GameRegistry.addShapelessRecipe(new ItemStack(Items.gold_nugget,9), new ItemStack(Goldfisch));
+				GameRegistry.addShapelessRecipe(new ItemStack(Items.gold_nugget,9), new ItemStack(Goldfisch), new ItemStack(Items.flint));
+			}
+			if (!ModsLoaded.PHC) {
+				GameRegistry.addShapelessRecipe(new ItemStack(Items.fish), new ItemStack(Goldfisch));
+				GameRegistry.addSmelting(new ItemStack(Goldfisch), new ItemStack(Items.cooked_fished), 0);
 			}
 		}
 	}

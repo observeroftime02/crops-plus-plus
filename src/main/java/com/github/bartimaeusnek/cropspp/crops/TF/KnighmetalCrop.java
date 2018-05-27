@@ -1,4 +1,4 @@
-package com.github.bartimaeusnek.cropspp.cpp;
+package com.github.bartimaeusnek.cropspp.crops.TF;
 
 import com.github.bartimaeusnek.cropspp.ConfigValures;
 import com.github.bartimaeusnek.cropspp.abstracts.BasicTinkerBerryCrop;
