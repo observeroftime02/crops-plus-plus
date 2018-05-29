@@ -14,6 +14,10 @@ import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import ic2.api.crops.Crops;
+import ic2.core.Ic2Items;
+import ic2.core.crop.IC2Crops;
+import net.minecraft.item.ItemStack;
 
 @Mod(
 	modid = Cropspp.modID, name = Cropspp.name, version = Cropspp.version,
@@ -68,6 +72,5 @@ public final class Cropspp {
 			final GTHandler GTHandler = new GTHandler();
 			GTHandler.run();
 			}
-		
 		}
 }
