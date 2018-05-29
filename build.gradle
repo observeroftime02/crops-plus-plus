@@ -21,7 +21,7 @@ apply plugin: 'signing'
 
 import de.undercouch.gradle.tasks.download.Download
 
-version = "1.2.9"
+version = "1.2.9a"
 
     //
     // Versions: 
