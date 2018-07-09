@@ -3,14 +3,14 @@ package com.github.bartimaeusnek.cropspp.croploader;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.github.bartimaeusnek.cropspp.BoP.BoPBerryCrop;
-import com.github.bartimaeusnek.cropspp.BoP.EyebulbCrop;
-import com.github.bartimaeusnek.cropspp.BoP.FloweringVinesCrop;
-import com.github.bartimaeusnek.cropspp.BoP.GlowflowerCrop;
-import com.github.bartimaeusnek.cropspp.BoP.GlowingCoralCrop;
-import com.github.bartimaeusnek.cropspp.BoP.IvyCrop;
-import com.github.bartimaeusnek.cropspp.BoP.TurnipCrop;
-import com.github.bartimaeusnek.cropspp.BoP.WildCarrotsCrop;
+import com.github.bartimaeusnek.cropspp.crops.BoP.BoPBerryCrop;
+import com.github.bartimaeusnek.cropspp.crops.BoP.EyebulbCrop;
+import com.github.bartimaeusnek.cropspp.crops.BoP.FloweringVinesCrop;
+import com.github.bartimaeusnek.cropspp.crops.BoP.GlowflowerCrop;
+import com.github.bartimaeusnek.cropspp.crops.BoP.GlowingCoralCrop;
+import com.github.bartimaeusnek.cropspp.crops.BoP.IvyCrop;
+import com.github.bartimaeusnek.cropspp.crops.BoP.TurnipCrop;
+import com.github.bartimaeusnek.cropspp.crops.BoP.WildCarrotsCrop;
 
 import net.minecraft.item.ItemStack;
 

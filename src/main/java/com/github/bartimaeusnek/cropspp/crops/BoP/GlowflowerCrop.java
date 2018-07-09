@@ -1,4 +1,4 @@
-package com.github.bartimaeusnek.cropspp.BoP;
+package com.github.bartimaeusnek.cropspp.crops.BoP;
 
 import com.github.bartimaeusnek.croploadcore.OreDict;
 import com.github.bartimaeusnek.cropspp.abstracts.BasicDecorationCrop;
