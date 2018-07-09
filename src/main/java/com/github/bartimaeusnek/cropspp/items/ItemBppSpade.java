@@ -45,7 +45,8 @@ public class ItemBppSpade extends ItemTool {
 	    public void addInformation (ItemStack stack, EntityPlayer player, List list, boolean par4)
 		{
 			list.add("Weeding Trowel, Shovel and Hoe in one Item!");
-			list.add("Indestructible");
+			list.add("Has a higher chanche of yielding seedbags!");
+			list.add("Indestructible!");
 		}
 		
 		@Override

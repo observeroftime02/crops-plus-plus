@@ -1,34 +1,33 @@
-package com.github.bartimaeusnek.cropspp.BoP;
-	import com.github.bartimaeusnek.cropspp.cpp.VineCrop;
+package com.github.bartimaeusnek.cropspp.crops.BoP;
+import com.github.bartimaeusnek.cropspp.cpp.VineCrop;
 
 import biomesoplenty.api.content.BOPCBlocks;
 import ic2.api.crops.ICropTile;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-	public class FloweringVinesCrop extends VineCrop {
-	    public FloweringVinesCrop() {
+	public class IvyCrop extends VineCrop {
+	    public IvyCrop() {
 	    	super();
 	    	}
 
 	    @Override
 	    public int tier() {
-	        return 3;
+	        return 2;
 	    }	
 	    
 	    @Override
 	    public boolean canGrow(ICropTile crop) {
-	    	return crop.getSize() < 4;
+	    	return crop.getSize() < 3;
 	    }
 		
 	    @Override
 		public int maxSize() {
-			return 4;
+			return 3;
 		}
 	    
 	    @Override
 	    public String name() {
-	        return "Flowering Vines";
+	        return "Ivy";
 	    }
 
 	    @Override
@@ -38,32 +37,28 @@ import net.minecraft.item.ItemStack;
 
 	    @Override
 	    public String[] attributes() {
-	        return new String[] {"Green", "Tendrilly", "Flower"};
+	        return new String[] {"Green", "Tendrilly", "Flower", "Bad", "Poison"};
 	    }
+	    
 	    @Override
 	    public int getOptimalHavestSize(ICropTile crop) {
-	        return 4;
+	        return 3;
 	    }
 
 	    
 	    @Override
 	    public boolean canBeHarvested(ICropTile crop) {
-	        return crop.getSize() >= 3;
+	        return crop.getSize() == 3;
 	    }
 
 	    @Override
 	    public ItemStack getGain(ICropTile crop) {
-	    	if (crop.getSize() == 3)
-	        return new ItemStack(Item.getItemById(106),2,0);
-	    	else if (crop.getSize() == 4)
-	    		return new ItemStack(BOPCBlocks.flowerVine,2,0);
-	    	else 
-	    		return null;
+	    		return new ItemStack(BOPCBlocks.ivy,2,0);
 	    }
-
+	    
 		@Override
 		public ItemStack getDisplayItem() {
-			return new ItemStack(BOPCBlocks.flowerVine,2,0);
+			return new ItemStack(BOPCBlocks.ivy,2,0);
 		}
 
 	}
