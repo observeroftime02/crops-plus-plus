@@ -8,6 +8,7 @@ import com.github.bartimaeusnek.cropspp.GTHandler.GTHandler;
 import com.github.bartimaeusnek.cropspp.GTHandler.machines.CropGeneExtractor;
 import com.github.bartimaeusnek.cropspp.GTHandler.machines.CropReplicator;
 import com.github.bartimaeusnek.cropspp.GTHandler.machines.CropSynthesiser;
+import com.github.bartimaeusnek.cropspp.GTHandler.machines.CropWeedPicker;
 import com.github.bartimaeusnek.cropspp.croploader.CropLoader;
 import com.github.bartimaeusnek.cropspp.fluids.CppFluids;
 import com.github.bartimaeusnek.cropspp.items.CppItems;
@@ -52,6 +53,7 @@ public final class Cropspp {
 		//	InstalledTreesGetter.InstalledTreesGet();
 		CropLoader.load(preinit);
 		if (ModsLoaded.GT) {
+			new CropWeedPicker(12528,"Basic CropWeedPicker","Basic CropWeedPicker",1);
 		CropItemList.cropGeneExtractorLV.set(new CropGeneExtractor(12501,"Basic Crop Gene Extractor","Basic Crop Gene Extractor",1).getStackForm(1L));
 		CropItemList.cropGeneExtractorMV.set(new CropGeneExtractor(12502,"Advanced Crop Gene Extractor I","Advanced Crop Gene Extractor I",2).getStackForm(1L));
 		CropItemList.cropGeneExtractorHV.set(new CropGeneExtractor(12503,"Advanced Crop Gene Extractor II","Advanced Crop Gene Extractor II",3).getStackForm(1L));
@@ -94,7 +96,7 @@ public final class Cropspp {
 			}
 		CppItems.register_Items();
 		CppItems.OreDictItems();
-		CppItems.register_recipes();
+		CppItems.register_recipes();	
 	}
 
 	@EventHandler

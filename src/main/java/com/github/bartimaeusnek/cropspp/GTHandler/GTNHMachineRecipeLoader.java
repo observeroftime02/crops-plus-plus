@@ -56,7 +56,7 @@ public class GTNHMachineRecipeLoader implements Runnable{
     	}
     	
     	//Ethanol related
-    	GT_Values.RA.addFluidCannerRecipe(new ItemStack(IC2Items.getItem("mugBooze").getItem(),1,2), IC2Items.getItem("mugEmpty"), GT_Values.NF,new FluidStack(FluidRegistry.getFluid("potion.rum"), 250));
+    	//GT_Values.RA.addFluidCannerRecipe(new ItemStack(IC2Items.getItem("mugBooze").getItem(),1,OreDictionary.WILDCARD_VALUE), IC2Items.getItem("mugEmpty"), GT_Values.NF,new FluidStack(FluidRegistry.getFluid("potion.rum"), 250));
     	
     	for(int i=0;i<CppPotions.textureNames.length;i++) {
     		GT_Values.RA.addFluidCannerRecipe(new ItemStack(CppItems.CppPotions,1,i), new ItemStack(Items.glass_bottle), GT_Values.NF,new FluidStack(FluidRegistry.getFluid("potion."+CppPotions.textureNames[i].toLowerCase(Locale.ENGLISH)), 250));
@@ -192,7 +192,7 @@ public class GTNHMachineRecipeLoader implements Runnable{
     	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {Materials.Void.getDust(1),new ItemStack(CppItems.Modifier,2,1) }, new FluidStack[] {Materials.UUMatter.getFluid(Materials.Indium.getNeutrons()+Materials.Indium.getProtons())}, new FluidStack[] {}, new ItemStack[] {Materials.Shadow.getDust(1)}, 240, 7890);
     	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] {Materials.Shadow.getDust(1),new ItemStack(CppItems.Modifier,16,1) }, new FluidStack[] {Materials.UUMatter.getFluid((Materials.Osmium.getNeutrons()+Materials.Osmium.getProtons())*1000)}, new FluidStack[] {}, new ItemStack[] {Materials.Ichorium.getIngots(1)}, 1800, 28760);
     	}
-    	
+    	    	
     	//Magic Modifier + Space Modifier
     	GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[] { new ItemStack(CppItems.Modifier,16,0), new ItemStack(CppItems.Modifier,4,1)}, new FluidStack[] {Materials.Platinum.getMolten(288L),Materials.MeteoricIron.getMolten(144L), Materials.UUMatter.getFluid(Materials.Platinum.getProtons()+Materials.Platinum.getNeutrons())}, new FluidStack[] {}, new ItemStack[] {Materials.Mytryl.getDust(1)}, 1800, 7890);
     	//coral buff
