@@ -16,6 +16,7 @@ import com.github.bartimaeusnek.cropspp.cpp.PapyrusCrop;
 import com.github.bartimaeusnek.cropspp.cpp.StrawberryCrop;
 import com.github.bartimaeusnek.cropspp.cpp.SugarBeetCrop;
 import com.github.bartimaeusnek.cropspp.cpp.VineCrop;
+import com.github.bartimaeusnek.cropspp.cpp.WaterlillyCrop;
 import com.github.bartimaeusnek.cropspp.crops.natura.BarleyCrop;
 import com.github.bartimaeusnek.cropspp.crops.natura.BlackberryCrop;
 import com.github.bartimaeusnek.cropspp.crops.natura.BlueberryCrop;
@@ -30,7 +31,6 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 //IC2API
 import ic2.api.crops.CropCard;
 import ic2.api.crops.Crops;
-import ic2.core.crop.IC2Crops;
 //ItemsFromAPIs
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -55,22 +55,16 @@ public class CropLoader {
 public CropLoader(CropCard cropObj) {
 		this.cropObj = cropObj;
 }
-public CropLoader(CropCard cropObj, ItemStack gain) {
-		
+public CropLoader(CropCard cropObj, ItemStack baseseed) {
 		this.cropObj = cropObj;
-		if (gain != null)
-		this.baseseed = gain;
-		else
-		this.baseseed = null;
+		this.baseseed = baseseed;
 }
+
 public static CropCard CropunpackerCC (CropLoader inp) {
-	return inp.cropObj;
+		return inp.cropObj;
 }
 private static ItemStack CropunpackerCG (CropLoader inp) {
-	if (inp.baseseed!=null)
-	return inp.baseseed;
-	else
-	return null;
+		return inp.baseseed;
 }
 
 private static CropLoader CropHelper(CropCard cropObj) {
@@ -127,6 +121,7 @@ public final static List<CropLoader> cropLoader() {
 	p.add(new CropLoader(new VineCrop(),new ItemStack(Item.getItemById(106),1,0)));
 	p.add(new CropLoader(new GrassCrop(),new ItemStack(Item.getItemById(31),1,1)));
 	p.add(new CropLoader(new CactiCrop(),new ItemStack(Item.getItemById(81),1,0)));
+	p.add(new CropLoader(new WaterlillyCrop(),new ItemStack(Item.getItemById(111),2)));
 	p.add(new CropLoader(new PapyrusCrop(),null));
 	p.add(new CropLoader(new GoldfishCrop(),null));
 	p.add(new CropLoader(new SugarBeetCrop(),null));
@@ -203,7 +198,8 @@ public static void load(FMLPreInitializationEvent preinit){
 	ConfigValures.TConstructBerryGain = (float) c.tConfig.get("Gain", "Tinker's Construct berries",(float) 1).getDouble(1);
 	ConfigValures.PrimordialBerryGain = (float) c.tConfig.get("Gain", "Primordial Berry",(float) 0.5).getDouble(0.5);
 	ConfigValures.PrimordialBerryGroth = c.tConfig.get("Gain", "Primordial Berry growth time",125000).getInt(125000);
-	c.save();
+	if (c.tConfig.hasChanged())
+		c.save();
 }
 
 public static void register () {
@@ -211,7 +207,7 @@ public static void register () {
 	if (bHasCropObj.get(i)&&cropObjs().get(i)!=null)
 		Crops.instance.registerCrop(cropObjs().get(i));
     }
-	if (com.github.bartimaeusnek.cropspp.ConfigValures.ayo_bonsai == true)
+	if (com.github.bartimaeusnek.cropspp.ConfigValures.ayo_bonsai)
 	Cropspp.cpplogger.info("Bonsais registered!");
 }
 
@@ -224,7 +220,7 @@ public static void registerBaseSeed() {
 			Crops.instance.registerBaseSeed(baseseed.get(i),cropObjs().get(i), 1, 1, 1, 1);
 	}
 	
-	if (com.github.bartimaeusnek.cropspp.ConfigValures.ayo_bonsai == true)
+	if (com.github.bartimaeusnek.cropspp.ConfigValures.ayo_bonsai)
 	Cropspp.cpplogger.info("Bonsai Base Seed registered!");
 }
 }

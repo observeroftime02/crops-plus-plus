@@ -45,6 +45,8 @@ public final class CppItems {
 				GameRegistry.registerCustomItemStack("sugarbeet", new ItemStack(CppBerries, 1, 1));
 			if (ConfigValures.WiPItems)
 				GameRegistry.registerItem(itemWCan,"itemWateringCan");
+				GameRegistry.registerItem(new Weedmaker(),"debugitemWeedmaker");
+				
 			if (!ModsLoaded.Natura) {
 				GameRegistry.registerItem(BerryItems, "berry");
 				GameRegistry.registerCustomItemStack("berryRasp", new ItemStack(BerryItems, 1, 0));
