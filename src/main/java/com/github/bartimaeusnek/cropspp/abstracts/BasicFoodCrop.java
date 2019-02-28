@@ -3,13 +3,12 @@ package com.github.bartimaeusnek.cropspp.abstracts;
 import ic2.api.crops.ICropTile;
 
 public abstract class BasicFoodCrop extends BasicDecorationCrop {
-	
-	public BasicFoodCrop()
-	{
-		super();
-	}
-	
-	@Override
+
+    public BasicFoodCrop() {
+        super();
+    }
+
+    @Override
     public int tier() {
         return 2;
     }

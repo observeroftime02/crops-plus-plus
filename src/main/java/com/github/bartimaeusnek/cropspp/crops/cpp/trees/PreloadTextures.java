@@ -1,0 +1,31 @@
+package com.github.bartimaeusnek.cropspp.crops.cpp.trees;
+
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.client.event.TextureStitchEvent;
+
+public class PreloadTextures {
+    @SubscribeEvent
+    public void onTextureStitchPre(TextureStitchEvent.Pre e) {
+
+        if (e.map == Minecraft.getMinecraft().getTextureManager().getTexture(TextureMap.locationItemsTexture)) {
+            for (int i = 0; i < InstalledTreesGetter.savedNames.size(); i++) {
+                if ((
+                        !(InstalledTreesGetter.savedNames.get(i).contains("Shimmerleaf") ||
+                                InstalledTreesGetter.savedNames.get(i).contains("Cinderpearl")) &&
+                                !(InstalledTreesGetter.savedNames.get(i).contains("Vishroom") ||
+                                        InstalledTreesGetter.savedNames.get(i).contains("Ethereal Bloom")))) {
+                    ItemStack Sapling = InstalledTreesGetter.BaseSeed.get(i);
+					/*try {
+						BonsaiRenderer renderer = new BonsaiRenderer("bpp:"+Sapling.getIconIndex().getIconName().replaceAll(":","_"), InstalledTreesGetter.make_crop_IIcons(Sapling.getIconIndex(), Sapling.getIconIndex().getIconName()), (TextureAtlasSprite) Sapling.getIconIndex());
+						e.map.setTextureEntry(renderer.getIconName(), renderer);
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}		*/
+                }
+            }
+        }
+    }
+}
