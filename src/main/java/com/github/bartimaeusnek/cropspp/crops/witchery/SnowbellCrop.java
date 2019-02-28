@@ -2,38 +2,37 @@ package com.github.bartimaeusnek.cropspp.crops.witchery;
 
 import com.github.bartimaeusnek.croploadcore.OreDict;
 import com.github.bartimaeusnek.cropspp.abstracts.BasicWitcheryCrop;
-
 import ic2.api.crops.ICropTile;
 import net.minecraft.item.ItemStack;
 
 public class SnowbellCrop extends BasicWitcheryCrop {
-	public SnowbellCrop() {
-		super();
-		OreDict.BSget("seed"+name(),this);
-	}
-	 	
-	@Override
-	public String name() {
-	    return "Snowbell";
-	}
-	
-	@Override
-	public int tier() {
-		return super.tier();
-	}
-	
-	@Override
+    public SnowbellCrop() {
+        super();
+        OreDict.BSget("seed" + name(), this);
+    }
+
+    @Override
+    public String name() {
+        return "Snowbell";
+    }
+
+    @Override
+    public int tier() {
+        return super.tier();
+    }
+
+    @Override
     public String[] attributes() {
-		return new String[] {"White","Flower", "Ice", "Toxic", "Ingredient"};
-	}
+        return new String[]{"White", "Flower", "Ice", "Toxic", "Ingredient"};
+    }
 
     @Override
     public ItemStack getGain(ICropTile crop) {
-    	return OreDict.ISget("item"+name());
-    }	
+        return OreDict.ISget("item" + name());
+    }
 
-	@Override
-	public ItemStack getDisplayItem() {
-		return OreDict.ISget("item"+this.name());
-	}
+    @Override
+    public ItemStack getDisplayItem() {
+        return OreDict.ISget("item" + this.name());
+    }
 }

@@ -1,56 +1,49 @@
 package com.github.bartimaeusnek.cropspp.items;
 
-import java.util.List;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import ic2.core.IC2;
-import ic2.core.crop.TileEntityCrop;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.World;
+
+import java.util.List;
 
 public class Modifier extends Item {
-	public Modifier() {
-		super();
-	    this.setCreativeTab(CreativeTab.cpp);
-	    this.bFull3D=false;
-	    this.hasSubtypes = true;
-	}
-	
-	public IIcon[] icons;
-    public String[] textureNames = new String[] {"Space", "Magic", "Trophy"/*, "Anti","Growth","Gain","Resistance"*/};
+    public IIcon[] icons;
+    public String[] textureNames = new String[]{"Space", "Magic", "Trophy"/*, "Anti","Growth","Gain","Resistance"*/};
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public IIcon getIconFromDamage (int meta)
-    {
-    	if (meta < textureNames.length)
-    		return icons[meta];
-    	else
-    		return icons[0];
+    public Modifier() {
+        super();
+        this.setCreativeTab(CreativeTab.cpp);
+        this.bFull3D = false;
+        this.hasSubtypes = true;
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void addInformation (ItemStack stack, EntityPlayer player, List list, boolean par4)
-    {
-        switch (stack.getItemDamage() % textureNames.length)
-        {
-        case 0:
-            list.add("Space Radiation caught in a Flower!");
-            break;
-        case 1:
-            list.add("Pure Magic!");
-            break;
-        case 2:
-            list.add("Challenge Accepted!");
-            break;
+    public IIcon getIconFromDamage(int meta) {
+        if (meta < textureNames.length)
+            return icons[meta];
+        else
+            return icons[0];
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
+        switch (stack.getItemDamage() % textureNames.length) {
+            case 0:
+                list.add("Space Radiation caught in a Flower!");
+                break;
+            case 1:
+                list.add("Pure Magic!");
+                break;
+            case 2:
+                list.add("Challenge Accepted!");
+                break;
         /*case 3:
             list.add("!stooR-rettaM-itnA");
             break;
@@ -64,35 +57,30 @@ public class Modifier extends Item {
         	list.add("Boosts the Resistance-Statt of a plant!");
             break;*/
         }
-}
-    
+    }
+
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerIcons (IIconRegister iconRegister)
-    {
+    public void registerIcons(IIconRegister iconRegister) {
         this.icons = new IIcon[textureNames.length];
 
-        for (int i = 0; i < this.icons.length; ++i)
-        {
+        for (int i = 0; i < this.icons.length; ++i) {
             this.icons[i] = iconRegister.registerIcon("bpp:item_Modifier_" + textureNames[i]);
         }
     }
-    
+
     @Override
-    public String getUnlocalizedName (ItemStack itemstack)
-    {
-    	if (itemstack.getItemDamage()<textureNames.length)
-    		return (new StringBuilder()).append("item_Modifier_").append(textureNames[itemstack.getItemDamage()]).toString();
-    	else
-    		return (new StringBuilder()).append("item_Modifier_").append(textureNames[0]).toString();
+    public String getUnlocalizedName(ItemStack itemstack) {
+        if (itemstack.getItemDamage() < textureNames.length)
+            return (new StringBuilder()).append("item_Modifier_").append(textureNames[itemstack.getItemDamage()]).toString();
+        else
+            return (new StringBuilder()).append("item_Modifier_").append(textureNames[0]).toString();
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void getSubItems (Item item, CreativeTabs par2CreativeTabs, List list)
-    {
-        for (int i = 0; i < textureNames.length; ++i)
-        {
+    public void getSubItems(Item item, CreativeTabs par2CreativeTabs, List list) {
+        for (int i = 0; i < textureNames.length; ++i) {
             list.add(new ItemStack(item, 1, i));
         }
     }

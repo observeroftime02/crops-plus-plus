@@ -3,86 +3,85 @@ package com.github.bartimaeusnek.cropspp.crops.natura;
 import com.github.bartimaeusnek.croploadcore.ModsLoaded;
 import com.github.bartimaeusnek.croploadcore.OreDict;
 import com.github.bartimaeusnek.cropspp.abstracts.BasicDecorationCrop;
-
 import ic2.api.crops.ICropTile;
 import mods.natura.common.NContent;
 import net.minecraft.item.ItemStack;
 
 public class CottonCrop extends BasicDecorationCrop {
-	
-	public CottonCrop() {
-		super();
-		OreDict.BSget("crop"+name().replaceAll(" ", ""),this );
-	}
 
-	@Override
-	public String name() {
-		return "Cotton";
-	}
-
-	@Override
-	public int tier() {
-		return 3;
-	}
-
-	@Override
-	public int stat(int n) {
-        switch (n) {
-        case 0: {
-            return 4;
-        }
-        case 1: {
-            return 4;
-        }
-        case 2: {
-            return 0;
-        }
-        case 3: {
-            return 0;
-        }
-        case 4: {
-            return 2;
-        }
+    public CottonCrop() {
+        super();
+        OreDict.BSget("crop" + name().replaceAll(" ", ""), this);
     }
-    return 0;
-	}
 
-	@Override
-	public String[] attributes() {
-		return new String[] {"White", "Cotton"};
-	}
+    @Override
+    public String name() {
+        return "Cotton";
+    }
 
-	@Override
-	public int maxSize() {
-		return 5;
-	}
+    @Override
+    public int tier() {
+        return 3;
+    }
 
-	@Override
-	public boolean canGrow(ICropTile crop) {
-		return crop.getSize() < 5 && crop.getLightLevel() >= 9;
-	}
+    @Override
+    public int stat(int n) {
+        switch (n) {
+            case 0: {
+                return 4;
+            }
+            case 1: {
+                return 4;
+            }
+            case 2: {
+                return 0;
+            }
+            case 3: {
+                return 0;
+            }
+            case 4: {
+                return 2;
+            }
+        }
+        return 0;
+    }
 
-	@Override
-	public int getOptimalHavestSize(ICropTile crop) {
-		return 5;
-	}
+    @Override
+    public String[] attributes() {
+        return new String[]{"White", "Cotton"};
+    }
 
-	@Override
-	public boolean canBeHarvested(ICropTile crop) {
-		return crop.getSize()==5;
-	}
-	
-	@Override
-	public ItemStack getDisplayItem() {
-		return OreDict.ISget("crop"+this.name());
-	}
-	
-	@Override
-	public ItemStack getGain(ICropTile crop) {
-		if (!ModsLoaded.Natura)
-			return OreDict.ISget("crop"+this.name());
-		else 
-			return new ItemStack(NContent.plantItem,1,3);
-	}
+    @Override
+    public int maxSize() {
+        return 5;
+    }
+
+    @Override
+    public boolean canGrow(ICropTile crop) {
+        return crop.getSize() < 5 && crop.getLightLevel() >= 9;
+    }
+
+    @Override
+    public int getOptimalHavestSize(ICropTile crop) {
+        return 5;
+    }
+
+    @Override
+    public boolean canBeHarvested(ICropTile crop) {
+        return crop.getSize() == 5;
+    }
+
+    @Override
+    public ItemStack getDisplayItem() {
+        return OreDict.ISget("crop" + this.name());
+    }
+
+    @Override
+    public ItemStack getGain(ICropTile crop) {
+        if (!ModsLoaded.Natura)
+            return OreDict.ISget("crop" + this.name());
+        else
+            return new ItemStack(NContent.plantItem, 1, 3);
+    }
 
 }

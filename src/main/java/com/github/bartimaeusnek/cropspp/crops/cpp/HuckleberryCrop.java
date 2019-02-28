@@ -1,7 +1,7 @@
-package com.github.bartimaeusnek.cropspp.cpp;
+package com.github.bartimaeusnek.cropspp.crops.cpp;
+
 import com.github.bartimaeusnek.croploadcore.OreDict;
 import com.github.bartimaeusnek.cropspp.abstracts.BasicBerryCrop;
-
 import ic2.api.crops.ICropTile;
 import net.minecraft.item.ItemStack;
 
@@ -9,15 +9,15 @@ public class HuckleberryCrop extends BasicBerryCrop {
 
     public HuckleberryCrop() {
         super();
-        OreDict.BSget("crop"+this.name(),this);
+        OreDict.BSget("crop" + this.name(), this);
     }
 
     public String name() {
         return "Huckleberry";
     }
-    
+
     public String[] attributes() {
-        return new String[] {"Berry", "Food", "Purple", "Leaves"}; // Purple like CropVenomilia, Leaves like CropFerru
+        return new String[]{"Berry", "Food", "Purple", "Leaves"}; // Purple like CropVenomilia, Leaves like CropFerru
     }
 
 
@@ -25,13 +25,13 @@ public class HuckleberryCrop extends BasicBerryCrop {
         return "Ancient cultures";
     }
 
-	@Override
-	public ItemStack getGain(ICropTile crop) {
-		return OreDict.ISget("crop"+this.name());
-	}
+    @Override
+    public ItemStack getGain(ICropTile crop) {
+        return OreDict.ISget("crop" + this.name());
+    }
 
-	@Override
-	public ItemStack getDisplayItem() {
-		return OreDict.ISget("crop"+this.name());
-	}
+    @Override
+    public ItemStack getDisplayItem() {
+        return OreDict.ISget("crop" + this.name());
+    }
 }
