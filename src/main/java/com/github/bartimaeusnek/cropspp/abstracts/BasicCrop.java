@@ -12,7 +12,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import speiger.src.crops.api.ICropCardInfo;
 
-import java.util.Arrays;
 import java.util.List;
 
 public abstract class BasicCrop extends CropCard implements ICropCardInfo {
@@ -52,11 +51,12 @@ public abstract class BasicCrop extends CropCard implements ICropCardInfo {
         return Cropspp.modID;
     }
 
+    @Override
     public List<String> getCropInformation() {
-        return Arrays.asList(attributes());
+        return null;
     }
 
-    public ItemStack getDisplayItem(CropCard card) {
+    public ItemStack getDisplayItem() {
         return OreDict.ISget("crop" + this.name());
     }
 

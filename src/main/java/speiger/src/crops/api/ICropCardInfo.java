@@ -13,7 +13,16 @@ import net.minecraft.item.ItemStack;
  */
 public interface ICropCardInfo
 {
+	/**
+	 * @return a list of "Important" Information,
+	 * which are needed to grow the Crop.
+	 * Like: a Special Light Level or something.
+	 */
 	public List<String> getCropInformation();
-	
+
+	/**
+	 * @return the DisplayItem for the CropCard he is checking.
+	 * null means it get not implemented. So you can return null
+	 */
 	public ItemStack getDisplayItem();
 }

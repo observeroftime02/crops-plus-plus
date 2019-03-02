@@ -48,9 +48,6 @@ public final class Cropspp {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent preinit) {
-        // (=<`:9876Z4321UT.-Q+*)M'&%$H\"!~}|Bzy?=|{z]KwZY44Eq0/{mlk**hKs_dG5[m_BA{?-Y;;Vb'rR5431M}/.zHGwEDCBA@98\\6543W10/.R,+O<
-        //if(InstalledTreesGetter.check_bonsai(preinit))
-        //	InstalledTreesGetter.InstalledTreesGet();
         CropLoader.load(preinit);
         if (ModsLoaded.GT) {
             new CropWeedPicker(12528, "Basic CropWeedPicker", "Basic CropWeedPicker", 1);
