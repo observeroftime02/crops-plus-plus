@@ -10,9 +10,9 @@ import ic2.api.crops.ICropTile;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import scala.actors.threadpool.Arrays;
 import speiger.src.crops.api.ICropCardInfo;
 
+import java.util.Arrays;
 import java.util.List;
 
 public abstract class BasicCrop extends CropCard implements ICropCardInfo {
