@@ -15,8 +15,6 @@ import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 
-import java.util.List;
-
 public class GarnydniaCrop extends BasicCrop {
 
     public GarnydniaCrop() {
@@ -169,13 +167,6 @@ public class GarnydniaCrop extends BasicCrop {
     @Override
     public byte getSizeAfterHarvest(ICropTile crop) {
         return 1;
-    }
-
-    @Override
-    public List<String> getCropInformation() {
-        List<String> ret = super.getCropInformation();
-        ret.add("Needs way more Fertiliser than common Plants!");
-        return ret;
     }
 
     @Override
