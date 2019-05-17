@@ -12,8 +12,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import scala.actors.threadpool.Arrays;
 
+import java.util.Arrays;
 import java.util.List;
 
 public enum Bonsais {
