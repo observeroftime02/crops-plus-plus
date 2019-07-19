@@ -29,7 +29,7 @@ public class WaterlillyCrop extends BasicDecorationCrop {
     @Override
     public int growthDuration(ICropTile crop) {
         int ret = 550;
-        if (crop.isBlockBelow(Blocks.water) || crop.isBlockBelow(Blocks.flowing_water))
+        if (crop.isBlockBelow(Blocks.WATER) || crop.isBlockBelow(Blocks.FLOWING_WATER))
             ret = 225;
         if (ConfigValues.debug)
             ret = 1;
@@ -45,7 +45,7 @@ public class WaterlillyCrop extends BasicDecorationCrop {
     public ItemStack getGain(ICropTile crop) {
         ItemStack ret = getDisplayItem();
         if (MyRandom.intrandom(0, 10) > 8)
-            ret = new ItemStack(Items.dye, 2, 9);
+            ret = new ItemStack(Items.DYE, 2, 9);
         return ret;
     }
 

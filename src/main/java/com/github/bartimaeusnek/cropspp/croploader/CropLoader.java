@@ -5,59 +5,45 @@ import com.github.bartimaeusnek.croploadcore.OreDict;
 import com.github.bartimaeusnek.croploadcore.config;
 import com.github.bartimaeusnek.cropspp.ConfigValues;
 import com.github.bartimaeusnek.cropspp.Cropspp;
+import com.github.bartimaeusnek.cropspp.abstracts.BasicCrop;
 import com.github.bartimaeusnek.cropspp.crops.cpp.*;
 import com.github.bartimaeusnek.cropspp.crops.natura.*;
 import com.github.bartimaeusnek.cropspp.crops.witchery.GarlicCrop;
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import com.google.gson.internal.LinkedTreeMap;
+
 import ic2.api.crops.CropCard;
 import ic2.api.crops.Crops;
+import net.minecraft.client.gui.ServerListEntryLanDetected;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.oredict.OreDictionary;
 
 import static com.github.bartimaeusnek.cropspp.ConfigValues.c;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-//IC2API
-//ItemsFromAPIs
 
 public class CropLoader {
     private static List<Boolean> bHasCropObj = new ArrayList<Boolean>();
-    private static List<CropLoader> list = cropLoader();
-    private CropCard cropObj;
-    private ItemStack baseseed;
+    private static LinkedHashMap<BasicCrop,List<ItemStack>> list = new LinkedHashMap<>();
 
-    /*
-     * This Class Loades Crops with Base Seed.
-     * Call it with:
-     * CropLoader.load(preinit);
-     * at the preinit phase to load the crops into the config.
-     * Then call it at postinit with
-     * CropLoader.register();
-     * to load the Crops into the game.
-     */
-
-
-    public CropLoader(CropCard cropObj) {
-        this.cropObj = cropObj;
+    public CropLoader(BasicCrop cropObj) {
+        list.put(cropObj,new ArrayList<ItemStack>());
     }
 
-    public CropLoader(CropCard cropObj, ItemStack baseseed) {
-        this.cropObj = cropObj;
-        this.baseseed = baseseed;
+    public CropLoader(BasicCrop cropObj, ItemStack baseseed) {
+        list.put(cropObj, Collections.singletonList(baseseed));
     }
 
-    public static CropCard CropunpackerCC(CropLoader inp) {
-        return inp.cropObj;
+    public CropLoader(BasicCrop cropObj, String baseseed) {
+        list.put(cropObj, OreDictionary.getOres(baseseed));
     }
 
-    private static ItemStack CropunpackerCG(CropLoader inp) {
-        return inp.baseseed;
-    }
-
-    private static CropLoader CropHelper(CropCard cropObj) {
+    private static CropLoader CropHelper(BasicCrop cropObj) {
         return new CropLoader(cropObj, OreDict.ISget("crop" + cropObj.name()));
     }
 
@@ -73,20 +59,20 @@ public class CropLoader {
         if (Loader.isModLoaded("TwilightForest")) {
             p.addAll(TwilightForestLoader.load());
         }
-        if (ModsLoaded.dreamcraft) {
-            p.addAll(DreamCraftLoader.load());
-        }
-        if (ModsLoaded.GT) {
-            p.addAll(GTLoader.load());
-        }
-        if (ModsLoaded.Natura)
-            p.addAll(NaturaLoader.load());
-        else {
-            p.add(new CropLoader(new SaguaroCrop(), null));
-        }
-        if (ModsLoaded.Natura || ModsLoaded.PHC) {
-            p.add(new CropLoader(new CottonCrop(), null));
-        }
+//        if (ModsLoaded.dreamcraft) {
+//            p.addAll(DreamCraftLoader.load());
+//        }
+//        if (ModsLoaded.GT) {
+//            p.addAll(GTLoader.load());
+//        }
+//        if (ModsLoaded.Natura)
+//            p.addAll(NaturaLoader.load());
+//        else {
+//            p.add(new CropLoader(new SaguaroCrop()));
+//        }
+//        if (ModsLoaded.Natura || ModsLoaded.PHC) {
+//            p.add(new CropLoader(new CottonCrop()));
+//        }
 
         if (ModsLoaded.TConstruct) {
             p.addAll(TConstructLoader.load());
@@ -95,65 +81,40 @@ public class CropLoader {
             p.addAll(BoPLoader.BoPLoaderList());
         }
 
-        if (ModsLoaded.TC) {
-            p.addAll(ThaumcraftLoader.load());
-        }
+//        if (ModsLoaded.TC) {
+//            p.addAll(ThaumcraftLoader.load());
+//        }
         if (ModsLoaded.witchery) {
             p.addAll(WitcheryLoader.load());
         }
         if (ModsLoaded.witchery || ModsLoaded.PHC) {
-            p.add(new CropLoader(new GarlicCrop(), null));
+            p.add(new CropLoader(new GarlicCrop()));
         }
         if (ModsLoaded.BoP || ModsLoaded.PHC) {
-            p.add(new CropLoader(new BarleyCrop(), null));
+            p.add(new CropLoader(new BarleyCrop()));
         }
 
         p.add(new CropLoader(new VineCrop(), new ItemStack(Item.getItemById(106), 1, 0)));
         p.add(new CropLoader(new GrassCrop(), new ItemStack(Item.getItemById(31), 1, 1)));
-        p.add(new CropLoader(new CactiCrop(), new ItemStack(Item.getItemById(81), 1, 0)));
+        p.add(new CropLoader(new CactiCrop(), new ItemStack(Item.getItemById(81), 4, 0)));
         p.add(new CropLoader(new WaterlillyCrop(), new ItemStack(Item.getItemById(111), 2)));
-        p.add(new CropLoader(new PapyrusCrop(), null));
-        p.add(new CropLoader(new GoldfishCrop(), null));
-        p.add(new CropLoader(new SugarBeetCrop(), null));
+        p.add(new CropLoader(new PapyrusCrop()));
+        p.add(new CropLoader(new GoldfishCrop()));
+        p.add(new CropLoader(new SugarBeetCrop()));
 
-        p.add(new CropLoader(new HuckleberryCrop(), null));
-        p.add(new CropLoader(new StrawberryCrop(), null));
-        p.add(new CropLoader(new MaloberryCrop(), null));
-        p.add(new CropLoader(new BlackberryCrop(), null));
-        p.add(new CropLoader(new BlueberryCrop(), null));
-        p.add(new CropLoader(new RaspberryCrop(), null));
-        //p.add(new WeedCrop());
+        p.add(new CropLoader(new HuckleberryCrop()));
+        p.add(new CropLoader(new StrawberryCrop()));
+//        p.add(new CropLoader(new MaloberryCrop()));
+//        p.add(new CropLoader(new BlackberryCrop()));
+//        p.add(new CropLoader(new BlueberryCrop()));
+//        p.add(new CropLoader(new RaspberryCrop()));
 
-	/*if (lokko12.berriespp.ConfigValures.ayo_bonsai)
-		if (InstalledTreesGetter.savedNames != null)	
-	for(int i=0; i < InstalledTreesGetter.savedNames.size(); ++i) {
-		if( Operators.AND(Operators.NOR( InstalledTreesGetter.savedNames.get(i).contains("Shimmerleaf"),InstalledTreesGetter.savedNames.get(i).contains("Cinderpearl") ) , Operators.NOR(InstalledTreesGetter.savedNames.get(i).contains("Vishroom"),InstalledTreesGetter.savedNames.get(i).contains("Ethereal Bloom")))) 
-		{
-			p.add(new CropLoader(new BasicBonsaiCrop(InstalledTreesGetter.savedNames.get(i),
-					"bpp:"+InstalledTreesGetter.BaseSeed.get(i).getIconIndex().getIconName().replaceAll(":","_")
-					,InstalledTreesGetter.savedDrop.get(i)),InstalledTreesGetter.BaseSeed.get(i)));
-		}
-		
-			
-	}
-		else
-			Berriespp.bpplogger.info("Something wrent wrong at getting Trees, BonsaiGen Disabled!");*/
         return p;
     }
 
-    private final static List<CropCard> cropObjs() {
-        List<CropCard> p = new ArrayList<CropCard>();
-        for (int i = 0; i < list.size(); ++i) {
-            p.add(CropunpackerCC(list.get(i)));
-        }
-        return p;
-    }
-
-    private final static List<ItemStack> setBaseSeed() {
-        List<ItemStack> p = new ArrayList<ItemStack>();
-        for (int i = 0; i < list.size(); ++i) {
-            p.add(CropunpackerCG(list.get(i)));
-        }
+    private final static List<BasicCrop> cropObjs() {
+        List<BasicCrop> p = new ArrayList<BasicCrop>();
+        p.addAll(list.keySet());
         return p;
     }
 
@@ -166,22 +127,23 @@ public class CropLoader {
     }
 
     public static void load(FMLPreInitializationEvent preinit) {
+        cropLoader();
         c = new config(preinit, "berriespp.cfg");
         c.tConfig.addCustomCategoryComment("System", "enable or disable system config:"
                 + "\nDebug will set all crops groth duration to 1 and disable all requirements.(aka. \"Cheatmode\")"
                 + "\nBonsai Generation will generate crops from saplings, WiP state. (disabled bc of bugs with metadata, but sure you can try it.)"
                 + "\nWiP Items are not finished items."
                 + "\nItems will enable/disable all items.");
-        ConfigValues.debug = c.tConfig.get("System", "Debug", false).getBoolean(false);
-        ConfigValues.WiPItems = c.tConfig.get("System", "WiP Items", false).getBoolean(false);
-        ConfigValues.Items = c.tConfig.get("System", "Items", true).getBoolean(true);
+        ConfigValues.debug = c.tConfig.get("System", "Debug", false).getBoolean(true);
+        ConfigValues.WiPItems = c.tConfig.get("System", "WiP Items", false).getBoolean(true);
+        ConfigValues.Items = c.tConfig.get("System", "Items", true).getBoolean(false);
 
         c.tConfig.addCustomCategoryComment("Crops", "enable single plants here:");
 
-        for (int i = 0; i < list.size(); ++i) {
-            bHasCropObj.add(c.tConfig.get("Crops", setnames().get(i), true).getBoolean(true));
+        for (int i = 0; i < cropObjs().size(); ++i) {
+            bHasCropObj.add(c.tConfig.get("Crops", setnames().get(i), true).getBoolean(false));
         }
-        bHasCropObj.add(c.tConfig.get("Crops", "Bonsai", true).getBoolean(true));
+
         c.tConfig.addCustomCategoryComment("Gain", "Set custom gain modifiers here:"
                 + "\n Tinker's Construct Berries' Gain is not modified by All Crops."
                 + "\n Primordial Berry's gain is absolut"
@@ -195,23 +157,45 @@ public class CropLoader {
             c.save();
     }
 
-    public static void register() {
-        for (int i = 0; i < list.size(); ++i) {
-            if (bHasCropObj.get(i) && cropObjs().get(i) != null)
-                Crops.instance.registerCrop(cropObjs().get(i));
-        }
-        if (bHasCropObj.get(bHasCropObj.size()-1)){
-            Bonsais.registerAllBonais();
+    public static class EventSubscriber{
+
+        @SubscribeEvent
+        public static void register(Crops.CropRegisterEvent event) {
+
+            for (int i = 0; i < cropObjs().size(); ++i) {
+                if (bHasCropObj.get(i) && cropObjs().get(i) != null)
+                    event.register(cropObjs().get(i));
+            }
+            if (ConfigValues.ayo_bonsai)
+                Cropspp.cpplogger.info("Bonsais registered!");
+            registerBaseSeed();
         }
     }
 
     public static void registerBaseSeed() {
-
-        List<ItemStack> baseseed = new ArrayList<ItemStack>(setBaseSeed());
-
-        for (int i = 0; i < list.size(); ++i) {
-            if (baseseed.get(i) != null && cropObjs().get(i) != null)
-                Crops.instance.registerBaseSeed(baseseed.get(i), cropObjs().get(i), 1, 1, 1, 1);
+        for (BasicCrop b : list.keySet()) {
+            for (ItemStack is : list.get(b))
+                registerBaseSeedSafe(is, b, 1, 1, 1, 1);
         }
+
+        if (ConfigValues.ayo_bonsai)
+            Cropspp.cpplogger.info("Bonsai Base Seed registered!");
+    }
+
+
+    public static boolean registerBaseSeedSafe(ItemStack Seed, CropCard Crop, int Growth, int Gain, int Resistance, int Scanlevel){
+        if (Crop == null && Seed == null) {
+            Cropspp.cpplogger.warn("Tried to register a NULL Seed onto an NULL Crop WTF ARE YOU DOING?!?");
+            return false;
+        }
+        if (Crop == null){
+            Cropspp.cpplogger.warn("Tried to register a Seed onto an NULL Crop "+Seed.getDisplayName());
+            return false;
+        }
+        if (Seed == null) {
+            Cropspp.cpplogger.warn("Tried to register a NULL Seed onto "+Crop.getUnlocalizedName());
+            return false;
+        }
+        return Crops.instance.registerBaseSeed(Seed, Crop, 1, 1, 1, 1);
     }
 }

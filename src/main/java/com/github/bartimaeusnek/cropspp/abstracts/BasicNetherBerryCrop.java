@@ -39,10 +39,10 @@ public abstract class BasicNetherBerryCrop extends BasicBerryCrop {
 
     @Override
     public boolean canGrow(ICropTile crop) {
-        if (crop.getSize() < 1)
+        if (crop.getCurrentSize() < 1)
             return true;
         else
-            return crop.getSize() < 3;
+            return crop.getCurrentSize() < 3;
     }
 
     @Override
@@ -62,7 +62,7 @@ public abstract class BasicNetherBerryCrop extends BasicBerryCrop {
         // Same growth stages as melons and pumpkins
         if (ConfigValues.debug)
             r = 1;
-        else if (crop.getSize() == 2) {
+        else if (crop.getCurrentSize() == 2) {
             // Ripens not so quickly
             r = 300;
         } else {

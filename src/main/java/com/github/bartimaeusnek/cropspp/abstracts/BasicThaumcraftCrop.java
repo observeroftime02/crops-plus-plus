@@ -21,7 +21,7 @@ public abstract class BasicThaumcraftCrop extends BasicCrop {
         // Same growth stages as melons and pumpkins
         if (ConfigValues.debug)
             r = 1;
-        else if (crop.getSize() == 2) {
+        else if (crop.getCurrentSize() == 2) {
             // Ripens not so quickly
             r = 2200;
         } else {
@@ -56,7 +56,7 @@ public abstract class BasicThaumcraftCrop extends BasicCrop {
 
     @Override
     public boolean canBeHarvested(ICropTile crop) {
-        return crop.getSize() == 3;
+        return crop.getCurrentSize() == 3;
     }
 
 }

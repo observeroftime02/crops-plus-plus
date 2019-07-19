@@ -43,9 +43,9 @@ public class CobaltBerryCrop extends BasicTinkerBerryCrop {
         int r;
         if (ConfigValues.debug)
             r = 1;
-        else if (crop.getSize() == 2)
+        else if (crop.getCurrentSize() == 2)
             r = 3000;
-        else if ((crop.getSize() == 3 && crop.isBlockBelow("blockCobalt")))
+        else if ((crop.getCurrentSize() == 3 && crop.isBlockBelow("blockCobalt")))
             r = 3000;
         else
             r = 500;

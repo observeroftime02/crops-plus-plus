@@ -50,7 +50,7 @@ public abstract class BasicFoodCrop extends BasicDecorationCrop {
 
     @Override
     public boolean canGrow(ICropTile crop) {
-        return crop.getSize() < 3 && crop.getLightLevel() >= 9;
+        return crop.getCurrentSize() < 3 && crop.getLightLevel() >= 9;
     }
 
     @Override
@@ -60,11 +60,11 @@ public abstract class BasicFoodCrop extends BasicDecorationCrop {
 
     @Override
     public boolean canBeHarvested(ICropTile crop) {
-        return crop.getSize() == 3;
+        return crop.getCurrentSize() == 3;
     }
 
     @Override
-    public byte getSizeAfterHarvest(ICropTile crop) {
+    public int getSizeAfterHarvest(ICropTile crop) {
         return 1;
     }
 

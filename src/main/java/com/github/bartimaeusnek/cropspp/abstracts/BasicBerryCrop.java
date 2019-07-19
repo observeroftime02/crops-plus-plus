@@ -38,7 +38,7 @@ public abstract class BasicBerryCrop extends BasicCrop {
 
     @Override
     public boolean canGrow(ICropTile crop) {
-        return crop.getSize() < 3;
+        return crop.getCurrentSize() < 3;
     }
 
     @Override
@@ -58,7 +58,7 @@ public abstract class BasicBerryCrop extends BasicCrop {
         // Same growth stages as melons and pumpkins
         if (ConfigValues.debug)
             r = 1;
-        else if (crop.getSize() == 2) {
+        else if (crop.getCurrentSize() == 2) {
             // Ripens quickly
             r = 200;
         } else {
@@ -69,7 +69,7 @@ public abstract class BasicBerryCrop extends BasicCrop {
     }
 
     @Override
-    public byte getSizeAfterHarvest(ICropTile crop) {
+    public int getSizeAfterHarvest(ICropTile crop) {
         // return to partially grown state when harvested
         return 2;
     }

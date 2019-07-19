@@ -1,9 +1,7 @@
 package com.github.bartimaeusnek.cropspp.items;
 
-import com.github.bartimaeusnek.croploadcore.ModsLoaded;
-import com.github.bartimaeusnek.croploadcore.OreDict;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 public final class CreativeTab extends CreativeTabs {
 
@@ -14,10 +12,10 @@ public final class CreativeTab extends CreativeTabs {
     }
 
     @Override
-    public Item getTabIconItem() {
-        if (ModsLoaded.Natura)
-            return OreDict.ISget("cropSaguaroBerry").getItem();
-        else return CppItems.Goldfisch;
+    public ItemStack createIcon() {
+       /* if (ModsLoaded.Natura)
+            return OreDict.ISget("cropSaguaroBerry");
+        else */return new ItemStack(CppItems.Goldfisch);
     }
 
 }

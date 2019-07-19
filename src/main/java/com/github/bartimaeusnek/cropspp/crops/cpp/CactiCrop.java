@@ -1,7 +1,7 @@
 package com.github.bartimaeusnek.cropspp.crops.cpp;
 
-import biomesoplenty.api.content.BOPCBlocks;
 import com.github.bartimaeusnek.croploadcore.ModsLoaded;
+import com.github.bartimaeusnek.croploadcore.OreDict;
 import com.github.bartimaeusnek.cropspp.abstracts.BasicDecorationCrop;
 import com.github.bartimaeusnek.cropspp.croploader.CropLoader;
 import ic2.api.crops.Crops;
@@ -20,7 +20,7 @@ public class CactiCrop extends BasicDecorationCrop {
 
     public CactiCrop() {
         if (ModsLoaded.BoP)
-            Crops.instance.registerBaseSeed(new ItemStack(BOPCBlocks.plants, 1, 12), com.github.bartimaeusnek.cropspp.croploader.CropLoader.CropunpackerCC(new CropLoader(this)), 1, 1, 1, 1);
+            CropLoader.registerBaseSeedSafe(OreDict.ISget("cropSmallCactus"), this, 1, 1, 1, 1);
     }
 
     @Override
@@ -40,15 +40,15 @@ public class CactiCrop extends BasicDecorationCrop {
 
     @Override
     public ItemStack getGain(ICropTile crop) {
-        if ((ModsLoaded.BoP && crop.getSize() == 2))
-            return new ItemStack(BOPCBlocks.plants, 1, 12);
+        if ((ModsLoaded.BoP && crop.getCurrentSize() == 2))
+            return OreDict.ISget("cropSmallCactus");
         else
             return new ItemStack(Item.getItemById(81), 1, 0);
     }
 
     @Override
     public boolean canBeHarvested(ICropTile crop) {
-        return crop.getSize() >= 2;
+        return crop.getCurrentSize() >= 2;
     }
 
     @Override
@@ -65,7 +65,7 @@ public class CactiCrop extends BasicDecorationCrop {
     @Override
     public boolean onEntityCollision(ICropTile crop, Entity entity) {
         if (!(entity instanceof EntityItem))
-            entity.attackEntityFrom(DamageSource.cactus, 1);
+            entity.attackEntityFrom(DamageSource.CACTUS, 1);
         if (entity instanceof EntityLivingBase) {
             return ((EntityLivingBase) entity).isSprinting();
         }

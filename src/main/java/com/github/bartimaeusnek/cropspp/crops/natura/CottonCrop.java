@@ -4,7 +4,6 @@ import com.github.bartimaeusnek.croploadcore.ModsLoaded;
 import com.github.bartimaeusnek.croploadcore.OreDict;
 import com.github.bartimaeusnek.cropspp.abstracts.BasicDecorationCrop;
 import ic2.api.crops.ICropTile;
-import mods.natura.common.NContent;
 import net.minecraft.item.ItemStack;
 
 public class CottonCrop extends BasicDecorationCrop {
@@ -58,12 +57,12 @@ public class CottonCrop extends BasicDecorationCrop {
 
     @Override
     public boolean canGrow(ICropTile crop) {
-        return crop.getSize() < 5 && crop.getLightLevel() >= 9;
+        return crop.getCurrentSize() < 5 && crop.getLightLevel() >= 9;
     }
 
     @Override
     public boolean canBeHarvested(ICropTile crop) {
-        return crop.getSize() == 5;
+        return crop.getCurrentSize() == 5;
     }
 
     @Override
@@ -73,10 +72,10 @@ public class CottonCrop extends BasicDecorationCrop {
 
     @Override
     public ItemStack getGain(ICropTile crop) {
-        if (!ModsLoaded.Natura)
+//        if (!ModsLoaded.Natura)
             return OreDict.ISget("crop" + this.name());
-        else
-            return new ItemStack(NContent.plantItem, 1, 3);
+//        else
+//            return new ItemStack(NContent.plantItem, 1, 3);
     }
 
 }

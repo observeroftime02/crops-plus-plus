@@ -1,6 +1,5 @@
 package com.github.bartimaeusnek.cropspp.crops.BoP;
 
-import biomesoplenty.api.content.BOPCBlocks;
 import com.github.bartimaeusnek.croploadcore.OreDict;
 import com.github.bartimaeusnek.cropspp.abstracts.BasicDecorationCrop;
 import ic2.api.crops.ICropTile;
@@ -15,7 +14,7 @@ public class EyebulbCrop extends BasicDecorationCrop {
 
     @Override
     public ItemStack getDisplayItem() {
-        return new ItemStack(BOPCBlocks.flowers, 1, 13);
+        return OreDict.ISget("crop" + name());
     }
 
     @Override
@@ -30,7 +29,7 @@ public class EyebulbCrop extends BasicDecorationCrop {
 
     @Override
     public ItemStack getGain(ICropTile crop) {
-        return new ItemStack(BOPCBlocks.flowers, 1, 13);
+        return getDisplayItem();
     }
 
 }

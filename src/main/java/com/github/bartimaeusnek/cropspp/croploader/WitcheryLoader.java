@@ -1,6 +1,6 @@
 package com.github.bartimaeusnek.cropspp.croploader;
 
-import com.github.bartimaeusnek.cropspp.crops.witchery.*;
+import com.github.bartimaeusnek.cropspp.crops.BoP.GlintWeedCrop;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,15 +11,15 @@ public class WitcheryLoader {
     public static List<CropLoader> load() {
         List<CropLoader> p = new ArrayList<CropLoader>();
 
-        p.add(new CropLoader(new GlintWeedCrop(), null));
-        p.add(new CropLoader(new SpanishMossCrop(), null));
-        p.add(new CropLoader(new BelladonnaCrop(), null));
-        p.add(new CropLoader(new MandragoraCrop(), null));
-        p.add(new CropLoader(new SnowbellCrop(), null));
-        ;
-        p.add(new CropLoader(new WolfsBaneCrop(), null));
-        p.add(new CropLoader(new WaterArtichokeCrop(), null));
-        p.add(new CropLoader(new EmberMossCrop(), null));
+//        p.add(new CropLoader(new GlintWeedCrop()));
+//        p.add(new CropLoader(new SpanishMossCrop()));
+//        p.add(new CropLoader(new BelladonnaCrop()));
+//        p.add(new CropLoader(new MandragoraCrop()));
+//        p.add(new CropLoader(new SnowbellCrop()));
+//        ;
+//        p.add(new CropLoader(new WolfsBaneCrop()));
+//        p.add(new CropLoader(new WaterArtichokeCrop()));
+//        p.add(new CropLoader(new EmberMossCrop()));
 
         return p;
     }

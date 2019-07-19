@@ -9,6 +9,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
 
 import java.util.Collections;
 import java.util.List;
@@ -48,28 +50,28 @@ public class GoldfishCrop extends BasicDecorationCrop {
     }
 
     @Override
-    public boolean rightclick(ICropTile crop, EntityPlayer player) {
+    public boolean onRightClick(ICropTile crop, EntityPlayer player) {
         boolean ret;
-        if (((int) crop.getSize()) != this.maxSize()) {
-            player.playSound("mob.ghast.scream", crop.getSize(), (maxSize() + 1) + (-1) * crop.getSize());
-            ret = crop.harvest(true);
-        } else if (((int) crop.getSize()) == this.maxSize()) {
-            player.playSound("mob.ghast.scream", 5, (float) 0.5);
-            ret = crop.harvest(true);
+        if (((int) crop.getCurrentSize()) != this.maxSize()) {
+            player.playSound(SoundEvent.REGISTRY.getObject(new ResourceLocation("entity.ghast.scream")), crop.getCurrentSize(), (maxSize() + 1) + (-1) * crop.getCurrentSize());
+            ret = crop.performManualHarvest();
+        } else if (((int) crop.getCurrentSize()) == this.maxSize()) {
+            player.playSound(SoundEvent.REGISTRY.getObject(new ResourceLocation("entity.ghast.scream")), 5, (float) 0.5);
+            ret = crop.performManualHarvest();
         } else
             ret = false;
         return ret;
     }
 
     @Override
-    public boolean leftclick(ICropTile crop, EntityPlayer player) {
+    public boolean onLeftClick(ICropTile crop, EntityPlayer player) {
         boolean ret;
-        if (((int) crop.getSize()) != this.maxSize()) {
-            player.playSound("mob.ghast.scream", crop.getSize(), (maxSize() + 1) + (-1) * crop.getSize());
-            ret = crop.pick(true);
-        } else if (((int) crop.getSize()) == this.maxSize()) {
-            player.playSound("mob.ghast.scream", 5, (float) 0.5);
-            ret = crop.pick(true);
+        if (((int) crop.getCurrentSize()) != this.maxSize()) {
+            player.playSound(SoundEvent.REGISTRY.getObject(new ResourceLocation("entity.ghast.scream")), crop.getCurrentSize(), (maxSize() + 1) + (-1) * crop.getCurrentSize());
+            ret = crop.pick();
+        } else if (((int) crop.getCurrentSize()) == this.maxSize()) {
+            player.playSound(SoundEvent.REGISTRY.getObject(new ResourceLocation("entity.ghast.scream")), 5, (float) 0.5);
+            ret = crop.pick();
         } else
             ret = false;
         return ret;
@@ -77,12 +79,14 @@ public class GoldfishCrop extends BasicDecorationCrop {
 
     @Override
     public boolean onEntityCollision(ICropTile crop, Entity entity) {
+
         if (entity instanceof EntityLivingBase) {
-            if (entity instanceof EntityPlayer) {
-                if (((int) crop.getSize()) != this.maxSize())
-                    entity.playSound("mob.ghast.scream", crop.getSize(), (maxSize() + 1) + (-1) * crop.getSize());
-                else if (((int) crop.getSize()) == this.maxSize())
-                    entity.playSound("mob.ghast.scream", 5, (float) 0.5);
+            if (entity instanceof EntityPlayer && lastScream == 100) {
+                if (((int) crop.getCurrentSize()) != this.maxSize())
+                    entity.playSound(SoundEvent.REGISTRY.getObject(new ResourceLocation("entity.ghast.scream")), crop.getCurrentSize(), (maxSize() + 1) + (-1) * crop.getCurrentSize());
+                else if (((int) crop.getCurrentSize()) == this.maxSize())
+                    entity.playSound(SoundEvent.REGISTRY.getObject(new ResourceLocation("entity.ghast.scream")), 5, (float) 0.5);
+                lastScream = 0;
             }
             return ((EntityLivingBase) entity).isSprinting();
         }
@@ -99,18 +103,19 @@ public class GoldfishCrop extends BasicDecorationCrop {
         return Collections.singletonList("Screams.");
     }
 
+    private int lastScream = 100;
+
     @Override
     public void tick(ICropTile crop) {
+        if (lastScream<100)
+            ++lastScream;
         int r = MyRandom.intrandom(512, 0);
-        switch (r) {
-            case 42: {
-                if (crop.getSize() != this.maxSize())
-                    crop.getWorld().playSoundEffect(crop.getLocation().posX, crop.getLocation().posY, crop.getLocation().posZ, "mob.ghast.scream", crop.getSize(), (maxSize() + 1) + (-1) * crop.getSize());
-                else if (crop.getSize() == this.maxSize())
-                    crop.getWorld().playSoundEffect(crop.getLocation().posX, crop.getLocation().posY, crop.getLocation().posZ, "mob.ghast.scream", crop.getSize(), (maxSize() + 1) + (-1) * crop.getSize());
-            }
+        if (r == 42){
+            if (((int) crop.getCurrentSize()) != this.maxSize())
+                crop.getWorldObj().getClosestPlayer(crop.getPosition().getX(),crop.getPosition().getY(),crop.getPosition().getZ(),42,false).playSound(SoundEvent.REGISTRY.getObject(new ResourceLocation("entity.ghast.scream")), crop.getCurrentSize(), (maxSize() + 1) + (-1) * crop.getCurrentSize());
+            else if (((int) crop.getCurrentSize()) == this.maxSize())
+                crop.getWorldObj().getClosestPlayer(crop.getPosition().getX(),crop.getPosition().getY(),crop.getPosition().getZ(),42,false).playSound(SoundEvent.REGISTRY.getObject(new ResourceLocation("entity.ghast.scream")), 5, (float) 0.5);
         }
-
     }
 
 }

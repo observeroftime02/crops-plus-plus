@@ -11,10 +11,10 @@ public class TwilightForestLoader {
 
     public static List<CropLoader> load() {
         List<CropLoader> p = new ArrayList<CropLoader>();
-        p.add(new CropLoader(new KnighmetalCrop(), null));
+        p.add(new CropLoader(new KnighmetalCrop()));
 
         if (ModsLoaded.BoP)
-            p.add(new CropLoader(new MossCrop(), null));
+            p.add(new CropLoader(new MossCrop()));
 
         return p;
     }

@@ -1,6 +1,6 @@
 package com.github.bartimaeusnek.cropspp.crops.BoP;
 
-import biomesoplenty.api.content.BOPCBlocks;
+import com.github.bartimaeusnek.croploadcore.OreDict;
 import com.github.bartimaeusnek.cropspp.crops.cpp.VineCrop;
 import ic2.api.crops.ICropTile;
 import net.minecraft.item.Item;
@@ -18,7 +18,7 @@ public class FloweringVinesCrop extends VineCrop {
 
     @Override
     public boolean canGrow(ICropTile crop) {
-        return crop.getSize() < 4;
+        return crop.getCurrentSize() < 4;
     }
 
     @Override
@@ -43,22 +43,22 @@ public class FloweringVinesCrop extends VineCrop {
 
     @Override
     public boolean canBeHarvested(ICropTile crop) {
-        return crop.getSize() >= 3;
+        return crop.getCurrentSize() >= 3;
     }
 
     @Override
     public ItemStack getGain(ICropTile crop) {
-        if (crop.getSize() == 3)
+        if (crop.getCurrentSize() == 3)
             return new ItemStack(Item.getItemById(106), 2, 0);
-        else if (crop.getSize() == 4)
-            return new ItemStack(BOPCBlocks.flowerVine, 2, 0);
+        else if (crop.getCurrentSize() == 4)
+            return getDisplayItem();
         else
             return null;
     }
 
     @Override
     public ItemStack getDisplayItem() {
-        return new ItemStack(BOPCBlocks.flowerVine, 2, 0);
+        return OreDict.ISget("crop" + name()).copy().splitStack(2);
     }
 
 }

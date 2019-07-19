@@ -27,8 +27,8 @@ public abstract class BasicTinkerBerryCrop extends BasicCrop {
     }
 
     @Override
-    public float dropGainChance() {
-        return (float) ((Math.pow(0.95, (float) tier())) * ConfigValues.TConstructBerryGain);
+    public double dropGainChance() {
+        return (double) ((Math.pow(0.95, (double) tier())) * ConfigValues.TConstructBerryGain);
     }
 
     protected abstract String hasBlock();
@@ -55,15 +55,15 @@ public abstract class BasicTinkerBerryCrop extends BasicCrop {
     public boolean canGrow(ICropTile crop) {
         boolean r;
         if (ConfigValues.debug)
-            r = crop.getSize() < 4;
+            r = crop.getCurrentSize() < 4;
         else
-            r = crop.getSize() < 1 || crop.getSize() == 3 && crop.isBlockBelow(hasBlock()) || (crop.getLightLevel() <= 10 && crop.getSize() < 3); //Codepiece by DaeFennek <3
+            r = crop.getCurrentSize() < 1 || crop.getCurrentSize() == 3 && crop.isBlockBelow(hasBlock()) || (crop.getLightLevel() <= 10 && crop.getCurrentSize() < 3); //Codepiece by DaeFennek <3
         return r;
     }
 
     @Override
     public boolean canBeHarvested(ICropTile crop) {
-        return crop.getSize() >= 3;
+        return crop.getCurrentSize() >= 3;
     }
 
     @Override
@@ -83,7 +83,7 @@ public abstract class BasicTinkerBerryCrop extends BasicCrop {
     }
 
     @Override
-    public byte getSizeAfterHarvest(ICropTile crop) {
+    public int getSizeAfterHarvest(ICropTile crop) {
         // return to partially grown state when harvested
         return 2;
     }
@@ -96,7 +96,7 @@ public abstract class BasicTinkerBerryCrop extends BasicCrop {
     @Override
     public boolean onEntityCollision(ICropTile crop, Entity entity) {
         if (!(entity instanceof EntityItem))
-            entity.attackEntityFrom(DamageSource.cactus, 1);
+            entity.attackEntityFrom(DamageSource.CACTUS, 1);
         if (entity instanceof EntityLivingBase) {
             return ((EntityLivingBase) entity).isSprinting();
         }

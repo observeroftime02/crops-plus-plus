@@ -51,7 +51,7 @@ public class GrassCrop extends BasicDecorationCrop {
     }
 
     @Override
-    public int getOptimalHavestSize(ICropTile crop) {
+    public int getOptimalHarvestSize(ICropTile crop) {
         return 1;
     }
 
@@ -62,18 +62,18 @@ public class GrassCrop extends BasicDecorationCrop {
 
     @Override
     public boolean onEntityCollision(ICropTile crop, Entity entity) {
-        if (!(entity instanceof EntityItem) && crop.getSize() == 4)
-            entity.attackEntityFrom(DamageSource.cactus, 1);
+        if (!(entity instanceof EntityItem) && crop.getCurrentSize() == 4)
+            entity.attackEntityFrom(DamageSource.CACTUS, 1);
         return false;
     }
 
     @Override
-    public boolean leftclick(ICropTile crop, EntityPlayer player) {
+    public boolean onLeftClick(ICropTile crop, EntityPlayer player) {
         return false;
     }
 
     @Override
-    public float dropGainChance() {
+    public double dropGainChance() {
         return (float) 1;
     }
 
@@ -84,7 +84,7 @@ public class GrassCrop extends BasicDecorationCrop {
 
     @Override
     public boolean canBeHarvested(ICropTile crop) {
-        return crop.getSize() > 1;
+        return crop.getCurrentSize() > 1;
     }
 
     @Override
@@ -94,9 +94,9 @@ public class GrassCrop extends BasicDecorationCrop {
 
     @Override
     public ItemStack getGain(ICropTile crop) {
-        if (crop.getSize() == 4)
+        if (crop.getCurrentSize() == 4)
             return new ItemStack(Item.getItemById(32), 1, 0);
-        if (crop.getSize() == 3) {
+        if (crop.getCurrentSize() == 3) {
             random = MyRandom.intrandom(0, 10);
             switch (random) {
                 case 9:
@@ -116,17 +116,17 @@ public class GrassCrop extends BasicDecorationCrop {
 
     @Override
     public boolean canGrow(ICropTile crop) {
-        return crop.getSize() < 4;
+        return crop.getCurrentSize() < 4;
     }
 
     @Override
-    public byte getSizeAfterHarvest(ICropTile crop) {
-        return (byte) ((int) crop.getSize() - 1);
+    public int getSizeAfterHarvest(ICropTile crop) {
+        return (byte) ((int) crop.getCurrentSize() - 1);
     }
 
     @Override
     public List<String> getCropInformation() {
-        return Arrays.asList(new String[]{"Is a weed", "Hurt Player on collision, when fully grown"});
+        return Arrays.asList("Is a weed", "Hurt Player on collision, when fully grown");
     }
 
     @Override

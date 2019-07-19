@@ -41,7 +41,7 @@ public abstract class BasicDecorationCrop extends BasicBerryCrop {
     }
 
     @Override
-    public byte getSizeAfterHarvest(ICropTile crop) {
+    public int getSizeAfterHarvest(ICropTile crop) {
         return 1;
     }
 }

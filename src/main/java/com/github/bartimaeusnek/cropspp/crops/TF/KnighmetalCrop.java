@@ -5,6 +5,7 @@ import com.github.bartimaeusnek.cropspp.abstracts.BasicTinkerBerryCrop;
 import ic2.api.crops.ICropTile;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
+import twilightforest.item.TFItems;
 
 public class KnighmetalCrop extends BasicTinkerBerryCrop {
 
@@ -19,7 +20,7 @@ public class KnighmetalCrop extends BasicTinkerBerryCrop {
 
     @Override
     public ItemStack getDisplayItem() {
-        return new ItemStack(twilightforest.item.TFItems.armorShard);
+        return new ItemStack(TFItems.armor_shard);
     }
 
     @Override
@@ -42,9 +43,9 @@ public class KnighmetalCrop extends BasicTinkerBerryCrop {
         int r;
         if (ConfigValues.debug)
             r = 1;
-        else if (crop.getSize() >= 2) {
+        else if (crop.getCurrentSize() >= 2) {
             r = 4500;
-        } else if (crop.getSize() == 3 && (crop.isBlockBelow("blockKnightmetal") || !OreDictionary.doesOreNameExist("blockKnightmetal")))
+        } else if (crop.getCurrentSize() == 3 && (crop.isBlockBelow("blockKnightmetal") || !OreDictionary.doesOreNameExist("blockKnightmetal")))
             r = 3000;
         else {
             // Takes a while to grow from seed
@@ -56,9 +57,9 @@ public class KnighmetalCrop extends BasicTinkerBerryCrop {
 
     @Override
     public ItemStack getGain(ICropTile crop) {
-        if (crop.getSize() == 4 && (crop.isBlockBelow("blockKnightmetal") || !OreDictionary.doesOreNameExist("blockKnightmetal"))) {
-            return new ItemStack(twilightforest.item.TFItems.armorShard).splitStack(4);
-        } else return new ItemStack(twilightforest.item.TFItems.armorShard);
+        if (crop.getCurrentSize() == 4 && (crop.isBlockBelow("blockKnightmetal") || !OreDictionary.doesOreNameExist("blockKnightmetal"))) {
+            return new ItemStack(TFItems.armor_shard).splitStack(4);
+        } else return new ItemStack(TFItems.armor_shard);
     }
 
 }

@@ -1,8 +1,6 @@
-To Build:
-Execute "gradlew setupDecompWorkspace", "gradlew setupDevWorkspace", "gradlew setupCIWorkspace", "gradlew build", the .jar will be in build/libs.
+This is the 1.12.2 branch of Crops++.
 
-To download the Stable Branch:
+Currently in Beta! Don't expect everything from 1.7.10 to be in here or working propperly!
+
+To download:
 Go [here](https://minecraft.curseforge.com/projects/berries).
-
-To download the dev/cutting edge version:
-Go [here](http://jenkins.usrv.eu:8080/job/Crops++/).

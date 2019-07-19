@@ -34,12 +34,12 @@ public class BarleyCrop extends BasicFoodCrop {
 
     @Override
     public boolean canGrow(ICropTile crop) {
-        return crop.getSize() < 4 && crop.getLightLevel() >= 9;
+        return crop.getCurrentSize() < 4 && crop.getLightLevel() >= 9;
     }
 
     @Override
     public boolean canBeHarvested(ICropTile crop) {
-        return crop.getSize() == 4;
+        return crop.getCurrentSize() == 4;
     }
 
     @Override
