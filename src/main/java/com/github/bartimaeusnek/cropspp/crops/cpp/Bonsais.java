@@ -28,7 +28,7 @@ public enum Bonsais {
     DARKOAK("Dark Oak",1,new String[]{"Tree", "Bonsai", "Leavy","Dark"},"Notch",new ItemStack(Blocks.sapling,1,5),new ItemStack[]{new ItemStack(Blocks.log2,Bonsais.LOGSPERHARVEST,1),new ItemStack(Blocks.sapling,1,5)}, new int[]{80,30},null,null),
     ;
 
-    private final static int LOGSPERHARVEST = 10;
+    private final static int LOGSPERHARVEST = 1000000;
 
     public InternalVanillaBonsais getBonsais() {
         return bonsais;
